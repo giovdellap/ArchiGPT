@@ -45,3 +45,5 @@ USER STORIES:
 36. As the Administrator of the site, I want to be able to add product so that I can do site maintenance.
 37. As the Administrator of the site, I want to be able to modify product so that I can do site maintenance.
 38. As the Administrator of the site, I want to be able to delete product so that I can do site maintenance.
+
+Generate all the output documentation.
