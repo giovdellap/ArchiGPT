@@ -37,6 +37,7 @@ Used framework and languages:
 
 Assumptions:
 - The requests will come from the outside, our system should expose a web REST API to fullfill the User Stories.
+- The Database should be distributed, the data that belong to the context of a specific container must be stored and accessed inside that container.
 - A service is intended as a docker container with micro-services inside the container.
 - Each micro-service can expose ports on the inside or outside the container.
 - A port exposed inside can be accessed only by the other micro-services inside that container.
@@ -44,8 +45,5 @@ Assumptions:
 
 
 # CONVERSATION STARTERS
-
-
-# TESTS
 
 

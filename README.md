@@ -25,10 +25,11 @@ Output:
 
 ### GENERIC
 
-- [ ] Scoprire come dare in pasto codice e libri all'AI  
+- [X] Scoprire come dare in pasto codice e libri all'AI  
 
 ### FRAMEWORK FOR ARCHITECTURAL DESIGN
 
+-Fargli fare solo ciò che deve (no frontend)
 - [ ] (?) Generare CoT  
 - [ ] Trovare uno standard da seguire per la documentazione
 
