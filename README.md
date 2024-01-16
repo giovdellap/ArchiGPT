@@ -38,3 +38,14 @@ Output:
 - [X] Scegliere stack
 - [ ] Trovare standard documentazione stack
 - [ ] (?) Generare CoT
+
+
+# TECHNIQUES
+
+### Multiple instances
+
+- [ ] ArchiGPT
+- [X] ServiGPT  
+No per la prima parte  
+Potrebbe tornare utile per validare il codice e rifinirlo
+
