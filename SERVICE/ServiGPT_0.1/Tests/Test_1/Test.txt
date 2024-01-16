@@ -1,0 +1,14 @@
+Design a container that manages user accounts including registration, authentication, profile management, and session handling for clients, agricultural companies, and administrators.
+
+Services Within the Container:
+- Registration Service
+- Authentication Service
+- Profile Management Service
+-Session Management Service
+
+Endpoints:
+Endpoint URL	Related Service	            HTTP Method
+/register	    Registration Service	    POST
+/login	        Authentication Service	    POST
+/profile	    Profile Management Service	GET
+/session	    Session Management Service	GET

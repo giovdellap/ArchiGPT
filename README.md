@@ -29,12 +29,12 @@ Output:
 
 ### FRAMEWORK FOR ARCHITECTURAL DESIGN
 
--Fargli fare solo ciò che deve (no frontend)
+- [X] Fargli fare solo ciò che deve
 - [ ] (?) Generare CoT  
 - [ ] Trovare uno standard da seguire per la documentazione
 
 ### FRAMEWORK FOR MICRO-SERVICE DESIGN
 
-- [ ] Scegliere stack
+- [X] Scegliere stack
 - [ ] Trovare standard documentazione stack
 - [ ] (?) Generare CoT
