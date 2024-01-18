@@ -49,3 +49,9 @@ Output:
 No per la prima parte  
 Potrebbe tornare utile per validare il codice e rifinirlo
 
+
+
+# da vedere
+1) KNOWLEDGE è RAG o fine tuning o...?
+2) Segnare micro modifiche rilevanti e motivazioni
+3) Controllare che stack usano negli esempi
