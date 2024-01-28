@@ -1,0 +1,2 @@
+1) GPT4 o GPT 3.5?
+2) Un solo container o più container? 
