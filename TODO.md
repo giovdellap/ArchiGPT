@@ -2,11 +2,10 @@
 
 ## Training Material Processing module
 
-- Vedere come mettere libri per fine-tuning
-- Decidere e schematizzare Training Material Format
-- Decidere prompt
-- Provare a farlo girare
-- Abstract
+### Stage 1
+
+- Trovare Libri
+- Generare pattern di prova per one-shot prompting
 
 ## Projects Pre-processing module
 
