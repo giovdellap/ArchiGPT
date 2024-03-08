@@ -1,0 +1,5 @@
+You are writing a university book regarding software architecture design.
+Generate the paragraphs' structure of section 2 (Dealing with concurrency and state in RESTful services) of Chapter 4 of the book.
+You are provided with: 
+- the outline of the book 
+- the sections that have been written
