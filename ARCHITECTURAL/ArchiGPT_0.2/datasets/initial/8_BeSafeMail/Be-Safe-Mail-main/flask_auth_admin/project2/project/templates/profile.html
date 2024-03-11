@@ -1,0 +1,71 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  .container {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .titleAdmin {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .form__group {
+    margin-bottom: 3rem;
+  }
+
+  .form__field {
+    margin-bottom: 1.5rem;
+  }
+
+  .form__label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form__input,
+  .form__textarea {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Add gap between buttons */
+    margin-top: 1rem;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="container">
+  <h3 class="titleAdmin">Welcome, Admin {{ name }}!</h3>
+
+
+  <div class="buttons">
+    <form method="GET" action="/startConsuming">
+      <button class="button-90" role="button">See all emails</button>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,134 @@
+<%- include('./navbar'); %>
+
+
+<main>
+    <div class="container">
+        <div class="row py-5 mt-4 align-items-center ">
+            
+            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0 log-div">
+            <img src="/assets/Add User-amico.svg" alt="Example Image" class="img-fluid mb-3 d-none d-md-block" style="width: 100%; margin-left: 4%;">
+                <h2 style="color:#04044c; font-weight: bold; text-align: center;">Crea un Evento</h2>
+                
+            </div>
+            
+            <!-- Registeration Form -->
+            <div class="col-md-7 col-lg-5 ml-auto login">
+              <form action="/createEvent" method="POST" id="formevent" >
+                <%- include ("./messages") %>
+                    
+                    <div class="row ">
+    
+                        <!-- Name of the event -->
+                        <div class="input-group col-lg-12 mb-4">
+                        
+                        <input type="name" id="name" name="name" class="form-control bg-white border-left-0 border-md" placeholder="Nome dell'evento" style="text-align: start;"
+                         required/>   
+                        </div>
+    
+  
+    
+                        <!-- date of the event -->
+                        <div class="input-group col-lg-12 mb-4">
+                          <input type="datetime-local" id="date" name="date" class="form-control bg-white border-left-0 border-md " placeholder="Data Evento"
+               required />
+                        
+                         
+                        </div>
+    
+                        <!-- city -->
+                        <div class="input-group col-lg-12 mb-4">
+                        
+                        <input type="text" id="city" name="city" class="form-control bg-white border-left-0 border-md" placeholder="Inserisci la città"
+                         required/>
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                        
+                        <!-- locale --> 
+                        <input type="text" id="locale" name="locale" class="form-control bg-white border-left-0 border-md" placeholder="Inserisci il locale"/>
+                        </div>
+
+                        <input type="hidden" id="img" name="img" value="">
+                        <div class="input-group col-lg-12 mb-4">
+                        <!-- descrizione --> 
+                        <textarea name="descrizione" form="formevent">Inserisci la descrizione dell'evento</textarea>
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                          <fieldset>
+                            <legend>Categoria Evento</legend>
+                            <select name="categoria" >
+                            <option value="musica" selected="selected">Musica </option>
+                            <option value="teatro">Teatro </option>
+                            <option value="cultura">Cultura </option>
+                            <option value="sport">Sport </option>
+                            <option value="cinema">Cinema </option>
+                            <option value="discoteca">Discoteca </option>
+                            </select>
+                          </fieldset>   
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                          <fieldset>
+                            <legend>Tipologia Evento</legend>
+                            Informativo <input type="radio" name="tipo"  value="Informativo" /><br/>
+                            Con Prevendita <input type="radio" name="tipo" value="Prevendita"/><br/>
+                            Con Biglietto <input type="radio" name="tipo" value="Biglietto"/><br/>
+                          </fieldset>
+                        </div>
+                        <script>
+                        $( document ).ready(function() {
+                          $('#gruppo_nascosto').hide();
+                        });
+                        </script>
+                        <div id="gruppo_nascosto">
+                          <div class="input-group col-lg-12 mb-4">
+                            Numero Biglietti/prevendite
+                            <input type="number" id="num_bigl" name="num_bigl" class="form-control bg-white border-left-0 border-md"/>
+                          </div>
+                          <div class="input-group col-lg-12 mb-4">
+                            Prezzo singolo/a Biglietto/Prevendita
+                            <input type="number" id="prezzo_bigl" name="prezzo_bigl" class="form-control bg-white border-left-0 border-md"/>
+                          </div>
+                        </div>
+
+                        <script>
+                          $("input[name='tipo']").change(function() {
+                            if (($(this).val() == "Prevendita") || $(this).val() == "Biglietto" ) {
+                              $('#gruppo_nascosto').show();
+                              $('#num_bigl').attr('required', '');
+                              $('#num_bigl').attr('data-error', 'This field is required.');
+                              $('#prezzo_bigl').attr('required', '');
+                              $('#prezzo_bigl').attr('data-error', 'This field is required.');
+                            } else {
+                              $('#gruppo_nascosto').hide();
+                              $('#num_bigl').prop('required',false);
+                              
+                              $('#prezzo_bigl').prop('required',false);
+                              
+                            }
+                          });
+    
+                        </script>
+
+                        <div class="input-group col-lg-12 mb-4">
+                        <!-- locale --> 
+                        <input type="hidden" id="manager" name="manager" class="form-control bg-white border-left-0 border-md" placeholder="Inserisci il locale"
+              value="<%= managerID %>" />
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                        <!-- Submit Button -->
+                        <div class="form-group col-lg-12 mx-auto mb-0" style="margin-top:2%;">
+                            
+                       
+                        <button type="submit" class="nav-mybutton" style="width:100%;height:5vh;"">
+                          Crea
+                        </button>
+                      
+                        </div>
+                       
+                        
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+  </main>
+<%- include('./footer'); %>

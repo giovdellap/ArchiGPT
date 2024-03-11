@@ -1,0 +1,93 @@
+--
+-- For more information on build.settings, see the Project Build Settings guide at:
+-- https://docs.coronalabs.com/guide/distribution/buildSettings
+--
+
+settings =
+{
+	orientation =
+	{
+		-- Supported values for orientation:
+		-- portrait, portraitUpsideDown, landscapeLeft, landscapeRight
+		default = "landscapeRight",
+		supported = { "landscapeRight", },
+	},
+	splashScreen =
+	 {
+ 		enable = false,
+	 image = "mySplashScreen.png"
+ 	},
+
+	--
+	-- Android section
+	--
+	android =
+	{
+		usesPermissions =
+		{
+			"android.permission.INTERNET",
+			"android.permission.WRITE_EXTERNAL_STORAGE",
+			"android.permission.READ_EXTERNAL_STORAGE",
+			"android.permission.CAMERA",
+		},
+		usesFeatures =
+        {
+            { name="android.hardware.camera", required=true },
+        },
+	},
+
+	--
+	-- iOS section
+	--
+	iphone =
+	{
+		plist =
+		{
+			NSPhotoLibraryUsageDescription = "This app would like to access the photo library.",
+			UIStatusBarHidden = false,
+			UILaunchStoryboardName = "LaunchScreen",
+			NSCameraUsageDescription = "This app would like to access the camera.",
+		  NSPhotoLibraryUsageDescription = "This app would like to access the photo library.",
+			CFBundleIconFiles =
+			{
+				"Icon-40.png",
+				"Icon-58.png",
+				"Icon-76.png",
+				"Icon-80.png",
+				"Icon-87.png",
+				"Icon-120.png",
+				"Icon-152.png",
+				"Icon-167.png",
+				"Icon-180.png",
+			},
+		},
+	},
+
+	--
+	-- Plugins section
+	--
+	plugins =
+	{
+		 ["plugin.zip"] =
+		{
+		 	publisherId = "com.coronalabs"
+		},
+		 ["plugin.CoronaSplashControl"] =
+		  {
+		           publisherId = "com.coronalabs"
+		   }
+			 --["plugin.charkhoneh"]
+
+	},
+
+
+	--
+	-- Project section
+	--
+	excludeFiles =
+	{
+		-- Exclude unnecessary files for each platform
+		ios = { "Icon.png", "Icon-*dpi.png", },
+		android = { "Icon.png", "Icon-??.png", "Icon-???.png", "LaunchScreen.storyboardc", },
+	},
+}

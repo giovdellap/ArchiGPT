@@ -1,0 +1,93 @@
+<!--
+  ~ Copyright (C) 2018 Google Inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <string name="app_name">Marketing Analyzer</string>
+    <string name="welcome_text_title">Marketing Analyzer</string>
+    <string name="welcome_text_Description">This app provides you recommendations on who is
+        your target customer for your products, based on your product purchase logs</string>
+    <string name="welcome_button_login">Login</string>
+    <string name="welcome_button_signup">Signup</string>
+    <string name="main_button_welcome">Welcome</string>
+
+    <string name="login_text_title">Log in</string>
+    <string name="login_text_username">Username</string>
+    <string name="login_text_username_hint">Enter Username</string>
+    <string name="login_text_password_hint">Enter Password</string>
+    <string name="login_text_password">Password</string>
+    <string name="login_button_login">Login</string>
+    <string name="login_text_logging_in">Logging in ...</string>
+    <string name="login_toast_invalid_cred">Invalid Username or Password</string>
+
+    <string name="signup_text_title">Sign up</string>
+    <string name="signup_text_name">Name</string>
+    <string name="signup_text_name_hint">Full Name</string>
+    <string name="signup_text_email">Email</string>
+    <string name="signup_text_email_hint">Enter your email</string>
+    <string name="signup_text_username">Username</string>
+    <string name="signup_text_username_hint">Enter your Username</string>
+    <string name="signup_text_password">Password</string>
+    <string name="signup_text_password_hint">Enter your password</string>
+    <string name="signup_button_signup">Signup</string>
+    <string name="signup_text_signing_up">Signing up ...</string>
+    <string name="signup_toast_invalid_input">All fields are required</string>
+
+    <string name="profile_text_welcome">Welcome Back</string>
+    <string name="profile_text_pending_projects">Loading Current Projects ...</string>
+    <string name="profile_text_projects_not_avail">No Current Projects Available</string>
+    <string name="profile_text_current_Projects">Current Projects</string>
+    <string name="profile_button_create_new_project">Create New Project</string>
+    <string name="profile_button_logout">Log out</string>
+    <string name="profile_projects_scroll_view_description">This scroll view is responsible for displaying projects</string>
+
+    <string name="new_project_text_available_templates">Available Templates</string>
+    <string name="new_project_text_project_name">Project Name</string>
+    <string name="new_project_text_api_title">API for Logs</string>
+    <string name="new_project_text_api_description">/endpoint/{project_name}/logs/new</string>
+    <string name="new_project_text_project_name_hint">Enter Project Name</string>
+    <string name="new_project_button_create_project">Create Project</string>
+    <string name="new_project_text_loading">Loading ... </string>
+    <string name="new_project_toast_no_radioButton_selected">Please Select a Project Template to proceed </string>
+    <string name="new_project_toast_invalid_project_name">Please Type a Valid Project Name </string>
+
+    <string name="dashboard_text_welcome">Welcome Back</string>
+    <string name="dashboard_image_rec_description">Go to recommendations tab</string>
+    <string name="dashboard_image_analytics_description">Go to analytics tab</string>
+    <string name="dashboard_text_pending_products">Loading Current Products ...</string>
+    <string name="dashboard_text_no_project_selected">No Project Selected</string>
+    <string name="dashboard_text_current_Products">Current Products</string>
+    <string name="dashboard_text_products_not_avail">No Current Products are Available</string>
+    <string name="dashboard_products_scroll_view_description">This scroll view is responsible for displaying products</string>
+    <string name="dashboard_text_rec">Recommendation</string>
+    <string name="dashboard_text_analytics">Analytics</string>
+
+    <string name="rec_text_product">Product: </string>
+    <string name="rec_button_like">Like</string>
+    <string name="rec_button_unlike">unLike</string>
+    <string name="rec_scroll_view_description">This scroll view contains all the pie chart drawings from the recc api</string>
+    <string name="analytics_text_welcome">Analytics to be implemented</string>
+
+
+    <string name="title_activity_welcome">Welcome</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_signup">Signup</string>
+    <string name="title_activity_analytics">Analytics</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_activity_new_project">New Project</string>
+    <string name="title_activity_profile_page">Profile Page</string>
+    <string name="title_activity_rec">Recommendation</string>
+
+</resources>

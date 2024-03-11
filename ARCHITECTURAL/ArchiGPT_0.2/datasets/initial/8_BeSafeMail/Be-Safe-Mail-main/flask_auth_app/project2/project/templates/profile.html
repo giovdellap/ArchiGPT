@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="title" style="font-size: 8rem; margin-bottom: 10rem;">Welcome, {{ name }}!</h1>
+  <div class="formParent">
+    <div class="form__group" >
+      <h1 style="font-size: 4rem;">Enter email's info</h1>
+      <form action="/x" method="POST" id="sourceEmailForm">
+        <input type="text" class="form__input" name="sender" placeholder="Email's sender" required="" />
+        <br>
+        <input type="text" class="form__input" name="text" placeholder="Email's text" required="" />
+        <br><br>
+        <button class="button-90" role="button">Send</button>
+      </form>
+    </div>
+  </div>
+
+
+<div style="margin-top: 30rem;">
+  <form name="SeeEmails" id="emailsWatch" method="GET" action="/startConsuming">
+    <button class="button-90" role="button">See all emails</button>
+  </form>
+</div>
+
+{% endblock %}

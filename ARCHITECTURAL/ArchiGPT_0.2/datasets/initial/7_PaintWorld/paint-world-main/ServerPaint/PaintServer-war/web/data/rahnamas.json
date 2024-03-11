@@ -1,0 +1,38 @@
+[
+    {
+        "rahnamaCode": "1025621",
+        "callingStatus": null,
+        "family": null,
+        "field": null,
+        "imageUrl": null,
+        "name": "ترم (باغ صبا سابق)",
+        "positionx": "35.751041",
+        "positiony": "51.331913",
+        "status": null,
+        "type": 1
+    },
+    {
+        "rahnamaCode": "111125",
+        "callingStatus": 1,
+        "family": "Abdoli",
+        "field": null,
+        "imageUrl": null,
+        "name": "Hanieh",
+        "positionx": "51.331913",
+        "positiony": "51.331913",
+        "status": 1,
+        "type": 1
+    },
+    {
+        "rahnamaCode": "217889",
+        "callingStatus": null,
+        "family": "بیگ زاده مقدم",
+        "field": null,
+        "imageUrl": null,
+        "name": "فرزانه",
+        "positionx": null,
+        "positiony": null,
+        "status": null,
+        "type": 0
+    }
+]

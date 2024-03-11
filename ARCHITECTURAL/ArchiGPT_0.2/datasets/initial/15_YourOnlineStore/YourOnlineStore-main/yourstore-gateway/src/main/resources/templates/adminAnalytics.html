@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>YourOnlineShop - adminAnalytics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <title>YourOnlineShop</title>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" href="/images/logo.png" type="">
+	<title>YourOnlineShop - Home</title>
+	<!-- bootstrap core css -->
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+	<!-- font awesome style -->
+	<link href="/css/font-awesome.min.css" rel="stylesheet" />
+	<!-- Custom styles for this template -->
+	<link href="/css/style.css" rel="stylesheet" />
+	<!-- responsive style -->
+	<link href="/css/responsive.css" rel="stylesheet" />
+  </head>
+  <body>
+	<!-- header section strats -->
+		<header class="header_section"
+			style="background-color: rgb(162, 38, 36); box-shadow: 5px 5px 2px; height: 200px;">
+			<div class="container heading_center" style="">
+				<a class="navbar-brand" href="/home"> <img
+					width="150px
+                     " src="/images/logo.png" /></a>
+			</div>
+			<nav style="display: flex; justify-content: center;"
+				class=" mt-xl-5 navbar navbar-expand-lg custom_nav-container ">
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation"></button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav">
+						<div style="background-color: rgb(215, 58, 51); visibility: hidden;" class="mr-sm-2" id="aggiungiProdotto2" >
+							<a href="addProduct" class="btn btn-lg" id="aggiungiProdotto" style="visibility: hidden;">Aggiungi Prodotto + <span
+								style="color: rgb(43, 43, 43);"  class="glyphicon glyphicon-plus"></span>
+							</a>
+						</div>
+						<div
+							style="display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; visibility: hidden;">
+							<form class="input-group">
+
+								<input style="width: 180px;" class="form-control mr-sm-2 "
+									type="search" placeholder="Search" aria-label="Search">
+								<button
+									style="width: 70px; color: rgb(215, 58, 51); border-color: rgb(215, 58, 51);"
+									class=" form-control btn btn-outline-info my-2 my-sm-0"
+									type="submit">
+									<span style="color: black">Search 
+								</button>
+							</form>
+						</div>
+				</div>
+				</ul>
+	</div>
+	</nav>
+	</header>
+	<!-- end header section -->
+	
+	<!-- start section -->
+	<section class="product_section layout_padding" style="margin-bottom: -20px">
+		<div class="container">
+			<div class="heading_center">
+				<p align="center" style="font-size: 40px;">Most Bought Product</p>
+				<hr
+					style="height: 2px; border-width: 2; color: #000000; background-color: #f7444e; box-shadow: 5px #000000;">
+			</div>
+			<div class="row" id="elencop"></div>
+
+		</div>
+	</section>
+	<!-- end section -->
+	
+    <!--chart start-->
+    <div class="chart" style="margin-top: 10px;  margin-bottom: 50px; margin-left: auto; margin-right: auto;">
+      <ul class="numbers" id="numbers1">
+        <li style="color: black;"><span>100%</span></li>
+        <li style="color: black;"><span>50%</span></li>
+        <li style="color: black;"><span>0%</span></li>
+      </ul>
+      <ul class="bars" id="bars1">
+      <!--  <li><div class="bar" data-percentage="50" ></div><span>Option 01</span></li>
+        <li><div class="bar" data-percentage="80"></div><span>Option 02</span></li>
+        <li><div class="bar" data-percentage="60"></div><span>Option 03</span></li>
+        <li><div class="bar" data-percentage="100"></div><span>Option 04</span></li>
+        <li><div class="bar" data-percentage="80"></div><span>Option 05</span></li>
+        <li><div class="bar" data-percentage="10"></div><span>Option 06</span></li>
+        -->
+      </ul>
+    </div>
+    <!--chart end-->
+    
+    <!----------------------------------------------------------------------------------------------------------->
+    
+    <!-- start section -->
+	<section class="product_section layout_padding" style="margin-bottom: -20px">
+		<div class="container">
+			<div class="heading_center">
+				<p align="center" style="font-size: 40px;">Percentage of orders each user</p>
+				<hr
+					style="height: 2px; border-width: 2; color: #000000; background-color: #f7444e; box-shadow: 5px #000000;">
+			</div>
+			<div class="row" id="elencop"></div>
+
+		</div>
+	</section>
+	<!-- end section -->
+	
+    <!--chart start-->
+    <div class="chart" style="margin-top: 10px;  margin-bottom: 50px; margin-left: auto; margin-right: auto;">
+      <ul class="numbers" id="numbers2">
+        <li style="color: black;"><span>100%</span></li>
+        <li style="color: black;"><span>50%</span></li>
+        <li style="color: black;"><span>0%</span></li>
+      </ul>
+      <ul class="bars" id="bars2">
+<!--         <li><div class="bar" data-percentage="50" ></div><span>Option 01</span></li> -->
+<!--         <li><div class="bar" data-percentage="80"></div><span>Option 02</span></li> -->
+<!--         <li><div class="bar" data-percentage="60"></div><span>Option 03</span></li> -->
+<!--         <li><div class="bar" data-percentage="100"></div><span>Option 04</span></li> -->
+<!--         <li><div class="bar" data-percentage="80"></div><span>Option 05</span></li> -->
+<!--         <li><div class="bar" data-percentage="10"></div><span>Option 06</span></li> -->
+        
+      </ul>
+    </div>
+    <!--chart end-->
+	
+<!--     <script type="text/javascript"> -->
+
+    </script>
+	<!--script per ricevere i dati per la statistica-->
+	<script type="text/javascript">
+	
+	$.ajax({
+		  type: "GET",
+	        url: "http://localhost:8080/store/utente/",
+	        success: function(result){
+	        	var isAdmin = false
+	        	const localStoData = localStorage.getItem("isAdmin")
+	        	for (var i=0; i< result.content.length; i++ ){
+	        		if (result.content[i].oauthId==localStoData && result.content[i].isAdmin){
+	        			isAdmin = true
+	        			document.getElementById("aggiungiProdotto").style.visibility ="visible" ;
+	        			document.getElementById("aggiungiProdotto2").style.visibility ="visible" ;
+	        		}
+	        	}
+	        	if (isAdmin){
+	        		var listProductId = []
+	        		var listAmount = []
+	        		var totalAmount= 0
+	        		$(function(){	
+	        			$.ajax({
+	        		
+	        				type : "GET",
+	        				url : "http://localhost:8080/store/order-item",
+	        				success : function(result) {
+	        					console.log("ajax: ricevuto tutti i prodotti ")
+	        					console.log(result)
+
+	        					const content = result.content
+	        					for (var i = 0; i < content.length; i++){
+	        						if (listProductId.includes(content[i].theProductObjectKey)){
+	        							let indice = listProductId.findIndex(element => element == content[i].theProductObjectKey)
+	        							listAmount[indice] += content[indice].amount
+	        							totalAmount += content[indice].amount
+	        						}
+	        						else{
+	        							listProductId.push(content[i].theProductObjectKey)
+	        							listAmount.push(content[i].amount)
+	        							totalAmount += content[i].amount
+	        						}
+	        					}
+	        					$.ajax({
+	        						type : "GET",
+	        						url : "http://localhost:8080/database/product/all",
+	        						success : function(result) {
+	        							const content = result
+	        							
+	        							var dizProductId_Name = {}
+	        							for ( var i = 0 ; i < content.length; i++){
+	        								dizProductId_Name[content[i].productId]= content[i].productName
+	        							}
+	        							var bars = document.getElementById("bars1");
+	        							var listaPercentuali = listAmount.map( elem => elem/totalAmount )
+
+	        							for (var j = 0; j < listProductId.length; j++){
+	        								//controlla se j == {all'indice del valore massimo nell'array}
+	        								if (j == listaPercentuali.findIndex(elem => elem == Math.max.apply(Math,listaPercentuali)) )
+	        									bars.insertAdjacentHTML("beforeend",'<li><div class="bar" data-percentage="'+Math.floor(listaPercentuali[j]*100+1)+'" ></div><span >'+dizProductId_Name[listProductId[j]]+'</span></li>')
+	        								else
+	        									bars.insertAdjacentHTML("beforeend",'<li><div id="Product'+listProductId[j]+'"class="bar" data-percentage="'+Math.floor(listaPercentuali[j]*100)+'" ></div><span >'+dizProductId_Name[listProductId[j]]+'</span></li>')
+
+	        							}
+	        							//<!--script per far muovere le barre start-->
+	        							$(function(){
+	        							      $('.bars li .bar').each(function(key, bar){
+	        							        var percentage = $(this).data('percentage');
+	        							        $(this).animate({
+	        							          'height' : percentage + '%'
+	        							        },1000);
+	        							      });
+	        							    });
+	        							//<!--fine script-->
+	        						},
+	        						error : function(e) {
+	        							alert("Errore" + e);
+	        						}
+	        					})
+	        				},
+	        				error : function(e) {
+	        					alert("Errore" + e);
+	        				}
+	        			})
+	        		})
+	        	}
+		},
+		error : function(e) {
+			alert("Errore" + e);
+		}
+	})
+	
+	
+	</script>
+ 	<script type="text/javascript">
+ 	$.ajax({
+        type: "GET",
+        url: "http://localhost:8080/store/utente/",
+        success: function(result){
+        	var isAdmin = false
+        	const localStoData = localStorage.getItem("isAdmin")
+        	for (var i=0; i< result.content.length; i++ ){
+        		if (result.content[i].oauthId==localStoData && result.content[i].isAdmin){
+        			isAdmin = true
+        			document.getElementById("aggiungiProdotto").style.visibility ="visible" ;
+        			document.getElementById("aggiungiProdotto2").style.visibility ="visible" ;
+
+        		}
+        	}
+        	if (isAdmin){
+        		var userDiz = {}
+        		var contentUser
+        		var listUserId = []
+        	 	$(function(){
+        	 		
+        	 		$.ajax({
+        				type : "GET",
+        				url : "http://localhost:8080/store/ordine",
+        				success : function(result) {
+        					var totalOrdini	= result.totalElements
+        					
+        					$.ajax({
+        						
+        						type : "GET",
+        						url : "http://localhost:8080/store/utente",
+        						success : function(result) {
+        							contentUser = result.content
+        							var bars = document.getElementById("bars2");
+        							
+        							for (var i=0; i< contentUser.length; i++ ){
+        								
+        								$.ajax({
+        									type : "GET",
+        									url : "http://localhost:8080/store/ordine/findByTheUtente/"+contentUser[i].objectKey,
+        									success : function(result) {
+        										if (result.content.length > 0){
+        										var userId = result.content[0].objectKey
+        										var name = result.content[0].theUtenteObjectTitle
+//        	 									userDiz[userId] = result.content.length
+//        	 									// se l'id non c'è nell'array
+//        	 									if (listUserId.findIndex(elem => elem == userId ) != -1 ) {
+//        	 										listUserId.push(userId)
+//        	 									}
+        										const prePercentuale =  parseInt(result.totalElements)/totalOrdini
+        										console.log("valore numero ordini: "+result.totalElements)
+        										console.log("valore totalOrdini: "+totalOrdini)
+        										var bars = document.getElementById("bars2");
+        										
+        										bars.insertAdjacentHTML("beforeend",'<li><div class="bar"  data-percentage="'+Math.floor(prePercentuale*100)+'" ></div><span >'+name+'</span></li>')
+        										//<!--script per far muovere le barre start-->
+        										$(function(){
+        										      $('.bars li .bar').each(function(key, bar){
+        										        var percentage = $(this).data('percentage');
+        										        $(this).animate({
+        										          'height' : percentage + '%'
+        										        },1000);
+        										      });
+        										    });
+        										//	<!--fine script-->
+        										}
+        									},
+        									error : function(e) {
+        										alert("Errore" + e);
+        									}
+        								})
+        								
+        							}
+        						},
+        						error : function(e) {
+        							alert("Errore" + e);
+        						}
+        					})
+        					
+        					
+        					
+        				},
+        				error : function(e) {
+        					alert("Errore" + e);
+        				}
+        			})
+        	 		
+        			
+        	 	})
+        	}
+        },
+        error: function(e){
+            alert("Errore"+e);
+        }
+    })
+ 	
+ 	
+ 	
+ 	</script>
+  </body>
+</html>
+      

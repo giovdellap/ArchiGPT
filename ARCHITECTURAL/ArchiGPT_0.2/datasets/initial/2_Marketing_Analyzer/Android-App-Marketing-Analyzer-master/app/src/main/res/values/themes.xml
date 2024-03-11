@@ -1,0 +1,113 @@
+<!--
+  ~ Copyright (C) 2018 Google Inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <style name="MainTheme" parent="Theme.MaterialComponents">
+        <!-- Text related Attributes -->
+        <item name="textAppearanceHeadline1">@style/MainTheme.TextAppearanceTitle</item>
+        <item name="textAppearanceBody1">@style/MainTheme.TextAppearanceContent</item>
+        <item name="textAppearanceBody2">@style/MainTheme.TextAppearanceContent</item>
+        <item name="textAppearanceHeadline2">@style/MainTheme.TextAppearanceTitle2</item>
+        <item name="textAppearanceHeadline3">@style/MainTheme.TextAppearanceTitle3</item>
+        <item name="textAppearanceHeadline4">@style/MainTheme.TextAppearanceTitle4</item>
+        <item name="textAppearanceSubtitle1">@style/MainTheme.TextAppearanceContent</item>
+        <item name="textAppearanceCaption">@style/MainTheme.TextAppearanceContent</item>
+
+        <!-- Color related Attributes -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">@color/colorOnError</item>
+
+        <!-- Widgets related Attributes -->
+        <item name="textAppearanceButton">@style/TextAppearance.MainTheme.Button</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MainTheme.SmallComponent</item>
+
+        <!-- Button related Attributes -->
+        <item name="borderlessButtonStyle">@style/Widget.MainTheme.Button.TextButton</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.MainTheme.Button.OutlinedButton</item>
+        <item name="materialButtonStyle">@style/Widget.MainTheme.Button</item>
+
+        <!-- Text Fields related Attributes -->
+        <item name="textInputStyle">@style/Widget.MainTheme.TextInputLayout</item>
+
+        <!-- Radio related Attributes -->
+        <item name="radioButtonStyle">@style/Widget.MainTheme.RadioButton</item>
+
+    </style>
+
+    <!-- Button related Overlays -->
+    <style name="ThemeOverlay.MainTheme.Button.TextButton" parent="">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+    </style>
+
+    <style name="ThemeOverlay.MainTheme.Button.TypeA" parent="">
+        <item name="colorPrimary">@color/colorBackgroundVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+    </style>
+
+    <style name="ThemeOverlay.MainTheme.Button.TypeB" parent="">
+        <item name="colorPrimary">@color/colorSecondary</item>
+        <item name="colorOnPrimary">@color/colorOnSecondary</item>
+    </style>
+
+    <style name="ThemeOverlay.MainTheme.Button.TypeC" parent="">
+        <item name="colorPrimary">@color/colorSecondaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnSecondary</item>
+    </style>
+
+    <style name="ThemeOverlay.MainTheme.Button.TypeE" parent="">
+        <item name="colorPrimary">@color/colorError</item>
+        <item name="colorOnPrimary">@color/colorOnSecondary</item>
+    </style>
+
+    <style name="ThemeOverlay.MainTheme.Button.TypeF" parent="">
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/colorOnSecondary</item>
+    </style>
+
+    <!-- Text Fields related Overlays -->
+    <style name="ThemeOverlay.MainTheme.TextInputLayout" parent="">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnSecondary">@color/colorSecondary</item>
+        <item name="textAppearanceSubtitle1">@style/MainTheme.TextAppearanceContent</item>
+        <item name="textAppearanceCaption">@style/MainTheme.TextAppearanceContent</item>
+        <item name="editTextStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+        <item name="colorOnSurface">@color/colorOnPrimary</item>
+    </style>
+
+    <!-- Radio Buttons related Overlays -->
+    <style name="ThemeOverlay.MainTheme.RadioButton" parent="">
+        <item name="colorOnSurface">@color/colorOnPrimary</item>
+        <item name="colorSecondary">@color/colorOnPrimary</item>
+    </style>
+
+</resources>

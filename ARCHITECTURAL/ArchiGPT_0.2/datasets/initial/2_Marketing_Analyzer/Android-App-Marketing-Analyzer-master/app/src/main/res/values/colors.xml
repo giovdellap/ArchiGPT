@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 Google Inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="colorPrimary">#eeeefa</color>
+    <color name="colorPrimaryVariant">#ffffff</color>
+    <color name="colorOnPrimary">#333438</color>
+
+    <color name="colorSecondary">#058cf9</color>
+    <color name="colorSecondaryVariant">#4fa2fa</color>
+    <color name="colorOnSecondary">#e9e9f5</color>
+
+    <color name="colorBackground">#f8f7fd</color>
+    <color name="colorBackgroundVariant">#EDEDE9</color>
+    <color name="colorOnBackground">#333436</color>
+    <color name="colorOnBackgroundVariant">#ffffff</color>
+
+    <color name="colorSurface">#49a2fe</color>
+    <color name="colorOnSurface">#e9e9f3</color>
+
+    <color name="colorError">#ff3259</color>
+    <color name="colorOnError">#333438</color>
+</resources>

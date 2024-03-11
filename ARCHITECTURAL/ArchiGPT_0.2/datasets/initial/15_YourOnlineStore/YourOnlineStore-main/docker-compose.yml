@@ -1,0 +1,162 @@
+version: '3'
+services:
+  activemq:
+    image: symptoma/activemq:latest
+    networks:
+      - net
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+    # restart: always
+
+  db:
+    image: mysql:latest
+    command: --lower_case_table_names=1
+    # restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: prova
+      MYSQL_USER: prova
+      MYSQL_PASSWORD: prova
+    networks:
+      - net
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./databases/store.sql:/docker-entrypoint-initdb.d/store.sql
+      - ./databases/yos_database.sql:/docker-entrypoint-initdb.d/yos_database.sql
+      - mysql_database:/var/lib/mysql
+    deploy:
+      # restart_policy:
+      #   condition: any
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [ node.role == manager ]
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 5
+        max-size: 20m
+
+  phpmyadmin:
+    image: phpmyadmin
+    # restart: always
+    ports:
+      - 80:80
+    environment:
+      PMA_ARBITRARY: 1
+      TZ: "Europe/Rome"
+      PMA_HOSTS: db
+    networks:
+      - net
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+    deploy:
+      # restart_policy:
+      #   condition: any
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [ node.role == manager ]
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 5
+        max-size: 20m
+
+  yourstore-ms-store:
+    image: yourstore-ms-store:0.0.1-SNAPSHOT
+    environment:
+      PORT: 8014
+      DSSTORE_URL: db
+      DSSTORE_PORT: 3306
+      DSSTORE_NAME: store
+      DSSTORE_USERNAME: root
+      DSSTORE_PASSWORD: root
+      ACTIVEMQ_URL: "tcp://activemq:61616"
+    depends_on:
+      - db
+      - activemq
+    networks:
+      - net
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [ node.platform.os == linux ]
+    ports:
+      - "8014:8014/tcp"
+    command: ./wait-for-it.sh db:3306
+    build:
+      context: yourstore-ms-store
+      dockerfile: Dockerfile
+  
+  yourstore-gateway:
+    image: yourstore-gateway:0.0.1-SNAPSHOT
+    environment:
+      PORT: 8080
+      STORE_URL: yourstore-ms-store
+      STORE_PORT: 8014
+      DATABASE_URL: yourstore-ms-database
+      DATABASE_PORT: 8015
+    networks:
+      - net
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [ node.platform.os == linux ]
+    ports:
+      - "8080:8080/tcp"
+    build:
+      context: yourstore-gateway
+      dockerfile: Dockerfile
+      
+  yourstore-ms-database:
+    image: database
+    environment:
+      PORT: 8015
+      ACTIVEMQ_URL: tcp://activemq:61616
+      DSDATABASE_URL: db
+      DSDATABASE_PORT: 3306
+      DSDATABASE_NAME: yos_database
+      DSDATABASE_USERNAME: root
+      DSDATABASE_PASSWORD: root
+    depends_on:
+      - db
+      - activemq
+    networks:
+      - net
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [ node.platform.os == linux ]
+    ports:
+      - "8015:8015/tcp"
+    build:
+      context: database
+      dockerfile: Dockerfile
+  
+  recommend-engine:
+    image: kanton99/recommend-engine
+    networks:
+      - net
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [ node.platform.os == linux ]
+    ports:
+      - "5000:5000/tcp"
+
+  
+volumes:
+  portainer_data:
+  mysql_database:
+
+networks:
+  net:
+    driver: bridge
+

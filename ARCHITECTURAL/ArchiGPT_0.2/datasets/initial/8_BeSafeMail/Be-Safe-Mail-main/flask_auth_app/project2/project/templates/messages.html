@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Emails</title>
+    <style>
+      
+body {
+	margin: 0;
+	background: linear-gradient(45deg, #49a09d, #214555);
+	font-family: sans-serif;
+	font-weight: 100;
+}
+
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.table-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 2rem;
+}
+
+table {
+	width: 400px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+}
+
+th {
+	text-align: left;
+}
+
+thead th {
+	background-color: #214555;
+}
+
+tbody td {
+	position: relative;
+	&:hover {
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: -9999px;
+			bottom: -9999px;
+			background-color: rgba(255,255,255,0.2);
+			z-index: -1;
+		}
+	}
+}
+
+.table-title {
+	text-align: center;
+	color: #090808;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="table-container">
+        <div>
+          <h2 class="table-title">Questions</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Sender</th>
+                <th>Text</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for message in messages %}
+              <tr>
+                <td>{{ message[0] }}</td>
+                <td>{{ message[1] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h2 class="table-title">Answers</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Admin</th>
+                <th>Text</th>
+                <th>Customer</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for answer in answers %}
+              <tr>
+                <td>{{ answer[0] }}</td>
+                <td>{{ answer[1] }}</td>
+                <td>{{ answer[2] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <a class="btn btn-primary" href="/profile">Refresh</a>
+    </div>
+    <footer>
+      <p>;</p>
+    </footer>
+  </body>
+</html>

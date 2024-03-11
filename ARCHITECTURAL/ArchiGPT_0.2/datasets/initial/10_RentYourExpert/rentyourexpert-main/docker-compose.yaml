@@ -1,0 +1,67 @@
+version: '3'
+services:
+  catalogue_ms:
+    build: ./backend/catalogue_ms
+    hostname: catalogue_ms
+    ports:
+      - "5000:5000"
+
+  management_ms:
+    build: ./backend/management_ms
+    hostname: management_ms
+    ports:
+      - "5002:5002"
+
+  db:
+    image: mysql:8.0.32
+    hostname: db
+    ports:
+      - "32000:3306" 
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+    volumes: 
+      - ./db:/docker-entrypoint-initdb.d/:ro
+
+  worker_login_ms:
+    build: ./backend/worker_login_ms
+    hostname: worker_login
+    ports:
+      - "5001:5001"
+    depends_on:
+      - db
+
+  cust_login_ms:
+    build: ./backend/cust_login_ms
+    hostname: cust_login
+    ports:
+      - "5003:5003"
+
+  request_ms:
+    build: ./backend/request_ms
+    hostname: request_ms
+    ports:
+      - "5004:5004"
+  
+  qea_ms:
+    build: ./backend/qea_ms
+    hostname: qea_ms
+    ports:
+      - "5005:5005"
+
+  review_ms:
+    build: ./backend/review_ms
+    hostname: review_ms
+    ports:
+      - "5006:5006"
+
+  frontend:
+    build: ./frontend/frontend-app 
+    ports: 
+      - "3000:3000"
+    volumes: 
+      - ./frontend/frontend-app:/user/src/app
+    
+
+volumes: 
+  db:
+    driver: local

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.marketinganalyzer.Activities"
+    android:targetSandboxVersion="1">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme= "@style/MainTheme">
+        <activity
+            android:name="com.example.marketinganalyzer.Activities.WelcomeActivity"
+            android:label="@string/title_activity_welcome"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.example.marketinganalyzer.Activities.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:parentActivityName="com.example.marketinganalyzer.Activities.WelcomeActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.marketinganalyzer.Activities.WelcomeActivity"/>
+        </activity>
+
+        <activity android:name="com.example.marketinganalyzer.Activities.SignupActivity"
+            android:label="@string/title_activity_signup"
+            android:parentActivityName="com.example.marketinganalyzer.Activities.WelcomeActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.marketinganalyzer.Activities.WelcomeActivity"/>
+        </activity>
+
+        <activity android:name="com.example.marketinganalyzer.Activities.ProfilePageActivity"
+            android:label="@string/title_activity_profile_page">
+        </activity>
+
+        <activity android:name="com.example.marketinganalyzer.Activities.NewProjectActivity"
+            android:label="@string/title_activity_new_project"
+            android:parentActivityName="com.example.marketinganalyzer.Activities.ProfilePageActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.marketinganalyzer.Activities.ProfilePageActivity"/>
+        </activity>
+
+        <activity android:name="com.example.marketinganalyzer.Activities.DashboardActivity"
+            android:label="@string/title_activity_dashboard"
+            android:parentActivityName="com.example.marketinganalyzer.Activities.ProfilePageActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.marketinganalyzer.Activities.ProfilePageActivity"/>
+        </activity>
+
+        <activity android:name="com.example.marketinganalyzer.Activities.RecommendationsActivity"
+            android:label="@string/title_activity_rec"
+            android:parentActivityName="com.example.marketinganalyzer.Activities.DashboardActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.marketinganalyzer.Activities.DashboardActivity"/>
+        </activity>
+
+    </application>
+
+</manifest>

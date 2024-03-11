@@ -1,0 +1,5 @@
+["1", "1", "120", "ABC", "SUV", "HYBRID", "Lazio", "HIGHWAY", "false"]
+["2", "2", "120", "ABC", "SUV", "GASOLINE", "Lazio", "HIGHWAY", "false"]
+["3", "3", "140", "ABC", "SUV", "DIESEL", "Molise", "HIGHWAY", "true"]
+["3", "3", "70", "ABC", "SUV", "DIESEL", "Molise", "HIGHWAY", "false"]
+["4", "1", "30", "ABC", "SUV", "HYBRID", "Lazio", "HIGHWAY", "false"]

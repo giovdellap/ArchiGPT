@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 Google Inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.marketinganalyzer.Activities.LoginActivity">
+
+
+    <TextView
+        android:id="@+id/textLogin"
+        android:layout_width="@dimen/activity_title_width"
+        android:layout_height="@dimen/activity_title_height"
+        android:layout_marginStart="@dimen/activity_title_login_left_margin"
+        android:layout_marginTop="@dimen/activity_title__login_top_margin"
+        android:text="@string/login_text_title"
+        android:textAppearance="?attr/textAppearanceHeadline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_text_username"
+        style="@style/Widget.MainTheme.TextInputLayout"
+        android:layout_width="@dimen/input_text_layout_width"
+        android:layout_height="@dimen/input_text_layout_height"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/login_text_username"
+        android:inputType="textWebEmailAddress|textEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/textLogin"
+        app:layout_constraintTop_toBottomOf="@+id/textLogin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/MainTheme.TextAppearanceTextFields"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_text_height"
+            android:fontFamily="@font/adamina"
+            android:inputType="textEmailAddress" />/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_text_password"
+        style="@style/Widget.MainTheme.TextInputLayout"
+        android:layout_width="318dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="@dimen/input_text_layout_margin_top"
+        android:ems="10"
+        android:hint="@string/login_text_password_hint"
+        android:inputType="textPassword"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/login_text_username"
+        app:layout_constraintStart_toStartOf="@+id/login_text_username"
+        app:layout_constraintTop_toBottomOf="@+id/login_text_username">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/MainTheme.TextAppearanceTextFields"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_text_height"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/login_button_login"
+        style="@style/Widget.MainTheme.Button.TypeA"
+        android:layout_width="@dimen/button_submit_width"
+        android:layout_height="@dimen/button_submit_height"
+        android:layout_marginBottom="@dimen/button_submit_margin_buttom"
+        android:text="@string/login_button_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_text_logging_in"
+        app:layout_constraintVertical_bias="0.484" />
+
+    <TextView
+        android:id="@+id/login_text_logging_in"
+        android:layout_width="204dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/login_text_logging_in"
+        android:textAppearance="?attr/textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="@+id/login_text_password"
+        app:layout_constraintTop_toBottomOf="@+id/login_text_password" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

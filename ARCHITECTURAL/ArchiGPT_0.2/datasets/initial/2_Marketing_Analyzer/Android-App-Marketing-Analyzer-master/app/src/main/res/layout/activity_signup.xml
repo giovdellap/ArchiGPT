@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 Google Inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.marketinganalyzer.Activities.SignupActivity">
+
+
+    <TextView
+        android:id="@+id/text_signup"
+        android:layout_width="@dimen/activity_title_width"
+        android:layout_height="@dimen/activity_title_height"
+        android:layout_marginStart="@dimen/activity_title_left_margin"
+        android:layout_marginTop="@dimen/activity_title_top_margin"
+        android:text="@string/signup_text_title"
+        android:textAppearance="?attr/textAppearanceHeadline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signup_text_name"
+        style="@style/Widget.MainTheme.TextInputLayout"
+        android:layout_width="@dimen/input_text_layout_width"
+        android:layout_height="@dimen/input_text_layout_height"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/signup_text_name_hint"
+        android:inputType="textPersonName"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/text_signup"
+        app:layout_constraintTop_toBottomOf="@+id/text_signup">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/MainTheme.TextAppearanceTextFields"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_text_height"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signup_text_email"
+        style="@style/Widget.MainTheme.TextInputLayout"
+        android:layout_width="@dimen/input_text_layout_width"
+        android:layout_height="@dimen/input_text_layout_height"
+        android:layout_marginTop="@dimen/input_text_layout_margin_top"
+        android:ems="10"
+        android:hint="@string/signup_text_email_hint"
+        android:inputType="textPersonName"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/signup_text_name"
+        app:layout_constraintTop_toBottomOf="@+id/signup_text_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/MainTheme.TextAppearanceTextFields"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_text_height"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signup_text_username"
+        style="@style/Widget.MainTheme.TextInputLayout"
+        android:layout_width="@dimen/input_text_layout_width"
+        android:layout_height="@dimen/input_text_layout_height"
+        android:layout_marginTop="@dimen/input_text_layout_margin_top"
+        android:ems="10"
+        android:hint="@string/signup_text_username_hint"
+        android:inputType="textPersonName"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/signup_text_email"
+        app:layout_constraintTop_toBottomOf="@+id/signup_text_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/MainTheme.TextAppearanceTextFields"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_text_height"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signup_text_password"
+        style="@style/Widget.MainTheme.TextInputLayout"
+        android:layout_width="@dimen/input_text_layout_width"
+        android:layout_height="@dimen/input_text_layout_height"
+        android:layout_marginTop="@dimen/input_text_layout_margin_top"
+        android:ems="10"
+        android:hint="@string/signup_text_password_hint"
+        android:inputType="textPersonName"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/signup_text_username"
+        app:layout_constraintTop_toBottomOf="@+id/signup_text_username">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/MainTheme.TextAppearanceTextFields"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_text_height"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/signup_button_signup"
+        style="@style/Widget.MainTheme.Button.TypeA"
+        android:layout_width="@dimen/button_submit_width"
+        android:layout_height="@dimen/button_submit_height"
+        android:layout_marginBottom="@dimen/button_submit_margin_buttom"
+        android:text="@string/signup_button_signup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/signup_text_signing_up"
+        android:layout_width="204dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/signup_text_signing_up"
+        android:textAppearance="?attr/textAppearanceBody1"
+        app:layout_constraintEnd_toEndOf="@+id/signup_text_password"
+        app:layout_constraintTop_toBottomOf="@+id/signup_text_password" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

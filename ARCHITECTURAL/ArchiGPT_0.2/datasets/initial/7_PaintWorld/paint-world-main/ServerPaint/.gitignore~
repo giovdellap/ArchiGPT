@@ -1,0 +1,8 @@
+dist
+build
+/README.md
+/nbproject/private/
+/PaintServer-war/nbproject/private/
+/PaintServer-ejb/nbproject/private/
+[alias]
+    treegit = log —graph —decorate —pretty=oneline —abbrev-commit

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/logo.png" type="">
+  <title>YourOnlineShop</title>
+   <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="shortcut icon" href="/images/logo.png" type="">
+<title>YourOnlineShop - Home</title>
+<!-- bootstrap core css -->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<!-- font awesome style -->
+<link href="/css/font-awesome.min.css" rel="stylesheet" />
+<!-- Custom styles for this template -->
+<link href="/css/style.css" rel="stylesheet" />
+<!-- responsive style -->
+<link href="/css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <!-- header section strats -->
+  <header class="header_section"
+  style="background-color: rgb(162, 38, 36); box-shadow: 5px 5px 2px; height: 200px;">
+  <div class="container heading_center" style="">
+	  <a class="navbar-brand" href="/home"> <img
+		  width="150px
+		   " src="/images/logo.png" /></a>
+  </div>
+  <div class="form-group">
+
+	  <nav style="display: flex; justify-content: center;"
+		  class=" mt-xl-5 navbar navbar-expand-lg custom_nav-container ">
+
+		  <button class="navbar-toggler" type="button" data-toggle="collapse"
+			  data-target="#navbarSupportedContent"
+			  aria-controls="navbarSupportedContent" aria-expanded="false"
+			  aria-label="Toggle navigation"></button>
+
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			  <ul class="navbar-nav">
+				  <div style="background-color: rgb(215, 58, 51);" class="mr-sm-2 admin">
+					  <a href="/addProduct" class="btn btn-lg admin" style="display: none">Aggiungi Prodotto <span
+						  style="color: rgb(43, 43, 43);"
+						  class="glyphicon glyphicon-plus"></span>
+					  </a>
+				  </div>
+				  <div style="background-color: rgb(215, 58, 51);" class="mr-sm-2 authenticated" id="HistoryOrdersDIV">
+					  <a href="/listOrder" class="btn btn-lg authenticated" id="HistoryOrdersATT" style="display: none">History Orders</a>
+				  </div>
+				  <div style="background-color: rgb(215, 58, 51);" class="mr-sm-2 unauthenticated" id="loginDiv">
+					  <a href="http://localhost:8014/store/login" class="btn btn-lg" id="loginAtt">Login</a>
+				  </div>
+				  <div id="carello" class="mr-sm-2">
+
+					  <div style="visibility: hidden;" class=" dropdown dropdown-item" onclick="">
+						  <li class="fa fa-shopping-cart " type="button"
+							  style="font-size: 30px; margin-right: 10px;visibility: hidden;" id="dropdownMenu2"
+							  data-bs-toggle="dropdown" aria-expanded="false"></li>
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+							  <li class="">
+								  <div class="container dropdown-item"
+									  style="width: max-content;">
+									  <div class="row" id="dropDownCart"
+										  style="width: 300px; overflow-y: auto; white-space: nowrap; ">
+
+									  </div>
+							  </li> <a href="" class="btn btn-primary"
+								  style="margin-top: 10px; margin-left: 10px;" id="BottoneGoToTheCart">Go to the
+								  cart</a>
+						  </div>
+					  </div>
+				  </div>
+				  <div
+					  style="display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; visibility: hidden;">
+					  <form class="input-group">
+
+						  <input style="width: 180px;" class="form-control mr-sm-2 "
+							  type="search" placeholder="Search" aria-label="Search">
+						  <button
+							  style="width: 70px; color: rgb(215, 58, 51); border-color: rgb(215, 58, 51);"
+							  class=" form-control btn btn-outline-info my-2 my-sm-0"
+							  type="submit">
+							  <span style="color: black">Search 
+						  </button>
+					  </form>
+				  </div>
+			  </ul>
+		  </div>	
+		</div>
+	</nav>
+	</div>
+	</header>
+	<!-- end header section -->
+	</div>
+  
+  <div class="row layout_padding" style="margin-left: 10px; margin-right: 10px;">
+    <div class="col-md-8 mb-2">
+      <div class="card mb-4">
+        <div class="card-header py-3">
+          <h5 class="mb-0" style="font-size: 30px;">Shipping Details</h5>
+        </div>
+        <div class="card-body">
+          
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+              <div class="col">
+                <div class="input-group mb-4">
+                  <span class="input-group-text" style="width: 30%; font-size: 15px;">First name</span>
+                  <input type="text"  class="form-control" style="width: 30%;font-size: 15px;" id="nameUser" value="utente.nome" readonly/>
+                </div>
+              </div>
+              <div class="col">
+                <div class="input-group mb-4">
+                  <span class="input-group-text" style="width: 30%; font-size: 15px;">Last name</span>
+                  <input type="text" class="form-control" style="width: 30%; font-size: 15px;" id="surnameUser"  value="utente.cognome" readonly />
+                </div>
+              </div>
+            </div>
+            <!-- Text input -->
+            <div class="input-group mb-4" style="width: 60%;">
+              <span class="input-group-text" style="width: 30%;font-size: 15px;">Address</span>
+              <input type="text" id="addres" name="addres" class="form-control" style="width: 30%; font-size: 15px;" required/>
+            </div>
+
+            <!-- Creation Date input -->
+            <div class="input-group mb-4" style="width: 60%;">
+              <span class="input-group-text" style="width: 30%; font-size: 15px;">Creation Date</span>
+              <input type="Date" id="CurrentDate" name="date" class="form-control" style="width: 30%; font-size: 15px;"  value=""/>
+            </div>
+            <div class="input-group mb-4" style="width: 60%;">
+              <span class="input-group-text" style="width: 30%; visibility: hidden;font-size: 15px;">theUtenteObjectKey</span>
+              <input type="text" id="theUtenteObjectKey" name="theUtenteObjectKey" class="form-control" style="width: 30%; visibility: hidden;font-size: 15px;" readonly value=""/>
+            </div>
+<!--             Number input -->
+<!--             <div class="input-group mb-4" style="width: 40%;"> -->
+<!--               <span class="input-group-text">Phone</span> -->
+<!--               <input type="tel" id="form7Example6" class="form-control" name="phone" -->
+<!--                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/> -->
+<!--             </div> -->
+<!--             Message input -->
+<!--             <div class="input-group mb-4" style="width: 60%;"> -->
+<!--               <span class="input-group-text">Other details for the shipping *</span> -->
+<!--               <textarea class="form-control" id="form7Example7" rows="4" -->
+<!--                 placeholder="Intercom, Stairs, Floor, ..."></textarea> -->
+<!--             </div> -->
+
+            <!-- Checkbox -->
+            
+        </div>
+
+      </div>
+      
+    </div>
+    
+    <div class="col-md-4 mb-4 " >
+      <div class="card mb-4">
+        <div class="card-header py-3">
+          <h5 class="mb-0 ">Summary</h5>
+        </div>
+        <div class="">
+          <div class="container position-absolute top-20 start-20" style="width: fit-content; margin-top: 20px;">
+             <div class="row" id="Summary">
+                    
+                
+                <!-- Aggiunta dei prodotti dell'rdine corrente -->
+                                              
+             </div>
+             <div style="margin-top: 20px; margin-bottom: 60px;">
+             <div class = "col-lg-5" style="font-size: 20px; margin-right: -20px">Total Cost = </div>
+             <div class = "col-lg-5" style="font-size: 20px;" id="TotalCost"></div> 
+             </div>
+             <input type="hidden" value=160 name="totalCost" id="totalCostInput">
+             <input type="hidden" value=1 name="ordineId" id="ordineIdInput">
+             <div onclick="updateCurrentOrder()">
+            <button class="btn btn-primary btn-lg btn-block" style="margin-top: 20px;">
+            Send Order
+            </button>
+            </div>
+          </div>
+  </div>
+
+
+
+  </div>
+  </div>
+  </div>
+  </div>
+  
+  <script src="js/moment.js"></script>
+</body>
+<!-- Script per acquisire i prodotti dell'ultimo ordine (non ancora acquistato) di uno specifico utente  -->
+<script type="text/javascript">
+	var theUtenteObjectKey = ""
+	var isAdmin = false;
+	var objectKeyOrdine;
+	$.get("/store/user", function(data) {
+		if(data) {
+			console.log(data);
+			$("#user").html(data.name);
+        	$(".unauthenticated").hide()
+        	$(".authenticated").show()
+			$.get("/store/utenteId?id=" + data.id, function(utente) {
+				console.log("Id Utente: " + utente.id);
+				theUtenteObjectKey = utente.id;
+				if(utente.isAdmin) {
+					isAdmin = utente.isAdmin;
+					$(".admin").show()
+				}
+				onLoad();
+			});
+		}
+		else {
+			$(".authenticated").hide()
+        	$(".unauthenticated").show()
+			onLoad();
+		}        
+    });
+	
+
+	var logout = function() {
+    $.post("/store/logout", function() {
+        $("#user").html('');
+        $(".unauthenticated").show();
+        $(".authenticated").hide();
+    })
+    return true;
+	}
+
+	function onLoad() {
+		loadRecentOrder();
+		loadUserDetails();
+	}
+
+	var objectKeyOrdine
+	function loadRecentOrder(e) {
+		if (theUtenteObjectKey!= ""){
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.onreadystatechange = reactionFirst;
+			httpRequest.open("GET", "http://localhost:8080/store/ordine/current-ordine/"+theUtenteObjectKey, true);
+			httpRequest.send();
+		}
+	}
+		function reactionFirst(e) {
+			if (e.target.readyState == XMLHttpRequest.DONE) {
+				var i = 0;
+				var json = e.target.responseText;
+				var jsonparse = JSON.parse(json)
+				loadProductOfLastOrder(jsonparse)
+			}
+		}
+		function loadProductOfLastOrder(content) {
+		//Ultimo Ordine
+		objectKeyOrdine = content.ordineId
+		var ordineIdInput = document.getElementById("ordineIdInput")
+		ordineIdInput.value=objectKeyOrdine
+		//------------------------
+		//chiamata allo store per prendere i prodotti dell'ultimo ordine
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.onreadystatechange = reactionSecond;
+			httpRequest.open("GET", "http://localhost:8080/store/order-item/findByTheOrdine/"+objectKeyOrdine, true);
+			httpRequest.send();
+		//------------------------
+		}
+	function reactionSecond(e) {
+			if (e.target.readyState == XMLHttpRequest.DONE) {
+				var i = 0;
+				var json = e.target.responseText;
+				var jsonparse = JSON.parse(json)
+				putTheProductOnPage(jsonparse.content)
+			}
+		}
+	//lista ID prodotti dell'ultimo ordine
+	var productsId=[]
+	var productDetail=[]
+	var totalCostNumber = Number("0")
+	function putTheProductOnPage(content) {
+		for (var i = 0; i < content.length; i++) {
+			if (content[i].theOrdineObjectKey == objectKeyOrdine)
+				productsId.push(content[i].theProductObjectKey)
+			}
+		//chiamata allo stock per prendere i dati dei prodotti, in modo tale da poterli raffigurare front-end
+		for (var i = 0; i < productsId.length; i++) {
+		$.ajax({
+						type: "GET",
+						url: "http://localhost:8080/database/product/"+productsId[i],
+						success: function(result){
+							addProductToForm(result)
+						},
+						error: function(e){
+							alert("Errore"+e);
+						}
+					})
+		}
+	}
+	
+	function addProductToForm(productDetail) {
+			console.log(productDetail)
+			var totalCost = document.getElementById("TotalCost")
+			
+			var summary = document.getElementById("Summary")
+				summary.insertAdjacentHTML(
+							"beforeend",
+					'<div class="col-sm-6 col-md-4 col-lg-4">'
+	+'                      <div class="box">'
+	+'                         <div class="img-box">'
+	+'                            <img src="'+productDetail.imageUrl+'" width="50px" >'
+	+'                         </div>'
+	+'                         '
+	+'                      </div>'
+	+'                   </div>'
+	+'                   <div class=" col-lg-4">'
+	+'                      <div class="box">'
+	+'                         <div class=" detail-box">'
+	+'                            <h5>'
+	+'                               '+productDetail.productName+''
+	+'                            </h5>'
+	+'                            <h6>'
+	+'                               '+productDetail.cost+'€'
+	+'                            </h6>'
+	+'                            <input type="hidden" value=1 name="productId">'
+	+'                         </div>'
+	+'                      </div>'
+	+'                   </div> '
+	+'                   <div class=" col-lg-4">'
+	+'                      <div class="box">'
+	+'                         <div class=" detail-box">'
+	+'                            <h5 id="AmountProductOnCart'+productDetail.productId+'">'
+	+'                               x '
+	+'                            </h5>'
+	+'                            <input type="hidden" value=2 name="amount" id="AmountProductOnCartInput'+productDetail.productId+'">'
+	+'                         </div>'
+	+'                      </div>'
+	+'                   </div> '
+	+'						<hr>'
+			)
+
+		RefreshAmount(productDetail.productId, productDetail.cost)
+		}
+	
+	function RefreshAmount(productId,cost){
+			$.ajax({
+				type : "GET",
+				url : "http://localhost:8080/store/order-item/"+objectKeyOrdine+"~"
+						+productId,
+				success : function(result) {
+					var totalCost = document.getElementById("TotalCost")
+					var totalCostInput = document.getElementById("totalCostInput")
+					const AmountProductOnCart = document.getElementById("AmountProductOnCart"+productId);
+					AmountProductOnCart.innerHTML = "x "+ result.amount
+					const AmountProductOnCartInput = document.getElementById("AmountProductOnCartInput"+productId);
+					AmountProductOnCart.value = result.amount
+					totalCostNumber += cost * result.amount
+					totalCost.innerHTML = totalCostNumber + "€";
+					totalCostInput.value = totalCostNumber
+				},
+				error : function(e) {
+					alert("Errore" + e);
+				}
+			})
+			
+		} 
+	function RefreshTotalCost(totalCost,cost,amount){
+			$.ajax({
+				type : "GET",
+				url : "http://localhost:8080/store/order-item/"+objectKeyOrdine+"~"
+						+productId,
+				success : function(result) {
+					console.log(result)
+					const AmountProductOnCart = document.getElementById("AmountProductOnCart"+productId);
+					AmountProductOnCart.innerHTML = "x "+ result.amount
+					const AmountProductOnCartInput = document.getElementById("AmountProductOnCartInput"+productId);
+					AmountProductOnCart.value = result.amount
+					
+				},
+				error : function(e) {
+					alert("Errore" + e);
+				}
+			})
+			
+		} 
+	</script>
+	<!-- Script per acquisire i dati dell'utente  -->
+	<script type="text/javascript">
+	function loadUserDetails(e) {
+		
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.onreadystatechange = reaction;
+		httpRequest.open("GET", "http://localhost:8080/store/utente/"+theUtenteObjectKey, true);
+		httpRequest.send();
+	}
+	function reaction(e) {
+		if (e.target.readyState == XMLHttpRequest.DONE) {
+			var i = 0;
+			var json = e.target.responseText;
+			var jsonparse = JSON.parse(json)
+			if (jsonparse.reasonPhrase =="NotFoundException"){
+				window.location.replace("http://localhost:8014/store/login");
+				window.alert("You have first to login in with your google account")
+			}
+			else
+				putDataInTheInput(jsonparse)
+		}
+	}
+	function putDataInTheInput(content) {
+		var name = document.getElementById("nameUser")
+		name.value = content.name
+		var surname = document.getElementById("surnameUser")
+		surname.value = content.surname
+		var date = document.getElementById("CurrentDate")
+		date.value = new Date().toISOString().split('T')[0]
+		var userId = document.getElementById("theUtenteObjectKey")
+		userId.value = theUtenteObjectKey
+	}
+	</script>
+	<script type="text/javascript">
+	function updateCurrentOrder(){
+		var date = document.getElementById("CurrentDate")
+		var userId = document.getElementById("theUtenteObjectKey")
+		var totalCostInput = document.getElementById("totalCostInput")
+		var address =document.getElementById("addres")
+		var ordineIdInput = document.getElementById("ordineIdInput")
+		var amountsArray = []
+		for(var i=0; i<productsId.length; i++) {
+			const AmountProductOnCart = document.getElementById("AmountProductOnCart"+productsId[i]);
+			amountsArray.push(AmountProductOnCart.innerHTML.split(' ')[1]);
+		}
+
+		const body = '{"productIds":'
+			+ '['+productsId+']'
+			+ ',"amounts":'
+			+ '['+amountsArray+']'
+			+ '}';
+			console.log(body)
+		$.ajax({
+			type : "post",
+			url : "http://localhost:8080/database/product/checkDisponibility/",
+			data : body,
+			contentType : "application/json",
+			success : function(
+					result) {
+						if(result) {
+							$.ajax({
+							type : "get",
+							url : "http://localhost:8080/store/ordine/buy/"+ordineIdInput.value+"/"+date.value+"/"+totalCostInput.value,
+					// 		data : body,
+					// 		contentType : "application/json",
+							success : function(
+									result) {
+								console.log("ajax: Abbiamo ricevuto correttamente l'ordine")
+								window.location.replace("http://localhost:8080/home");
+							},
+							error : function(e) {
+								alert("Errore - non è stato possibile effettuare l'ordine RIPROVARE" + e);
+							}
+						})
+					} else {
+						alert("Errore - non è stato possibile effettuare l'ordine RIPROVARE");
+					}
+			},
+			error : function(e) {
+				alert("Errore - non è stato possibile effettuare l'ordine RIPROVARE" + e);
+			}
+		})
+		
+		
+
+	}
+
+</script>
+</html>

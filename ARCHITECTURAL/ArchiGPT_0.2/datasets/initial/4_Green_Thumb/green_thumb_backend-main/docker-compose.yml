@@ -1,0 +1,58 @@
+version: '3'
+services:
+  auth_node:
+    container_name: auth_node
+    restart: always
+    build: auth/
+    ports:
+      - '3000:3000'
+    links:
+      - auth_mongo
+  auth_mongo:
+    container_name: auth_mongo
+    image: mongo:4.4.6
+    restart: always
+    volumes:
+      - ./data:/data/auth
+  inventory_node:
+    container_name: inventory_node
+    restart: always
+    build: inventory/
+    ports:
+      - '3002:3002'
+    links:
+      - inventory_mongo
+  inventory_mongo:
+    container_name: inventory_mongo
+    image: mongo:4.4.6
+    restart: always
+    volumes:
+      - ./data:/data/inventory
+  order_node:
+    container_name: order_node
+    restart: always
+    build: order/
+    ports:
+      - '3003:3003'
+    links:
+      - order_mongo
+  order_mongo:
+    container_name: order_mongo
+    image: mongo:4.4.6
+    restart: always
+    volumes:
+      - ./data:/data/order
+  chat_node:
+    container_name: chat_node
+    restart: always
+    build: chat/
+    ports:
+      - '3004:3004'
+    links:
+      - chat_mongo
+  chat_mongo:
+    container_name: chat_mongo
+    image: mongo:4.4.6
+    restart: always
+    volumes:
+      - ./data:/data/chat

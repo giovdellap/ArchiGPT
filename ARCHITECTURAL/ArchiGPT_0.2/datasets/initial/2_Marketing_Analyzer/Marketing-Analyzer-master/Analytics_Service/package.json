@@ -1,0 +1,20 @@
+{
+  "name": "analytics_server",
+  "version": "1.0.0",
+  "description": "this microservice is responsible for getting analytics results and product recommendations for the end user",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Ahmed Tayel",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.1",
+    "express-jwt": "^6.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.1.2",
+    "dotenv": "^16.0.0"
+  }
+}

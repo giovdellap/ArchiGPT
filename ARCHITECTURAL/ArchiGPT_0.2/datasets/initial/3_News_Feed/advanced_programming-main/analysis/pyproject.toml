@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "analysis"
+version = "0.1.0"
+description = "The NLP module"
+authors = ["Leonardo Razovic <4128940+lrazovic@users.noreply.github.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+jsonrpcserver = "^5.0.6"
+nltk = "^3.6.7"
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

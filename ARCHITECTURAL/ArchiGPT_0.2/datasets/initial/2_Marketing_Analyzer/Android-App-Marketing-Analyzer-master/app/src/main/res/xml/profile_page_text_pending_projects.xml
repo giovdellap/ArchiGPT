@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:id="@+id/profile_text_projects_not_avail"
+        android:layout_width="301dp"
+        android:layout_height="45dp"
+        android:text="@string/profile_text_projects_not_avail"
+        android:textAppearance="?attr/textAppearanceBody1"/>
+</PreferenceScreen>

@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en" class="rtl" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="admin-themes-lab">
+  <meta name="author" content="themes-lab">
+  <link rel="shortcut icon" href="../assets/global/images/favicon.png" type="image/png">
+  <title>پنل مدیریت نقاشی</title>
+  <!-- BEGIN PAGE STYLE -->
+  <link href="../assets/global/plugins/datatables/dataTables.min.css" rel="stylesheet">
+  <!-- END PAGE STYLE -->
+  <link href="../assets/global/css/style.css" rel="stylesheet">
+  <link href="../assets/global/css/theme.css" rel="stylesheet">
+  <link href="../assets/global/css/ui.css" rel="stylesheet">
+  <link href="../assets/admin/layout1/css/layout.css" rel="stylesheet">
+  <link href="../assets/global/plugins/bootstrap-loading/lada.min.css" rel="stylesheet">
+  <link href="../css/apora.css" rel="stylesheet" media="all">
+  <script src="../assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  <!-- BEGIN PAGE STYLE -->
+  <link href="../assets/global/plugins/metrojs/metrojs.min.css" rel="stylesheet">
+  <link href="../assets/global/plugins/maps-amcharts/ammap/ammap.css" rel="stylesheet">
+  <!-- END PAGE STYLE -->
+  <!-- BEGIN PAGE STYLE -->
+  <link href="../css/apora.css" rel="stylesheet" media="all">
+  <link href="../assets/global/plugins/datatables/dataTables.min.css" rel="stylesheet">
+  <!-- END PAGE STYLE -->
+</head>
+<!-- LAYOUT: Apply "submenu-hover" class to body element to have sidebar submenu show on mouse hover -->
+<!-- LAYOUT: Apply "sidebar-collapsed" class to body element to have collapsed sidebar -->
+<!-- LAYOUT: Apply "sidebar-top" class to body element to have sidebar on top of the page -->
+<!-- LAYOUT: Apply "sidebar-hover" class to body element to show sidebar only when your mouse is on left / right corner -->
+<!-- LAYOUT: Apply "submenu-hover" class to body element to show sidebar submenu on mouse hover -->
+<!-- LAYOUT: Apply "fixed-sidebar" class to body to have fixed sidebar -->
+<!-- LAYOUT: Apply "fixed-topbar" class to body to have fixed topbar -->
+<!-- LAYOUT: Apply "rtl" class to body to put the sidebar on the right side -->
+<!-- LAYOUT: Apply "boxed" class to body to have your page with 1200px max width -->
+<!-- THEME STYLE: Apply "theme-sdtl" for Sidebar Dark / Topbar Light -->
+<!-- THEME STYLE: Apply  "theme sdtd" for Sidebar Dark / Topbar Dark -->
+<!-- THEME STYLE: Apply "theme sltd" for Sidebar Light / Topbar Dark -->
+<!-- THEME STYLE: Apply "theme sltl" for Sidebar Light / Topbar Light -->
+<!-- THEME COLOR: Apply "color-default" for dark color: #2B2E33 -->
+<!-- THEME COLOR: Apply "color-primary" for primary color: #319DB5 -->
+<!-- THEME COLOR: Apply "color-red" for red color: #C9625F -->
+<!-- THEME COLOR: Apply "color-green" for green color: #18A689 -->
+<!-- THEME COLOR: Apply "color-orange" for orange color: #B66D39 -->
+<!-- THEME COLOR: Apply "color-purple" for purple color: #6E62B5 -->
+<!-- THEME COLOR: Apply "color-blue" for blue color: #4A89DC -->
+<!-- BEGIN BODY -->
+
+<body class="rtl fixed-topbar boxed fixed-sidebar theme-sdtl color-default account separate-inputs no-social">
+  <!--[if lt IE 7]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+<div id="pages">
+  <!-- BEGIN PRELOADER -->
+  <div class="loader-overlay">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+  <!-- END PRELOADER -->
+  <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a>
+  <script src="../assets/global/plugins/jquery/jquery-3.1.0.min.js"></script>
+  <script src="../assets/global/plugins/jquery/jquery-migrate-3.0.0.min.js"></script>
+  <script src="../assets/global/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="../assets/global/plugins/gsap/main-gsap.min.js"></script>
+  <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/global/plugins/appear/jquery.appear.js"></script>
+  <script src="../assets/global/plugins/jquery-cookies/jquery.cookies.min.js"></script>
+  <!-- Jquery Cookies, for theme -->
+  <script src="../assets/global/plugins/jquery-block-ui/jquery.blockUI.min.js"></script>
+  <!-- simulate synchronous behavior when using AJAX -->
+  <script src="../assets/global/plugins/bootbox/bootbox.min.js"></script>
+  <!-- Modal with Validation -->
+  <script src="../assets/global/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+  <!-- Custom Scrollbar sidebar -->
+  <script src="../assets/global/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script>
+  <!-- Show Dropdown on Mouseover -->
+  <script src="../assets/global/plugins/charts-sparkline/sparkline.min.js"></script>
+  <!-- Charts Sparkline -->
+  <script src="../assets/global/plugins/retina/retina.min.js"></script>
+  <!-- Retina Display -->
+  <script src="../assets/global/plugins/select2/select2.full.min.js"></script>
+  <!-- Select Inputs -->
+  <script src="../assets/global/plugins/icheck/icheck.min.js"></script>
+  <!-- Checkbox & Radio Inputs -->
+  <script src="../assets/global/plugins/backstretch/backstretch.min.js"></script>
+  <!-- Background Image -->
+  <script src="../assets/global/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+  <!-- Animated Progress Bar -->
+  <script src="../assets/global/plugins/charts-chartjs/Chart.min.js"></script>
+  <script src="../assets/global/plugins/tether/js/tether.min.js"></script>
+  <script src="../assets/global/plugins/bootstrap-loading/lada.min.js"></script>
+  <script src="../assets/global/js/builder.js"></script>
+  <!-- Theme Builder -->
+  <script src="../assets/global/js/sidebar_hover.js"></script>
+  <!-- Sidebar on Hover -->
+  <script src="../assets/global/js/application.js"></script>
+  <!-- Main Application Script -->
+  <script src="../assets/global/js/plugins.js"></script>
+  <!-- Main Plugin Initialization Script -->
+  <script src="../assets/global/js/widgets/notes.js"></script>
+  <!-- Notes Widget -->
+  <script src="../assets/global/js/quickview.js"></script>
+  <!-- Chat Script -->
+  <script src="../assets/global/js/pages/search.js"></script>
+  <!-- Search Script -->
+  <script src="../assets/global/js/pages/login-v1.js"></script>
+</div>
+
+  <div id="scripts">
+    <!-- *************** Requierd Files *************** -->
+    <script src="../js/libs/Underscore/underscore-1.8.3.js" type="text/javascript"></script>
+    <script src="../js/libs/Backbone/backbone-1.3.3.js" type="text/javascript"></script>
+    <script src="../js/libs/BackboneSyphon/backbone.syphon.min.js" type="text/javascript"></script>
+    <script src="../js/libs/BackboneFacetr/backbone.facetr.js" type="text/javascript"></script>
+    <script src="../js/libs/BackboneCrossDomain/Backbone.CrossDomainModel.js" type="text/javascript"></script>
+    <script src="../js/libs/BackboneCollectionSearch/Backbone.Collection.search.js" type="text/javascript"></script>
+    <script src="../js/libs/BackboneValidation/backbone.validation.min.js" type="text/javascript"></script>
+    <script src="../js/libs/JDate/jdate.js" type="text/javascript"></script>
+    <script src="../js/libs/OwlCarousel/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="../js/libs/RangeSlider/rangeSlider.js"></script>
+    <script src="../js/libs/Handlebars/handlebars-v4.0.5.js" type="text/javascript"></script>
+    <script src="../js/libs/formats/jquery.mask.min.js"></script>
+
+
+    <!-- *****************   require file   ***************** -->
+    <script src="../js/messages.js" type="text/javascript"></script>
+    <script src="../js/enum.js" type="text/javascript"></script>
+    <script src="../js/dictionary.js" type="text/javascript"></script>
+    <script src="../js/templates.js" type="text/javascript"></script>
+    <!-- *****************     require file  ***************** -->
+
+    <!-- inject:js -->
+
+
+    <script src="../js/modules/app/app-model.js"></script>
+
+
+    <script src="../js/modules/sidebar/sidebar-model.js"></script>
+
+
+    <script src="../js/modules/paintTable/paint-table-model.js"></script>
+
+
+    <script src="../js/modules/user/user-model.js"></script>
+
+
+    <script src="../js/modules/paintTable/paint-table-collection.js"></script>
+
+
+    <script src="../js/modules/app/app-index-view.js"></script>
+
+
+    <script src="../js/modules/navbar/navbar-index-view.js"></script>
+
+
+    <script src="../js/modules/sidebar/sidebar-view.js"></script>
+
+
+    <script src="../js/modules/paintTable/paint-table-view.js"></script>
+
+
+    <script src="../js/modules/user/user-login-view.js"></script>
+
+
+    <script src="../js/modules/app/app-adapter.js"></script>
+
+
+    <script src="../js/modules/navbar/navbar-adapter.js"></script>
+
+
+    <script src="../js/modules/sidebar/sidebar-adapter.js"></script>
+
+
+    <script src="../js/modules/paintTable/paint-table-adapter.js"></script>
+
+
+    <script src="../js/modules/user/user-adapter.js"></script>
+
+
+    <!-- endinject -->
+    <!-- *****************    Config File  ***************** -->
+    <script src="../js/config.js" type="text/javascript"></script>
+    <script src="../js/global.js" type="text/javascript"></script>
+    <script src="../js/global-util-functions.js" type="text/javascript"></script>
+    <script src="../js/handlebars-helper.js" type="text/javascript"></script>
+    <script src="../js/storage.js" type="text/javascript"></script>
+    <script src="../js/motherboard.js" type="text/javascript"></script>
+    <script src="../js/router.js" type="text/javascript"></script>
+    <script src="../js/initialize.js" type="text/javascript"></script>
+  </div>
+
+  <!-- BEGIN PAGE SCRIPT -->
+  <script src="../assets/admin/layout1/js/layout.js"></script>
+</body>
+
+</html>
+
+<style>
+  .table.filter-head > thead > tr > th {
+    min-width: 180px;
+  }
+</style>

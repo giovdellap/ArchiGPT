@@ -1,0 +1,70 @@
+<%- include('./navbar'); %>
+
+
+
+<main>
+    <div class="container">
+        <div class="row py-5 mt-4 align-items-center ">
+            
+            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0 log-div">
+            <img src="/assets/Add User-amico.svg" alt="Example Image" class="img-fluid mb-3 d-none d-md-block" style="width: 100%; margin-left: 4%;">
+                <h2 style="color:#04044c; font-weight: bold; text-align: center;">Crea un nuovo Manager</h2>
+                
+            </div>
+            
+            <!-- Registeration Form -->
+            <div class="col-md-7 col-lg-5 ml-auto login">
+              <form action="/auth/registerManager" method="POST">
+                <%- include ("./messages") %>
+                    
+                    <div class="row ">
+    
+                        <!-- First Name -->
+                        <div class="input-group col-lg-12 mb-4">
+                        
+                        <input type="name" id="name" name="name" class="form-control bg-white border-left-0 border-md" placeholder="Enter Name" style="text-align: start;"
+              value="<%= typeof name != 'undefined' ? name : '' %>" required/>   
+                        </div>
+    
+  
+    
+                        <!-- Email Address -->
+                        <div class="input-group col-lg-12 mb-4">
+                          <input type="email" id="email" name="email" class="form-control bg-white border-left-0 border-md " placeholder="Enter Email"
+              value="<%= typeof email != 'undefined' ? email : '' %>" required />
+                        
+                         
+                        </div>
+    
+                        <!-- Password -->
+                        <div class="input-group col-lg-12 mb-4">
+                        
+                        <input type="password" id="password" name="password" class="form-control bg-white border-left-0 border-md" placeholder="Enter Password"
+                        value="<%= typeof password != 'undefined' ? password : '' %>" required/>
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                        
+                        <input type="password" id="password2" name="password2" class="form-control bg-white border-left-0 border-md" placeholder="Confirm Password"
+              value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+                        </div>
+                        
+                        <!-- Submit Button -->
+                       
+                        
+                        <div class="form-group col-lg-12 mx-auto mb-0" style="margin-top:2%;">
+                            
+                       
+                        <button type="submit" class="nav-mybutton" style="width:100%;height:5vh;"">
+                          Registrati
+                        </button>
+                      
+                        </div>
+                       
+                        
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+  </main>
+<%- include('./footer'); %>

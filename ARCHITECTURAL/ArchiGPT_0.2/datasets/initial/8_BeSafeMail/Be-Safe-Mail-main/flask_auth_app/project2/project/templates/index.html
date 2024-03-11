@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title" style="font-size: 200px;" id="titleBe">
+  BeSafeEmail
+</h1>
+<h2 class="subtitle">
+  Check your email for a safe use
+</h2>
+
+<button class="button-90" role="button" >
+{% if not current_user.is_authenticated %}
+<a href="{{ url_for('auth.login') }}">Try yourself!</a>
+{% endif %}
+{% if current_user.is_authenticated %}
+<a href="{{ url_for('main.profile') }}">Try yourself!</a>
+{% endif %}
+
+
+</button>
+{% endblock %}
+
+
+
+

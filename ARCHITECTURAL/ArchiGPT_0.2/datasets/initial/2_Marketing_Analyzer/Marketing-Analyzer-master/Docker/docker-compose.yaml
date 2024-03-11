@@ -1,0 +1,37 @@
+version: "3"
+services:
+    authentication:
+        build:
+            context: ../Auth_Service/
+        image: backend/authentication
+        env_file:
+            - vars.env
+        ports:
+            - 5000:5000
+
+    analytics:
+        build:
+            context: ../Analytics_Service/
+        image: backend/analytics
+        env_file:
+            - vars.env
+        ports:
+            - 3000:3000
+
+    inference:
+        build:
+            context: ../Inference_Server/
+        image: backend/inference
+        env_file:
+            - vars.env
+        ports:
+            - 8080:8080
+
+    logs:
+        build:
+            context: ../Logs_Service/
+        image: backend/logs
+        env_file:
+            - vars.env
+        ports:
+            - 4000:4000

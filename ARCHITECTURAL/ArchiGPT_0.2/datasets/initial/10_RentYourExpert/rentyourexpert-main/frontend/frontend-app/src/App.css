@@ -1,0 +1,162 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.modal-dialog-centered.custom-modal .modal-content {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid hsl(214, 3%, 42%);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  animation: modal-show .3s ease-in-out;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.modal-dialog-centered.custom-modal .modal-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  width: 50%;
+  max-width: 500px;
+ 
+}
+
+.modal-dialog-centered.custom-modal h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.modal-dialog-centered.custom-modal form {
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+  align-items: center; /* aggiunto per centrare i bottoni orizzontalmente */
+}
+
+.modal-dialog-centered.custom-modal label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.modal-dialog-centered.custom-modal input[type="text"] {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.modal-dialog-centered.custom-modal button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.modal-dialog-centered.custom-modal button[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+.modal-dialog-centered.custom-modal button[type="submit"]:focus {
+  outline: none;
+}
+
+.modal-dialog-centered.custom-modal button[type="button"] {
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.modal-dialog-centered.custom-modal button[type="button"]:focus {
+  outline: none;
+}
+
+
+.modal-dialog-centered.custom-modal button[type="submit"],
+.modal-dialog-centered.custom-modal button[type="button"] {
+  margin-left: 5px;
+  display: inline-block;
+  margin-right: 10px;
+  max-width: 45%;
+}
+
+.custom-modal button {
+  display: inline-flex;
+  text-align: center;
+}
+
+
+@media (min-width: 768px) {
+  .modal-dialog-centered.custom-modal .modal-dialog {
+    max-width: 600px;
+  }
+}
+  
+
+@media (min-width: 768px) {
+  .modal-dialog-centered.custom-modal .modal-dialog {
+    max-width: 600px;
+  }
+}
+
+
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

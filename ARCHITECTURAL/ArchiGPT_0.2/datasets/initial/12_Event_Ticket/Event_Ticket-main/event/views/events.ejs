@@ -1,0 +1,48 @@
+<%- include('./navbar'); %>
+<div class="grid" style="padding-top: 100px;">
+  <% for (i = 0; i < dimens; i++) {%>
+    <div class="grid__item">
+      <div class="card"><img class="card__img" src="/assets/event-2.png">
+        <div class="card__content">
+          <h1 class="card__header"><%= r[i].name %></h1>
+          <p class="card__text">
+            <img src="/assets/calendario.png" width="30px"/> <%= r[i].date.toLocaleDateString() %><br>
+            <img src="/assets/orologio.png" width="30px"/> <%= r[i].date.toLocaleTimeString() %><br>
+            <img src="/assets/globo.png" width="30px"/> <%= r[i].city %>, <%= r[i].locale %><br>
+          </p>
+          <form action="/single_event" method="POST">
+            <input type="hidden" name="ev_id" id="ev_id" value=<%=a[i] %>>
+            <input type="hidden" name="email" id="email" value=<%=email %>>
+            <input type="submit" class="card__btnn" value="Dettagli evento">
+          </form>
+        </div>
+      </div>
+    </div>
+  <% } %>
+<table><tr>
+    <% if (dimens%3==0){ %>
+        <div></div>
+    <% } else {%>
+        <% if (dimens%3==1){ %>
+            <div></div><div></div><div></div>
+        <% } else {%>
+            <div></div><div></div>
+        <% }} %>
+
+    <form action="/Aevents" method="GET">
+        <td>
+            <select class="customed_select" name="event_categ" id="event_categ">
+                <option value="" disabled="disabled" selected="selected">Seleziona opzione</option>
+                <option value="cultura">Cultura</option>
+                <option value="musica">Musica</option>
+                <option value="cinema">Cinema</option>
+                <option value="teatro">Teatro</option>
+                <option value="discoteca">Discoteca</option>
+                <option value="sport">Sport</option>
+            </select>
+        </td>
+        <td style="padding-left:10px">
+            <input type="submit" class ="select__btnn" value="Ricerca per categoria">
+        </td>
+    </form>
+</tr></table>

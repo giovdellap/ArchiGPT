@@ -1,0 +1,33 @@
+.pag{
+    border-radius: 10px 10px 10px 10px;
+    width: 480px;
+}
+
+.card{
+    border-radius: 10px 10px 10px 10px;
+}
+
+.mtop{
+    margin-top: 4%;
+}
+.mbot{
+    margin-bottom: 4%;
+}
+._chart{
+    height: auto;
+    width: 75%;
+    margin: 0 auto; 
+    padding: 35px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.day:hover{
+    color: rgb(100, 100, 100);
+    cursor: pointer;
+}
+
+.error{
+    margin: 0 auto;
+    width: 44%;
+    margin-top: 2%;
+}

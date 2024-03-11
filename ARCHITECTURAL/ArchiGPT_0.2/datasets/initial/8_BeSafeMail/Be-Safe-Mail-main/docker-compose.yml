@@ -1,0 +1,97 @@
+version: '3'
+
+services:
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+
+  mongodb1:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: mydatabase
+      
+    volumes:
+      - mongodb1-data:/data/db
+  
+  mongodb2:
+      image: mongo
+      ports:
+        - 27018:27017
+      environment:
+        MONGO_INITDB_DATABASE: mydatabase
+      volumes:
+        - mongodb2-data:/data/db
+
+  
+
+  url_analyzer1:
+    build: ./url_analyzer
+    # command: uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - 8005:80
+    depends_on:
+      - redis
+      - mongodb1
+    environment:
+      - MONGO_URI=mongodb://mongodb1:27017
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    restart: unless-stopped
+    
+  url_analyzer2:
+    build: ./url_analyzer
+    depends_on:
+      - redis
+      - mongodb2
+    environment:
+      - MONGO_URI=mongodd://mongodb2::27017
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    restart: unless-stopped
+  
+  url_load_balancer:
+    image: nginx
+    volumes: 
+      - ./nginx.conf:/etc/nginx/url_nginx.conf
+  
+  app:
+      build: ./flask_auth_app
+      ports:
+        - "8080:8080"
+      volumes:
+        - ./flask_auth_app/instance/db.sqlite:/app/db.sqlite
+      environment:
+        FLASK_ENV: production
+        FLASK_APP: project
+        FLASK_RUN_HOST: 0.0.0.0
+        FLASK_RUN_PORT: 8080
+  admin:
+    build: ./flask_auth_admin
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./flask_auth_admin/instance/db.sqlite:/admin/db.sqlite
+    environment:
+      FLASK_ENV: production
+      FLASK_APP: project
+      FLASK_RUN_HOST: 0.0.0.0
+      FLASK_RUN_PORT: 8081
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  spam-classifier:
+    build: ./spam_classifier
+    ports:
+      - "8082:8082"
+    restart: unless-stopped
+
+volumes:
+  mongodb1-data:
+  mongodb2-data:
+  

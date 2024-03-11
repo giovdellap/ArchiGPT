@@ -1,0 +1,4 @@
+#ignore Lorenzo environment
+flask_lab/
+backend/catalogue_ms/__pycache__/
+frontend/frontend-app/node_modules/

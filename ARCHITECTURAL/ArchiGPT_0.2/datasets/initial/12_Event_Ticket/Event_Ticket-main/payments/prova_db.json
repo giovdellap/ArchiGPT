@@ -1,0 +1,8 @@
+{
+    "users":[    
+        {"name":"jacopo", "surname":"Brunetti", "eta":"22", "squadra":"Roma", "fratelli": "0", "sorelle":"0", "sport":""},   
+        {"name":"giordano", "surname":"cicchetti", "eta":"22", "squadra":"Roma", "fratelli": "0", "sorelle":"1", "sport":"palestra"},   
+        {"name":"federico", "surname":"carmignani", "eta":"23", "squadra":"Roma", "fratelli": "1", "sorelle":"0", "sport":""}, 
+        {"name":"federico", "surname":"capomagi", "eta":"23", "squadra":"juventus", "fratelli": "0", "sorelle":"1", "sport":"palestra"}   
+    ]
+}

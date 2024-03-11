@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "callTimeInMinute": 5,
+        "category": 0,
+        "description": "شارژ 5 دقیقه ای 5000 هزار تومان با یک دقیقه رایگان",
+        "freeCallTimeInMinute": 1,
+        "moneyAmount": 50000
+    },
+    {
+        "id": 2,
+        "callTimeInMinute": 10,
+        "category": 0,
+        "description": "شارژ 10 دقیقه ای 10000 هزار تومان با دو دقیقه رایگان",
+        "freeCallTimeInMinute": 2,
+        "moneyAmount": 100000
+    },
+    {
+        "id": 3,
+        "callTimeInMinute": 15,
+        "category": 0,
+        "description": "شارژ 15 دقیقه ای 15000 هزار تومان با سه دقیقه رایگان",
+        "freeCallTimeInMinute": 3,
+        "moneyAmount": 150000
+    },
+    {
+        "id": 4,
+        "callTimeInMinute": 5,
+        "category": 1,
+        "description": "شارژ 5 دقیقه ای 6000 هزار تومان با یک دقیقه رایگان",
+        "freeCallTimeInMinute": 1,
+        "moneyAmount": 60000
+    },
+    {
+        "id": 5,
+        "callTimeInMinute": 10,
+        "category": 1,
+        "description": "شارژ 10 دقیقه ای 12000 هزار تومان با دو دقیقه رایگان",
+        "freeCallTimeInMinute": 2,
+        "moneyAmount": 120000
+    },
+    {
+        "id": 6,
+        "callTimeInMinute": 15,
+        "category": 1,
+        "description": "شارژ 15 دقیقه ای 18000 هزار تومان با سه دقیقه رایگان",
+        "freeCallTimeInMinute": 3,
+        "moneyAmount": 180000
+    },
+    {
+        "id": 7,
+        "callTimeInMinute": 5,
+        "category": 2,
+        "description": "شارژ 5 دقیقه ای 2 دلار با یک دقیقه رایگان",
+        "freeCallTimeInMinute": 1,
+        "moneyAmount": 2
+    },
+    {
+        "id": 8,
+        "callTimeInMinute": 10,
+        "category": 2,
+        "description": "شارژ 10 دقیقه ای 3 دلار با دو دقیقه رایگان",
+        "freeCallTimeInMinute": 2,
+        "moneyAmount": 3
+    },
+    {
+        "id": 9,
+        "callTimeInMinute": 15,
+        "category": 2,
+        "description": "شارژ 15 دقیقه ای 4 دلار با سه دقیقه رایگان",
+        "freeCallTimeInMinute": 3,
+        "moneyAmount": 4
+    }
+]

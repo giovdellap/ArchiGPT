@@ -1,0 +1,163 @@
+<!--
+  ~ Copyright (C) 2018 Google Inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <!-- Text Styles -->
+    <style name="MainTheme.TextAppearanceTitle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textStyle">normal|bold</item>
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize"> 30dp</item>
+    </style>
+
+    <style name="MainTheme.TextAppearanceTitle2" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textStyle">normal|bold</item>
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize"> 25dp</item>
+    </style>
+
+    <style name="MainTheme.TextAppearanceTitle3" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textStyle">normal|bold</item>
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize"> 20dp</item>
+    </style>
+
+    <style name="MainTheme.TextAppearanceTitle4" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textStyle">normal|bold</item>
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textSize"> 25dp</item>
+    </style>
+
+    <style name="MainTheme.TextAppearanceContent" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textStyle">normal</item>
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize"> 15dp</item>
+    </style>
+
+    <style name="MainTheme.TextAppearanceTextFields" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:textStyle">normal</item>
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize"> 17dp</item>
+    </style>
+
+    <!-- Buttons Styles General -->
+    <style name="TextAppearance.MainTheme.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/rubik_medium</item>
+        <item name="android:fontFamily">@font/rubik_medium</item>
+    </style>
+
+    <style name="ShapeAppearance.MainTheme.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily"> rounded</item>
+        <item name="cornerSize">50pt</item>
+    </style>
+
+    <style name="ShapeAppearance.MainTheme.NotRounded" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">5pt</item>
+    </style>
+
+    <!-- Buttons Styles: Text Buttons -->
+    <style name="Widget.MainTheme.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MainTheme.Button.TextButton</item>
+        <item name="android:textAppearance">@style/TextAppearance.MainTheme.Button</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.MainTheme.SmallComponent</item>
+    </style>
+
+    <!-- Buttons Styles: Outlined Buttons -->
+    <style name="Widget.MainTheme.Button.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MainTheme.Button.TextButton</item>
+        <item name="android:textAppearance">@style/TextAppearance.MainTheme.Button</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.MainTheme.SmallComponent</item>
+    </style>
+
+    <!-- Buttons Styles: Contained(Default) Buttons-->
+    <style name="Widget.MainTheme.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">@style/TextAppearance.MainTheme.Button</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.MainTheme.SmallComponent</item>
+    </style>
+
+    <!-- Buttons Styles: Contained(Default) Buttons TypeA-->
+    <style name="Widget.MainTheme.Button.TypeA" parent="Widget.MainTheme.Button">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MainTheme.Button.TypeA</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:background">@drawable/button_first_type</item>
+    </style>
+
+    <!-- Buttons Styles: Contained(Default) Buttons TypeB-->
+    <style name="Widget.MainTheme.Button.TypeB" parent="Widget.MainTheme.Button">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MainTheme.Button.TypeB</item>
+        <item name="android:textColor">@color/colorOnSecondary</item>
+        <item name="android:background">@drawable/button_second_type</item>
+    </style>
+
+    <!-- Buttons Styles: Contained(Default) Buttons TypeC-->
+    <style name="Widget.MainTheme.Button.TypeC" parent="Widget.MainTheme.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.MainTheme.NotRounded</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MainTheme.Button.TypeC</item>
+        <item name="android:textColor">@color/colorOnSecondary</item>
+        <item name="android:background">@drawable/button_third_type</item>
+    </style>
+
+    <!-- Buttons Styles: Contained(Default) Buttons TypeD-->
+    <style name="Widget.MainTheme.Button.TypeD" parent="Widget.MainTheme.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.MainTheme.NotRounded</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MainTheme.Button.TypeC</item>
+        <item name="android:textColor">@color/colorOnSecondary</item>
+        <item name="android:background">@drawable/button_fourth_type</item>
+        <item name="android:textSize">@dimen/button_dashboard_text_size</item>
+    </style>
+
+    <!-- Buttons Styles: Contained(Default) Buttons TypeE-->
+    <style name="Widget.MainTheme.Button.TypeE" parent="Widget.MainTheme.Button">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MainTheme.Button.TypeE</item>
+        <item name="android:textColor">@color/colorOnSecondary</item>
+        <item name="android:background">@drawable/button_fifth_type</item>
+    </style>
+
+    <!-- Buttons Styles: Contained(Default) Buttons TypeF-->
+    <style name="Widget.MainTheme.Button.TypeF" parent="Widget.MainTheme.Button">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MainTheme.Button.TypeF</item>
+        <item name="android:textColor">@color/colorOnSecondary</item>
+        <item name="android:background">@drawable/button_second_type</item>
+    </style>
+
+    <!-- Text Fields Styles-->
+    <style name="Widget.MainTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MainTheme.TextInputLayout</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.MainTheme.SmallComponent</item>
+        <item name="hintTextColor">?attr/colorSecondaryVariant</item>
+    </style>
+
+    <!-- Radio Buttons Styles-->
+    <style name="Widget.MainTheme.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MainTheme.RadioButton</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:buttonTint">@color/colorSecondary</item>
+    </style>
+
+</resources>

@@ -1,0 +1,205 @@
+version: "3.3"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    image: efarmers_frontend:v1.0
+    container_name: frontend
+    command: npm start
+    ports:
+      - "3000:3000"
+    networks:
+      - frontend-net
+    depends_on:
+      - insertions_service
+      - user_service
+    environment:
+      - REACT_APP_API_USERS=${REACT_APP_API_USERS}
+      - REACT_APP_API_INSERTIONS=${REACT_APP_API_INSERTIONS}
+      - REACT_APP_API_SUBSCRIPTION=${REACT_APP_API_SUBSCRIPTION}
+      - REACT_APP_API_CART=${REACT_APP_API_CART}
+      - REACT_APP_API_PAYMENTS_ORDERS=${REACT_APP_API_PAYMENTS_ORDERS}
+      - REACT_APP_GOOGLE_API_TOKEN=${REACT_APP_GOOGLE_API_TOKEN}
+
+
+  insertions_service:
+    build:
+      context: .
+      dockerfile: ./insertions_service/Dockerfile
+    image: insertions_service:v1.0
+    container_name: insertions_service
+    command: sh -c "
+      python3 wait-for-service.py user_service 8080 &&
+      python3 manage.py makemigrations &&
+      python3 manage.py migrate &&
+      python3 manage.py runserver "
+
+    environment:
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+    volumes:
+      - insertions-media:/usr/src/app/media/images
+    ports:
+      - "8081:8081"
+    networks:
+      - frontend-net
+      - backend-net
+    depends_on:
+      - db
+      - user_service
+
+  user_service:
+    build:
+      context: .
+      dockerfile: ./user_service/Dockerfile
+    image: user_service:v1.0
+    container_name: user_service
+    command: sh -c "
+      python3 wait-for-service.py -d -n $${DATABASE_NAME} -u $${DATABASE_USER} -p password $${DATABASE_HOSTNAME} $${DATABASE_PORT} && 
+      python3 manage.py makemigrations && 
+      python3 manage.py migrate && 
+      python3 manage.py runserver "
+
+    environment:
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - "8080:8080"
+    networks:
+      - frontend-net
+      - backend-net
+    depends_on:
+      - db
+
+
+  shoppingcart_service:
+    build:
+      context: .
+      dockerfile: ./shoppingcart_service/Dockerfile
+    image: shoppingcart_service:v1.0
+    container_name: shoppingcart_service
+    command: sh -c "
+      python3 wait-for-service.py user_service 8080 &&
+      python3 manage.py makemigrations &&
+      python3 manage.py migrate &&
+      python3 manage.py runserver "
+
+    environment:
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - "8082:8082"
+    networks:
+      - frontend-net
+      - backend-net
+    depends_on:
+      - db
+      - user_service
+      - insertions_service
+
+
+  payments_order_service:
+    build:
+      context: .
+      dockerfile: ./payments_order_service/Dockerfile
+    image: payments_order_service:v1.0
+    container_name: payments_order_service
+    command: sh -c "
+      python3 wait-for-service.py user_service 8080 &&
+      python3 manage.py makemigrations &&
+      python3 manage.py migrate &&
+      python3 manage.py runserver "
+
+    environment:
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - "8083:8083"
+    networks:
+      - frontend-net
+      - backend-net
+    depends_on:
+      - db
+      - user_service
+      - shoppingcart_service
+
+  subscription_service:
+    build:
+      context: .
+      dockerfile: ./subscription_service/Dockerfile
+    image: subscription_service:v1.0
+    container_name: subscription_service
+    command: sh -c "
+      python3 wait-for-service.py rabbitmq 5672 &&
+      flask init-db &&
+      flask restore-rabbitmq &&
+      flask run --host=0.0.0.0"
+    volumes:
+      - subscription-data:/usr/src/app/instance
+    ports:
+      - "5000:5000"
+    networks:
+      - frontend-net
+      - subscription-net
+    depends_on:
+      - rabbitmq
+
+  db:
+    image: library/postgres:13
+    container_name: db
+    environment:
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - "5432:5432"
+    networks:
+      - backend-net
+    restart: on-failure
+    stdin_open: true
+    tty: true
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: on-failure
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - subscription-net
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+
+volumes:
+  postgres-data:
+    driver: local
+  insertions-media:
+    driver: local
+  subscription-data:
+    driver: local
+  rabbitmq-data:
+    driver: local
+
+networks:
+  subscription-net:
+    driver: bridge
+  frontend-net:
+    driver: bridge
+  backend-net:
+    driver: bridge

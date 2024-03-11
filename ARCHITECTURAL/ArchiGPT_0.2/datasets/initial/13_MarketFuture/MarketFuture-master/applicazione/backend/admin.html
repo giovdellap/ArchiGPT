@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="./predictor.css" type>
+    <style>
+        .header-area {
+            background: #cfce96 !important;
+        }
+    </style>
+</head>
+<body >
+    <header class="header-area overlay">
+        <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container">
+          <a href="/" class="navbar-brand">Market Future</a>
+          
+          <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-nav">
+            <span class="menu-icon-bar"></span>
+            <span class="menu-icon-bar"></span>
+            <span class="menu-icon-bar"></span>
+          </button>
+          
+          <div id="main-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto" id="barra">
+              <li><a href="/sloggami" class="nav-item nav-link">Logout</a></li>
+              <li><a href="/#mynews" class="nav-item nav-link active">News</a></li>
+              <li><a href="/#contatti" class="nav-item nav-link">About Us</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="banner">
+        <div class="container">
+          <h1>Market Future: an application to improve your investments</h1>
+          <p id="descrizione">
+            This panel allows the admin of the application to ban ban some users by their mails or by selecting manually them in the table presented below,
+            or adding and removing stocks that will be available to the stock predictor.
+
+          </p>
+        </div>
+        
+        <div class="container">
+            <form method="POST" name="dati" action="/deleteUser" id="form1" class="row g-3" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                           
+                                <label for="staticEmail2" class="visually-hidden">Email</label>
+                                <input type="text"  name="email" class="form-control-plaintext" id="staticEmail2" placeholder="email@domain.com" value="" style="border-radius: 10px; background-color : #ffffff; ">
+                           
+                        </div>
+                    <div class="col-6">
+                        
+                            <button  type="button" class="btn btn-primary mb-3" onclick="if (confirm('Are you sure?')){document.getElementById('form1').submit()}else{}">Remove user</button>
+                    </div>
+                </div>
+              </form>
+              <br>
+              <form method="POST" name="dati" action="/addStock"  id="form2" class="row g-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                                <input type="text"  name="nomeStock" class="form-control-plaintext" id="addStockInput" placeholder="GOOGL" value="" style="border-radius: 10px; background-color : #ffffff; ">
+                        </div>
+                    <div class="col-6">
+                            <button type="button" onclick="if (confirm('Are you sure?')){document.getElementById('form2').submit()}else{}" class="btn btn-primary mb-3">Insert Stock</button>
+                       
+                    </div>
+                </div>
+              </form>
+              <br>
+              <form method="POST" name="dati" action="/deleteStockFromName"  id="form3" class="row g-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                                <input type="text"  name="nomeStock" class="form-control-plaintext" id="deleteStockInput" placeholder="GOOGL" value="" style="border-radius: 10px; background-color : #ffffff; ">
+                        </div>
+                    <div class="col-6">
+                            <button type="button" onclick="if (confirm('Are you sure?')){document.getElementById('form3').submit()}else{}" class="btn btn-primary mb-3">Remove Stock</button>
+                       
+                    </div>
+                </div>
+              </form>
+        
+        </div>
+
+      </div>
+    </header>
+
+    <br><br>
+    <div class="container">
+        <div class="row mb-2" id="myusers"></div>
+    </div>
+    
+    <script src="/admin.js"></script>
+
+    <br><br>
+    
+
+</body>
+</html>

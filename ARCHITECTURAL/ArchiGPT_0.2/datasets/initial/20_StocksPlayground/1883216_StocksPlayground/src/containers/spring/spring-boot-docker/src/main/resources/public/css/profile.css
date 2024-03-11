@@ -1,0 +1,244 @@
+.header-container {
+    height: 180px;
+    justify-content: center;
+    color: white;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* RIGHT */
+.profile-container .right {
+    background: #292929;
+    color: white;
+    padding: 20px 30px;
+    margin: 0px 20px 0px 10px;
+    border-radius: 12px;
+    width: 70%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    min-height: 350px;
+    overflow-y: hidden;
+}
+
+.right .title-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right .edit-btn{
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 7px;
+    background-color: #292929;
+    margin-right: 10px;
+}
+
+.right .edit-btn:hover{
+    color:rgb(122, 0, 0);
+}
+
+.right .title {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.right .information-container {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 16px;
+}
+
+.right label {
+    display: inline-block;
+    font-size: 14px;
+    margin-bottom: -5px;
+    margin-left: 7px;
+}
+
+.right .form-group {
+    margin-bottom: 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-right {
+    width: 50%
+}
+
+.col-left {
+    width: 50%
+}
+
+.right textarea {
+    height: 83px;
+    width: 98%;
+    resize: none;
+    padding: 10px;
+}
+
+.form-control {
+    font-size: 16px;
+    line-height: 12px;
+    display: block;
+    width: 95%;
+    height: 35px;
+    padding: 3px 10px;
+    transition: all .2s cubic-bezier(.68, -.55, .265, 1.55);
+    color: #adb5bd;
+    border: 1px solid #cad1d75d;
+    border-radius: 10px;
+    background-color: #fffffff5;
+    background-clip: padding-box;
+    box-shadow: none;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    .form-control {
+        transition: none;
+    }
+}
+
+.form-control::-ms-expand {
+    border: 0;
+    background-color: transparent;
+}
+
+.form-control:focus {
+    color: #8898aa;
+    border-color: rgba(50, 151, 211, .25);
+    outline: 0;
+    background-color: #fff;
+    box-shadow: none;
+}
+
+.form-control:-ms-input-placeholder {
+    opacity: 1;
+    color: #adb5bd;
+}
+
+.form-control::-ms-input-placeholder {
+    opacity: 1;
+    color: #adb5bd;
+}
+
+.form-control::placeholder {
+    opacity: 1;
+    color: #adb5bd;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    opacity: 1;
+    background-color: #767676;
+}
+
+/* END RIGHT */
+
+/* LEFT */
+.profile-container .left-container {
+    color: white;
+    margin: 30px 10px 0px 20px;
+    width: 30%;
+}
+
+.profile-container .left {
+    background: #292929;
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.left .email {
+    font-size: 16px;
+    color: gray;
+}
+
+.left .name {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 40px;
+}
+
+.left-container .img-container {
+    margin-bottom: -80px;
+    justify-content: center;
+    display: flex;
+}
+
+.img-container .image {
+    border-radius: 50%;
+    height: 130px;
+    width: 130px;
+    background-color: rgb(24, 69, 173);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 70px;
+    line-height: 130px;
+}
+
+.left .delete {
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.delete a {
+    color: rgb(150, 150, 150);
+}
+
+.delete a:hover {
+    color: rgb(145, 0, 0);
+}
+
+.material-symbols-outlined {
+     font-variation-settings:
+             'FILL' 0,
+             'wght' 400,
+             'GRAD' 0,
+             'opsz' 48
+}
+
+.right li{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+/* Make all 'a' elements inside 'li' elements white */
+.right li a {
+    color: white;
+}
+
+/* Style all 'button' elements inside 'li' elements with a dark background and white text */
+.right li button {
+    background-color: #33333300;
+    color: white;
+    border: none;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+.right li button:hover {
+    background-color: #55555500;
+    color: rgb(144, 21, 21);
+    cursor: pointer;
+}
+/* END LEFT */

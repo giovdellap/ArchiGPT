@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "app.config.correlationHeaderName",
+      "type": "java.lang.String",
+      "description": "Description for app.config.correlationHeaderName."
+    }
+  ]
+}

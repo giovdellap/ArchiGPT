@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Product Ckeckout</title>
+    <link rel="stylesheet" href="/assets/css/checkout.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <section>
+      <div class="product">
+        <img src="/assets/costi.png" alt="The cover of Stubborn Attachments" />
+        <div class="description">
+          <h3>Importo da pagare</h3>
+          <h5><%= tot_cost/100 * num_tick %> €</h5>
+        </div>
+      </div>
+      <form action="/create-checkout-session" method="POST">
+        <input type="hidden" name="tot_cost" value="<%= tot_cost %>">
+        <input type="hidden" name="num_tick" value="<%= num_tick %>">
+        <button type="submit" id="checkout-button">Checkout</button>
+      </form>
+    </section>
+  </body>
+</html>

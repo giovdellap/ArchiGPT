@@ -1,0 +1,26 @@
+{
+    "id": 117,
+    "title": null,
+    "logo": null,
+    "description": null,
+    "price": null,
+    "field": null,
+    "status": null,
+    "active": true,
+    "create_at": 1474876334000,
+    "update_at": 1474876334000,
+    "end_date_at": null,
+    "limit_user": null,
+    "group_type": null,
+    "group_code": "96299d4e-c371-4da4-8c41-e7b6af3b6eb1",
+    "conversation_system_id": 4,
+    "users_group": [{
+        "username": "farkhpay",
+        "user_type": 0,
+        "group_id": 117
+    }, {
+        "username": "09188883975",
+        "user_type": 1,
+        "group_id": 117
+    }]
+}

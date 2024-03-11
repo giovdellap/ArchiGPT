@@ -1,0 +1,77 @@
+version: "3.8"
+services:
+    postgres:
+        build: 
+            context: ./db
+        restart: unless-stopped
+        image: postgres
+        container_name: 'postgres'
+        environment:
+            - POSTGRES_DB=LAPdb
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        ports:
+            - "5432:5432"  
+        volumes:
+           - db-data:/var/lib/postgresql/data
+    rabbitmq:
+        restart: unless-stopped
+        image: rabbitmq:3-management-alpine
+        container_name: 'rabbitmq'
+        ports:
+            - 5672:5672
+            - 15672:15672
+        volumes:
+            - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+            - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    logger:
+        restart: unless-stopped
+        build:
+            context: ./Back-End/logger
+        container_name: 'logger'
+        ports:
+            - "3004:3004"
+        volumes:
+            - "./log:/usr/src/app/log"
+        depends_on:
+            - rabbitmq
+        command: "./wait-for-it.sh -t 60 rabbitmq:15672 -- npm run start"
+    user-server:
+        restart: unless-stopped
+        build:
+            context: ./Back-End/user-server
+        container_name: 'user-server'
+        ports:
+            - "3003:3003"
+        volumes:
+            - .:/usr/src/app
+        depends_on:
+            - postgres
+        command: "./wait-for-it.sh -t 60 rabbitmq:15672 -- node user-server.js"
+    travel-server:
+        restart: unless-stopped
+        build:
+            context: ./Back-End/travel-server
+        container_name: 'travel-server'
+        ports:
+            - "3002:3002"
+        volumes:
+            - .:/usr/src/app
+        depends_on:
+            - postgres
+        command: "./wait-for-it.sh -t 60 rabbitmq:15672 -- node travel-server.js"
+    angular:
+        restart: unless-stopped
+        build:
+            context: ./Front-End
+        container_name: 'angular'
+        volumes:
+            - './Front-End:/usr/src/app'
+        ports:
+            - "80:80"
+        depends_on:
+            - user-server
+            - travel-server
+volumes:
+    db-data:
+        driver: local

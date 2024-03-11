@@ -1,0 +1,16 @@
+{
+    "id": 5,
+    "phone": "09187156889",
+    "email": "959593@uahh.co",
+    "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "active": true,
+    "gender": null,
+    "type_user": 0,
+    "first_name": null,
+    "last_name": null,
+    "username": "959595953",
+    "create_at": 1517312550000,
+    "update_at": 1534434355000,
+    "last_login": 1534514792000,
+    "user_code": "80d86291-d488-45e8-b255-487b305a3962"
+}

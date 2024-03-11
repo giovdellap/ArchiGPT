@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Product Ckeckout</title>
+    <link rel="stylesheet" href="/assets/css/returned_tickets.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+
+
+  </head>
+  <body>
+    <section>
+      <div class="product">
+        <div class="description">
+            
+            <h1>Codici ticket acquistati</h1>
+            <table>
+            <% for(var i = 0; i < num_ticke; i++) {%>
+            <tr>
+                <td>
+                    <h4><%= a[i] %></h4>
+                </td>
+            </tr>
+            <% } %>
+            </table>
+            <!-- <button onclick="myFct()">Copy text</button> -->
+            <a href="/Aprenotazioni"><button>Torna alla home</button></a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- <script>
+      function myFct() {
+        var copyText = document.getElementsById("jac")
+
+        copyText.select();
+        copyText.setSelectionRange(0,99999);
+
+        navigator.clipboard.writeText(copyText.vale);
+
+        alert("Copied the text: " + copyText.value);
+      }
+    </script> -->
+
+  </body>
+</html>
