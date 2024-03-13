@@ -1,9 +1,0 @@
-FROM wajdikh/fbprophet
-WORKDIR /usr/src/app
-COPY . .
-
-RUN pip install flask;exit 0
-RUN pip install yfinance; exit 0
-RUN pip install -U flask-cors
-
-CMD ["python","-m","flask","run","--host=0.0.0.0"]

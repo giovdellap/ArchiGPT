@@ -1,5 +1,0 @@
-Flask==2.2.3
-Flask-Cors==3.0.10
-mysql-connector-python
-requests
-Werkzeug==2.2.2

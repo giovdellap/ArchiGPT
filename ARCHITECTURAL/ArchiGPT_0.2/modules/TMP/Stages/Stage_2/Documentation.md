@@ -11,4 +11,6 @@
 - [ ] CouchDB
 - [ ] NodeMailer
 - [ ] NGINX
+- [ ] kibana
+- [ ] ElasticSearch
 - [ ] 

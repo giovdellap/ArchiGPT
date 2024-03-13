@@ -1,7 +1,0 @@
-Flask==2.2.3
-Flask-Cors==3.0.10
-mysql-connector-python
-Flask-JWT-Extended==4.2.3
-bcrypt==3.2.0
-requests
-Werkzeug==2.2.2
