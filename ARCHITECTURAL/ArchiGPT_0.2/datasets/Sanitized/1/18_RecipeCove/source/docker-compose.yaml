@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+
+    couchdb:
+        build: "./couchdb"
+        networks:
+            - app-network
+        environment:
+            - COUCHDB_USER=admin
+            - COUCHDB_PASSWORD=admin
+        volumes:
+            - "./couchdb:/opt/couchdb/data"
+        ports:
+            - "5984:5984"
+        restart: on-failure
+
+    webapp:
+        build: "./webapp"
+        ports:
+            - "3000:3000"
+        depends_on:
+            - couchdb
+            - rabbitmq
+        links:
+            - couchdb  
+        volumes:
+            - ./webapp:/webapp/
+        networks:
+            - app-network
+            - amqp
+        restart: on-failure
+
+    calendar:
+        build: "./calendar"
+        ports:
+            - "3001:3001"
+        depends_on:
+            - couchdb
+            - webapp
+        networks:
+            - app-network
+        restart: on-failure
+
+    nodemailer:
+        build: "./nodemailer"
+        depends_on:
+            - rabbitmq
+        networks:
+            - amqp
+        restart: on-failure
+
+    rabbitmq:
+        build: "./rabbitmq"
+        networks:
+            - amqp
+        restart: on-failure
+
+volumes:
+    couchdb-data:
+
+networks:
+    app-network:
+        driver: bridge
+    amqp:
+        
+        

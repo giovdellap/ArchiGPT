@@ -1,0 +1,62 @@
+# Epics
+1. Account & personal info client
+2. Account & personal info "farmer"
+3. Order Clien managment
+4. Cart managment
+5. Product / "farmer" discovery
+6. inventory managment
+7. Order "farmer" managment
+8. Account Admin managment
+9. User admin managment
+10. order Admin managment
+
+
+# Buyer
+- (1) Registration 
+- (1) login
+- (1) Remeber me 
+- (1) logout
+- (1) see my personal information
+- (5) Hot products
+- (5) See Ag C in my area
+- (5) See The products for each Ag C
+- (4) Add to cart the products
+- (4) see product in the cart
+- (3) Complete an order: Pick up at the farm (product reservation on the site)
+- (5) Open in gMaps the Location of the Ag C
+- (1) TODO: Credentials changing
+- (3) TODO See orders
+
+# Agricultural company
+- (6) Add products in inventory
+- (6) Remove products in inventory
+- (6) Modify products in inventory
+DELETED - Update his pickup availability (time and dates)
+- (2) Registration
+- (2) Login
+- (2) Remeber me 
+- (2) logout
+- (2) see my personal information
+- (7) TODO See orders
+- (7) TODO update order status
+- (2) TODO: Credentials changing
+
+# Administrator
+- (8) login 
+- (8) Remeber me 
+- (8) logout
+- (9) Ban users -> delete user
+- (10) Delete orders
+- (10) see all orders
+- (9) see all users
+- (9) get user details
+- (9) modify users
+- (9) see all areas
+- (2) get farmer by areas
+- (2) get farmer details
+- (6) get product by seller
+- (6) get product by id
+- (2) add an area
+- (6) add product
+- (6) modify product
+- (6) delete product

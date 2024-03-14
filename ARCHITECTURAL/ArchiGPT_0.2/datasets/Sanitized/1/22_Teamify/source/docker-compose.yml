@@ -1,0 +1,97 @@
+version: "3"
+services:
+  db:
+    build:
+      context: "./Install"
+      dockerfile: Dockerfile-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PG_HBA_RULES: "host    all    all    0.0.0.0/0    md5"
+    container_name: db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - my-network
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "postgres", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  db-backup:
+    build:
+      context: "./Install"
+      dockerfile: Dockerfile-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PG_HBA_RULES: "host    all    all    0.0.0.0/0    md5"
+    container_name: db-backup
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - my-network
+    ports:
+      - "5434:5432"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "postgres", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: "./Flask Server"
+      dockerfile: Dockerfile-flask
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+      db-backup:
+        condition: service_healthy
+    container_name: backend
+    networks:
+      - my-network
+    restart: unless-stopped
+
+  backend-backup:
+    build:
+      context: "./Flask Server"
+      dockerfile: Dockerfile-flask
+    ports:
+      - "5001:5000"
+    depends_on:
+      - backend
+    container_name: backend-backup
+    networks:
+      - my-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./React-site
+      dockerfile: Dockerfile-react
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+      - backend-backup
+    container_name: frontend
+    networks:
+      - my-network
+    restart: unless-stopped
+
+volumes:
+  db-data:
+
+networks:
+  my-network:

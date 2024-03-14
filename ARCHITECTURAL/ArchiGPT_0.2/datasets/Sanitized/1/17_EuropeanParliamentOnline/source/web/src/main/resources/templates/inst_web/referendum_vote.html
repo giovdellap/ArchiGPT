@@ -1,0 +1,70 @@
+<html>
+<head>
+
+	<link rel="stylesheet" th:href="@{/css/inst_style.css}">
+	<script type="text/javascript" th:src="@{/js/file.js}"></script>
+
+</head>
+<body>
+
+	<!--Navbar-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<div class="navbar">
+		<script>
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			const id = urlParams.get('representativeID');
+			const titleReferendum = urlParams.get('title');
+			const dateStartConsensusProposal = urlParams.get('date');
+			const nation = getCookie('nation');
+			document.write('<a class="active" href="/inst/home?representativeID=' + id + '"><i class="fa fa-fw fa-home"></i> Home</a>');
+		</script>
+		<div class="dropdown2">
+			<button class="btn"><i class="fa fa-fw fa-user"></i>ISTUser</button>
+			<div class="dropdown-menu">
+				<a href="/"></i>Logout</a>
+			</div>
+			</div>
+		<div class="dropdown">
+			<button class="btn"><i class="fa fa-fw fa-pencil"></i>Referendum</button>
+			<div class="dropdown-menu">
+				<script>
+					document.write('<a href="/inst/propose?representativeID=' + id + '"></i>Propose Referendum</a>');
+					document.write('<a href="/inst/referendum?representativeID=' + id + '"></i>Referendum List</a>');
+				</script>
+			</div>
+		</div>
+			<a href=""><i class="fa fa-fw fa-gear"></i> Settings</a>
+	</div>
+
+	<!-- referendum box -->	
+	<br><br><br>
+	<div class="box"> 
+		<div class="img">
+			<img style="float: right;" th:src="@{/images/european-union.png}">
+			<h2 id="title" th:text="${title}"></h2>
+			<p class="text" id="refText" th:text="${argument}"></p>
+			<p style="float: right;" id="start-date" th:text="${startDate}"></p>
+			<p style="float: right;" id="refStatus">Valid until: </p>
+		</div>
+		<br>
+	</div>
+
+	<!-- radio button -->
+	<div class="radio-button">
+		<form onsubmit="instVoteReferendum(titleReferendum,dateStartConsensusProposal,id,nation);">
+			<h3 class="text" style="text-align: center;">Vote</h3>
+			<input class="text" type="radio" id="op1" name="response" value="Yes">
+			<label class="text" for="op1">Yes</label><br>
+			<input class="text" type="radio" id="op2" name="response" value="No">
+			<label class="text" for="op2">No</label><br><br>
+			<script>
+				document.write('<input type="hidden" name="representativeID" id="representativeID" value="' + id + '"> ');
+			</script>
+			<button class="button">Confirm</button>
+		</form>
+	</div>
+		
+</body>
+</html>
