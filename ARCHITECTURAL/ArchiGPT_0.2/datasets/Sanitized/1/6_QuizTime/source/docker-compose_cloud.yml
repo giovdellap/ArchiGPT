@@ -1,0 +1,118 @@
+version: '3.0'
+x-aws-loadbalancer: "arn:aws:elasticloadbalancing:us-east-1:079023883045:loadbalancer/net/quizload/af9d17368b7ae969"
+services:
+
+##############################################################################
+#BASE SERVICES
+##############################################################################
+
+  elasticsearch:
+    image: elasticsearch:7.16.2
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      discovery.type: single-node
+      ES_NETWORK_HOST: "0.0.0.0"
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2Gb
+
+  kibana:
+    image: kibana:7.16.2
+    ports:
+      - '5601:5601'
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - SERVER_BASEPATH=/kibana
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2Gb
+    depends_on:
+      - elasticsearch
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672 #admin web interface
+
+# ##############################################################################
+# #WEB SERVER - NGINX
+# ##############################################################################
+
+  web_server_1:
+    image: alessandromarzilli/adminwebserver:aws
+    ports:
+      - 443:443
+    depends_on:
+      - admin-server
+      
+  
+  web_server_2:
+    image: alessandromarzilli/userwebserver
+    ports: 
+      - 80:80
+    depends_on: 
+      - worker_1
+      - worker_2
+      - worker_3
+    
+
+
+##############################################################################
+#WORKER SERVERS
+##############################################################################
+
+  worker_1:
+    image: alessandromarzilli/worker:aws
+    environment:
+      - PORT=3001
+      - SERVICE_NAME=node1
+      - WPORT=1337
+    depends_on:
+      - rabbitmq
+      - admin-server
+    command:  "./wait-for-it.sh -t 60 rabbitmq:5672 -- bash -c  'node worker.js'"
+     
+  worker_2:
+    image: alessandromarzilli/worker:aws
+    environment:
+      - PORT=3002
+      - SERVICE_NAME=node2
+    depends_on:
+      - rabbitmq
+      - admin-server
+    command:  "./wait-for-it.sh -t 60 rabbitmq:5672 -- bash -c  'node worker.js'"
+  
+  worker_3:
+    image: alessandromarzilli/worker:aws
+    environment:
+      - PORT=3003
+      - SERVICE_NAME=node3
+    depends_on:
+      - rabbitmq
+      - admin-server
+    command:  "./wait-for-it.sh -t 60 rabbitmq:5672 -- bash -c  'node worker.js'"
+
+##############################################################################
+#ADMIN SERVER
+##############################################################################
+
+  admin-server:
+    image: alessandromarzilli/adminserver
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - SLEEP_TIME=60
+    ports:
+      - 3000:3000
+    depends_on:
+      - rabbitmq
+      - kibana
+    command:  "./wait-for-it.sh -t 60 elasticsearch:9200 -- bash -c  './initialize.sh && node admin-server.js'"

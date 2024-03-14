@@ -1,0 +1,5 @@
+1. Launch the project
+2. Open the file test.js
+3. Change the value of the constant NUM which indicates how many users you want to simulate
+4. Launch the commands "npm install" and "node test.js"
+5. Open the admin interface and play as an admin, the fake users will automatically choose random answers
