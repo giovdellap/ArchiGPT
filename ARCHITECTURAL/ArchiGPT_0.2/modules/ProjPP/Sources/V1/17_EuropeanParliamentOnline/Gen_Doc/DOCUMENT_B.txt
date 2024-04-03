@@ -1,0 +1,23 @@
+Nation-specific Containers
+Each nation (Italy, France, and Germany) has its own set of services, deployed via separate Docker Compose files. These services include:
+
+Container Name(s): web-ita, web-fra, web-ger
+Role: Provides the web interface for manipulating national data and exchanging messages with other nations.
+Broadcast API Service:
+
+Container Name(s): broadcast-ita, broadcast-fra, broadcast-ger
+Role: Enables the distribution of data, messages, or content simultaneously to multiple recipients or channels.
+REST API Server:
+
+Container Name(s): rest-ita, rest-fra, rest-ger
+Role: Allows clients to request and manipulate resources on a server using standard HTTP methods.
+PostgreSQL Database:
+
+Container Name(s): psql-ita, psql-fra, psql-ger
+Role: Serves as the repository for national data, including citizen credentials and referendum-related data.
+Standalone Services
+In addition to the nation-specific services, there is a standalone service that is not affiliated with any specific nation:
+
+RabbitMQ Broker:
+Container Name: rabbitmq
+Role: Facilitates asynchronous communication between servers, dispatching messages among nation workers.
