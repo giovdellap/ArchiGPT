@@ -1,0 +1,36 @@
+<div class="main-container">
+  <div class="error-row" *ngIf="error && completed"></div>
+  <div class="save-btn-row" *ngIf="!completed || error">
+    <p class="disclaimer">Click on the button below to save your work when you are done</p>
+    <button mat-fab class="save-btn" (click)="save()">
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
+  <div class="completed" *ngIf="completed && !error">Selection completed</div>
+  <div class="lists-container" *ngIf="!completed || error">
+    <div class="side-container">
+      <div class="title">Available products</div>
+      <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="available"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="list"
+      (cdkDropListDropped)="drop($event)">
+        <div class="box" *ngFor="let item of available" cdkDrag>{{item.title}}</div>
+      </div>
+    </div>
+    <div class="side-container">
+      <div class="title">Products not available</div>
+      <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="not_available"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="list"
+      (cdkDropListDropped)="drop($event)">
+        <div class="box" *ngFor="let item of not_available" cdkDrag>{{item.title}}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="left-container">
+    <div class="title">AREE</div>
+    <div class="areas-container">
+      <div class="area-card" *ngFor="let area of areas">{{area}}</div>
+    </div>
+  </div>
+  <div class="right-container">
+    <div class="title">ADD AREA</div>
+    <form [formGroup]="newAreaForm">
+      <mat-form-field>
+        <mat-label>Area</mat-label>
+        <input matInput formControlName="area">
+      </mat-form-field>
+    </form>
+    <button mat-raised-button (click)="sendNewArea()">Add Area</button>
+  </div>
+
+</div>
