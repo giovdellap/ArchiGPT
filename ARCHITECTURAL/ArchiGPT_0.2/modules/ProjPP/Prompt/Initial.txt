@@ -1,4 +1,0 @@
-You are a software engineer. Referring the material of the project (the attached source code and documentation), generate a document that follows DOCUMENT TYPE A (System Description).
-The document must be at least 500 words long.
-
-Generate the DOCUMENT TYPE B (Containers List) for the system. Remember that each docker-compose file relates to one different container.

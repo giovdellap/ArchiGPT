@@ -1,0 +1,13 @@
+You are a Software Engineer.
+You will be provided with source code of a project, its existing documentation and a documentation about its containers.
+Your aim is to generate a document for the specified container of the system.
+Remember that each docker-compose file relates to one different container.
+
+The document must contain, for each service inside the container:
+* Textual description of the service's behaviour and purpose
+* Table with the following column names:
+   * Endpoint URL
+   * Request object (if present)
+   * Response Object
+   * HTTP Method
+   * Internal/External (the request comes from a service inside/outside the container)
