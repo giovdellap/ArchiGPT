@@ -1,0 +1,32 @@
+
+SECTION 1: Textual Description of the Container's Behaviour and Function
+----------------------------------------------------------------------
+The "single-container" system, named OneSport, is a multi-functional web application dedicated to offering up-to-date and pertinent information on a wide range of sports and athletic events. Its primary aim is to keep sports fans and enthusiasts well-informed and engaged, serving as a one-stop destination for comprehensive sports news, event updates, and a convenient platform for social interactions among users. The system encapsulates several services, including:
+
+- News: Provides the latest news and updates on various sports.
+- Authentication: Manages user authentication and authorization.
+- Tickets: Offers a ticketing system for events.
+- Friends: Facilitates social features allowing users to connect and interact.
+- Frontend: Serves the user interface where users can access news, buy tickets, and interact with other fans.
+
+These services are orchestrated through Docker Compose, highlighting a microservices architecture approach. Although termed "single-container", it efficiently utilizes multiple containers to segregate responsibilities, ensuring modularity and scalability.
+
+SECTION 2: List of All Services within the Container
+-----------------------------------------------------
+1. News Service
+2. Authentication Service
+3. Tickets Service
+4. Friends Service
+5. Frontend Service
+6. Postgres (Database Service)
+
+SECTION 3: Table of Exposed Ports and Related Services
+------------------------------------------------------
+| Exposed Port | Related Service |
+|--------------|-----------------|
+| 5000         | News            |
+| 5432         | Postgres        |
+| 3000         | Frontend        |
+| 5001         | Authentication  |
+| 5002         | Tickets         |
+| 5003         | Friends         |

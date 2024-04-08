@@ -1,0 +1,19 @@
+
+SECTION 1: Textual Description of the Container's Behaviour and the Function it Serves
+
+The "ger" container is a critical component of the distributed system designed to enhance inter-nation communication, enable consensus-building, and facilitate the exchange of data and public opinions within the EU. It hosts services essential for managing and exchanging data relevant to Germany, ensuring the system's efficient operation. These services support the participation of German citizens in the EU-wide initiative by providing tools for surveys, referendums, and data exchange with other nations.
+
+SECTION 2: List of All Services Within the Container
+
+- Web Service (web-ger): Manages the web interface for Germany, utilizing the REST API to manipulate national data and ensure its persistence through the web interface.
+- Broadcast API (broadcast-ger): Facilitates the distribution of messages and data across the system, ensuring real-time communication with other nations.
+- REST API Server (rest-ger): Provides a web-based communication protocol that allows clients to request and manipulate resources on the server using standard HTTP methods.
+- PostgreSQL Database (psql-ger): Acts as the repository for German national data, including citizen credentials, European referendums, and associated consensus data structures.
+
+SECTION 3: Table of Exposed Ports and Related Services
+
+| Exposed Port | Related Service              |
+|--------------|------------------------------|
+| 8088         | Web Service (web-ger)        |
+| 8089         | REST API Server (rest-ger)   |
+| 8090         | Broadcast API (broadcast-ger)|

@@ -1,0 +1,19 @@
+
+SECTION 1: Textual Description of the Container's Behaviour and the Function it Serves
+
+The "ita" container plays a crucial role in the distributed system by hosting services specific to Italy. These services include a web interface for data manipulation and interaction, a Broadcast API for efficient communication with other nations, a REST API server for web-based communication protocols, and a PostgreSQL database for storing national data. This setup allows Italian citizens to engage actively in the democratic process by participating in surveys, accessing referendum proposals, and contributing to consensus-building efforts.
+
+SECTION 2: List of All Services Within the Container
+
+- Web Service (web-ita): Manages the web interface, using the REST API to manipulate national data and ensure its persistence through the web interface.
+- Broadcast API (broadcast-ita): Facilitates the distribution of messages and data to multiple recipients or channels, ensuring efficient and real-time communication across various platforms.
+- REST API Server (rest-ita): Provides a web-based communication protocol allowing clients to request and manipulate resources on the server using standard HTTP methods.
+- PostgreSQL Database (psql-ita): Acts as the repository for Italian national data, including citizen credentials, European referendums, and associated consensus data structures.
+
+SECTION 3: Table of Exposed Ports and Related Services
+
+| Exposed Port | Related Service              |
+|--------------|------------------------------|
+| 8080         | Web Service (web-ita)        |
+| 8081         | REST API Server (rest-ita)   |
+| 8082         | Broadcast API (broadcast-ita)|

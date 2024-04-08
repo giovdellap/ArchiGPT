@@ -1,5 +1,25 @@
-#### Containers:
-- **epo-ita**: Dedicated to Italian national services and data.
-- **epo-ger**: Dedicated to German national services and data.
-- **epo-fra**: Dedicated to French national services and data.
-- **epo-all**: A standalone service for cross-nation communication via RabbitMQ.
+CONTAINER: main-container
+SERVICES:
+    - rabbitmq
+
+CONTAINER: fra
+SERVICES:
+    - web
+    - rest
+    - psql_db
+    - broadcast
+
+CONTAINER: ger
+SERVICES:
+    - web
+    - rest
+    - psql_db
+    - broadcast
+
+CONTAINER: ita
+SERVICES:
+    - web
+    - rest
+    - psql_db
+    - broadcast
+

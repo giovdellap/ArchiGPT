@@ -1,0 +1,14 @@
+News Service Description and Technologies
+=========================================
+
+Behavior and Purpose:
+---------------------
+The News service is a crucial component of the OneSport web application, designed to keep sports enthusiasts informed with the latest news and updates across various sports disciplines. It fetches and displays sports news from external sources, allowing users to save articles, delete or update saved news. This service enhances the overall user experience by providing personalized and current sports content.
+
+Technologies, Programming Languages, Frameworks, and Libraries:
+----------------------------------------------------------------
+1. Python: The primary programming language for developing the service.
+2. Flask: Used as the web framework to handle HTTP requests and serve the API endpoints.
+3. Docker: For containerizing the service, ensuring consistent deployment environments.
+4. SQLAlchemy: Employed for database operations, leveraging Python's ORM capabilities for easier database management.
+5. Requests: A library for making HTTP requests, possibly used for fetching news from external APIs.
