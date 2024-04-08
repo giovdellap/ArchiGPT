@@ -1,0 +1,19 @@
+<div class="main-container">
+  <form [formGroup]="loginForm" class="form-container">
+      <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password">
+      </mat-form-field>
+      <button mat-raised-button (click)="onSubmit()">Login</button>
+  </form>
+
+  <div class="error-message" *ngIf="displayError">
+      <p>Email or Password are wrong! Please try again</p>
+  </div>
+
+
+</div>

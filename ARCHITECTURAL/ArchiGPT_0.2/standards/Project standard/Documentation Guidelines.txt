@@ -15,18 +15,17 @@ This document must contain:
 * Textual description of the container's behaviour and the function it serves
 * List of all the services within the container
 * Table with the following columns:
-   * Endpoint URLs
+   * Exposed port
    * Related service (the service that exposes this endpoint)
-   * HTTP Method 
 
 
 For each service:
 DOCUMENT TYPE D (Service Description)
 This document must contain:
 * Textual description of the service's behaviour and purpose
+* Textual description of the service's technologies, programming languages, frameworks and libraries (include only the most important ones)
 * Table with the following column names:
-   * Endpoint URL
+   * Endpoint URL and Path
    * Request object (if present)
    * Response Object
    * HTTP Method
-   * Internal/External (the request comes from a service inside/outside the container)

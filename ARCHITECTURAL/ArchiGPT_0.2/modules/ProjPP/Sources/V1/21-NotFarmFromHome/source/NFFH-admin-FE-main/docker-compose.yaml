@@ -1,9 +1,0 @@
-services:
-  admin-fe:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-      args:
-        APP_NAME: admin-FE
-    ports:
-           - "4203:80"

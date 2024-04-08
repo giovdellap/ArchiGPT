@@ -1,0 +1,5 @@
+Endpoint URL | Request Object | Response Object | Response Status Code | HTTP Method
+----------------|----------------|-----------------|---------------------|------------
+/login | LoginInput | LoginResponse | 200, 4xx | POST
+/signup | CreateCustomerInput | SignupResponse | 200, 4xx | POST
+/customer/{id} | Path variable {id} | GetClientByIDResponse | 200, 404 | GET

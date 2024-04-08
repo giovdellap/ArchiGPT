@@ -1,0 +1,35 @@
+The "Web" service in the "epo-ita" container is a Spring Boot application that serves web pages based on different requests. It interacts with other services to retrieve and display data related to the European Parliament Online project. Below is a detailed description of its behavior and purpose, along with a table summarizing its endpoints.
+
+### Service Behavior and Purpose
+
+The "Web" service acts as a front-end interface for citizens and institutional users of the European Parliament Online platform. It provides several web pages that allow users to:
+- View general information about the nation they belong to.
+- For citizens:
+  - Log in using their national ID and password.
+  - Participate in referendums by voting.
+  - View the results of referendums.
+- For institutional users:
+  - Log in using their representative ID and password.
+  - Propose and manage referendums.
+  - View the results of referendums they are involved in.
+
+The service is designed to be user-friendly, providing easy navigation through its features. It also ensures secure access to user-specific functionalities such as voting and proposing referendums.
+
+### Endpoints Description
+
+| HTTP Request Endpoint  | Request Object                     | Response Object | HTTP Method | Internal/External |
+|------------------------|------------------------------------|-----------------|-------------|-------------------|
+| `/`                    | None                               | HTML Page       | GET         | External          |
+| `/citizen`             | `nation`                           | HTML Page       | GET         | External          |
+| `/citizen/login`       | `nationalID`, `psw`, `nation`      | HTML Page       | GET         | External          |
+| `/citizen/referendum`  | `nationalID`, `title`, `date`      | HTML Page       | GET         | External          |
+| `/citizen/vote`        | `nationalID`, `title`, `date`, `vote` | HTML Page | POST | External |
+| `/citizen/results`     | `nationalID`, `title`, `date`      | HTML Page       | GET         | External          |
+| `/inst`                | `representativeID`                 | HTML Page       | GET         | External          |
+| `/inst/login`          | `representativeID`, `psw`          | HTML Page       | GET         | External          |
+| `/inst/proposal`       | `representativeID`, `title`, `argument`, `date` | HTML Page | POST | External |
+| `/inst/referendum`     | `representativeID`, `title`, `date` | HTML Page | GET | External  |
+| `/inst/vote`           | `representativeID`, `title`, `date`, `vote` | HTML Page | POST | External |
+| `/inst/results`        | `representativeID`, `title`, `date` | HTML Page | GET | External  |
+
+These endpoints collectively enable the service to fulfill its role as a portal for engaging with the democratic processes of the European Parliament Online platform.

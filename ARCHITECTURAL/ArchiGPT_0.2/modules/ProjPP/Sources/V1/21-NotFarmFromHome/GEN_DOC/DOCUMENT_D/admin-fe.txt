@@ -1,0 +1,14 @@
+
+NFFH-admin-FE Service Description
+---------------------------------
+
+Behavior and Purpose:
+The NFFH-admin-FE service serves as the frontend interface for the administrative section of the NFFH system. It enables administrators to perform various tasks such as user management, system monitoring, and configuration settings through a user-friendly graphical interface. The service aims to facilitate efficient management of the system's backend processes and data, ensuring the application's health, security, and performance.
+
+Technologies, Programming Languages, Frameworks, and Libraries:
+1. Angular (version 16.1.0): A platform and framework for building single-page client applications using HTML and TypeScript, offering a comprehensive solution for high-performance web applications.
+2. Angular Material (version 16.2.10): A UI component library that follows Material Design principles, used for building consistent, attractive, and functional user interfaces.
+3. RxJS (~7.8.0): A library for reactive programming using observables, essential for handling events and asynchronous programming in Angular applications.
+4. TypeScript (~5.1.3): The primary programming language for developing Angular applications, providing optional static typing, classes, and interfaces.
+5. Angular CLI (~16.1.8): A command-line interface tool for initializing, developing, scaffolding, and maintaining Angular applications, simplifying common tasks in the development workflow.
+

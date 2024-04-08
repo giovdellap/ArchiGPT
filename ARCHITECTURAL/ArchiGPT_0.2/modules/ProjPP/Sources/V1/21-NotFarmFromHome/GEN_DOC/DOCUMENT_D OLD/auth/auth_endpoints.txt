@@ -1,0 +1,5 @@
+Endpoint URL | Request Object | Response Object | Response Status Code | HTTP Method
+----------------|----------------|-----------------|---------------------|------------
+/<role>/login | { "email": "user@example.com", "password": "password123" } | Varies (Success/Failure) | Varies (200/4xx) | POST
+/<role>/signup | { "email": "user@example.com", "password": "password123", "username": "user" } | Varies (Success/Failure) | Varies (200/4xx) | POST
+/verifyToken | { "token": "jwtTokenHere" } | Varies (Valid/Invalid Token) | Varies (200/4xx) | POST

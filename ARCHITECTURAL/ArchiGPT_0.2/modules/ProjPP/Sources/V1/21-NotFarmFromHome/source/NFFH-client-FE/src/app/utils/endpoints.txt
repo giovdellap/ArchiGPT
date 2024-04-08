@@ -1,0 +1,27 @@
+LOGIN
+
+/login (POST)
+    - send {
+        email: string,
+        password: string
+    }
+    -returns {
+        token: string,
+        success: boolean,
+        name: string
+    }
+
+
+
+HOMEPAGE
+
+/cards (GET)
+    - returns homepage cards'data
+    - cards: {
+        title: string,
+        seller: string,
+        image: string,
+        description: string,
+        price: number,
+        weight: boolean //if true is kilos, if false is items
+    } []
