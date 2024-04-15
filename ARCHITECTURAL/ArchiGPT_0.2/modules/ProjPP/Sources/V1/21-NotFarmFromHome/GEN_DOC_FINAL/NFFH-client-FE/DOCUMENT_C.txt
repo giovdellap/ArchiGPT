@@ -1,0 +1,19 @@
+SECTION 1: Textual Description of the Container's Behavior and the Function It Serves
+
+The NFFH-client-FE container follows a two-stage build process focused on compiling and serving a front-end application:
+
+1. Build Stage: Utilizes a Node.js environment (node:18 image) for compiling the project. It begins by setting up a working directory (/app) and installing dependencies defined in package*.json. The entire project source is then copied into the image, and npm run build is executed to compile the front-end assets.
+
+2. Run Stage: Uses Nginx to serve the compiled front-end assets. The default Nginx configuration is replaced with a custom configuration (nginx.conf), and the compiled assets from /app/dist/client-fe are made available in the Nginx server's root directory (/usr/share/nginx/html). The container is configured to expose port 80, which is standard for HTTP traffic.
+
+SECTION 2: List of All the Services Within the Container
+
+- Nginx Service: Responsible for serving the compiled front-end assets to users. Configured to listen on port 80 within the container.
+
+SECTION 3: Table with the Exposed Port and Related Service
+
+| Exposed Port | Related Service |
+|--------------|-----------------|
+| 4201         | Nginx Service   |
+
+This configuration highlights that the NFFH-client-FE container's primary role is to deliver the client-side interface of the NFFH system, making it accessible on the network via port 4201, which maps to the container's internal Nginx server port 80.

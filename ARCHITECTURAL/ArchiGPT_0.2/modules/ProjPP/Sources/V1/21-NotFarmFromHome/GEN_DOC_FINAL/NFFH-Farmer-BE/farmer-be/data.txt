@@ -1,0 +1,115 @@
+Class: Area
+Variable Name | Variable Type
+------------------------------
+id | Integer
+areaName | String
+
+Class: AreaPageProductResponse
+Variable Name | Variable Type
+------------------------------
+stores | List<Farmer>
+page | int
+total | int
+
+Class: CreateAreaInput
+Variable Name | Variable Type
+------------------------------
+
+Class: CreateFarmerInput
+Variable Name | Variable Type
+------------------------------
+
+Class: CreateFarmerResponse
+Variable Name | Variable Type
+------------------------------
+id | String
+username | String
+success | boolean
+
+Class: CreateProductInput
+Variable Name | Variable Type
+------------------------------
+
+Class: CreateProductResponse
+Variable Name | Variable Type
+------------------------------
+id | String
+title | String
+success | boolean
+
+Class: Farmer
+Variable Name | Variable Type
+------------------------------
+id | Integer
+username | String
+email | String
+password | String
+image | String
+area | String
+address | String
+
+Class: GetFarmerLightResponse
+Variable Name | Variable Type
+------------------------------
+id | String
+username | String
+image | String
+area | String
+address | String
+
+Class: LoginInput
+Variable Name | Variable Type
+------------------------------
+
+Class: LoginResponse
+Variable Name | Variable Type
+------------------------------
+password | String
+success | boolean
+id | String
+username | String
+
+Class: ModifyProductResponse
+Variable Name | Variable Type
+------------------------------
+id | String
+title | String
+success | boolean
+
+Class: Product
+Variable Name | Variable Type
+------------------------------
+id | Integer
+title | String
+seller | String
+image | String
+description | String
+price | String
+weight | String
+availability | Boolean
+
+Class: SellerPageProductResponse
+Variable Name | Variable Type
+------------------------------
+products | List<Product>
+page | int
+total | int
+
+Class: SignupResponse
+Variable Name | Variable Type
+------------------------------
+success | boolean
+id | String
+
+Class: VerifyTokenRequest
+Variable Name | Variable Type
+------------------------------
+token | String
+
+Class: VerifyTokenResponse
+Variable Name | Variable Type
+------------------------------
+success | boolean
+email | String
+role | String
+

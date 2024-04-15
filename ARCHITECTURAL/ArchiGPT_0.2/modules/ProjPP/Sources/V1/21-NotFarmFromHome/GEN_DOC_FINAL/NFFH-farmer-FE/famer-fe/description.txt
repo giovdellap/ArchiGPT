@@ -1,0 +1,14 @@
+
+NFFH-farmer-FE Service Description
+----------------------------------
+
+Behavior and Purpose:
+The NFFH-farmer-FE service is the frontend interface for farmers within the NFFH application. It allows farmers to interact with the system for managing crops, inventory, orders, and accessing analytics related to their farming operations. This service provides a user-friendly graphical interface tailored to the specific needs of farmers, facilitating efficient management of agricultural activities.
+
+Technologies, Programming Languages, Frameworks, and Libraries:
+1. Angular (version 16.2.0): A platform and framework for building single-page client applications using HTML and TypeScript, offering dynamic content loading and interactive interfaces.
+2. Angular Material (version 16.2.6): Supplies a wide range of Material Design components for Angular, aiding in the creation of a visually appealing and functional user interface.
+3. RxJS (~7.8.0): Utilized for reactive programming, essential for handling asynchronous data streams and event management within the application.
+4. TypeScript (~5.1.3): The primary programming language for development, enhancing JavaScript with static types, classes, and interfaces for better code quality and maintainability.
+5. Angular CLI (version 16.2.4): A command-line tool for initializing, developing, scaffolding, and maintaining Angular applications, simplifying common development tasks.
+

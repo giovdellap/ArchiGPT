@@ -1,0 +1,7 @@
+Endpoints Table:
+         Endpoint URL                                 Request Object Response Object HTTP Method
+/images/<role>/upload {"base64_image": "data:image/jpeg;base64,..."}             TBD        POST
+
+Request Object Data Structure:
+variable name                 variable type
+ base64_image string (base64 encoded image)
