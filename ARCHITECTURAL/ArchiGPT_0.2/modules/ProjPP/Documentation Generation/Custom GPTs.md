@@ -1,0 +1,105 @@
+# ProjPP Documentation Generation CustomGPT
+
+## Custom GPTs
+
+### Containers List Generator
+
+Version: 1
+
+Input: 
+- Source code
+
+Output:
+- Document B
+
+### Document C Generator
+
+Version: 2
+
+Input: 
+- Project source code
+- Existing documentation
+- User Stories
+- Document B
+- Document D (description) for all the services within the container
+
+Output:
+- Document C
+
+## DOCUMENT D (Service description)
+
+### Service Technologies Generator
+
+Version: 2
+
+User Prompt:
+CONTAINER NAME: container
+SERVICE NAME: service
+
+Input:
+- Service Source Code
+- User Stories
+- Document B
+- Document D (endpoints/datastructures)
+
+Output:
+- Document C
+    - Technologies
+
+### Service Behaviour Generator
+
+Version: 2
+
+User Prompt:
+CONTAINER NAME: container
+SERVICE NAME: service
+
+Input:
+- User Stories
+- Document B
+- Document D (endpoints/datastructures)
+- Document D (technologies)
+
+Output:
+- Document C
+    - Behaviour
+
+
+### Unified Endpoints Generator
+
+Version: 2
+ 
+Input:
+- User Stories
+- Single Source files
+
+Output:
+- Document D
+    - Endpoints
+    - Data Structures
+
+
+### Endpoints Solo Generator
+
+Version: 2
+
+Input:
+- User Stories
+- Single Source files
+
+Output:
+- Document D
+    - Endpoints
+
+
+### DataStructures Solo Generator
+
+Version: 2
+
+Input:
+- User Stories
+- Single Source files
+
+Output:
+- Document D
+    - Data Structures

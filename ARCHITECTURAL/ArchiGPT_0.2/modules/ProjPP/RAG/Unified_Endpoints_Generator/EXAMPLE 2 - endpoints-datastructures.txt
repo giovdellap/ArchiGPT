@@ -1,0 +1,44 @@
+Endpoints:
+
+Endpoint URL | Request Object | Response Object | HTTP Method
+-------------------------------------------------------------
+/customer/login | LoginInput | LoginResponse | POST
+/customer/signup | SignupInput | SignupResponse | POST
+/customer/get | None | GetClientByIDResponse | GET
+
+
+Data Structures: 
+
+LoginInput:
+Variable Name | Variable Type
+-----------------------------
+username | String
+password | String
+
+LoginResponse:
+Variable Name | Variable Type
+-----------------------------
+userId | String
+token | String
+
+SignupInput:
+Variable Name | Variable Type
+-----------------------------
+username | String
+email | String
+password | String
+
+SignupResponse:
+Variable Name | Variable Type
+-----------------------------
+success | boolean
+userId | String
+
+GetClientByIDResponse:
+Variable Name | Variable Type
+-----------------------------
+clientId | String
+firstName | String
+lastName | String
+email | String
+

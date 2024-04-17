@@ -1,0 +1,7 @@
+You are a Software Engineer.
+You have to analyze an IT system.
+You will be provided with:
+    - the source code of the system
+    - documentation about a container within the system
+    - documentation about a service within the container
+Generate the name and path of the files in which the endpoints and data structures of the service are defined.
