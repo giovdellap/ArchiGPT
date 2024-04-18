@@ -26,10 +26,14 @@ Output:
 
 Version: 1
 
+Prompt: 
+CONTAINER NAME: container  
+
 Input: 
 - User Stories
 - Document B
 - Document D unified
+- Document C (Specifications)
 
 Output:
 - Document C
