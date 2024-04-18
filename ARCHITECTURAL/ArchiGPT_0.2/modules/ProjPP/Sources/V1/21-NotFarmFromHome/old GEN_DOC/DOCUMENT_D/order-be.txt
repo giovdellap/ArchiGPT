@@ -1,0 +1,14 @@
+
+NFFH-Order-BE Service Description
+---------------------------------
+
+Behavior and Purpose:
+The NFFH-Order-BE service is designed to manage the order processing functionalities within the "Not Far(M) From Home" application. It handles tasks such as creating, updating, and tracking orders, in addition to integrating with payment processing services as required. This service is a pivotal component in the application's order management system, ensuring smooth operations and transactions.
+
+Technologies, Programming Languages, Frameworks, and Libraries:
+1. Java (OpenJDK 17): The primary programming language, providing a robust and efficient platform for developing complex backend systems.
+2. Spring Boot (version 3.1.4): Simplifies the development and deployment of Spring applications, offering conventions and defaults for rapid application development.
+3. Spring Data JPA: Facilitates database interactions, enabling efficient data access and manipulation through high-level object handling.
+4. Spring Web MVC: Part of Spring Boot Starter Web, used for building web applications and RESTful services with Spring MVC.
+5. Maven: A build automation tool used for managing project dependencies, automating builds, and facilitating project lifecycle management.
+

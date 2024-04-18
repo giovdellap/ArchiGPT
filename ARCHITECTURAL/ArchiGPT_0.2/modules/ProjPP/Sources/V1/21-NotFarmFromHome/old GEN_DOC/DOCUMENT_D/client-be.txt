@@ -1,0 +1,14 @@
+
+NFFH-Client-BE Service Description
+----------------------------------
+
+Behavior and Purpose:
+The NFFH-Client-BE service acts as the backend for the client-side of the NFFH application. It is responsible for processing business logic, managing data interactions, and communicating with databases and other backend services. This includes handling user authentication, data storage and retrieval, executing business transactions, and integrating with other services in the application's architecture.
+
+Technologies, Programming Languages, Frameworks, and Libraries:
+1. Java (OpenJDK 17): The primary programming language, providing a robust, secure, and high-performance environment for the service.
+2. Spring Boot (version 2.7.4): Simplifies the development of new Spring applications, offering configurations for rapid deployment and development of microservices.
+3. Spring Data JPA: Facilitates database interactions using Java Persistence API, enabling object-relational mapping for data persistence.
+4. Spring Web MVC: Part of Spring Boot Starter Web, used for building web applications and RESTful services with Spring MVC.
+5. Maven: A build automation tool used for managing project dependencies, automating the build process, and simplifying Java project configurations.
+

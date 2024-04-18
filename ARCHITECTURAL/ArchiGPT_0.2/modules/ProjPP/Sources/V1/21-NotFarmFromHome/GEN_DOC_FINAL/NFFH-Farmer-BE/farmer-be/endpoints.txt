@@ -1,15 +1,11 @@
+### Endpoints
 
-Endpoint URL, Request Object, Response Object, HTTP Method
-/farmer, CreateFarmerInput, SignupResponse, POST
-/farmer, None, List<Farmer>, GET
-/farmerFull/{id}, {id, token}, Farmer, GET
-/farmer/areas, {area, page}, AreaPageProductResponse, GET
-/farmer/login, LoginInput, LoginResponse, POST
-/product/add, CreateProductInput, CreateProductResponse, POST
-/product/modify/{id}, {CreateProductInput, id}, ModifyProductResponse, POST
-/product/{id}, {id}, Product, GET
-/product/seller/{username}, {username}, SellerPageProductResponse, GET
-/area, CreateAreaInput, Area, POST
-/area, None, List<Area>, GET
-/area/{page_number}, {page_number}, List<Area>, GET
-/area/{id}, {id}, None, DELETE
+Endpoint URL | Request Object | Response Object | HTTP Method
+-------------------------------------------------------------
+/area | CreateAreaInput | Area | POST
+/area | None | List<Area> | GET
+/farmer/register | CreateFarmerInput | Farmer | POST
+/farmers | None | List<Farmer> | GET
+/product | CreateProductInput | Product | POST
+/products | None | List<Product> | GET
+/product/{id} | CreateProductInput | ModifyProductResponse | PUT

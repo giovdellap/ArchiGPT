@@ -1,0 +1,9 @@
+Service Purpose
+The "news" service in the OneSport application plays a pivotal role in aggregating and managing sports-related news content. Its primary purpose is to furnish users with up-to-date and comprehensive sports news to keep sports enthusiasts and fans engaged and well-informed. Given the platform's commitment to serving as a one-stop destination for all things sports, this service ensures that users have continuous access to the latest updates, articles, and insights across various sports and athletic events. It facilitates content delivery by managing the lifecycle of news items—from creation to deletion—ensuring a dynamic and fresh news feed tailored to the preferences and interactions of the user base.
+
+Key Features
+News Feed Management: This service supports operations to view, post, edit, and delete news items. It enables users to fetch recent news or specific news by ID, maintaining a vibrant and current news section on the platform.
+Personalization and Interaction: Users can interact with the news service by adding articles to their favorites for later reading, a feature that promotes user engagement and personalization of content.
+Content Creation and Editing: The service offers endpoints for creating new news items and editing existing ones. These features are crucial for maintaining the relevancy and accuracy of the news content presented to the users.
+Robust Data Structure: It utilizes a well-defined data structure that includes fields such as title, author, publication date, and images, ensuring a rich presentation of news items.
+Comprehensive API Endpoints: The service's API endpoints cover a wide range of functionalities, from retrieving all news articles for a user to deleting specific news items, which facilitates a flexible and user-friendly interface for managing news content.

@@ -1,7 +1,0 @@
-Endpoints:
-
-Endpoint URL | Request Object | Response Object | HTTP Method
--------------------------------------------------------------
-/<role>/login | Login Request | Login Response | POST
-/<role>/signup | Signup Request | Signup Response | POST
-/verifyToken | Token Verification Request | Token Verification Response | POST

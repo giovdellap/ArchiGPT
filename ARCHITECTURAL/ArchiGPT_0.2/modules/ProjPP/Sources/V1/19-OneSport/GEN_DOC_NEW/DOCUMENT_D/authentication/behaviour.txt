@@ -1,12 +1,11 @@
-Service Description:
-The Authentication service in the single-container system is implemented using Python and the Flask framework. It utilizes several Flask extensions like Flask-JWT-Extended for managing JSON Web Tokens (JWTs) and Flask-Login for session management. This service is designed to handle user authentication processes, ensuring secure and stateless interactions between clients and other services within the system.
-The Authentication service provides a set of RESTful endpoints that facilitate various user-related operations:
-User Login: Users can log in by sending their email and password to the /login endpoint. On successful authentication, a JWT is returned, encapsulated in a LoginResponse object, which also indicates the operation's success.
-Token Verification: The /checkToken endpoint allows for the verification of the provided JWT to ensure it is still valid, returning a TokenResponse object that denotes the validity of the token.
-User Signup: New users can register by providing their email, password, and name to the /signup endpoint. This endpoint returns a SignupResponse object containing the new user ID and a success flag.
-User Logout: The /logout endpoint handles user logout requests and returns a LogoutResponse object indicating the success of the logout process.
-User Management: The service also supports retrieval, update, and deletion of user information through endpoints that interact with user data based on user ID or email.
-The system utilizes Flask-SQLAlchemy for database interactions, and the psycopg2 library for PostgreSQL connectivity, ensuring robust and efficient data handling. The service architecture adheres to the MVC pattern, promoting a clean separation of concerns between models, views, and controllers.
+Service Purpose
 
-Purpose:
-The primary purpose of the Authentication service is to manage user authentication and session management securely and efficiently. By leveraging JWTs, it ensures that the authentication process is stateless and secure, facilitating easy scaling and interaction within a microservices architecture.
+The "authentication" service within the OneSport platform serves as the critical component managing user authentication and session management. This service ensures that users can securely create accounts, log in, and manage their sessions, which is pivotal for maintaining the integrity and privacy of user data. Utilizing Flask-JWT-Extended, the service offers robust mechanisms for handling JSON Web Tokens, which facilitate secure and stateless interactions between the client and the server. This is essential not only for operational security but also for ensuring that user interactions with the platform remain seamless and secure, whether they are browsing news, managing profiles, or purchasing tickets.
+
+Key Features
+
+User Account Management: Supports operations such as user account creation, login, and logout, alongside editing user details and deleting accounts. This is facilitated by a range of endpoints handling specific data inputs and generating corresponding responses, such as LoginInput and LogoutResponse.
+Session Management: Utilizes Flask-Login for handling user sessions, critical for maintaining user state across different interactions with the application during a session.
+Security Features: Implements JSON Web Tokens (JWT) for authentication which enhances security by ensuring that each request from a client is verified for authenticity before being processed.
+Scalable User Validation: Offers endpoints like /checkToken to validate session tokens, ensuring that the user's sessions remain valid and secure throughout their interaction with the platform.
+RESTful API Interface: Designed with Flask, the service includes a well-defined RESTful API for handling requests and responses, making it efficient for front-end services to communicate with the authentication module.

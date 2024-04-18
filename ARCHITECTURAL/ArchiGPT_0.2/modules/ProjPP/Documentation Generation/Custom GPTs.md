@@ -2,7 +2,15 @@
 
 ## Custom GPTs
 
-### Containers List Generator
+### Document A
+
+#### User Stories Analyzer
+
+Version 1
+
+### Document B
+
+#### Containers List Generator
 
 Version: 1
 
@@ -12,29 +20,45 @@ Input:
 Output:
 - Document B
 
-### Document C Generator
+### Document C
 
-Version: 2
+#### Container Description Generator
+
+Version: 1
 
 Input: 
-- Project source code
-- Existing documentation
 - User Stories
 - Document B
-- Document D (description) for all the services within the container
+- Document D unified
 
 Output:
 - Document C
+    - Description
 
-## DOCUMENT D (Service description)
+#### Container Specification Generator
 
-### Service Technologies Generator
+Version: 1
+
+Input: 
+- Project source code
+- User Stories
+- Document B
+- Document D for all the services within the container
+
+Output:
+- Document C
+   - Specifications
+
+
+### DOCUMENT D (Service description)
+
+#### Service Technologies Generator
 
 Version: 2
 
-User Prompt:
-CONTAINER NAME: container
-SERVICE NAME: service
+User Prompt:  
+CONTAINER NAME: container  
+SERVICE NAME: service  
 
 Input:
 - Service Source Code
@@ -46,13 +70,13 @@ Output:
 - Document C
     - Technologies
 
-### Service Behaviour Generator
+#### Service Behaviour Generator
 
 Version: 2
 
-User Prompt:
-CONTAINER NAME: container
-SERVICE NAME: service
+User Prompt:  
+CONTAINER NAME: container  
+SERVICE NAME: service  
 
 Input:
 - User Stories
@@ -65,7 +89,7 @@ Output:
     - Behaviour
 
 
-### Unified Endpoints Generator
+#### Unified Endpoints Generator
 
 Version: 2
  
@@ -99,6 +123,7 @@ Version: 2
 Input:
 - User Stories
 - Single Source files
+- Document D (endpoints)
 
 Output:
 - Document D

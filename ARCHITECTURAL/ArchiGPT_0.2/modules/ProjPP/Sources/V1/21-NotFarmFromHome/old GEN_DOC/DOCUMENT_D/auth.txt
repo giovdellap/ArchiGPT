@@ -1,0 +1,14 @@
+
+NFFH-Auth Service Description
+-----------------------------
+
+Behavior and Purpose:
+The NFFH-Auth service is responsible for handling authentication within the NFFH system. It provides RESTful endpoints for user authentication, token generation, and validation. The service ensures secure access to various parts of the system by verifying user credentials and issuing JSON Web Tokens (JWT) for authorized sessions. It may also interact with other services for user management and access control.
+
+Technologies, Programming Languages, Frameworks, and Libraries:
+1. Python (version 3.11.6): The primary programming language used for developing the NFFH-Auth service.
+2. Flask (version 3.0.0): A lightweight WSGI web application framework used to create the web service endpoints.
+3. gunicorn (version 21.2.0): A Python WSGI HTTP Server for UNIX, serving the Flask application in a production environment.
+4. pyjwt (version 1.7.1): A Python library for encoding and decoding JWTs, integral for the authentication mechanisms.
+5. cryptography (version 41.0.4): Provides cryptographic recipes and primitives for secure operations, such as password storage.
+

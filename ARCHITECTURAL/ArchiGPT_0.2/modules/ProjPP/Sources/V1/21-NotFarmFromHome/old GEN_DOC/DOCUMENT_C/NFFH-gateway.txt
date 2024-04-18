@@ -1,0 +1,17 @@
+SECTION 1: Textual Description of the Container's Behavior and the Function It Serves
+
+The NFFH-gateway container is configured to operate as the API gateway, a crucial component that routes requests to the appropriate microservices within the NFFH ecosystem, including client backend (client-be), authentication (auth), farmer backend (farmer-be), image services (image), and order backend (order-be). The Dockerfile located within the ./src directory is used to build the service, suggesting custom logic for request routing, load balancing, and possibly authentication and authorization.
+
+The container is designed to expose port 8080, indicating its role as the entry point for external requests to the system. By managing traffic to various parts of the application, it enhances security, provides a single point of entry, and facilitates microservices architecture by decoupling the client interface from backend services.
+
+SECTION 2: List of All the Services Within the Container
+
+- API Gateway Service: The primary service within this container, responsible for routing requests to various microservices based on the request path, method, and other headers. It is built to handle a wide range of tasks, including request routing, load balancing, authorization, and access control.
+
+SECTION 3: Table with the Exposed Port and Related Service
+
+| Exposed Port | Related Service   |
+|--------------|-------------------|
+| 8080         | API Gateway Service |
+
+This setup highlights the NFFH-gateway container's pivotal role in orchestrating communication between different parts of the system, facilitating a smooth interaction pattern among microservices, and streamlining client access to the system’s functionalities.
