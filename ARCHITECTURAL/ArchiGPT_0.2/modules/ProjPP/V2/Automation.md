@@ -121,8 +121,8 @@ N.B.:
     - OUTPUT: Document D endpoints
         - endpoints.txt
 
-12. HUMAN VERIFICATION endpoints.txt
-    - OK: Go to **8**
+12. HUMAN VERIFICATION datastructures.txt
+    - OK: Go to **13**
     - NO: Regenerate
 
 13. SAVE datastructures.txt in /GEN_DOC/container_name/service_name
