@@ -12,7 +12,7 @@ N.B.:
     - source.zip
     - old documentation
     - User Stories.txt
-    - services zip (F)
+    - services (F)
 
 ## Activities Types
 
@@ -32,6 +32,13 @@ N.B.:
 
 - CREATE FOLDER (folder name) in (path)
 
+- UNIFY DOCUMENTS
+    - INPUT:
+        - (path file 1)
+        - (path file 2)
+    
+    - OUTPUT: (path output file)
+
 
 ## Detailed activities pripeline:
 
@@ -47,9 +54,9 @@ N.B.:
     - OK: Go to 3
     - NO: Regenerate
 
-3. SAVE DOCUMENT_B.txt from **1** to Project/GEN_DOC
+3. SAVE DOCUMENT_B.txt from **1** to /GEN_DOC
 
-4. CREATE FOLDERS in Project/GEN_DOC
+4. CREATE FOLDERS in /GEN_DOC
     - For each container, create the following scaffolding:
         - container_name
 
@@ -67,21 +74,23 @@ N.B.:
     - YES: Go to 
     - NO: Go to 
 
-3. CREATE FOLDER service_name in Project/GEN_DOC/container_name
+3. CREATE FOLDER service_name in /GEN_DOC/container_name
 
 4. API CALL Unified Endpoints Generator
     - RAG: PRESENT
     - SYSTEM PROMPT: Unified Endpoints Generator
     - USER PROMPT: NONE
     - USER INPUT:
-        - User Stories.txt
-        - service.zip or single source files (inserted by the operator)
+        - /User Stories.txt
+        - /services/service.zip or single source files (inserted by the operator)
     - OUTPUT: Document D endpoints-datastructures
         - endpoints-datastructures.txt
 
-5. HUMAN VERIFICATION endpoints-datastructures.txt
+5. HUMAN VERIFICATION endpoints-datastructures.txt in /GEN_DOC/container_name/service_name
     - OK: Go to 
-    - NO: Regenerate/Go to
+    - NO: Regenerate/Go to **13**
+    
+6. SAVE endpoint-datastructures.txt in 
 
 6. API CALL Endpoints Solo Generator
     - RAG: PRESENT
@@ -89,15 +98,37 @@ N.B.:
     - USER PROMPT: NONE
     - USER INPUT:
         - User Stories.txt
-        - service.zip or single source files (inserted by the operator)
+        - services/service.zip or single source files (inserted by the operator)
     - OUTPUT: Document D endpoints
         - endpoints.txt
 
 7. HUMAN VERIFICATION endpoints.txt
-    - OK: Go to 
+    - OK: Go to **8**
     - NO: Regenerate
 
-8. SAVE DOCUMENT endpoints.txt in Project/GEN_DOC/container_name/service_name
+8. SAVE endpoints.txt in /GEN_DOC/container_name/service_name
 
-9. 
+9. API CALL DataStructures Solo Generator
+    - RAG: PRESENT
+    - SYSTEM PROMPT: DataStructures Solo Generator
+    - USER PROMPT: NONE
+    - USER INPUT:
+        - /User Stories.txt
+        - /GEN_DOC/container_name/service_nameendpoints.txt
+        - /services/service.zip or single source files (inserted by the operator)
+    - OUTPUT: Document D endpoints
+        - endpoints.txt
+
+10. HUMAN VERIFICATION endpoints.txt
+    - OK: Go to **8**
+    - NO: Regenerate
+
+11. SAVE datastructures.txt in /GEN_DOC/container_name/service_name
+
+12. UNIFY DOCUMENTS
+    - INPUT:
+        - /GEN_DOC/container_name/service_name/endpoints.txt
+        - /GEN_DOC/container_name/service_name/datastructures.txt
+    
+    - OUTPUT: /GEN_DOC/container_name/service_name/endpoints-datastructures.txt
 
