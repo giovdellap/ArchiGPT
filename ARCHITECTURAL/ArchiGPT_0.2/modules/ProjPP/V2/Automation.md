@@ -86,13 +86,15 @@ N.B.:
     - OUTPUT: Document D endpoints-datastructures
         - endpoints-datastructures.txt
 
-5. HUMAN VERIFICATION endpoints-datastructures.txt in /GEN_DOC/container_name/service_name
-    - OK: Go to 
-    - NO: Regenerate/Go to **13**
+5. HUMAN VERIFICATION endpoints-datastructures.txt
+    - OK: Go to **6**
+    - NO: Regenerate/Go to **8**
     
-6. SAVE endpoint-datastructures.txt in 
+6. SAVE endpoint-datastructures.txt in /GEN_DOC/container_name/service_name
 
-6. API CALL Endpoints Solo Generator
+7. GO TO **15**
+
+8. API CALL Endpoints Solo Generator
     - RAG: PRESENT
     - SYSTEM PROMPT: Endpoints Solo Generator
     - USER PROMPT: NONE
@@ -102,13 +104,13 @@ N.B.:
     - OUTPUT: Document D endpoints
         - endpoints.txt
 
-7. HUMAN VERIFICATION endpoints.txt
+9. HUMAN VERIFICATION endpoints.txt
     - OK: Go to **8**
     - NO: Regenerate
 
-8. SAVE endpoints.txt in /GEN_DOC/container_name/service_name
+10. SAVE endpoints.txt in /GEN_DOC/container_name/service_name
 
-9. API CALL DataStructures Solo Generator
+11. API CALL DataStructures Solo Generator
     - RAG: PRESENT
     - SYSTEM PROMPT: DataStructures Solo Generator
     - USER PROMPT: NONE
@@ -119,16 +121,17 @@ N.B.:
     - OUTPUT: Document D endpoints
         - endpoints.txt
 
-10. HUMAN VERIFICATION endpoints.txt
+12. HUMAN VERIFICATION endpoints.txt
     - OK: Go to **8**
     - NO: Regenerate
 
-11. SAVE datastructures.txt in /GEN_DOC/container_name/service_name
+13. SAVE datastructures.txt in /GEN_DOC/container_name/service_name
 
-12. UNIFY DOCUMENTS
+14. UNIFY DOCUMENTS
     - INPUT:
         - /GEN_DOC/container_name/service_name/endpoints.txt
         - /GEN_DOC/container_name/service_name/datastructures.txt
-    
     - OUTPUT: /GEN_DOC/container_name/service_name/endpoints-datastructures.txt
+
+15. 
 
