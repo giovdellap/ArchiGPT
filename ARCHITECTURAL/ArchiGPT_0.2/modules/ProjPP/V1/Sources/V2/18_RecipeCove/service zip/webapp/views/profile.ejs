@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% if (connected==true){ %>
+		var id_utente = info_utente.id;
+<head>
+    <link rel="stylesheet" href="css/profile.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+	<div style="display: none;">
+		<div id="id_utente" value="<%=info_utente.id%>"></div>
+		<div id="my_list">
+			<% for (var i=0; i<info_utente.my_list.length; i++){ %>
+				<div id="list_item_<%=i%>" value="<%=info_utente.my_list[i]%>"></div>
+			<%}%>
+		</div>
+	</div>
+    <div class="my-navbar">
+        <h3 class="recipe-cove-logo" onclick="location.href='/'">
+            Recipe Cove
+        </h3>
+        <div class="my-navbar-menù">
+            <!-- <a href="/">Home</a> -->
+            <%if (connected==true){%>
+                <a href="profile">Profile</a>
+                <form action='logout'>
+                    <button>LOGOUT</button>
+                </form> 
+            <%}else{%>
+                <div style="display:none">><a href="profile">Profile</a></div>
+                <form action='login'>
+                    <button>LOGIN</button>
+                </form> 
+            <%}%>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="main-box soft-shadow">
+            <br>
+            <% if (info_utente!=""){ %>
+            <div class="barra-princ">
+                <img style="border-radius: 50%; height:100px; width:100px" src=<%= info_utente.picture %>> 
+                <div class=barra-princ-nome>
+                    <h3><%= info_utente.name %></h3>
+                    <p>
+                        Name: <%= info_utente.given_name %><br>
+                        Surname: <%= info_utente.family_name %><br>
+                        Nationality: <%= info_utente.locale%>
+                    </p>
+                </div>
+                <div class="settings">
+                    <button class="settings-btn"><i class="bi bi-gear"></i>  <i style="font-size:14px;" class="bi bi-caret-down-fill"></i></button>
+                    <div class="settings-content">
+                        <a href="https://localhost:3000/delete_account?<%=info_utente.id%>">Delete account</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="profile-content">
+                <div class="calendar-container">
+					<% if (info_utente.calendar!=""){ %>
+					<div class="calendar-section-container">
+						<div>
+							<h5>Your Calendar</h5>
+						</div>
+						<div>
+							<a href="https://localhost:3001/delete_calendar?id=<%=info_utente.id%>&google_token=<%=google_token%>"><button class="calendario"><i class="bi bi-dash"></i></button></a>
+							<a href="/add_calendar"><button disabled class="calendario"><i class="bi bi-plus"></i></button></a>
+						</div>
+					</div>
+					<iframe src="https://calendar.google.com/calendar/embed?src=<%= info_utente.calendar %>&src=it.italian%23holiday%40group.v.calendar.google.com&ctz=Europe%2FRome" style="border: 0" width="90%" height="400" frameborder="0" scrolling="no"></iframe>
+					<% } else { %>
+					<div class="calendar-section-container">
+						<div>
+							<h5>Your Calendar</h5>
+						</div>
+						<div>
+							<a href="/delete_calendar"><button disabled class="calendario"><i class="bi bi-dash"></i></button></a>
+							<a href="https://localhost:3001/add_calendar?id=<%=info_utente.id%>&google_token=<%=google_token%>"><button class="calendario"><i class="bi bi-plus"></i></button></a>
+						</div>
+					</div>
+					<p style="font-size: 15px; color: black; text-align: left; width: 100%; padding: 0 30px;">No calendar to show...</p>
+					<% } %>
+                </div>
+                <div class="favorite-list-container">
+					<div>
+						<h5>Your favorite recipes</h5>
+					</div>
+					<% if (info_utente.my_list.length>0){ %>
+                    <% for (var i=0; i<info_utente.my_list.length; i++){ %>
+                        <div class="favorite-list-item-container">
+							<!-- Split the my list item by the separator, show its title and add an href element to the element itself redirecting to page results_title with the recipe id as query parameter -->
+							<!-- <div><%= info_utente.my_list[i]%></div> -->
+							<% let separator = "#|§|@|§|#"; %>
+							<% let title = info_utente.my_list[i]; %>
+							<% let recipe_id = -1; %>
+							<% if (info_utente.my_list[i].includes(separator)) { %>
+								<% title = info_utente.my_list[i].split(separator)[0]; %>
+								<% recipe_id = info_utente.my_list[i].split(separator)[1]; %>
+							<% } %>
+							<a href="https://localhost:3000/results_title?id=<%=recipe_id%>"><%= title %></a>
+                            <div><button class="delete-btn" onclick='javascript:remove("<%=info_utente.id%>","<%=info_utente.my_list[i]%>")'><i class='bi bi-trash3'></i></button></div>
+						</div> 
+                    <%}%>
+					<% } else { %>
+						<p style="font-size: 15px; color: black; text-align: left; width: 100%; padding: 0 2px;">You don't have any favorite recipe...</p>
+					<% } %>
+                </div>
+            </div>
+            <%}%>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function remove(id_utente, list_item){
+            var xhttp = new XMLHttpRequest();
+			let separator = "#|§|@|§|#";
+			let title = list_item;
+			let recipe_id = -1;
+			if (list_item.includes(separator)) {
+				title = list_item.split(separator)[0];
+				recipe_id = list_item.split(separator)[1];
+			}
+            // xhttp.open("POST", '/removeFavorites?id='+id_utente.toString()+"&title="+ title, true);
+            xhttp.open("POST", '/removeFavorites?id='+id_utente.toString()+"&title="+ encodeURI(title.toString())+"&recipe_id="+encodeURI(recipe_id.toString()), true);
+            xhttp.send();
+            setTimeout(reload,300);
+        }
+        function reload(){
+            window.location.reload();
+        }
+    </script>
+	<script type="text/javascript">
+		console.log("Type 'remove_all_recipes()' in the console to remove all recipes from the favorite list of the current user");
+		let id_utente = document.getElementById("id_utente").getAttribute("value");
+		let my_list = document.getElementById("my_list");
+		let list_items = my_list.getElementsByTagName("div");
+		let list = [];
+		for (let i=0; i<list_items.length; i++){
+			list.push(list_items[i].getAttribute("value"));
+		}
+		function remove_all_recipes(){
+			// Call removeFavorites for all recipes in the favorite list of the user
+			console.log("Removing all recipes from favorite list of user "+id_utente);
+			console.log("Current recipes: ")
+			console.log(list);
+			// Iterate and remove all recipes
+			for (let i=0; i<list.length; i++){
+				let separator = "#|§|@|§|#";
+				let title = list[i];
+				let recipe_id = -1;
+				if (list[i].includes(separator)) {
+					title = list[i].split(separator)[0];
+					recipe_id = list[i].split(separator)[1];
+				}
+				console.log("Removing recipe "+title+" with id "+recipe_id);
+				let xhttp = new XMLHttpRequest();
+				xhttp.open("POST", '/removeFavorites?id='+id_utente.toString()+"&title="+ encodeURI(title.toString())+"&recipe_id="+encodeURI(recipe_id.toString()), true);
+				xhttp.send();
+			}
+		}
+	</script>
+</body>
+<%}%>
+</html>

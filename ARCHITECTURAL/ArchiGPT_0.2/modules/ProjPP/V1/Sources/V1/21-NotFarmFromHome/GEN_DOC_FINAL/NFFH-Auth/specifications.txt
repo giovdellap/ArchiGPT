@@ -1,0 +1,7 @@
+### Services:
+- auth
+
+### Ports:
+| Exposed Port/Internal Port | Related Service |
+|----------------------------|-----------------|
+| 9701:9701                  | auth            |
