@@ -1,7 +1,5 @@
 # Service Technologies Generator
 
-## Version 1
-
 RAG:
 - Example from NFFH-Auth
 
