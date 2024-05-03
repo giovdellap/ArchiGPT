@@ -76,7 +76,7 @@ assistant = client.beta.assistants.create(
 	""",
     name="Unified Endpoints Generator",
     tools=[{"type": "code_interpreter"},{"type": "file_search"}],
-    model="gpt-3.5-turbo",
+    model="gpt-4-turbo-2024-04-09",
     tool_resources={
 		"code_interpreter": {
 		"file_ids": [rag_code_1_file.id,rag_code_2_file.id]
