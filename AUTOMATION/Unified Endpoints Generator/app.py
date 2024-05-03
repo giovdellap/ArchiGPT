@@ -16,7 +16,7 @@ rag_folder_name = "RAG"
 user_folder_name = "USER"
 #rag_path = rag_folder_name
 #user_path = user_folder_name
-current_path = os.getcwd()
+current_path = os.current_path = os.path.dirname(os.path.realpath(__file__))
 rag_path = os.path.join(current_path, rag_folder_name)
 user_path = os.path.join(current_path, user_folder_name)
 
