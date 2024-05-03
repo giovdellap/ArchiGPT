@@ -29,7 +29,9 @@ Generate a text containing:
     - variable name
     - variable type
 
-Your knowledge presents two examples with the source files and the related generated document
+You have 2 examples of the process:
+- assistant's Code interpreter contains source files of the examples
+- assistant's File search contains two output examples 
 
 ### Code Interpreter
 - EXAMPLE 1 - source file.py
