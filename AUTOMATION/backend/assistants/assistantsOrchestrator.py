@@ -8,9 +8,9 @@ from assistants.assistantFactory import AssistantFactory
 class AssistantOrchestrator:
 
 	def __init__(self) :
-		self.client = OpenAI(api_key = current_app.config['ASSISTANT_API'])
+		self.client = OpenAI(api_key = current_app.config['OPENAI_API_KEY'])
 
-	def assistantCreation(self,name,model,zip_file):
+	def assistantCreation(self,name,model,user_files):
 
 		# Factory Method pattern 
 		assistantObj = AssistantFactory()

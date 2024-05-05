@@ -10,7 +10,7 @@ from EventHandler import EventHandler
 api_key = os.getenv("OPENAI_API_KEY", "sk-proj-qTNW2Bsgu02jS5sSuBXHT3BlbkFJ3r32uljTh68oZtY1OTu8")
 #api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=api_key)
-vector_store = "UEG_VS"
+vector_store_name = "UEG_VS"
 rag_folder_name = "RAG"
 user_folder_name = "USER"
 #rag_path = rag_folder_name
@@ -39,7 +39,7 @@ rag_search_2_path = os.path.join(rag_path, 'EXAMPLE 2 - result.txt')
 print("SEARCH PATHS:", rag_search_1_path, rag_search_2_path)
 
 # Vector Store Creation
-vector_store = client.beta.vector_stores.create(name=vector_store)
+vector_store = client.beta.vector_stores.create(name=vector_store_name)
 file_paths = [rag_search_1_path, rag_search_2_path]
 file_streams = [open(path, "rb") for path in file_paths]
 file_batch = client.beta.vector_stores.file_batches.upload_and_poll(

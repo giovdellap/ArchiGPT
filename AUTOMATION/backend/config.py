@@ -5,4 +5,4 @@ load_dotenv()
 
 
 class ApplicationConfig:
-    ASSISTANT_API = os.environ["ASSISTANT_API"]
+    OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]

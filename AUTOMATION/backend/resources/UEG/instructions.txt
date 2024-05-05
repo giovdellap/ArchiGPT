@@ -4,7 +4,7 @@ You will be provided with:
     - a description of the system's purpose and its user stories
     - the source files related to endpoints and data structures within the service
 
-Generate a txt file named "endpoints-datastructures" containing:
+Generate a text containing:
 1) a table with the following columns:
     - Endpoint URL (example: /animals/cats)
     - Request object
@@ -15,4 +15,6 @@ Generate a txt file named "endpoints-datastructures" containing:
     - variable name
     - variable type
 
-Your knowledge presents two examples with the source files and the related generated document
+You have 2 examples of the text to be generated:
+    - assistant's Code interpreter contains source files of the examples
+    - assistant's File search contains two output examples 

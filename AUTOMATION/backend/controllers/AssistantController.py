@@ -11,12 +11,12 @@ def create_assistant():
         name = request.form['name']
         model = request.form['model']
         
-        if 'file' not in request.files:
-            return jsonify({"message": "File zip not found"}), 400
-        zip_file = request.files['file']
+        if not request.files:
+            return jsonify({"message": "No files were uploaded."}), 400
+        user_files = request.files
         
         assistant = AssistantOrchestrator()
-        assistant_id = AssistantOrchestrator.assistantCreation(assistant,name,model,zip_file)
+        assistant_id = AssistantOrchestrator.assistantCreation(assistant,name,model,user_files)
         return jsonify({"assistant_id": assistant_id}), 200
     except Exception as e:
         print("Exception: %s", e)
