@@ -3,6 +3,7 @@ from flask_cors import CORS
 import os
 from config import ApplicationConfig
 from routes.assistant_bp import assistant_bp
+from routes.thread_bp import thread_bp
 
 
 app = Flask(__name__)
@@ -12,6 +13,7 @@ app.config['basedir'] = os.path.abspath(os.path.dirname(__file__))
 app.config.from_object(ApplicationConfig)
 
 app.register_blueprint(assistant_bp, url_prefix='/assistant')
+app.register_blueprint(thread_bp, url_prefix='/thread')
 
 
 @app.route("/", methods=['GET'])

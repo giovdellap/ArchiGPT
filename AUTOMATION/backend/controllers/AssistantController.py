@@ -1,7 +1,7 @@
 from flask import request, jsonify
 from flask import jsonify, request
 
-from assistants.assistantsOrchestrator import AssistantOrchestrator
+from api_reference.assistants.assistantsOrchestrator import AssistantOrchestrator
 
 
 def create_assistant():
@@ -11,12 +11,12 @@ def create_assistant():
         name = request.form['name']
         model = request.form['model']
         
-        if not request.files:
-            return jsonify({"message": "No files were uploaded."}), 400
-        user_files = request.files
+        # if not request.files:
+        #     return jsonify({"message": "No files were uploaded."}), 400
+        # user_files = request.files
         
         assistant = AssistantOrchestrator()
-        assistant_id = AssistantOrchestrator.assistantCreation(assistant,name,model,user_files)
+        assistant_id = AssistantOrchestrator.assistantCreation(assistant,name,model)
         return jsonify({"assistant_id": assistant_id}), 200
     except Exception as e:
         print("Exception: %s", e)
