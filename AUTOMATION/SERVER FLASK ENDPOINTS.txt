@@ -1,0 +1,5 @@
+/createProject(name): crea un progetto sul db mongo
+/getProjects(): tutti i progetti sul db
+/getDocuments(projId): ritorna i documenti nel progetto
+/availableGenerations(projId): ritorna i documenti fattibili del progetto
+/useAssistant(projId, documentToGenerate, attachedFiles)
