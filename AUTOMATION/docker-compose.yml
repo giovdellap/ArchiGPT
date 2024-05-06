@@ -1,6 +1,7 @@
 services:
 
-  backend: 
+  backend:
+    container_name: backend
     build: ./backend
     ports:
       - "5001:5001"
@@ -18,14 +19,16 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=user
       - MONGO_INITDB_ROOT_PASSWORD=pass
-    networks:
-      - main-network
     volumes:
       - ./mongo-volume:/var/lib/data/db
+    networks:
+      - main-network
 
   mongo-express:
     image: mongo-express
     restart: always
+    depends_on:
+      - mongodb
     ports:
       - 8081:8081
     environment:
