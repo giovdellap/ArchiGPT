@@ -9,3 +9,16 @@ def threadCreationHandler():
     except Exception as e:
         print("Thread creation failed:", e)
         return None
+    
+    
+def fileCreationHandler(file):
+    try:
+        fileObj = current_app.config['CLIENT'].files.create(
+            file=file.read(),
+            purpose='assistants'
+        )
+        print("File uploaded successfully:", fileObj.id)
+        return fileObj
+    except Exception as e:
+        print("File upload failed:", e)
+        return None

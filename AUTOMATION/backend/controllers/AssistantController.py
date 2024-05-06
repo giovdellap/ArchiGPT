@@ -11,10 +11,6 @@ def create_assistant():
         name = request.form['name']
         model = request.form['model']
         
-        # if not request.files:
-        #     return jsonify({"message": "No files were uploaded."}), 400
-        # user_files = request.files
-        
         assistant = AssistantOrchestrator()
         assistant_id = AssistantOrchestrator.assistantCreation(assistant,name,model)
         return jsonify({"assistant_id": assistant_id}), 200
