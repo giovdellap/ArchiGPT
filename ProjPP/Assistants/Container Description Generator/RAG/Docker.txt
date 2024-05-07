@@ -1,0 +1,403 @@
+In this file, pieces of code are between ************
+Remember that in a docker-compose.yaml file, the comments are preceeded by #
+
+#### Structure of the Docker-Compose file
+
+Compose allows us developers to easily handle multiple docker containers at once by applying many rules which are declared in a docker-compose.yml file.
+It consists of multiple layers that are split using tab stops or spaces instead of the braces we know in most programming languages. There are four main things almost every Compose-File should have which include:
+- The version of the compose file
+- The services which will be built
+- All used volumes
+- The networks which connect the different services
+
+A sample file could look like this:
+
+************
+version: '3.3'
+
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: somewordpress
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: wordpress
+
+   wordpress:
+     depends_on:
+       - db
+     image: wordpress:latest
+     ports:
+       - "8000:80"
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: wordpress
+       WORDPRESS_DB_NAME: wordpress
+volumes:
+    db_data: {}
+************
+
+As you can see this file contains a whole WordPress application including the MySQL database. Each of these services is treated as a separate container that can be swapped in and out when you need it.
+Now that we know the basic structure of a Compose file let’s continue by looking at the important concepts.
+
+
+#### Concepts / Keywords
+The core aspects of the Compose file are its concepts which allow it to manage and create a network of containers. In this section, we will explore these concepts in detail and take a look at how we can use them to customize our Compose configuration.
+
+### Services
+The services tag contains all the containers which are included in the Compose file and acts as their parent tag.
+************
+services:
+  proxy:
+    build: ./proxy
+  app:
+    build: ./app
+  db:
+    image: postgres
+************
+Here you can see that the services tag contains all the containers of the Compose configuration.
+
+
+### Base image (Build)
+The base image of a container can be defined by either using a preexisting image that is available on DockerHub or by building images using a Dockerfile.
+Here are some basic examples:
+
+EXAMPLE 1:
+************
+version: '3.3'
+
+services:
+    alpine:
+        image: alpine:latest
+        stdin_open: true
+        tty: true
+        command: sh
+************
+Here we use a predefined image from DockerHub using the image tag.
+
+EXAMPLE 2:
+************
+version: '3.3'
+services:
+    app:
+        container_name: website
+        restart: always
+        build: .
+        ports:
+            - '3000:3000'
+    command:
+        - 'npm run start'
+************
+In this example, we define our images using the build tag which takes the destination of our Dockerfile as a parameter.
+
+EXAMPLE 3:
+
+The last option of defining the base image is to use a Dockerfile with a custom name.
+************
+build:
+    context: ./dir
+    dockerfile: Dockerfile.dev
+************
+
+
+### Ports
+Exposing the ports in Compose works similarly as in the Dockerfile. We differentiate between two different methods of exposing the port:
+
+
+METHOD 1: Exposing the port to linked services:
+************
+expose:
+ - "3000"
+ - "8000"
+************
+
+Here we publish the ports to the linked services of the container and not to the host system.
+
+
+METHOD 2: Exposing the port to the host system:
+************
+ports:
+  - "8000:80"  # host:container
+************
+
+In this example, we define which port we want to expose and the host port it should be exposed to.
+
+
+### Commands
+Commands are used to execute actions once the container is started and act as a replacement for the CMD action in your Dockerfile.
+
+The CMD action is the first command that gets executed when the container is started and is therefore mostly used to start a process e.g. start your website through a CLI command like npm run start.
+************
+app:
+        container_name: website
+        restart: always
+        build: ./
+        ports:
+            - '3000:3000'
+        command:
+            - 'npm run start'
+************
+Here we create a service for a website and add the starting command using the command tag. This command will be executed after the container has started and will then start the website.
+
+### Volumes
+Volumes are Docker’s preferred way of persisting data which is generated and used by Docker containers. They are completely managed by Docker and can be used to share data between containers and the Host system.
+They do not increase the size of the containers using it, and their context is independent of the lifecycle of the given container.
+
+There are multiple types of volumes you can use in Docker. They can all be defined using the volumes keyword but have some minor differences which we will talk about now.
+
+Normal Volume:
+The normal way to use volumes is by just defining a specific path and let the Engine create a volume for it. This can be done like this:
+************
+volumes:
+  # Just specify a path and let the Engine create a volume
+  - /var/lib/mysql
+************
+
+Path mapping:
+You can also define absolute path mapping of your volumes by defining the path on the host system and mapping it to a container destination using the: operator.
+************
+volumes:
+  - /opt/data:/var/lib/mysql
+************
+Here you define the path of the host system followed by the path of the container.
+
+Named volume:
+Another type of volume is the named volume which is similar do the other volumes but has its own specific name that makes it easier to use on multiple containers. That’s why it’s often used to share data between multiple containers and services.
+************
+volumes:
+  - datavolume:/var/lib/mysql
+************
+
+### Dependencies:
+Dependencies in Docker are used to make sure that a specific service is available before the dependent container starts. This is often used if you have a service that can’t be used without another one e.g. a CMS (Content Management System) without its database.
+************
+   ghost:
+        container_name: ghost
+        restart: always
+        image: ghost
+        ports:
+            - 2368:2368
+        environment:
+            - .
+        depends_on: [db]
+    db:
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+************
+Here we have a simple example of a Ghost CMS which depends on the MySQL database to work and therefore uses the depends_on command. The depends_on command takes an array of string which defines the container names the service depends on.
+
+### Environment variables:
+Environment variables are used to bring configuration data into your applications. This is often the case if you have some configurations that are dependent on the host operating system or some other variable things that can change.
+There are many different options of passing environment variables in our Compose file which we will explore here:
+
+Setting an environment variable:
+You can set environment variables in a container using the environment keyword, just like with the normal docker container run --environment command in the shell.
+************
+web:
+  environment:
+    - NODE_ENV=production
+************
+In this example, we set an environment variable by providing a key and the value for that key.
+
+Passing an environment variable:
+You can pass environment variables from your shell straight to a container by just defining an environment key in your Compose file and not giving it a value.
+************
+web:
+  environment:
+    - NODE_ENV
+************
+Here the value of NODE_ENV is taken from the value from the same variable in the shell which runs the Compose file.
+
+Using an .env file:
+Sometimes a few environment variables aren’t enough and managing them in the Compose file can get pretty messy. That is what .env files are for. They contain all the environment variables for your container and can be added using one line in your Compose file.
+************
+web:
+  env_file:
+    - variables.env
+************
+
+### Networking
+Networks define the communication rules between containers, and between containers and the host system. They can be configured to provide complete isolation for containers, which enables building applications that work together securely.
+By default, Compose sets up a single network for each container. Each container is automatically joining the default network which makes them reachable by both other containers on the network, and discoverable by the hostname defined in the Compose file.
+
+Specify custom networks:
+Instead of only using the default network you can also specify your own networks within the top-level networks key, allowing to create more complex topologies and specifying network drivers and options.
+************
+networks:
+  frontend:
+  backend:
+    driver: custom-driver
+    driver_opts:
+      foo: "1"
+************
+
+Each container can specify what networks to connect to with the service level networks keyword, which takes a list of names referencing entries of the top-level networks keyword.
+************
+services:
+  proxy:
+    build: ./proxy
+    networks:
+      - frontend
+  app:
+    build: ./app
+    networks:
+      - frontend
+      - backend
+  db:
+    image: postgres
+    networks:
+      - backend
+************
+
+You can also provide a custom name to your network (since version 3.5):
+************
+version: "3.5"
+networks:
+  webapp:
+    name: website
+    driver: website-driver
+************
+
+External (Pre-existing) networks:
+You can use pre-existing networks with Docker Compose using the external option.
+************
+networks:
+  default:
+    external:
+      name: pre-existing-network
+************
+In this example, Docker never creates the default network and just uses the pre-existing network defined in the external tag.
+
+Configure the default networks:
+Instead of defining your own networks you could change the settings of the default network by defining an entry with the name default under the networks keyword.
+************
+version: "3"
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+  db:
+    image: postgres
+
+networks:
+  default:
+    driver: custom-driver
+************
+
+Linking containers:
+You may also define extra aliases for your containers that services can use to communicate with each other. Services in the same network can already reach one another. Links then only define other names under which the container can be reached.
+************
+version: "3"
+services:
+    web:
+        build: . 
+        links: 
+            - "db:database"
+    db:
+        image: mongo
+************
+In this example, the web container can reach the database using one of the two hostnames (db or database).
+
+### Example
+Now that we have gone through the theory of Compose let’s see some of the magic we just talked about in action. For that, we are going to build a simple Node.js application with a Vue.js frontend which we will deploy using the tools we learned about earlier.
+
+Now that we have the project setup lets continue by writing our first Dockerfile for the Node.js backend.
+************
+FROM node:latest
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package*.json ./
+
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+EXPOSE 3000:3000
+CMD [ "node", "server.js" ]
+************
+All right, let’s understand what’s going on here by walking through the code:
+First, we define the base image using the FROM keyword
+Then we set the directory we are going to work in and copy our local package.json file into the container
+After that, we install the needed dependencies from the package.json file and expose the port 3000 to the host machine
+The CMD keyword lets you define the command which will be executed after the container startup. In this case, we use it to start our express server using the node server.js command.
+
+Now that we have finished the Dockerfile of the backend lets complete the same process for the frontend.
+************
+FROM node:lts-alpine
+
+RUN npm install -g http-server
+
+WORKDIR /app
+
+COPY package*.json ./
+COPY .env ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+EXPOSE 8080
+CMD [ "http-server", "dist" ]
+************
+This file is similar to the last one but installs an HTTP server which displays the static site we get when building a Vue.js application. I will not go into further detail about this script because it isn’t in the scope of this tutorial.
+
+With the Dockerfiles in place, we can go ahead and write the docker-compose.yml file we learned so much about.
+First, we define the version of our Compose file (in this case version 3)
+************
+version: '3'
+************
+After that, we start defining the services we need for the project to work.
+************
+services:
+    nodejs:
+        build:
+            context: ./backend/
+            dockerfile: Dockerfile
+        container_name: nodejs
+        restart: always
+        environment:
+            - HOST=mongo
+        ports:
+            - '3000:3000'
+        depends_on: [mongo]
+************
+The Node.js service uses the Dockerfile of the backend which we created above and publishes the port 3000 to the host machine. The service also depends on the mongo service which means that it lets the database start first before starting itself.
+Next, we define a basic MongoDB service which uses the default image provided on DockerHub.
+************
+     mongo:
+        container_name: mongo
+        image: mongo
+        ports:
+            - '27017:27017'
+        volumes:
+            - ./data:/data/db
+************
+This service also publishes a port to the host system and saves the data of the database in a local folder using a volume.
+
+The last service we need to define is the frontend which uses the frontend Dockerfile to build the image and publishes port 8080 to the host system.
+************
+    frontend:
+        build:
+            context: ./frontend/
+            dockerfile: Dockerfile
+        container_name: frontend
+        restart: always
+        ports:
+            - '8080:8080'
+************

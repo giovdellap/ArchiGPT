@@ -1,0 +1,38 @@
+### Data Structures:
+
+#### Login Request:
+Variable Name | Variable Type
+----------------------------
+email | string
+password | string
+
+#### Login Response:
+Variable Name | Variable Type
+----------------------------
+token | string
+success | boolean
+
+#### Signup Request:
+Variable Name | Variable Type
+----------------------------
+email | string
+password | string
+name | string
+address | string
+
+#### Signup Response:
+Variable Name | Variable Type
+----------------------------
+user_id | string
+success | boolean
+
+#### Token Verification Request:
+Variable Name | Variable Type
+----------------------------
+token | string
+
+#### Token Verification Response:
+Variable Name | Variable Type
+----------------------------
+valid | boolean
+role | string
