@@ -13,6 +13,7 @@ services:
       - main-network
 
   mongodb:
+    container_name: mongodb
     image: mongo:6-jammy
     ports:
       - '27017:27017'
@@ -25,6 +26,7 @@ services:
       - main-network
 
   mongo-express:
+    container_name: express
     image: mongo-express
     restart: always
     depends_on:
