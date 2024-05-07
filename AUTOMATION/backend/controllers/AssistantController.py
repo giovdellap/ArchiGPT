@@ -1,5 +1,4 @@
 from flask import request, jsonify
-from flask import jsonify, request
 
 from api_reference.assistants.assistantsOrchestrator import AssistantOrchestrator
 

@@ -1,6 +1,5 @@
 import json
 from flask import request, jsonify
-from flask import jsonify, request
 
 from api_reference.threads.threadsAPI import fileCreationHandler
 from api_reference.threads.messagesAPI import messageCreationHandler
