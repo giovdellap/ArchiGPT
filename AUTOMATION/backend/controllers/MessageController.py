@@ -19,11 +19,12 @@ def create_message(thread_id):
         attachments = []
         tool = json.loads(request.form['tools'])
         if request.files:
-            for key, file in request.files.items():
+            for file in request.files.items():
+                #print(file,file[1].filename)
                 fileObj = fileCreationHandler(file)
-                attachments.append({ "file_id":  fileObj.id, "tools": [{"type": tool[key]}] })
+                attachments.append({ "file_id": fileObj.id, "tools": [{"type": tool[file[0]]}] })
         
-        print(attachments)
+        print("attachments: ",attachments)
 
         message = messageCreationHandler(thread_id,content,attachments)
 

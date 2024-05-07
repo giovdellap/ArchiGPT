@@ -14,7 +14,7 @@ def threadCreationHandler():
 def fileCreationHandler(file):
     try:
         fileObj = current_app.config['CLIENT'].files.create(
-            file=file.read(),
+            file=file,
             purpose='assistants'
         )
         print("File uploaded successfully:", fileObj.id)
