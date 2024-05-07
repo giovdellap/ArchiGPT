@@ -20,7 +20,7 @@ def creationHandler(assistantObj, client):
             vector_store_name = assistantObj.tool_resources_path['file_search']['vector_store_name']
 
             vector_store = vectoreStoreCreationHandler(vector_store_name, client)
-            file_batch_message = uploadFileBatchesVectorStore(vector_store, file_streams, client)
+            file_batch_assistant = uploadFileBatchesVectorStore(vector_store, file_streams, client)
             tool_resources['file_search']['vector_store_ids'] = [vector_store.id]
 
         assistant = client.beta.assistants.create(
@@ -68,3 +68,30 @@ def uploadFileBatchesVectorStore(vector_store, file_streams, client):
         print("File batch upload status:",file_batch.file_counts,file_batch.status)
     except Exception as e:
         print("File batch upload failed:", e)
+
+
+def getAssistantList(client):
+    try:
+        list_assistants = client.beta.assistants.list(
+            order="desc",
+            limit="20",
+        )
+
+        # Extract and serialize necessary data from each assistant
+        serialized_assistants = []
+        for assistant in list_assistants.data:
+            serialized_assistant = {
+                "id": assistant.id,
+                "name": assistant.name,
+                "model": assistant.model,
+                "instructions": assistant.instructions,
+                #"tools": assistant.tools,
+                #"tool_resources": assistant.tool_resources
+            }
+            serialized_assistants.append(serialized_assistant)
+
+        print("Assistants List correctly recevived")
+        return serialized_assistants
+    
+    except Exception as e:
+        print("Assistants List GET failed:", e)

@@ -1,6 +1,6 @@
 from flask import current_app
 
-from api_reference.assistants.assistantAPI import creationHandler
+from api_reference.assistants.assistantAPI import creationHandler, getAssistantList
 from api_reference.assistants.assistantFactory import AssistantFactory
 
 
@@ -18,5 +18,10 @@ class AssistantOrchestrator:
 		assistant_id = creationHandler(assistantObj,self.client)
 
 		return assistant_id
+	
+	def assistantListProvider(self):
+				
+		list_assistants = getAssistantList(self.client)
 
+		return list_assistants
 

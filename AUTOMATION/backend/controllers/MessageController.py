@@ -33,12 +33,14 @@ def create_message(thread_id):
         return jsonify({"message": "An error occurred"}), 500
     
 
-def get_list_messages(thread_id):
+def get_last_message(thread_id):
     try:
 
-        message_data = messageListRetriever(thread_id)
+        thread_messages = messageListRetriever(thread_id)
 
-        return jsonify({"message_data": message_data}), 200
+        last_message = thread_messages[0]
+
+        return jsonify({"last_message": last_message}), 200
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500

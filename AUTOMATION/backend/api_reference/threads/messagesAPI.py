@@ -19,9 +19,11 @@ def messageCreationHandler(thread_id,content,attachments):
 
 def messageListRetriever(thread_id):
     try:
+
         thread_messages = current_app.config['CLIENT'].beta.threads.messages.list(
             thread_id=thread_id,
         )
+
         # Extract and serialize necessary data from each message
         serialized_messages = []
         for message in thread_messages.data:
@@ -31,14 +33,15 @@ def messageListRetriever(thread_id):
                 content_text = "No content available"
             serialized_message = {
                 "id": message.id,
+                "assistant_id": message.assistant_id,
+                "thread_id": message.thread_id,
+                "run_id": message.run_id,
+                "role": message.role,
                 "content": content_text
             }
             serialized_messages.append(serialized_message)
 
-        # Convert list of dictionaries to JSON
-        serialized_messages_json = json.dumps(serialized_messages, ensure_ascii=False)
-
-        return serialized_messages_json
+        return serialized_messages
     except Exception as e:
         print(f"Message data failed:", e)
         return None

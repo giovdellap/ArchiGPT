@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 from controllers.ThreadController import create_thread
-from controllers.MessageController import create_message, get_list_messages
+from controllers.MessageController import create_message, get_last_message
 from controllers.RunController import create_run
 
 thread_bp = Blueprint('thread_bp', __name__)
@@ -18,7 +18,7 @@ thread_bp.route('/', methods=['POST'])(create_thread)
 
 #Message API
 
-thread_bp.route('<string:thread_id>/message', methods=['GET'])(get_list_messages)
+thread_bp.route('<string:thread_id>/message', methods=['GET'])(get_last_message)
 thread_bp.route('<string:thread_id>/message', methods=['POST'])(create_message)
 #thread_bp.route('/<int:message_id>', methods=['GET'])(get_message)
 #thread_bp.route('/<int:message_id>/edit', methods=['PUT'])(update_message)
