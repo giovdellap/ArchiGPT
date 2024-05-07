@@ -2,7 +2,7 @@ import json
 from flask import request, jsonify
 
 from api_reference.threads.threadsAPI import fileCreationHandler
-from api_reference.threads.messagesAPI import messageCreationHandler
+from api_reference.threads.messagesAPI import messageCreationHandler, messageListRetriever
 
 
 def create_message(thread_id):
@@ -28,6 +28,17 @@ def create_message(thread_id):
         message = messageCreationHandler(thread_id,content,attachments)
 
         return jsonify({"message_id": message.id}), 200
+    except Exception as e:
+        print("Exception: %s", e)
+        return jsonify({"message": "An error occurred"}), 500
+    
+
+def get_list_messages(thread_id):
+    try:
+
+        message_data = messageListRetriever(thread_id)
+
+        return jsonify({"message_data": message_data}), 200
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500
