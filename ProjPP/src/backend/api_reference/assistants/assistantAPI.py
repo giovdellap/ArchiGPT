@@ -1,6 +1,8 @@
+from flask import current_app
+from api_reference.fileHandlerAPI import filePathCreationHandler, uploadFileBatchesVectorStore, vectoreStoreCreationHandler
 
 
-def creationHandler(assistantObj, client):
+def creationHandler(assistantObj):
     try:
         with open(assistantObj.instructions_path, 'r') as file:
             instructions_text = file.read()
@@ -10,7 +12,7 @@ def creationHandler(assistantObj, client):
             tool_resources['code_interpreter'] = {}
             fileObjIds = []
             for filePath in assistantObj.tool_resources_path['code_interpreter']['file_paths']:
-                fileObj = fileCreationHandler(filePath, client)
+                fileObj = filePathCreationHandler(filePath)
                 fileObjIds.append(fileObj.id)
             tool_resources['code_interpreter']['file_ids'] = fileObjIds
         
@@ -19,11 +21,11 @@ def creationHandler(assistantObj, client):
             file_streams = [open(path, "rb") for path in assistantObj.tool_resources_path['file_search']['vector_store_paths']]
             vector_store_name = assistantObj.tool_resources_path['file_search']['vector_store_name']
 
-            vector_store = vectoreStoreCreationHandler(vector_store_name, client)
-            file_batch_assistant = uploadFileBatchesVectorStore(vector_store, file_streams, client)
+            vector_store = vectoreStoreCreationHandler(vector_store_name)
+            file_batch_assistant = uploadFileBatchesVectorStore(vector_store, file_streams)
             tool_resources['file_search']['vector_store_ids'] = [vector_store.id]
 
-        assistant = client.beta.assistants.create(
+        assistant = current_app.config['CLIENT'].beta.assistants.create(
             instructions=instructions_text,
             name=assistantObj.name,
             tools=assistantObj.tools,
@@ -37,42 +39,29 @@ def creationHandler(assistantObj, client):
         return "Assistant creation failed"
 
 
-def fileCreationHandler(filePath,client):
+def getAssistant(assistant_id):
     try:
-        fileObj = client.files.create(
-            file=open(filePath, "rb"),
-            purpose='assistants'
-        )
-        print("File uploaded successfully:", fileObj.id)
-        return fileObj
-    except Exception as e:
-        print("File upload failed:", e)
-        return None
+        assistantObj = current_app.config['CLIENT'].beta.assistants.retrieve(assistant_id)
+
+        serialized_assistant = {
+            "id": assistantObj.id,
+            "name": assistantObj.name,
+            "model": assistantObj.model,
+            "instructions": assistantObj.instructions,
+            #"tools": assistantObj.tools,
+            "tool_resources": assistantObj.tool_resources.to_dict()
+        }
+
+        print("Assistant correctly recevived")
+        return serialized_assistant
     
-
-def vectoreStoreCreationHandler(name, client):
-    try:
-        vector_store = client.beta.vector_stores.create(name=name)
-        print("Vector store created successfully:", vector_store.id)
-        return vector_store
     except Exception as e:
-        print("Vector store creation failed:", e)
-        return None
+        print("Assistant GET failed:", e)
 
 
-def uploadFileBatchesVectorStore(vector_store, file_streams, client):
+def getAssistantList():
     try:
-        file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
-            vector_store_id=vector_store.id, files=file_streams
-        )
-        print("File batch upload status:",file_batch.file_counts,file_batch.status)
-    except Exception as e:
-        print("File batch upload failed:", e)
-
-
-def getAssistantList(client):
-    try:
-        list_assistants = client.beta.assistants.list(
+        list_assistants = current_app.config['CLIENT'].beta.assistants.list(
             order="desc",
             limit="20",
         )
@@ -86,7 +75,7 @@ def getAssistantList(client):
                 "model": assistant.model,
                 "instructions": assistant.instructions,
                 #"tools": assistant.tools,
-                #"tool_resources": assistant.tool_resources
+                "tool_resources": assistant.tool_resources.to_dict()
             }
             serialized_assistants.append(serialized_assistant)
 
@@ -97,7 +86,7 @@ def getAssistantList(client):
         print("Assistants List GET failed:", e)
 
 
-def assistantUpdate(assistantObj, client):
+def assistantUpdate(assistantObj):
     try:
         # with open(assistantObj.instructions_path, 'r') as file:
         #     instructions_text = file.read()
@@ -107,7 +96,7 @@ def assistantUpdate(assistantObj, client):
         #     tool_resources['code_interpreter'] = {}
         #     fileObjIds = []
         #     for filePath in assistantObj.tool_resources_path['code_interpreter']['file_paths']:
-        #         fileObj = fileCreationHandler(filePath, client)
+        #         fileObj = fileCreationHandler(filePath)
         #         fileObjIds.append(fileObj.id)
         #     tool_resources['code_interpreter']['file_ids'] = fileObjIds
         
@@ -116,11 +105,11 @@ def assistantUpdate(assistantObj, client):
         #     file_streams = [open(path, "rb") for path in assistantObj.tool_resources_path['file_search']['vector_store_paths']]
         #     vector_store_name = assistantObj.tool_resources_path['file_search']['vector_store_name']
 
-        #     vector_store = vectoreStoreCreationHandler(vector_store_name, client)
-        #     file_batch_assistant = uploadFileBatchesVectorStore(vector_store, file_streams, client)
+        #     vector_store = vectoreStoreCreationHandler(vector_store_name)
+        #     file_batch_assistant = uploadFileBatchesVectorStore(vector_store, file_streams)
         #     tool_resources['file_search']['vector_store_ids'] = [vector_store.id]
 
-        # assistant = client.beta.assistants.create(
+        # assistant = current_app.config['CLIENT'].beta.assistants.create(
         #     instructions=instructions_text,
         #     name=assistantObj.name,
         #     tools=assistantObj.tools,
@@ -133,10 +122,15 @@ def assistantUpdate(assistantObj, client):
         print("Assistant update failed:", e)
     
 
-def assistantDelete(assistant_id, client):
+def assistantDelete(assistant_id):
     try:
-        response = client.beta.assistants.delete(assistant_id)
-        if response.deleted: print("Assistant deleted successfully")
+        assistant = getAssistant(assistant_id)
+        file_ids = assistant["tool_resources"]["code_interpreter"]["file_ids"]
+        vector_store_ids = assistant["tool_resources"]["file_search"]["vector_store_ids"]
+
+        print(file_ids,vector_store_ids)
+        #response = current_app.config['CLIENT'].beta.assistants.delete(assistant_id)
+        #if response.deleted: print("Assistant deleted successfully and related files")
 
     except Exception as e:
         print("Assistant delete failed:", e)

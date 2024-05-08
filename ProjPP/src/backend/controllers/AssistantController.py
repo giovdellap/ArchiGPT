@@ -17,6 +17,17 @@ def create_assistant():
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500
     
+    
+def get_assistant(assistant_id):
+    try:      
+        assistant = AssistantOrchestrator()
+        assistantObj = AssistantOrchestrator.assistantProvider(assistant,assistant_id)
+
+        return jsonify({"assistant": assistantObj}), 200
+    except Exception as e:
+        print("Exception: %s", e)
+        return jsonify({"message": "An error occurred"}), 500
+    
 
 def get_list_assistants():
     try:      

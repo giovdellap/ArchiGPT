@@ -1,13 +1,10 @@
 from flask import current_app
 
-from api_reference.assistants.assistantAPI import assistantDelete, assistantUpdate, creationHandler, getAssistantList
+from api_reference.assistants.assistantAPI import assistantDelete, assistantUpdate, creationHandler, getAssistant, getAssistantList
 from api_reference.assistants.assistantFactory import AssistantFactory
 
 
 class AssistantOrchestrator:
-
-	def __init__(self) :
-		self.client = current_app.config['CLIENT']
 
 	def assistantCreation(self,name,model):
 
@@ -15,20 +12,26 @@ class AssistantOrchestrator:
 		assistantObj = AssistantFactory()
 		assistantObj.set_assets(name,model)
 
-		assistant_id = creationHandler(assistantObj,self.client)
+		assistant_id = creationHandler(assistantObj)
 
 		return assistant_id
 	
+	def assistantProvider(self,assistant_id):
+				
+		assistantObj = getAssistant(assistant_id)
+
+		return assistantObj
+	
 	def assistantListProvider(self):
 				
-		list_assistants = getAssistantList(self.client)
+		list_assistants = getAssistantList()
 
 		return list_assistants
 	
 	def assistantUpdate(self,assistantObj):
 
-		assistantUpdate(assistantObj,self.client)
+		assistantUpdate(assistantObj)
 	
 	def assistantDelete(self,assistant_id):	
 
-		assistantDelete(assistant_id,self.client)
+		assistantDelete(assistant_id)
