@@ -17,7 +17,9 @@ def createProject():
 def generateDocumentB():
     try:
 
-        response = requests.post(current_app.config['DEFAULT_PATH'] + "/thread")
+        response = requests.get(current_app.config['DEFAULT_PATH'] + "/assistant")
+        #response = requests.post(current_app.config['DEFAULT_PATH'] + "/thread")
+        print(response.json())
 
         return response.json(), 200
     except Exception as e:

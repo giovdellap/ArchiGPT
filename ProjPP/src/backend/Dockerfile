@@ -14,4 +14,4 @@ COPY . .
 
 EXPOSE 5001
 
-CMD ["python3","server.py"]
+CMD ["python3","-u","server.py"]
