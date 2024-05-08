@@ -1,12 +1,25 @@
 from flask import current_app, request, jsonify
 import requests
 
+from foundation.db_handler import DBHandler
+
 def createProject():
     try:
         if 'project_name' not in request.form:
             return jsonify({"message": "project_name missing"}), 400
+        if 'user_stories' not in request.files:
+            return jsonify({"message": "user_stories missing"}), 400
         name = request.form['project_name']
-        user_stories = request.files.items()
+        user_stories = request.files['user_stories']
+        content = user_stories.readlines();
+        print(content)
+
+        # Collection creation and User Stories document added
+        handler = DBHandler()
+        handler.create_collection(name)
+        handler.addDocument(name, {'user_stories': content})
+        
+        return jsonify({"message": "project created"}), 200
         
         
     except Exception as e:

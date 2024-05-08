@@ -1,9 +1,12 @@
+from flask import current_app
 from pymongo import MongoClient
 import urllib.parse
 
 class DBHandler:
-    db_username = "user"
-    db_password = "pass"
+    #db_username = current_app.config['MONGO_USERNAME']
+    #db_password = current_app.config['MONGO_PASSWORD']
+    db_username = 'user'
+    db_password = 'pass'
     uri_username = urllib.parse.quote_plus(db_username)
     uri_password = urllib.parse.quote_plus(db_password)
     mongo_uri = 'mongodb://%s:%s@mongodb:27017' % (uri_username, uri_password)
@@ -42,6 +45,15 @@ class DBHandler:
             print("Exception: %s", e)
             return e
 
+    def addDocument(self, collection, document):
+        try:
+            db = self.startup_db_client(self.project_db)
+            col = db[collection]
+            col.insert_one(document)
+            self.shutdown_db_client()
+        except Exception as e:
+            print("Exception: %s", e)
+            return e
         
     def testDB(self):
         try:
