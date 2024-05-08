@@ -95,3 +95,48 @@ def getAssistantList(client):
     
     except Exception as e:
         print("Assistants List GET failed:", e)
+
+
+def assistantUpdate(assistantObj, client):
+    try:
+        # with open(assistantObj.instructions_path, 'r') as file:
+        #     instructions_text = file.read()
+        # tool_resources = {}
+        
+        # if 'code_interpreter' in assistantObj.tool_resources_path:
+        #     tool_resources['code_interpreter'] = {}
+        #     fileObjIds = []
+        #     for filePath in assistantObj.tool_resources_path['code_interpreter']['file_paths']:
+        #         fileObj = fileCreationHandler(filePath, client)
+        #         fileObjIds.append(fileObj.id)
+        #     tool_resources['code_interpreter']['file_ids'] = fileObjIds
+        
+        # if 'file_search' in assistantObj.tool_resources_path:
+        #     tool_resources['file_search'] = {}
+        #     file_streams = [open(path, "rb") for path in assistantObj.tool_resources_path['file_search']['vector_store_paths']]
+        #     vector_store_name = assistantObj.tool_resources_path['file_search']['vector_store_name']
+
+        #     vector_store = vectoreStoreCreationHandler(vector_store_name, client)
+        #     file_batch_assistant = uploadFileBatchesVectorStore(vector_store, file_streams, client)
+        #     tool_resources['file_search']['vector_store_ids'] = [vector_store.id]
+
+        # assistant = client.beta.assistants.create(
+        #     instructions=instructions_text,
+        #     name=assistantObj.name,
+        #     tools=assistantObj.tools,
+        #     model=assistantObj.model,
+        #     tool_resources=tool_resources,
+        # )
+        print("Assistant updated successfully")
+
+    except Exception as e:
+        print("Assistant update failed:", e)
+    
+
+def assistantDelete(assistant_id, client):
+    try:
+        response = client.beta.assistants.delete(assistant_id)
+        if response.deleted: print("Assistant deleted successfully")
+
+    except Exception as e:
+        print("Assistant delete failed:", e)
