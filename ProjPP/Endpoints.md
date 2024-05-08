@@ -17,13 +17,13 @@ Request parameters:
 - project name
 Request files:
 - source.zip
-- User Stories
 Description:
 - Calls the assistant passing:
-  - source.zip
-  - User Stories
+  - source.zip (code_interpreter)
+  - User Stories (from db) (file_serach)
 - Saves the result as DOCUMENT_B inside the collection "project name"
 - For each container generates a new document named "container" inside the collection "project name"
+- Return DOCUMENT_B to user 
 
 ## ENDPOINTS GENERATION
 URL: /generateEndpoints
