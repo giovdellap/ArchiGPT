@@ -1,7 +1,8 @@
 from flask import current_app, request, jsonify
 import requests
 
-from foundation.db_handler import DBHandler
+from handlers.api_handler import getAssistantId, getThread
+from handlers.db_handler import DBHandler
 
 def createProject():
     try:
@@ -21,7 +22,6 @@ def createProject():
         
         return jsonify({"message": "project created"}), 200
         
-        
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500
@@ -29,12 +29,34 @@ def createProject():
 
 def generateDocumentB():
     try:
+        if 'project_name' not in request.form:
+            return jsonify({"message": "project_name missing"}), 400
+        if 'source' not in request.files:
+            return jsonify({"message": "source"}), 400
+        print('aaa')
+        assistant_id = getAssistantId('Containers List Generator')
+        print('bbb')
+        thread = getThread()
+        print('ccc')
+        message = requests.post(
+            current_app.config['DEFAULT_PATH'] + "/thread/" + thread + '/message',
+            {
+                "source.zip": request.files['source'],
+                "content": "",
+                "tools": "{'source.zip': 'code_interpreter'}"
+            }
+        )
+        run = requests.post(
+            current_app.config['DEFAULT_PATH'] + "/thread/" + thread + '/run',
+            {
+                "assistant_id": assistant_id
+            }
+        )
+        
+        #print(response.json())
 
-        response = requests.get(current_app.config['DEFAULT_PATH'] + "/assistant")
-        #response = requests.post(current_app.config['DEFAULT_PATH'] + "/thread")
-        print(response.json())
-
-        return response.json(), 200
+        return run.json(), 200
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500
+    

@@ -1,7 +1,7 @@
 from flask import request, jsonify
 from flask import jsonify, request
 
-from foundation.db_handler import DBHandler
+from handlers.db_handler import DBHandler
 
 
 
