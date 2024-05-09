@@ -45,3 +45,29 @@ def uploadFileBatchesVectorStore(vector_store, file_streams):
         print("File batch upload status:",file_batch.file_counts,file_batch.status)
     except Exception as e:
         print("File batch upload failed:", e)
+
+
+def fileDeleteHandler(file_id):
+    try:
+        response = current_app.config['CLIENT'].files.delete(file_id)
+        if response.deleted : print("File deleted successfully:", file_id)
+
+    except Exception as e:
+        print("File delete failed:", e)
+
+
+def vectorStoreDeleteHandler(vs_id):
+    try:
+        vector_store_files = current_app.config['CLIENT'].beta.vector_stores.files.list(
+            vector_store_id=vs_id
+        )
+        vs_files = vector_store_files.to_dict()["data"]
+        for file in vs_files:
+            fileDeleteHandler(file["id"])
+
+        response = current_app.config['CLIENT'].beta.vector_stores.delete(vs_id)
+        if response.deleted : print("Vector Store deleted successfully:", vs_id)
+        
+    except Exception as e:
+        print("Vector Store delete failed:", e)
+        

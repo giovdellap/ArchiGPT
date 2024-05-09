@@ -9,7 +9,6 @@ thread_bp = Blueprint('thread_bp', __name__)
 
 #Thread API
 
-#thread_bp.route('/', methods=['GET'])(get_all_threads)
 thread_bp.route('/', methods=['POST'])(create_thread)
 #thread_bp.route('/<int:thread_id>', methods=['GET'])(get_thread)
 #thread_bp.route('/<int:thread_id>/edit', methods=['PUT'])(update_thread)

@@ -1,5 +1,5 @@
 from flask import current_app
-from api_reference.fileHandlerAPI import filePathCreationHandler, uploadFileBatchesVectorStore, vectoreStoreCreationHandler
+from api_reference.fileHandlerAPI import fileDeleteHandler, filePathCreationHandler, uploadFileBatchesVectorStore, vectorStoreDeleteHandler, vectoreStoreCreationHandler
 
 
 def creationHandler(assistantObj):
@@ -128,9 +128,14 @@ def assistantDelete(assistant_id):
         file_ids = assistant["tool_resources"]["code_interpreter"]["file_ids"]
         vector_store_ids = assistant["tool_resources"]["file_search"]["vector_store_ids"]
 
-        print(file_ids,vector_store_ids)
-        #response = current_app.config['CLIENT'].beta.assistants.delete(assistant_id)
-        #if response.deleted: print("Assistant deleted successfully and related files")
+        for file_id in file_ids:
+             fileDeleteHandler(file_id)
+
+        for vs_id in vector_store_ids:
+            vectorStoreDeleteHandler(vs_id)
+
+        response = current_app.config['CLIENT'].beta.assistants.delete(assistant_id)
+        if response.deleted: print("Assistant deleted successfully and related files")
 
     except Exception as e:
         print("Assistant delete failed:", e)

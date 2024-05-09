@@ -62,7 +62,7 @@ def delete_assistant(assistant_id):
         assistant = AssistantOrchestrator()
         AssistantOrchestrator.assistantDelete(assistant,assistant_id)
 
-        return jsonify({"message": f"Assistant {assistant_id} correctly deleted"}), 200
+        return jsonify({"message": f"Assistant {assistant_id} and related files correctly deleted"}), 200
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500
