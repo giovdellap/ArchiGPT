@@ -1,3 +1,4 @@
+import json
 from flask import current_app, request, jsonify
 import requests
 
@@ -35,6 +36,7 @@ def generateDocumentB():
             return jsonify({"message": "source"}), 400
         print('aaa')
         assistant_id = getAssistantId('Containers List Generator')
+        print("ass_id", assistant_id)
         print('bbb')
         thread = getThread()
         print('ccc')
@@ -42,20 +44,19 @@ def generateDocumentB():
             current_app.config['DEFAULT_PATH'] + "/thread/" + thread + '/message',
             {
                 "source.zip": request.files['source'],
-                "content": "",
-                "tools": "{'source.zip': 'code_interpreter'}"
+                "content": "\"\"",
+                "tools": "{\"source.zip\": \"code_interpreter\"}"
             }
         )
         run = requests.post(
             current_app.config['DEFAULT_PATH'] + "/thread/" + thread + '/run',
-            {
-                "assistant_id": assistant_id
-            }
+            data = json.dumps({"assistant_id": assistant_id}),
+            headers = {"Content-Type": "application/json"}
         )
-        
+        result = requests.get(current_app.config['DEFAULT_PATH'] + "/thread/" + thread + '/message')
         #print(response.json())
 
-        return run.json(), 200
+        return result.json(), 200
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500

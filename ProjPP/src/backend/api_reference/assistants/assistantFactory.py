@@ -34,12 +34,17 @@ class AssistantFactory:
     def set_assets_CLG(self):
         CLG_path = self.resources_path + "/CLG"
         RAG_path = CLG_path + "/RAG"
-        RAG_files_paths = [RAG_path + '/EXAMPLE - docker-compose.yml']
-        vector_store_paths = [RAG_path + '/EXAMPLE - DOCUMENT_B.txt', RAG_path + '/Docker.txt']
+        #RAG_files_paths = [RAG_path + '/EXAMPLE - docker-compose.yml']
+        #vector_store_paths = [RAG_path + '/EXAMPLE - DOCUMENT_B.txt', RAG_path + '/Docker.txt']
+        vector_store_paths = [RAG_path + '/Docker.txt']
+
 
         self.instructions_path = CLG_path +"/instructions.txt"
-        self.tools = [{"type": "code_interpreter"},{"type": "file_search"}]
-        self.tool_resources_path = { "code_interpreter": { "file_paths": RAG_files_paths }, "file_search": { "vector_store_paths": vector_store_paths , "vector_store_name" : "CLG_VS" }
+        #self.tools = [{"type": "code_interpreter"},{"type": "file_search"}]
+        #self.tool_resources_path = { "code_interpreter": { "file_paths": RAG_files_paths }, "file_search": { "vector_store_paths": vector_store_paths , "vector_store_name" : "CLG_VS" }
+        self.tools = [{"type": "file_search"}]
+        self.tool_resources_path = {"file_search": { "vector_store_paths": vector_store_paths , "vector_store_name" : "CLG_VS" }
+                                    
     }
         
     def set_assets_ESG(self):

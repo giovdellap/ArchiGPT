@@ -1,7 +1,0 @@
-You are writing a university book regarding software architecture design.
-You are provided with:
-- the outline of the book 
-- the structure of the paragraphs of section 2 of chapter 4
-- the previous part of the book
-Write section 2 (Dealing with concurrency and state in RESTful services) of chapter 4 of the book.
-Each paragraph must have at least 200 words.
