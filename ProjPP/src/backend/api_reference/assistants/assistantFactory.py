@@ -42,10 +42,8 @@ class AssistantFactory:
         self.instructions_path = CLG_path +"/instructions.txt"
         #self.tools = [{"type": "code_interpreter"},{"type": "file_search"}]
         #self.tool_resources_path = { "code_interpreter": { "file_paths": RAG_files_paths }, "file_search": { "vector_store_paths": vector_store_paths , "vector_store_name" : "CLG_VS" }
-        self.tools = [{"type": "file_search"}]
-        self.tool_resources_path = {"file_search": { "vector_store_paths": vector_store_paths , "vector_store_name" : "CLG_VS" }
-                                    
-    }
+        self.tools = [{"type": "code_interpreter"}]
+        self.tool_resources_path = {}
         
     def set_assets_ESG(self):
         ESG_path = self.resources_path + "/ESG"

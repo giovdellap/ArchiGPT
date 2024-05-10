@@ -53,10 +53,17 @@ def generateDocumentB():
             data = json.dumps({"assistant_id": assistant_id}),
             headers = {"Content-Type": "application/json"}
         )
-        result = requests.get(current_app.config['DEFAULT_PATH'] + "/thread/" + thread + '/message')
         #print(response.json())
+        result = {}
+        message_generated = False
+        while(message_generated == False):
+            response = requests.get(current_app.config['DEFAULT_PATH'] + "/thread/" + thread + '/message')
+            result = response.json()
+            message_generated = (len(result["last_message"]["content"]) > 30)
 
-        return result.json(), 200
+        print('aaa')
+        print(result)
+        return jsonify({"message": result["last_message"]["content"]}), 200
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500
