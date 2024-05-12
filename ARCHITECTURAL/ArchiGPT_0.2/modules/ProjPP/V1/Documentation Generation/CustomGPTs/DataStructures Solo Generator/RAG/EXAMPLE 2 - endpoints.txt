@@ -1,7 +1,0 @@
-### Endpoints:
-
-Endpoint URL | Request Object | Response Object | HTTP Method
--------------------------------------------------------------
-/customer/login | LoginInput | LoginResponse | POST
-/customer/signup | SignupInput | SignupResponse | POST
-/customer/get | None | GetClientByIDResponse | GET

@@ -1,9 +1,0 @@
-## CONTAINERS LIST
-
-
-CONTAINER NAME: single-container
-  - SERVICE NAME: couchdb
-  - SERVICE NAME: webapp
-  - SERVICE NAME: calendar
-  - SERVICE NAME: nodemailer
-  - SERVICE NAME: rabbitmq

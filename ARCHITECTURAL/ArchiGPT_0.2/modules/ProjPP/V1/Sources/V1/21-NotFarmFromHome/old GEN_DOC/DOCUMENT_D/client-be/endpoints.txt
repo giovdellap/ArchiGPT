@@ -1,6 +1,0 @@
-Endpoint URL | HTTP Method | Response Object
-
-/clients | GET | void
-/client/{id} | GET | GetClientByIDResponse
-/client/{id} | DELETE | Void
-/client/login | POST | LoginResponse
