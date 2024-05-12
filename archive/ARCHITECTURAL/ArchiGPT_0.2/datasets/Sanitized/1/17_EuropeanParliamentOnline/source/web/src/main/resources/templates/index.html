@@ -1,0 +1,39 @@
+<html>
+<head>
+
+    <link rel="stylesheet" th:href="@{/css/ext_index_style.css}">
+    <script type="text/javascript" th:src="@{/js/file.js}"></script>
+
+</head>
+<body>
+
+    <div class="image">
+		<img th:src="@{/images/european-union.png}">
+	</div>
+	
+	<h1>Choose your role</h1>
+	<select name="role" class="selectionBar" id="role">
+        <option value="0" label="Select role ... " selected="selected">Select a role ... </option>
+        <option value="citizen" label="Citizen">Citizen</option>
+        <option value="national representative" label="national representative">National Representative</option>	
+    </select>
+
+    <p th:text="${'You are connected to ' + nation}"></p>
+
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+          
+           var nation = /*[[${nation}]]*/ 'Nation';
+  
+         /*]]>*/
+
+    </script> 
+
+    <br><br><br>
+    <button class="button" onclick="selection(nation);">Enter the site</button>
+    
+</div>
+
+</body>
+</html>

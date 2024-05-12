@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- Designed by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Admin Dashboard | CodingLab</title>
+  <link rel="stylesheet" href="css/signin_signup.css">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<div class="background">
+  <div class="shape"></div>
+  <div class="shape"></div>
+</div>
+<div class="login">
+  <div class="login-header">
+    <i class='bx bxl-c-plus-plus'></i>
+    <span class="login-heading">CodingLab</span>
+  </div>
+  <form class="login-form" id="signinform">
+    <h3>Login</h3><br>
+      <input type="text" id="username" name="username" placeholder="Username" required>
+      <input type="password" id="password" name="password" placeholder="Password" required>
+      <input type="submit" value="Login"><br>
+      <h5>Don't have an account? <a href="/signup">Sign up</a></h5>
+  </form>
+</div>
+
+<script type="text/javascript" src="js/script.js"></script>
+<script>
+  const form = document.getElementById("signinform");
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const jsonObject = {};
+    for (const [key, value] of formData.entries()) {
+      jsonObject[key] = value;
+    }
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/auth/signin');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+      if (xhr.status == 200) {
+        const response = JSON.parse(xhr.responseText);
+        const token = response.token;
+        document.cookie = `jwt=${token}; Path=/; SameSite=Strict;`;
+        window.location.href = "/profile";
+        //todo: refresh to success page or user page etc
+        console.log('Form data sent succesfully.');
+      } else {
+        alert("Invalid credential");
+      }
+    };
+    xhr.send(JSON.stringify(jsonObject));
+  });
+</script>
+</body>
+
+</html>

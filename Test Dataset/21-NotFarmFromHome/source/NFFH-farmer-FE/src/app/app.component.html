@@ -1,0 +1,37 @@
+<mat-toolbar class="toolbar-flex">
+  <button mat-fab class="homepage-button"
+      routerLink=""
+      ><mat-icon>agriculture</mat-icon>
+  </button>
+  <div class="divider"></div>
+  <button *ngIf="logged"
+      mat-raised-button
+      class="basic-button-toolbar"
+      routerLink="/products"
+      >PRODUCTS</button>
+  <button *ngIf="logged"
+    mat-raised-button
+    class="basic-button-toolbar"
+    routerLink="/summary"
+    disabled
+    >SUMMARY</button>
+  
+  <button *ngIf="!logged; else isLogged"
+      mat-fab
+      class="basic-button-toolbar"
+      routerLink="/login"
+      ><mat-icon>login</mat-icon>
+  </button>
+  <ng-template #isLogged>
+      <button
+          mat-fab
+          class="basic-button-toolbar"
+          routerLink="/profile"
+          disabled
+          ><mat-icon>account_circle</mat-icon>
+      </button>
+  </ng-template>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>

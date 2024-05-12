@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <link rel="stylesheet" href="/webapp/views/css/style.css" type="text/css"> -->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Event</title>
+</head>
+<body>
+    <div class="my-navbar">
+        <h3 class="recipe-cove-logo" onclick="location.href='/'">
+            Recipe Cove
+        </h3>
+        <div class="my-navbar-menù">
+            <!-- <a href="https://localhost:3000/">Home</a> -->
+            <%if (connected=='true'){%>
+                <a href="https://localhost:3000/profile">Profile</a>
+                <form action='https://localhost:3000/logout'>
+                    <button>LOGOUT</button>
+                </form> 
+            <%}else{%>
+                <div style="display:none">><a href="https://localhost:3000/profile">Profile</a></div>
+                <form action='https://localhost:3000/login'>
+                    <button>LOGIN</button>
+                </form> 
+            <%}%>
+        </div>
+    </div>
+
+    <div class="main">
+    <div class="main-box soft-shadow container-add-event">
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+            <br>
+			<h3>Add event</h3>
+            <p>Fill the following fields to add an event to your Calendar!</p>
+            <form class="row g-3 md add-event-form" id='search' action="https://localhost:3001/add_event?user_id=<%=user_id%>&google_token=<%=google_token%>" method="POST">
+                <div class="add-event-row">
+                  <label for="inputSummary" class="form-label">Summary</label>
+                  <input type="text" class="form-control" id="inputSummary" value="Prepare the recipe: <%=title%>" readonly="readonly" name="summary" required>
+                </div>
+                <div class="add-event-row">
+                  <label for="inputDescription" class="form-label">Description</label>
+                  <!-- <input type="text" class="form-control" id="inputDescription" placeholder="The event description" name="description"> -->
+				  <textarea class="form-control add-event-text-area" id="inputDescription" rows="3" name="description" placeholder="The event description"></textarea>
+                </div>
+				<% current_date = new Date() %>
+                <div class="add-event-row">
+                    <label for="inputStartDate" class="form-label">Start Date</label>
+                    <input type="date" id="inputStartDate" name="start_date" value="<%=current_date.toISOString().slice(0,10)%>">
+                </div>
+                <div class="add-event-row">
+                    <label for="inputEndDate" class="form-label">End Date</label>
+                    <input type="date" id="inputEndDate" name="end_date" value="<%=current_date.toISOString().slice(0,10)%>">
+                </div>
+                
+                <div class="add-event-row">
+                  <label for="inputColor" class="form-label">Event Color</label>
+                  <select id="inputColor" class="form-select" name="color">
+                    <option selected value="1">Pale Blue</option>
+                    <option value="2">Pale Green</option>
+                    <option value="3">Mauve</option>
+                    <option value="4">Pale Red</option>
+                    <option value="5">Yellow</option>
+                    <option value="6">Orange</option>
+                    <option value="7">Cyan</option>
+                    <option value="8">Gray</option>
+                    <option value="9">Blue</option>
+                    <option value="10">Green</option>
+                    <option value="11">Red</option>
+                  </select>
+                </div>
+                
+                <div class="col-12">
+                  <button type="submit" class="add-event-submit-button">Create Recipe Event</button>
+                </div>
+              </form>
+
+
+        </div>
+        </div>
+    </div>    
+    </div>
+    </div>
+
+
+</body>
+</html>

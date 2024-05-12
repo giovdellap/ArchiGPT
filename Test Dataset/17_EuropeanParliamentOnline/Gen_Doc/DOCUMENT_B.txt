@@ -1,0 +1,25 @@
+CONTAINER: main-container
+SERVICES:
+    - rabbitmq
+
+CONTAINER: fra
+SERVICES:
+    - web
+    - rest
+    - psql_db
+    - broadcast
+
+CONTAINER: ger
+SERVICES:
+    - web
+    - rest
+    - psql_db
+    - broadcast
+
+CONTAINER: ita
+SERVICES:
+    - web
+    - rest
+    - psql_db
+    - broadcast
+

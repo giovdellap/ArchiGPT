@@ -1,0 +1,103 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background);
+    height: inherit;
+    min-height: 100%;
+    width: 100%;
+}
+
+.error-container {
+    color: red;
+    margin: 20px 0px;
+    font-size: 1.5em;
+}
+
+.success-container {
+    color: var(--primary);
+    margin: 40px 0px;
+    font-size: 2em;
+}
+
+.title-container {
+    margin: 30px 0px;
+}
+
+.title {
+    color: var(--primary);
+    font-size: 2.5em;
+    font-weight: 800;
+}
+
+.order-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.review-section {
+    width: 100%;
+}
+
+.order-part {
+    border-style: outset;
+    width: 100%;
+    margin: 15px 0px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.seller-name {
+    color: var(--primarytext);
+    font-size: 1.8em;
+    padding-bottom: 10px;
+}
+
+.seller-location {
+    color: var(--secondarytext);
+}
+
+.seller-total {
+    font-size: 2em;
+    color: var(--accent);
+}
+
+.total-section {
+    margin-top: 20px;
+    color: var(--primarytext);
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.commission {
+    font-size: 1.3em;
+    padding-bottom: 15px;
+}
+
+.total {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.date-section {
+    width: 100%;
+
+}
+
+.date-section-title {
+    padding-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.confirm-button {
+    color: var(--divider) !important;
+    background-color: var(--accent) !important;
+}
+
+
+

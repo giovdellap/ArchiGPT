@@ -1,0 +1,13 @@
+
+#### Programming Language, Frameworks and Libraries
+
+- Node.js: Used for building scalable network applications.
+- Express: A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+- CORS: A package for providing a Connect/Express middleware that can be used to enable CORS (Cross-Origin Resource Sharing).
+- http-proxy-middleware: An HTTP proxy middleware for Node.js, which can be used to proxy requests to an underlying server, likely used for routing requests to other services in the system.
+
+#### Analysis of the Scaffolding and Architectural Patterns
+
+- The gateway service is architected as a central API hub within a microservices-oriented environment, using Express to handle routing and middleware functionalities.
+- The service is containerized using Docker, indicating a focus on scalability and deployment ease in cloud environments.
+- By being connected to multiple other services via Docker networks, it plays a critical role in the system's service-oriented architecture, managing traffic between the client and various back-end services.

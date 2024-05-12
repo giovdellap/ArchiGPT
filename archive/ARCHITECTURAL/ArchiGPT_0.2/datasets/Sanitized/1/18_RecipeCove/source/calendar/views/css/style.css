@@ -1,0 +1,469 @@
+:root {
+	--green-0: rgb(55, 219, 22);
+	--green-1: rgb(40, 186, 11);
+	--green-2: rgb(32, 151, 8);
+	--green-3: rgb(27, 118, 9);
+}
+body {
+	margin: 0%;
+	overflow-x: hidden;
+	font-family: "Georgia", "Open Sans", sans-serif;
+	background-image: url('../images/background.jpeg');
+	/* Filter the background image to be darker */
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.soft-shadow {
+	filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.15));
+}
+.my-navbar {
+	overflow: hidden;
+	/* background-color: rgb(124, 0, 0); */
+	background-color: var(--green-1);
+	padding: 10px 35px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 80px;
+	/* font-size: 30px; */
+	z-index: 1;
+	display: flex;
+	/* justify-content: space-between; */
+	color: white;
+	/* Add a soft shadow underneath */
+	filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.25));
+	font-size: 1.15em;
+	/* Center elements vertically */
+	align-items: center;
+	/* font-weight: bold; */
+}
+.my-navbar h3 {
+	/* Transform in a block element displaying the image in "../images/logo.png" */
+	display: block;
+	content: "";
+	color: transparent;
+	background-image: url('../images/logo.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin: 0;
+	padding: 0;
+	/* Make image retain aspect ratio */
+	/* width: 100px; */
+	height: 100%;
+	/* Add an onclick functionality to redirect to index (href = "/") */
+	cursor: pointer;
+}
+.my-navbar-menù {
+	margin-right: 20px;
+	position: fixed;
+	display: flex;
+	right: 0;
+	height: 100%;
+}
+.my-navbar a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 0px 16px;
+	text-decoration: none;
+	margin: 10px 0;
+	height: calc(100% - 10px * 2);
+	/* Align text vertically */
+	display: flex;
+	align-items: center;
+}
+.my-navbar a:hover {
+	background: rgb(255, 255, 255);
+	color: black;
+	opacity: 0.5;
+	border-radius: 10px;
+}
+.my-navbar button {
+	background-color: var(--green-2);
+	float: left;
+	position: relative;
+	display: block;
+	border-style: solid;
+	border-color: var(--green-2);
+	border-width: 3px;
+	border-radius: 10px;
+	color: white;
+	padding: 0px 15px;
+	margin: 10px 10px;
+	height: calc(100% - 10px * 2);
+}
+.my-navbar button:hover {
+	/* background-color: rgba(255, 255, 255, 0); */
+	background-color: rgba(255, 255, 255, 0);
+	color: var(--green-2);
+	font-weight: bold;
+	float: left;
+	display: block;
+	border-width: 3px;
+	padding: 10px 15px;
+}
+.main {
+	margin-top: 120px;
+	/* Add a top margin to avoid content overlay */
+	margin-bottom: 120px;
+	display: flex;
+	justify-content: center;
+	border-radius: 30px;
+}
+.main-box {
+	top: 0px;
+	width: 78%;
+	background-color: rgb(255, 255, 255);
+	opacity: 0.98;
+	border-radius: 30px;
+	padding: 20px;
+	text-align: center;
+}
+.main-box-details {
+	top: 0px;
+	width: 80%;
+	background-color: rgb(255, 255, 255);
+	opacity: 0.98;
+	border-radius: 30px;
+	padding: 20px;
+	filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.75));
+}
+.search-button {
+	/* min-width: 100px; */
+	width: 150px;
+	margin-top: 0;
+	padding: 10px;
+	border: 0px;
+	border-radius: 10px;
+	font-size: 20px;
+	background-color: rgb(255, 255, 255);
+	color: var(--green-2);
+	font-weight: bold;
+}
+.search-button:hover {
+	color: white;
+	background-color: rgb(0, 0, 0);
+}
+.heart-button {
+	margin-top: 10px;
+	/* background-color: rgb(176, 0, 0); */
+	border-style: solid;
+	/* border-color: rgb(176, 0, 0); */
+	background: transparent;
+	border-color: var(--green-2);
+	border-width: 3px;
+	width: 230px;
+	border-radius: 10px;
+	/* color: white; */
+	color: var(--green-2);
+	padding: 10px 15px;
+	justify-content: center;
+	font-weight: bold;
+	transform: scale(1);
+	transition: 0.05s transform;
+}
+.heart-button:hover {
+	background-color: var(--green-0);
+	border-color: var(--green-0);
+	color: white;
+	/* color: rgb(176, 0, 0); */
+	font-weight: bold;
+	border-width: 3px;
+	padding: 10px 15px;
+	transform: scale(1.05);
+	transition: 0.1s transform;
+}
+.heart-button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+.calendar-button {
+	margin-top: 10px;
+	background-color: var(--green-2);
+	width: 230px;
+	border-style: solid;
+	border-color: var(--green-2);
+	border-radius: 10px;
+	color: white;
+	padding: 10px 15px;
+	justify-content: center;
+	font-weight: bold;
+	transform: scale(1);
+	transition: 0.05s transform;
+}
+.calendar-button:hover {
+	/* background-color: rgb(255, 255, 255); */
+	background-color: transparent;
+	color: var(--green-0);
+	border-color: var(--green-0);
+	font-weight: bold;
+	border-width: 3px;
+	padding: 10px 15px;
+	transform: scale(1.05);
+	transition: 0.1s transform;
+}
+.calendar-button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+.ingredients-container {
+	display: inline-flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: first baseline;
+	align-items: baseline;
+}
+.ingredient-card-external {
+	height: 55px;
+	margin: 5px;
+	padding: 5px;
+	border-width: 2px;
+	border-style: solid;
+	background-color: transparent;
+	border-radius: 10px;
+	color: white;
+	border-color: black;
+	color: black;
+	transform: scale(1);
+	transition: 0.05s transform;
+}
+.ingredient-card-external:hover {
+	border-color: var(--green-2);
+	border-width: 3px;
+	transform: scale(1.05);
+	transition: 0.05s transform;
+}
+.ingredient-card-external:hover div {
+	color: var(--green-2);
+	font-weight: bold;
+}
+.ingredient-card-internal {
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: none;
+	display: inline-block;
+	text-align: left;
+}
+/* Ingredient image */
+.ingredient-card-internal > img {
+	height: 100%;
+	width: auto;
+}
+/* Ingredient text */
+.ingredient-card-internal > div {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+#chat-btn {
+	position: fixed;
+	bottom: 0px;
+	right: 50px;
+	background: var(--green-2);
+	/* background: rgb(0, 0, 0); */
+	width: 200px;
+	height: 40px;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	cursor: pointer;
+	box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.6), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+	z-index: 2;
+}
+.container-chat {
+	position: fixed;
+	margin-top: 5rem;
+	right: 30px;
+	bottom: 20px;
+	width: 350px;
+	max-width: 85vw;
+	max-height: 100vh;
+	border-radius: 5px;
+	background: white;
+	display: none;
+	flex-direction: column;
+	z-index: 2;
+	box-shadow: 0px 3px 70px 3px rgb(66, 66, 66);
+}
+.chat-box-header {
+	background: var(--green-2);
+	/* background: rgb(0, 0, 0); */
+	height: 50px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	padding-top: 10px;
+}
+.chat-box-toggle {
+	float: right;
+	margin-right: 15px;
+	cursor: pointer;
+}
+.chat-box {
+	height: 370px;
+	overflow: hidden;
+}
+.messages {
+	height: 370px;
+	overflow-y: scroll;
+}
+.msgCtn1 {
+	margin: 6px 0;
+	margin-right: 100px;
+	margin-left: 10px;
+	color: rgb(0, 0, 0);
+	padding: 1rem 1rem;
+	float: left;
+	text-align: left;
+	background-color: #c6c6c6;
+	/* background-color: #9dabe0; */
+	border-radius: 20px 20px 20px 0px;
+	font-size: 16px;
+}
+.msgCtn2 {
+	margin: 6px 0;
+	margin-left: 200px;
+	margin-right: 10px;
+	color: rgb(0, 0, 0);
+	padding: 1rem 1rem;
+	text-align: right;
+	/* background-color: #a6d0a7; */
+	background-color: var(--green-0);
+	float: right;
+	border-radius: 20px 20px 0 20px;
+	font-size: 16px;
+}
+.msgForm {
+	display: flex;
+	flex-direction: row;
+	height: 40px;
+	width: 97%;
+	background: #fff;
+	position: relative;
+	margin: 5px;
+	padding: 10px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	border: 1px solid #ccc;
+}
+.input {
+	height: 20px;
+	width: 80%;
+	border: none;
+	/* padding-right: 20px; */
+	/* width: 265px; */
+	font-size: 16px;
+	background: none;
+}
+.input:focus:-webkit-placeholder {
+	background-color: white;
+	color: transparent;
+}
+.send-btn {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	width: 50px;
+	height: 20px;
+	float: right;
+	display: flex;
+	justify-content: center;
+	text-transform: uppercase;
+	align-items: center;
+	background-color: #ffffff;
+	/* color: #a6d0a7; */
+	color: var(--green-2);
+	border: none;
+	font-size: 14px;
+}
+.rc-image-container {
+	display: flex;
+	justify-content: center;
+}
+.rc-image-container img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+	border: 3px solid var(--green-2);
+}
+.health-bar {
+	width: 100%;
+	height: 20px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+.health-bar-text {
+	font-weight: bold;
+	width: 50px;
+	font-size: 1.1em;
+	color: var(--green-2);
+	text-align: center;
+	margin-right: 5px;
+}
+.health-bar-fill-container {
+	width: calc(100% - 50px);
+	height: 100%;
+	border-radius: 10px;
+	border: var(--green-2) solid 3px;
+	background-color: transparent;
+	border-radius: 10px;
+}
+.health-bar-fill {
+	background-color: var(--green-2);
+	height: 100%;
+	/* width: 100%; */
+	border-radius: 10px;
+}
+.recipe-table {
+	font-size: 1.1em;
+}
+.recipe-table h4:not(.no-margin) {
+	margin-top: 25px;
+}
+.nutritional-value::after {
+	content: "\00a0\00a0|\00a0\00a0";
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.ingredients-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: first baseline;
+	align-items: baseline;
+}
+.calendar-section-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 30px;
+	margin-bottom: 15px;
+}
+/* [Calendar Container] ADD EVENT PAGE */
+.container-add-event {
+	max-width: 600px;
+}
+.add-event-text-area {
+	width: 100%;
+}
+.add-event-submit-button {
+	border: none;
+	background-color: var(--green-2);
+	color: white;
+	padding: 10px 15px;
+	font-weight: bold;
+	border-radius: 10px;
+}
+.add-event-submit-button:hover {
+	background-color: var(--green-0);
+}

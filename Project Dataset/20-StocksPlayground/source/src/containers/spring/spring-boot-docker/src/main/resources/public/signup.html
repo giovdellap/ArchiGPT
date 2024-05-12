@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up | CodingLab </title>
+    <link rel="stylesheet" href="css/signin_signup.css">
+    <!-- Script -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<div class="signup-container">
+    <form class="signup-form" id="signupform">
+        <h3>Signup</h3>
+        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="surname" placeholder="Surname">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" name="submit" value="Sign Up">
+        <h5 class="signup-link">Already have an account? <a href="/signin">Sign in</a></h5>
+    </form>
+</div>
+<script>
+    const form = document.getElementById("signupform");
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const jsonObject = {};
+        for (const [key, value] of formData.entries()) {
+            jsonObject[key] = value;
+        }
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/auth/signup');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                console.log('Form data sent succesfully.');
+                window.location.href = "/signin"
+                //todo: refresh to success page
+            } else if (xhr.status == 400){
+                const response = JSON.parse(xhr.responseText);
+                alert(response.message);
+            } else {
+                alert("Error");
+            }
+        };
+        xhr.send(JSON.stringify(jsonObject));
+    });
+</script>
+</body>
+</html>

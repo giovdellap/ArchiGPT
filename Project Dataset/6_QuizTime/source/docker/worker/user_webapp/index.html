@@ -1,0 +1,78 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="index.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <title>QuizTime</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body style="overflow: hidden;" onload="init();">
+    
+    <div class="container h-75 text-center" id="nickname">
+        <div class="container h-50"></div>
+        <div class="container col-12 mb-3 h1 fw-bold" style="color: rgba(51,51,255,0.8)">
+            Choose a nickname
+        </div>
+        <div class="container col-12">
+            <form onsubmit="event.preventDefault(); openws();">
+                <div class="container col-12 mb-3">
+                    <input type="text" id="nick" class="rounded" style="height:6vh!important;">
+                </div>
+                <div class="container col-12">
+                    <input type="submit" class="btn fs-5" style="background: rgba(51,51,255,0.8); color: white;">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="container h-100 g-0" id="buttons" hidden>
+        <div class="row h-50 pt-3 w-100 pb-1 mx-0">
+            <button onclick="send('A')" class="container col-5 me-2 rounded h1" style="background: rgb(67, 67, 209);">
+                A
+            </button>
+            <button onclick="send('B')" class="container col-5 ms-2 rounded h1" style="background: rgb(243, 243, 119);">
+                B
+            </button>
+        </div>
+        <div class="row h-50 pt-1 w-100 pb-3 mx-0">
+            <button onclick="send('C')" class="container col-5 me-2 rounded h1" style="background: rgb(90, 159, 90);">
+                C
+            </button>
+            <button onclick="send('D')" class="container col-5 ms-2 rounded h1" style="background: rgb(177, 78, 78);">
+                D
+            </button>
+        </div>
+    </div>
+
+
+    <div id="loading" hidden>
+        <div class="h-25"></div>
+        <div class="container h-25 d-flex align-items-center justify-content-center">
+            <div class="spinner-border" style="width: 5rem; height: 5rem; color:rgba(51,51,255,0.8)"></div>
+        </div>
+        <div class="text-center h1 mt-5" style="color: rgba(51,51,255,0.8)">Waiting for a question</div>
+    </div>
+
+
+
+    <div class="container h-75 text-center" id="score" hidden>
+        <div class="container h-50">
+            <img class="h-100" src="./fireworks.gif">
+        </div>
+        <div class="container col-12 mb-3 h1 fw-bold" style="color: rgba(51,51,255,0.8)">
+            Congratulations <span id="cname"></span>!
+        </div>
+        <div class="container col-12 mb-3 fs-1" style="color: rgba(51,51,255,0.8)">
+            Your score is <span id="rank">0</span>
+        </div>
+        <div class="container h-50">
+            <img class="h-100" src="./fireworks.gif">
+        </div>
+    </div>
+
+
+</body>

@@ -1,0 +1,35 @@
+### Service Purpose
+
+The "client-be" service, operating within the "NFFH-Client-BE" container, is a crucial backend component of the "Not Far(m) From Home" platform. It facilitates essential interactions between consumers and local agricultural companies. The service's primary purpose is to manage user registrations, logins, and sessions, which are critical for a personalized and secure user experience. Leveraging technologies like Java 17 and Spring Boot, the service ensures robust, secure, and efficient handling of user data and interactions within the platform. By supporting features such as registration, login, and customer data retrieval, it upholds the platform's goal of providing a seamless, secure bridge between consumers and local farmers, fostering local commerce and community engagement​​​​​​​​​​​​.
+
+### Key Features
+
+- User Authentication: Implements secure login and registration processes, utilizing POST methods to handle credentials and session initiation, ensuring that user interactions are authenticated and secure​​.
+- Session Management: Utilizes token-based authentication to manage user sessions, enhancing the user experience by maintaining session states across visits, which aligns with user expectations for seamless platform interaction​​.
+- Customer Management: Supports CRUD operations on customer data, including fetching customer details and deleting customer profiles, which empowers users to manage their interaction with the platform effectively​​.
+- Data Encryption and Security: Ensures that all sensitive user data, such as passwords, are encrypted using robust security measures before storage, safeguarding user information against potential security breaches​​.
+- Database Integration and ORM: Leverages Spring Data JPA for ORM with Hibernate to interact with the MySQL database, facilitating efficient and secure data handling and persistence​​.
+
+#### Programming Language, Frameworks and Libraries
+
+- Java 17: Modern version of Java providing improved performance and security.
+- Spring Boot 2.7.4: Simplifies the development of new Spring applications through convention over configuration.
+- Spring Boot Starter Web: Facilitates the building of web applications including RESTful services using Spring MVC.
+- Spring Boot Starter Data JPA: Configures Spring Data JPA to simplify the data access layer using Hibernate.
+- MySQL Connector Java: Connects the application to MySQL databases, enabling SQL operations and transactions.
+
+#### Scaffolding and Architectural Patterns
+
+- The service is a Java Spring Boot application designed for microservices architecture, emphasizing on loose coupling and high cohesion.
+- Spring Boot's autoconfiguration and embedded server make it straightforward to deploy and manage.
+- It follows a layered architecture common in Spring applications, separating concerns via controllers, services, and repositories.
+- The application is containerized using Docker, which ensures consistency across different deployment environments and simplifies deployment processes.
+
+#### Communication with the Database
+
+- The application uses Spring Data JPA for ORM (Object-Relational Mapping) with Hibernate as the implementation to interact with a MySQL database.
+- Database interaction is managed through the repository pattern, which abstracts data access in the application.
+- The use of the `mysql-connector-java` allows efficient connectivity and transaction management to the MySQL database.
+- Configurations for the database are likely managed within the application properties, enabling environment-specific setups.
+
+

@@ -1,0 +1,7 @@
+### SERVICES:
+- admin-fe  
+
+### PORTS:
+| Exposed Port/Internal Port | Related Service |
+| -------------------------- | --------------- |
+| 8080:80                    | admin-fe        |

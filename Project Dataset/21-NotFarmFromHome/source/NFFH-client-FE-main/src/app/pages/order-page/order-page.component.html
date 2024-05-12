@@ -1,0 +1,43 @@
+<div class="main-container">
+    <div class="error-container" *ngIf="error">
+        <p>Connection error - Please try again</p>
+    </div>
+    <div class="success-container" *ngIf="completed">
+        <h1>Order completed</h1>
+    </div>
+    <div class="title-container" *ngIf="!completed">
+        <h1 class="title">ORDER REVIEW</h1>
+    </div>
+    <div class="order-container" *ngIf="!completed">
+        <div class="review-section">
+            <div class="order-part" *ngFor="let part of order.parts">
+                <div class="seller">
+                    <div class="seller-name">{{part.seller.username}}</div>
+                    <div class="seller-location">{{part.seller.address}}</div>
+                </div>
+                <div class="seller-total">{{part.total}} €</div>
+            </div>
+        </div>
+        <!-- <div class="total-section">
+            <div class="commission">Commission Charges: {{order.commission}} €</div>
+            <div class="total">TOTAL: {{order.total}} €</div>
+        </div> -->
+        <div class="date-section">
+            <div class="date-section-title">Select a date for pickup</div>
+            <div class="date-picker">
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput 
+                    [matDatepicker]="picker" [formControl]="datepicker"
+                    [max]="endDate" [min]="startDate">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </div>
+        </div>
+        <div class="confirm-section">
+            <button mat-raised-button class="confirm-button" (click)="confirmOrder()">CONFIRM ORDER</button>
+        </div>
+    </div>
+</div>

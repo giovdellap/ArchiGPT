@@ -1,0 +1,99 @@
+CLIENT SIGNUP
+
+Status: : PROD
+Insomnia: updated
+POST /client/signup
+
+req: {
+    email: string,
+    password: string,
+    username: string
+}
+
+res: {
+    success: boolean,
+    token: string(?)
+}
+
+
+--------------------------
+FARMER SIGNUP 
+
+Status: PROD
+Insomnia: updated
+POST /farmer/signup
+
+req: {
+    email: string,
+    password: string,
+    username: string,
+    image: string,
+    area: string,
+    address: string
+}
+
+res: {
+    success: boolean,
+    token: string,
+    id: string
+}
+
+--------------------------
+CLIENT LOGIN 
+
+FE: DEV
+Status: : PROD
+Insomnia: updated
+POST /client/login
+
+req: {
+    email: string,
+    password: string
+}
+
+res: {
+    success: boolean,
+    token: string,
+    error: string,
+    id: string,
+    username: string
+}
+
+
+--------------------------
+FARMER LOGIN 
+
+Status: : DEV
+Insomnia: updated
+FE: DEV
+POST /farmer/login
+
+req: {
+    email: string,
+    password: string
+}
+
+res: {
+    success: boolean,
+    token: string,
+    error: string,
+    id: string,
+    username: string
+}
+
+-------------------------
+VERIFY TOKEN
+
+Status: : DEV
+Insomnia: updated
+
+POST /verifyToken 
+
+req: {
+    token: string
+}
+
+res: {
+    success: boolean,
+    mail: string
+}

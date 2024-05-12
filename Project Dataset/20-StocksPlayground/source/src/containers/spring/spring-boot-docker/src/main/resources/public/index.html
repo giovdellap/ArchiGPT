@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Stocks Dashboard </title>
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/dashboad.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Script -->
+  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/profile.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ag-charts-community@7.1.0/dist/ag-charts-community.min.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      renderUserBanner();
+    })
+  </script>
+  <!-- <link rel="stylesheet" href="css/stock.css"> -->
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class="bi bi-boxes"></i>
+      <span class="logo_name">StocksLab</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="/" class="active">
+          <i class="bi bi-grid"></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="/graph?symbol=AAPL">
+          <i class="bi bi-bar-chart-fill"></i>
+          <span class="links_name">Stocks</span>
+        </a>
+      </li>
+      <li>
+        <a href="/crypto">
+          <i class="bi bi-currency-bitcoin"></i>
+          <span class="links_name">Crypto</span>
+        </a>
+      </li>
+      <li id="prof_sidebar">
+        <a href="/profile">
+          <i class="bi bi-person"></i>
+          <span class="links_name">Profile</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="loader"></div>
+
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Stocks Market</span>
+      </div>
+  
+      <div class="dropdown" id="unknown">
+        <a class="button-dropdown"><i class="bi bi-person"></i></a>
+        <ul>
+          <li><a href="/signin">Login</a></li>
+          <li><a href="/signup">Signup</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown" id="signed">
+        <a class="button-dropdown" id="profile-name"></a>
+        <ul>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="#" onclick="logout();">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="home-content">
+
+      <div class="ticker-wrap">
+        <div id="tickers" class="ticker">
+        </div>
+      </div>
+
+      <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Leader Index</div>
+            <div class="number" id="index"></div>
+            <div class="indicator">
+              <i id="indexIcon"></i>
+              <span class="text" id="indexChange"></span>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Hottest Sector</div>
+            <div class="number" id="sector"></div>
+            <div class="indicator">
+              <i id="sectorIcon"></i>
+              <span class="text" id="sectorChange"></span>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">The most gainer</div>
+            <div class="number" id="mostGainer"></div>
+            <div class="indicator">
+              <i id="gainerIcon"></i>
+              <span class="text" id="gainerChange"></span>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">The most loser</div>
+            <div class="number" id="mostLoser"></div>
+            <div class="indicator">
+              <i id="loserIcon"></i>
+              <span class="text" id="loserChange"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-overview">
+        <div class="overview-box">
+          <div class="title">Market Overview</div>
+          <div class="treemap-container">
+            <div id="treemap"></div>
+          </div>
+        </div>
+
+        <div class="search-container">
+          <div class="title">Search</div>
+          <form id="search_form" onsubmit="dashboardSearch()">
+            <span class="search-line">
+              <input class="input-search" type="text" id="search_bar" placeholder="Search for Stocks Symbols...">
+              <button class="btn-search" type="submit"><i class="bi bi-search"></i></button>
+            </span>
+          </form>
+          <div id="symbol-list-search" class="symbol-list-search"></div>
+        </div>
+      </div>
+
+      <div class="liste">
+        <div class="gainers">
+          <div class="title">Biggest Gainers</div>
+          <div class="table_container">
+            <table id="tb_gainers">
+              <thead>
+                <tr>
+                  <th class="topic">TICKER</th>
+                  <th class="topic">PRICE</th>
+                  <th class="topic">CHANGE</th>
+                  <th class="topic">HIGH PRICE DAY</th>
+                  <th class="topic">LOW PRICE DAY</th>
+                  <th class="topic">PREVIOUS CLOSE PRICE</th>
+                  <th class="topic">MARKET CAP</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+        <div class="losers">
+          <div class="title">Biggest Losers</div>
+          <div class="table_container">
+            <table id="tb_losers">
+              <thead>
+                <tr>
+                  <th class="topic">TICKER</th>
+                  <th class="topic">PRICE</th>
+                  <th class="topic">CHANGE</th>
+                  <th class="topic">HIGH PRICE DAY</th>
+                  <th class="topic">LOW PRICE DAY</th>
+                  <th class="topic">PREVIOUS CLOSE PRICE</th>
+                  <th class="topic">MARKET CAP</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-overview">
+        <div class="news">
+          <div class="title">News</div>
+          <div id="news_container" class="news_container">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+
+    sidebarBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+      if (sidebar.classList.contains("active")) {
+        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else
+        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+  </script>
+
+</body>
+
+</html>

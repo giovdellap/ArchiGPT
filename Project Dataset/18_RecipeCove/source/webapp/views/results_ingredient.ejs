@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<% if (info!=""){ 
+    var title= info.name %>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+</head>
+<body>
+    <div class="my-navbar">
+        <h3 class="recipe-cove-logo" onclick="location.href='/'">
+            Recipe Cove
+        </h3>
+        <div class="my-navbar-menù">
+            <!-- <a href="/">Home</a> -->
+            <%if (connected==true){%>
+                <a href="profile">Profile</a>
+                <form action='logout'>
+                    <button>LOGOUT</button>
+                </form> 
+            <%}else{%>
+                <div style="display:none">><a href="profile">Profile</a></div>
+                <form action='login'>
+                    <button>LOGIN</button>
+                </form> 
+            <%}%>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="main-box-details soft-shadow">
+            <br>
+            <h1 class="text-center"><%= info.name.charAt(0).toUpperCase() + info.name.slice(1) %></h1>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="container">
+                            <div class="row text-center">
+                              <div class="col rc-image-container"><img src="https://spoonacular.com/cdn/ingredients_500x500/<%= info.image%>"></div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="col text-left">
+                        <table class="recipe-table" width="100%">
+                            <tr width="100%">
+                                <td colspan="3">
+                                    <h4 class="no-margin">Estimated Cost </h4>
+									<div><%= info.estimatedCost.value%> <%= info.estimatedCost.unit%></div>
+                                </td>
+                            </tr>
+                            <% if(info.nutrition.caloricBreakdown!="") {%>
+							<tr width="100%">
+								<td colspan="3">
+									<h4>Caloric Breakdown </h4>
+								</td>
+							</tr>
+                            <tr width="100%">
+                                <td width="33%">
+									<div>Protein</b></div>
+                                    <div><b><%= info.nutrition.caloricBreakdown.percentProtein%> </b></div>
+                                </td>
+                                <td width="33%">
+									<div>Fat</b></div>
+                                    <div><b><%= info.nutrition.caloricBreakdown.percentFat%> </b></div>
+                                </td>
+                                <td width="33%">
+									<div>Carbs</b></div>
+                                    <div><b><%= info.nutrition.caloricBreakdown.percentCarbs%> </b></div>
+                                </td>
+                            </tr>  
+                            <%}%>
+
+                            <tr>
+                                <td colspan="3">
+                                    <h4>Nutritional Values </h4>
+									<div class="ingredients-container">
+										<% if(info.nutrition.nutrients.length>0) {%>
+											<% for(var i=0;i < info.nutrition.nutrients.length; i++) {%>
+												<div class="nutritional-value"><b><%= info.nutrition.nutrients[i].name%></b>: <%= info.nutrition.nutrients[i].amount%> <%= info.nutrition.nutrients[i].unit%></div>
+											<%}%>
+										<% } else{%>
+											<p>Nutritional values not available...</p>
+										<%}%>
+									</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<%}%>
+</html>

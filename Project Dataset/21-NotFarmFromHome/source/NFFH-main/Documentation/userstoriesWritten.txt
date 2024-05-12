@@ -1,0 +1,62 @@
+# Epics
+1. Account & personal info client
+2. Account & personal info "farmer"
+3. Order Clien managment
+4. Cart managment
+5. Product / "farmer" discovery
+6. inventory managment
+7. Order "farmer" managment
+8. Account Admin managment
+9. User admin managment
+10. order Admin managment
+
+
+# Buyer
+- (1) As a Client , I what to be able to Register in the site so that I can use the site
+- (1) As a Client , I what to be able to login in the site so that I can use the site
+- (1) As a Client , I what to be able to not put my Credentials in the site every time a reload the site, so that I can use the site  
+- (1) As a Client , I what to be able to logout, so that no one else use my account 
+- (1) As a Client , I what to be able to see my personal information
+- (5) As a Client , I what to be able to Hot products, so that i can discover the product in the season
+- (5) As a Client , I what to be able to See Agricultural company in my area, so that i can choose where to buy products
+- (5) As a Client , I what to be able to See The products for each Agricultural company, so that I can buy From them
+- (4) As a Client , I what to be able to Add to cart the products, so that i can buy them
+- (4) As a Client , I what to be able to see product in the cart, so that i can see what I am going to buy
+- (3) As a Client , I what to be able to Complete an order, so that I can choose a date to go and pick up the products
+- (5) As a Client , I what to be able to Open in google Maps the Location of the Agricultural company, so that i can find directions to it 
+- (1) TODO: Credentials changing
+- (3) TODO See orders
+
+# Agricultural company
+- (6) As an Agricultural Company, I want to be able to Add products in inventory, so that I can show my clients the news produce
+- (6) As an Agricultural Company, I want to be able to Remove products in inventory, so that My clients don't try to buy an item that I don't have anymore
+- (6) As an Agricultural Company, I want to be able to Modify products in inventory, so that I can change price and quantities on the same item
+DELETED - Update his pickup availability (time and dates)
+- (2) As an Agricultural Company, I want to be able to Registrer in the site, so that i can be visible and start doing business in the site
+- (2) As an Agricultural Company, I want to be able to Login, so that i can work on the site
+- (2) As an Agricultural Company, I want to be able to not put my Credentials in the site every time a reload the site, so that I can use the site easily
+- (2) As an Agricultural Company, I want to be able to logout from the site
+- (2) As an Agricultural Company, I want to be able to see my personal information
+- (7) TODO See orders
+- (7) TODO update order status
+- (2) TODO: Credentials changing
+
+# Administrator
+- (8) As the Administrator of the site, I want to be able to login in the site, so that i can work on it
+- (8) As the Administrator of the site, I want to be able to not put my Credentials in the site every time a reload the site, so that I can use the site easily 
+- (8) As the Administrator of the site, I want to be able to logout from the site
+- (9) As the Administrator of the site, I want to be able to delete malevolus user, so that the platform is reliable
+- (10) As the Administrator of the site, I want to be able to Delete orders, so that if some orders are put on by accident i can remove them
+- (10) As the Administrator of the site, I want to be able to see all orders, so that I can better analyze how the platform is doing
+- (9) As the Administrator of the site, I want to be able to see all users, so that I can better analyze how the platform is doing
+- (9) As the Administrator of the site, I want to be able to get user details, so that I can have some clear view over the user
+- (9) As the Administrator of the site, I want to be able to modify users, so that I can do site maintenance
+- (9) As the Administrator of the site, I want to be able to see all areas, so that I can do site maintenance
+- (2) As the Administrator of the site, I want to be able to get all Agricultural company by areas, so that I can analyze how they are distributed
+- (2) As the Administrator of the site, I want to be able to get all Agricultural company details, so that I can do platform maintenance
+- (6) As the Administrator of the site, I want to be able to get product by seller, so that I can do site maintenance
+- (6) As the Administrator of the site, I want to be able to get product by id, so that I can do site maintenance
+- (2) As the Administrator of the site, I want to be able to add an area, so that if there is some request for that area to be added, I can
+- (6) As the Administrator of the site, I want to be able to add product, so that I can do site maintenance
+- (6) As the Administrator of the site, I want to be able to modify product, so that I can do site maintenance
+- (6) As the Administrator of the site, I want to be able to delete product, so that I can do site maintenance

@@ -1,0 +1,15 @@
+POST /Farmer/login
+
+body: {
+    mail: string,
+    password: string
+}
+
+res: {
+    success: boolean,
+    token: string
+}
+
+---
+from Auth to Farmer-BE
+

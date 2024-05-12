@@ -1,0 +1,71 @@
+#Docker-Compose FRA
+
+version: '3.9'
+name: epo-fra
+services:
+  web:
+    image: epo/web
+    build: ./web
+    container_name: web-fra
+    ports:
+    - 8084:8080
+    networks:
+      - network-fra
+    environment:
+      - REST_URL=http://rest:8080
+      - NATION=FR
+
+  rest:
+    image: epo/rest
+    build: ./rest
+    container_name: rest-fra
+    ports:
+      - 8085:8080
+    environment:
+      - DATABASE_URL=jdbc:postgresql://psql_db:5432/postgres
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+    depends_on:
+      - psql_db
+    networks:
+      - network-fra
+
+  psql_db:
+    image: postgres
+    container_name: psql_db-fra
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    #volumes:
+    #  - pgdata:/var/lib/postgresql/data
+    networks:
+      - network-fra
+
+  broadcast:
+    image: epo/broadcast
+    build: ./broadcast
+    container_name: broadcast-fra
+    environment:
+      - spring_rabbitmq_host=rabbitmq
+      - QUEUE_NAME=fra
+      - REST_URL=http://rest:8080
+      - LIST_NATIONS=ita,fra,ger
+      - POPULATION=3
+    depends_on:
+      - rest
+    ports:
+      - "8086:8080"
+    networks:
+      - network-fra
+
+networks:
+  network-fra:
+    name: rabbitmq-fra
+    external: true
+
+
+volumes:
+  pgdata: {}

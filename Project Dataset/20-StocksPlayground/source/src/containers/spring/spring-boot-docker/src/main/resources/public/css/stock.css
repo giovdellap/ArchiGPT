@@ -1,0 +1,116 @@
+/* BOXES */
+.home-content .overview-boxes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    margin-bottom: 15px;
+}
+
+.overview-boxes .box {
+    display: flex;
+    align-items: center;
+    width: calc(100% / 4 - 15px);
+    background: #292929;
+    color: white;
+    padding: 15px 14px 15px 24px;
+    margin: 10px 0px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.overview-boxes .box-topic {
+    font-size: 18px;
+    font-weight: 500;
+    color: gray;
+}
+
+.home-content .box .number {
+    display: inline-block;
+    font-size: 35px;
+    margin-top: -6px;
+    font-weight: 500;
+}
+
+.home-content .box .indicator {
+    display: flex;
+    align-items: center;
+}
+
+.home-content .box .indicator i {
+    height: 25px;
+    width: 25px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.home-content .box .indicator .text {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+/* END BOXES */
+
+/* GRAPH */
+.home-content .graph_space .graph_box {
+    background: #292929;
+    color: white;
+    min-height: 400px;
+    padding: 20px 30px;
+    margin: 10px 20px 26px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.graph_space .graph_box .graph {
+    justify-content: center;
+    margin: 20px 0px 0px;
+}
+
+.graph_box .title {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+
+.material-symbols-outlined {
+     font-variation-settings:
+             'FILL' 0,
+             'wght' 400,
+             'GRAD' 0,
+             'opsz' 48
+ }
+
+#favorites-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    margin: 5px 0px 15px 20px;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+#favorites-button .materials-symbols-outlined {
+    font-family: 'Material Icons Outlined';
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+#favorites-button:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+#favorites-text {
+    font-size: 14px;
+    color: #999;
+    margin-left: 8px;
+}
+/* END GRAPH */

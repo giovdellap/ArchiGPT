@@ -1,0 +1,11 @@
+### Endpoints
+
+Endpoint URL | Request Object | Response Object | HTTP Method
+-------------------------------------------------------------
+/area | CreateAreaInput | Area | POST
+/area | None | List<Area> | GET
+/farmer/register | CreateFarmerInput | Farmer | POST
+/farmers | None | List<Farmer> | GET
+/product | CreateProductInput | Product | POST
+/products | None | List<Product> | GET
+/product/{id} | CreateProductInput | ModifyProductResponse | PUT

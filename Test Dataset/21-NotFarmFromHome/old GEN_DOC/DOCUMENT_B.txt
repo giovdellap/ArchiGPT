@@ -1,0 +1,30 @@
+NFFH-admin-FE:
+  - admin-fe
+
+NFFH-Auth:
+  - auth
+
+NFFH-Client-BE:
+  - mysql-client
+  - client-be
+
+NFFH-client-FE:
+  - client-fe
+
+NFFH-Farmer-BE:
+  - mysql-farmer
+  - farmer-be
+
+NFFH-farmer-FE:
+  - farmer-fe
+
+NFFH-gateway:
+  - api-gateway
+
+NFFH-ImageServer:
+  - image-server
+
+NFFH-Order-BE:
+  - mysql-order
+  - order-be
+

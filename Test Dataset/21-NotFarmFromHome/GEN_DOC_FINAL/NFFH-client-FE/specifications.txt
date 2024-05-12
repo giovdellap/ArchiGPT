@@ -1,0 +1,7 @@
+### Services:
+- client-fe
+
+### Ports:
+| Exposed Port/Internal Port | Related Service |
+|----------------------------|-----------------|
+| 4201:4201                  | client-fe       |

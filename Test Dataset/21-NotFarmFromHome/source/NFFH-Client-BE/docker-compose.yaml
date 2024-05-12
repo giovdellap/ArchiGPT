@@ -1,0 +1,44 @@
+version: '3.1'
+
+services:
+
+  mysql-client:
+    image: mysql:8.0.34
+    container_name: mysql-client   
+    volumes:
+      - client-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: Client_DB
+    networks:
+        - internal
+
+  client-be:
+    container_name: client-be
+    build:
+      dockerfile: ./Dockerfile
+      args:
+        APP_NAME: nffh-client-BE
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-client:3306/Client_DB
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - mysql-client
+    networks:
+      - gateway
+      - auth
+      - internal
+
+networks:
+  gateway:
+    external: true
+    name: g-client-be
+  auth:
+    external: true
+    name: a-client-be
+  internal:
+    external: false
+volumes:
+  client-mysql-data:
+      
