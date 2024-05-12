@@ -1,0 +1,9 @@
+services:
+  farmer-fe:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        APP_NAME: farmer-FE
+    ports:
+           - "4202:80"

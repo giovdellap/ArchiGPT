@@ -1,0 +1,54 @@
+services:
+  warehouse_api:
+    build: ./warehouse_api
+    hostname: warehouse_api
+    ports:
+      - 8000:8000
+
+  catalog_api:
+    build: ./catalog_api
+    hostname: catalog_api
+    ports:
+      - 8001:8000
+
+  purchase_refund_api:
+    build: ./purchase_refund_api
+    hostname: purchase_refund_api
+    ports:
+      - 8002:8000
+
+  auth_api:
+    build: ./auth_api
+    hostname: auth_api
+    ports:
+      - 8003:8000
+
+  db:
+   image: mysql:5.7
+   hostname: db
+   ports:
+     - "32000:3306"
+   environment:
+     MYSQL_ROOT_PASSWORD: root
+   volumes:
+     - ./db:/docker-entrypoint-initdb.d/:ro
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - "./frontend:/usr/src/admin"
+      - "/usr/src/admin/node_modules"
+    hostname: admin_interface
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_BACKEND_SERVICE_URL=http://localhost:8000
+  
+volumes: 
+  db:
+    driver: local
+
+

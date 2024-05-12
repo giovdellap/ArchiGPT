@@ -1,0 +1,33 @@
+## CONTAINERS LIST
+
+
+CONTAINER NAME: NFFH-admin-FE
+  - SERVICE NAME: admin-fe
+
+CONTAINER NAME: NFFH-Auth
+  - SERVICE NAME: auth
+
+CONTAINER NAME: NFFH-Client-BE
+  - SERVICE NAME: mysql-client
+  - SERVICE NAME: client-be
+
+CONTAINER NAME: NFFH-client-FE
+  - SERVICE NAME: client-fe
+
+CONTAINER NAME: NFFH-Farmer-BE
+  - SERVICE NAME: mysql-farmer
+  - SERVICE NAME: farmer-be
+
+CONTAINER NAME: NFFH-farmer-FE
+  - SERVICE NAME: farmer-fe
+
+CONTAINER NAME: NFFH-gateway
+  - SERVICE NAME: api-gateway
+
+CONTAINER NAME: NFFH-ImageServer
+  - SERVICE NAME: image-server
+
+CONTAINER NAME: NFFH-Order-BE
+  - SERVICE NAME: mysql-order
+  - SERVICE NAME: order-be
+

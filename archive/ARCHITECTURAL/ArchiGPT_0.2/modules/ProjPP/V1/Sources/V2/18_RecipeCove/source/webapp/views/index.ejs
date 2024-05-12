@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <div class="my-navbar">
+        <h3 class="recipe-cove-logo" onclick="location.href='/'">
+            Recipe Cove
+        </h3>
+        <div class="my-navbar-menù">
+            <!-- <a href="/">Home</a> -->
+            <%if (connected==true){%>
+                <a href="profile">Profile</a>
+                <form action='logout'>
+                    <button>LOGOUT</button>
+                </form> 
+            <%}else{%>
+                <div style="display:none">><a href="profile">Profile</a></div>
+                <form action='login'>
+                    <button>LOGIN</button>
+                </form> 
+            <%}%>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="home-page-container main-box soft-shadow">
+
+			<div class="home-img-container">
+				<img src="images/logo.png" >
+			</div>
+
+			<div class="home-intro">
+				<div class="home-page-title"><h3>Your place to find the best recipes!</h3></div>
+				<div>
+					<div>Recipe Cove lets you <b>find the best recipes</b> for your needs!</div>
+					<div>You can <b>search for recipes</b> and their details, see <b>single ingredients information</b>, and also add recipes to <b>your personal list</b>!</div>
+					<div>If you <b>login</b> with your Google account, you can also <b>add events to your Google Calendar</b>!</div>
+					<div>Ultimately, you can use our <b>Chat-Bot</b> to ask for recipe suggestions based on a <b>specific diet</b>.</div>
+				</div>
+			</div>
+
+			<div class="home-search-container">
+				<div class="home-page-title"><h3>Search for any of our recipes!</h3></div>
+
+				<form id='search' class="home-search-form" action="https://localhost:3000/results_recipe" method="POST">
+					<div class="home-search-bar-container">
+						<input type="text" name="search" id="searchTitle" class="form-control" placeholder="Search for a recipe..." required>
+						<button type="submit">
+							<i class="bi bi-search" style="size: 10px;"></i>
+						</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="home-google-login-container">
+				<div class="home-google-login">
+					<div class="home-page-title"><h3>Access more features!</h3></div>
+					<%if (connected==false){%>
+						<div class="home-page-text">
+							Login with your Google account!
+						</div>
+					<%} else{%>
+						<div class="home-page-text">
+							<!-- Check if a "user_name" parameter is present -->
+							You are logged in, enjoy!
+						</div>
+					<%}%>
+				</div>
+				<div class="home-google-login">
+					<%if (connected==false){%>
+						<form action='login'>
+							<button class="search-button soft-shadow"><img width="25px" heigth="25px" style="margin-bottom: 5px; margin-right: 5px" src="https://static.cdnlogo.com/logos/g/35/google-icon.svg">Login</button>     
+						</form>
+					<%} else{%>
+						<form action='logout'>
+							<button class="search-button soft-shadow"><img width="25px" heigth="25px" style="margin-bottom: 5px; margin-right: 5px" src="https://static.cdnlogo.com/logos/g/35/google-icon.svg">Logout</button>      
+						</form>
+					<%}%>
+				</div>
+			</div>
+
+			<div class="home-chat-bot-info">
+				<div class="home-page-text">
+					<div><h3>Try our Chat-Bot!</h3></div>
+					<div>You can use our Chat-Bot to ask for recipe suggestions based on a specific diet!</div>
+					<div>Try it out by clicking on the "Chat-Bot" button on the bottom right of this page.</div>
+				</div>
+				<div>
+					<img src="images/chatbot_screenshot.png">
+				</div>
+			</div>
+        </div>
+        
+        <div id="chat-btn" class="btn btn-raised" onclick="javascript:show()">
+            <b><i class="bi bi-chat"></i></b> Chat-Bot
+        </div>
+        <div class="container-chat" id="cont-chat">
+            <div class="chat-box-header">
+                Chat-bot
+                <span class="chat-box-toggle" onclick="javascript:hide()"><i class="bi bi-x-lg"></i></span>
+            </div>
+            <div class="chat-box" id="chat-box">
+                <div id="messages" class="messages"></div>
+            </div>
+            <form id="msgForm" class="msgForm">
+                <input type="text" placeholder="Send a message" class="input" id="inputBox"/>
+                <input type="submit" class="send-btn" value="Send">
+            </form>
+        </div>
+        <script type="text/javascript">
+            var bottone = document.getElementById('chat-btn');
+            var chat = document.getElementById('cont-chat');
+            
+            var websock;
+            function show(){
+                bottone.style.display="none";
+                chat.style.display="flex";
+
+                const ws=new WebSocket('wss://localhost:3000/chat');
+                websock=ws;
+
+                ws.onopen=function(){ }
+
+                ws.onmessage = function(message){
+                    const msgDiv=document.createElement('div');
+                    msgDiv.classList.add('msgCtn1');
+                    msgDiv.innerHTML = message.data;
+                    document.getElementById('messages').appendChild(msgDiv);
+                    messages = document.getElementById('messages'); 
+                    var xH = messages.scrollHeight; 
+                    messages.scrollTo({top:xH, behavior:'smooth'});
+                }
+
+                const form=document.getElementById('msgForm');
+                form.addEventListener('submit',(event) => {
+                    event.preventDefault();
+                    const message=document.getElementById('inputBox').value;
+                    if (message==''){ 
+                        return false; 
+                    }
+                    const msgDiv=document.createElement('div');
+                    msgDiv.classList.add('msgCtn2');
+                    msgDiv.innerHTML = message;
+                    document.getElementById('messages').appendChild(msgDiv);
+                    ws.send(message);
+                    document.getElementById('inputBox').value='';
+                    messages = document.getElementById('messages'); 
+                    var xH = messages.scrollHeight; 
+                    messages.scrollTo({top:xH, behavior:'smooth'});
+                })
+            };
+
+            function hide(){
+                bottone.style.display="block";
+                chat.style.display="none";
+                messages = document.getElementById('messages');
+                messages.innerHTML="";
+                websock.close();
+            }
+            
+        </script>
+    </div>
+</body>
+</html>

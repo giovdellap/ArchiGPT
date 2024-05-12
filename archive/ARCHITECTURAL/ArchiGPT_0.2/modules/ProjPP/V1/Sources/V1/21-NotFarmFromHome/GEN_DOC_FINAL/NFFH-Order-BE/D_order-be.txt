@@ -1,0 +1,72 @@
+### **Service:** order-be
+
+### Service Purpose
+
+The "order-be" service within the "NFFH-Order-BE" container is a fundamental component of the Not Far(m) From Home platform, specifically tailored to handle all backend functionalities related to order processing and management. This service is crucial for facilitating the interaction between consumers and agricultural companies, enabling a seamless transaction process. Its main purpose is to provide robust support for creating, managing, and retrieving orders placed by clients. This service ensures that clients can place orders for agricultural products, specify pickup details, and view their order history efficiently and effectively. By leveraging a structured approach through Java and Spring Boot, the service maintains high performance and scalability, ensuring that the backend processes align with the platform's objectives of promoting direct transactions between local farmers and consumers​​​​​​.
+
+### Key Features
+
+Order Creation and Management: The service provides endpoints for creating new orders and managing existing ones. This includes processing POST requests for new orders, where clients can specify details such as the product IDs, quantities, and pickup information, and receiving structured responses that confirm the order details and status​​.
+Client Order Retrieval: It supports GET requests that allow clients to retrieve a list of their orders. This feature is crucial for ensuring that clients can track their past activities and manage their orders effectively​​.
+Database Interaction: Configured to interact seamlessly with a MySQL database to store and manage all order-related data. This setup utilizes Spring Data JPA or JDBC templates, provided by the Spring Boot framework, to facilitate efficient data handling and retrieval operations​​.
+Security and Session Management: Through the integration with other services such as the "auth" service for authentication and session management, it ensures that all transactions are secure and that user sessions are maintained effectively, providing a reliable and secure user experience​​​​.
+Service Communication: Utilizes Docker network bridges to ensure isolated and secure communication with other related services, such as authentication or user profile management, thereby maintaining a high level of security and data integrity across the platform​​.
+
+### Programming Language, Frameworks and Libraries
+
+- Java 17 (OpenJDK): The application is built on Java, which is known for its robustness and extensive support for enterprise environments.
+- Spring Boot: Likely used given the Maven setup and project structure. It simplifies the development of new Spring applications through conventions and auto-configuration.
+- Maven: Used for managing the project's build, dependencies, and additional project documentation.
+
+### Scaffolding and Architectural Patterns
+
+The service employs a conventional Maven project layout, which organizes source code and resources into distinct directories that are standard in Java development. This layout supports separation of concerns, modular development, and ease of testing and maintenance. The use of Spring Boot suggests an architecture that favors convention over configuration, aiding in rapid development and deployment.
+
+### Communication with the Database
+
+The service is configured to interact with a MySQL database, as indicated by the associated container 'mysql-order'. Using Spring Boot, this interaction is likely facilitated through Spring Data JPA or JDBC templates, which provide robust and flexible ways to manage database operations. This setup ensures effective handling of persistence and data retrieval operations necessary for managing orders.
+
+### Endpoints:
+
+Endpoint URL | Request Object | Response Object | HTTP Method
+-------------------------------------------------------------
+/order | CreateOrderInput | CreateOrderResponse | POST
+/orders/client | None | GetOrderListClientResponse | GET
+
+### Data Structures: 
+
+#### CreateOrderInput:
+Variable Name | Variable Type
+-----------------------------
+clientId | String
+orderParts | List<CreateOrderPart>
+pickup | String
+
+#### CreateOrderPart:
+Variable Name | Variable Type
+-----------------------------
+productId | String
+quantity | int
+
+#### CreateOrderResponse:
+Variable Name | Variable Type
+-----------------------------
+orderId | String
+success | boolean
+message | String
+
+#### GetOrderListClientResponse:
+Variable Name | Variable Type
+-----------------------------
+orders | List<orderElement>
+
+#### orderElement:
+Variable Name | Variable Type
+-----------------------------
+orderID | int
+orderPartList | List<OrderPart>
+commission | float
+pickup | String
+total | float
+accepted | boolean
+

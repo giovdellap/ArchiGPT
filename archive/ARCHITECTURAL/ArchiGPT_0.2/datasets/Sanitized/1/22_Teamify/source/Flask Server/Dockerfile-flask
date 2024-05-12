@@ -1,0 +1,22 @@
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim-buster
+
+# Set the working directory to /backend
+WORKDIR /backend
+
+# Copy the current directory contents into the container at /backend, the \ is to escape the space in folder name
+COPY ./ ./
+
+RUN pip install --upgrade pip
+RUN pip install --upgrade wheel
+RUN pip install --upgrade setuptools
+
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
+
+# Run app.py when the container launches, specifying port 5000
+CMD ["python", "server.py"]

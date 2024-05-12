@@ -1,0 +1,18 @@
+SECTION 1: Textual Description of the Container's Behavior and the Function It Serves
+
+The NFFH-Client-BE container is built on the Java platform, utilizing an openjdk:17 base image. It runs a Spring Boot application, packaged as Client-BE-0.0.1-SNAPSHOT.jar, which is copied into the container and executed. This service is likely responsible for handling all back-end logic related to client interactions within the NFFH system, including data management, business logic execution, and possibly API endpoint exposure for client-side applications.
+
+The service also defines a MySQL database (mysql-client) as a dependency, indicating it requires a database to function correctly. The database service uses the mysql:8.0.34 image, with a dedicated volume for persistence, and is connected to the client-be service via an internal network.
+
+SECTION 2: List of All the Services Within the Container
+
+- Client-BE Service: The primary back-end service for client-side operations, running a Java/Spring Boot application.
+- MySQL Database (mysql-client): A MySQL database service dedicated to the client back-end, indicating data storage and management functionalities for client operations.
+
+SECTION 3: Table with the Exposed Port and Related Service
+
+| Exposed Port | Related Service      |
+|--------------|----------------------|
+| 9702         | Client-BE Service    |
+
+Additionally, the docker-compose.yaml specifies connections to external networks named gateway and auth, suggesting integration with authentication services and possibly a gateway for routing or load balancing. The internal network facilitates isolated communication between the service and its database.

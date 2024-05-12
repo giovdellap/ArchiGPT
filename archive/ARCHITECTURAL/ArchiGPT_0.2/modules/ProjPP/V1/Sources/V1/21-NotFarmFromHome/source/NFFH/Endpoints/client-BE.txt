@@ -1,0 +1,65 @@
+NEW CLIENT
+
+Status: PROD
+Insomnia: updated
+AUTH: INTERNAL
+POST /client
+Req:
+{
+	name : string,
+    email : string,
+    password : string,
+}
+
+res: {
+	success: boolean,
+    id: string
+}
+
+--------------------------------
+GET ALL CLIENTS
+
+Status: DEBUG
+Insomnia: updated
+AUTH: ADMIN
+GET /customer
+
+
+res: {
+	name : string,
+    email : string,
+    password : string,
+} []
+
+--------------------------------
+GET CLIENT BY ID
+
+Status: DEBUG
+Insomnia: updated
+AUTH: CLIENT/ADMIN
+GET /customer/id
+
+res: {
+	name : string,
+    email : string,
+    password : string,
+}
+
+---------------------------------
+LOGIN
+
+Status: : PROD
+Insomnia: updated
+AUTH: INTERNAL
+POST /customer/login
+req: {
+    email: string,
+}
+
+res: {
+    success: boolean,
+    password: string
+    id: string,
+    username: string
+}
+

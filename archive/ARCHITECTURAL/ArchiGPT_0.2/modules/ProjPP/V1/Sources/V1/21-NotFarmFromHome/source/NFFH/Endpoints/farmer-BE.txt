@@ -1,0 +1,233 @@
+PAGINE DA 12
+
+-----------------------------------
+GET AREAS
+
+Status: : PROD
+Insomnia: updated
+AUTH: NONE
+GET /area
+
+Response:
+	{
+		id: string
+		areaName: string
+	} []
+
+
+-----------------------------------
+GET FARMERS BY AREA
+
+Status: : PROD
+Insomnia: updated
+AUTH: NONE
+GET /farmer/areas?area=area&page=page
+Res:
+	{
+	zone: string,
+    page: number,
+    total: number, //number of pages
+    stores: 
+    {
+    	id: string,
+    	name: string,
+    	image: string,
+    	location: string
+    }[]
+}
+
+
+-----------------------------------
+GET FARMERS BY ID FULL
+
+Status: : PROD
+Insomnia: updated
+AUTH: ADMIN
+GET /farmerFull/id
+Res:
+	{
+		email: string,
+		password: string
+		id: string,
+    	username: string,
+    	image: string,
+		area: string,
+		address: string
+	}
+
+-----------------------------------
+GET FARMERS BY ID LIGHT
+
+Status: : PROD
+Insomnia: updated
+AUTH: NONE
+GET /farmerLight/id
+Res:
+	{
+		id: string,
+    	username: string,
+    	image: string,
+		area: string,
+		address: string
+	}
+
+-----------------------------------
+GET PRODUCTS BY SELLER 
+
+Status: : PROD
+Insomnia: updated
+AUTH: NONE
+GET /product/findbyseller?seller=id&page=page
+Res:
+	{
+		page: number,
+    	total: number, (NUMERO DI PAGINE)
+    	products: 
+    	{
+    		id: string, 
+    		title: string,
+    		seller: string,
+    		image: string,
+    		description: string,
+    		price: number,
+    		weight: boolean,
+    		availability: boolean
+    	} []
+	}
+
+
+-----------------------------------
+GET PRODUCT BY ID
+
+Status: : PROD
+Insomnia: updated
+AUTH: NONE
+GET /product/ID
+Res:
+	{
+		product:
+		{
+			id: string, 
+    		title: string,
+    		seller: string,
+    		image: string,
+    		description: string,
+    		price: number,
+    		weight: boolean
+	    	availability: boolean
+		},
+	}
+
+
+-----------------------------------
+NEW AREA
+
+Status: : PROD
+Insomnia: updated
+AUTH: ADMIN
+POST /area		
+Body: 
+	{
+		"areaName" : "[NomeArea]"
+	}
+
+
+-----------------------------------
+NEW FARMER
+
+Status: : PROD
+Insomnia: updated
+AUTH: INTERNAL
+POST /farmer
+Req:
+	{
+	"username" : string,
+    "email" : string,
+    "password" : string,
+    "image" : string,
+    "area" : string,
+    "address" : string
+	}
+
+res: {
+	success: boolean,
+	id: string
+}
+
+
+-----------------------------------
+NEW PRODUCT
+
+Status: : PROD
+Insomnia: updated
+AUTH: FARMER/ADMIN
+POST /product/add
+req: {
+  title: string,
+  seller: string,
+  image: string,
+  description: string,
+  price: number,
+  weight: boolean,
+  availability: boolean
+}
+res: {
+	id: string,
+  	title: string,
+  	success: boolean
+}
+
+
+-----------------------------------
+MODIFY PRODUCT
+
+Status: : PROD
+Insomnia: updated
+AUTH: FARMER/ADMIN
+POST /product/modify/id
+req: {
+  	title: string,
+  	seller: string,
+  	image: string,
+  	description: string,
+  	price: number,
+  	weight: boolean,
+  	availability: boolean
+}
+res: {
+	id: string,
+  	title: string,
+  	success: boolean
+}
+
+
+-----------------------------------
+DELETE PRODUCT
+
+Status: : PROD
+Insomnia: updated
+AUTH: FARMER/ADMIN
+DELETE /product/id
+res: {
+	id: string,
+  	title: string,
+  	success: boolean
+}
+
+------------------------------
+LOGIN
+
+Status: : PROD
+Insomnia: updated
+AUTH: INTERNAL
+POST /farmer/login
+req: {
+    email: string,
+}
+
+res: {
+    success: boolean,
+    password: string,
+	id: string,
+	username: string
+}

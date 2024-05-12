@@ -1,0 +1,39 @@
+
+Endpoints:
+
+Endpoint URL | Request Object | Response Object | HTTP Method
+-------------------------------------------------------------
+/ | None | News[] | GET
+/create | NewsInput | News | POST
+/<user_id> | None | News[] | GET
+/<news_id>/edit | NewsInput | SuccessMessage | PUT
+/<news_id> | None | SuccessMessage | DELETE
+/<user_id>/all | None | SuccessMessage | DELETE
+
+Data Structures:
+
+NewsInput:
+Variable Name | Variable Type
+-----------------------------
+title | String
+author | String
+urlToImage | String
+published_at | String
+user_id | Integer
+url | String
+
+News:
+Variable Name | Variable Type
+----------------------------
+id | Integer
+title | String
+author | String
+imageUrl | String
+published_at | String
+user_id | Integer
+url | String
+
+SuccessMessage:
+Variable Name | Variable Type
+----------------------------
+message | String

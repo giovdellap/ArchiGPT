@@ -1,0 +1,63 @@
+{
+  "version": "7.16.2",
+  "objects": [
+    {
+      "id": "51a2cf10-2798-11ed-aa14-171b877f91aa",
+      "type": "dashboard",
+      "namespaces": [
+        "default"
+      ],
+      "updated_at": "2022-09-05T13:17:45.644Z",
+      "version": "Wzg2LDFd",
+      "attributes": {
+        "title": "Scoreboard",
+        "hits": 0,
+        "description": "",
+        "panelsJSON": "[{\"version\":\"7.16.2\",\"type\":\"lens\",\"gridData\":{\"x\":0,\"y\":0,\"w\":24,\"h\":15,\"i\":\"a7f1e622-b0e2-41fb-8b93-74b05a51a140\"},\"panelIndex\":\"a7f1e622-b0e2-41fb-8b93-74b05a51a140\",\"embeddableConfig\":{\"attributes\":{\"title\":\"\",\"visualizationType\":\"lnsDatatable\",\"type\":\"lens\",\"references\":[{\"type\":\"index-pattern\",\"id\":\"e12fc570-2798-11ed-aa14-171b877f91aa\",\"name\":\"indexpattern-datasource-current-indexpattern\"},{\"type\":\"index-pattern\",\"id\":\"e12fc570-2798-11ed-aa14-171b877f91aa\",\"name\":\"indexpattern-datasource-layer-857c8940-4dcb-4f5d-816c-b3185a0bdfea\"}],\"state\":{\"visualization\":{\"columns\":[{\"isTransposed\":false,\"columnId\":\"4bb6f610-b85e-4ab8-8485-45f591295ee8\"},{\"isTransposed\":false,\"columnId\":\"a149cda8-e20e-441d-b818-9638706b2109\",\"hidden\":true},{\"isTransposed\":false,\"columnId\":\"e84cc753-d8f7-44cb-b6ad-3e99b55a480e\"},{\"columnId\":\"fa16f051-acbe-4eff-b296-6e4c061d2bb7\",\"isTransposed\":false,\"width\":186}],\"layerId\":\"857c8940-4dcb-4f5d-816c-b3185a0bdfea\",\"layerType\":\"data\",\"sorting\":{\"columnId\":\"e84cc753-d8f7-44cb-b6ad-3e99b55a480e\",\"direction\":\"desc\"}},\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filters\":[],\"datasourceStates\":{\"indexpattern\":{\"layers\":{\"857c8940-4dcb-4f5d-816c-b3185a0bdfea\":{\"columns\":{\"4bb6f610-b85e-4ab8-8485-45f591295ee8\":{\"label\":\"Nickname\",\"dataType\":\"string\",\"operationType\":\"terms\",\"scale\":\"ordinal\",\"sourceField\":\"nickname.keyword\",\"isBucketed\":true,\"params\":{\"size\":5,\"orderBy\":{\"type\":\"alphabetical\",\"fallback\":true},\"orderDirection\":\"asc\",\"otherBucket\":true,\"missingBucket\":false},\"customLabel\":true},\"a149cda8-e20e-441d-b818-9638706b2109\":{\"label\":\"Top values of score\",\"dataType\":\"number\",\"operationType\":\"terms\",\"scale\":\"ordinal\",\"sourceField\":\"score\",\"isBucketed\":true,\"params\":{\"size\":998,\"orderBy\":{\"type\":\"alphabetical\",\"fallback\":true},\"orderDirection\":\"asc\",\"otherBucket\":false,\"missingBucket\":false}},\"e84cc753-d8f7-44cb-b6ad-3e99b55a480e\":{\"label\":\"Score\",\"dataType\":\"number\",\"operationType\":\"formula\",\"isBucketed\":false,\"scale\":\"ratio\",\"params\":{\"formula\":\"sum(score)\",\"isFormulaBroken\":false},\"references\":[\"e84cc753-d8f7-44cb-b6ad-3e99b55a480eX0\"],\"customLabel\":true},\"e84cc753-d8f7-44cb-b6ad-3e99b55a480eX0\":{\"label\":\"Part of sum(score)\",\"dataType\":\"number\",\"operationType\":\"sum\",\"sourceField\":\"score\",\"isBucketed\":false,\"scale\":\"ratio\",\"customLabel\":true},\"fa16f051-acbe-4eff-b296-6e4c061d2bb7\":{\"label\":\"Id\",\"dataType\":\"string\",\"operationType\":\"terms\",\"scale\":\"ordinal\",\"sourceField\":\"_id\",\"isBucketed\":true,\"params\":{\"size\":1000,\"orderBy\":{\"type\":\"alphabetical\",\"fallback\":true},\"orderDirection\":\"asc\",\"otherBucket\":true,\"missingBucket\":false},\"customLabel\":true}},\"columnOrder\":[\"fa16f051-acbe-4eff-b296-6e4c061d2bb7\",\"a149cda8-e20e-441d-b818-9638706b2109\",\"4bb6f610-b85e-4ab8-8485-45f591295ee8\",\"e84cc753-d8f7-44cb-b6ad-3e99b55a480e\",\"e84cc753-d8f7-44cb-b6ad-3e99b55a480eX0\"],\"incompleteColumns\":{}}}}}}},\"hidePanelTitles\":false,\"enhancements\":{}},\"title\":\"Scoreboard\"}]",
+        "optionsJSON": "{\"useMargins\":true,\"syncColors\":false,\"hidePanelTitles\":false}",
+        "version": 1,
+        "timeRestore": false,
+        "kibanaSavedObjectMeta": {
+          "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        }
+      },
+      "references": [
+        {
+          "type": "index-pattern",
+          "id": "e12fc570-2798-11ed-aa14-171b877f91aa",
+          "name": "a7f1e622-b0e2-41fb-8b93-74b05a51a140:indexpattern-datasource-current-indexpattern"
+        },
+        {
+          "type": "index-pattern",
+          "id": "e12fc570-2798-11ed-aa14-171b877f91aa",
+          "name": "a7f1e622-b0e2-41fb-8b93-74b05a51a140:indexpattern-datasource-layer-857c8940-4dcb-4f5d-816c-b3185a0bdfea"
+        }
+      ],
+      "migrationVersion": {
+        "dashboard": "7.16.0"
+      },
+      "coreMigrationVersion": "7.16.2"
+    },
+    {
+      "id": "e12fc570-2798-11ed-aa14-171b877f91aa",
+      "type": "index-pattern",
+      "namespaces": [
+        "default"
+      ],
+      "updated_at": "2022-09-05T13:16:38.740Z",
+      "version": "WzI2LDFd",
+      "attributes": {
+        "fieldAttrs": "{}",
+        "title": "game*",
+        "fields": "[]",
+        "typeMeta": "{}",
+        "runtimeFieldMap": "{}"
+      },
+      "references": [],
+      "migrationVersion": {
+        "index-pattern": "7.11.0"
+      },
+      "coreMigrationVersion": "7.16.2"
+    }
+  ]
+}

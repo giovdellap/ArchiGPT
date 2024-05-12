@@ -1,0 +1,46 @@
+# Buyer
+- Registration 
+- login
+- Remeber me 
+- logout
+- see my personal information
+- Hot products
+- See Ag C in my area
+- See The products for each Ag C
+- Add to cart the products
+- see product in the cart
+- Complete an order: Pick up at the farm (product reservation on the site)
+- Open in gMaps the Location of the Ag C
+- See orders
+
+# Agricultural company
+- (6) Add products in inventory
+- (6) Remove products in inventory
+- (6) Modify products in inventory
+- (2) Registration
+- (2) Login
+- (2) Remeber me 
+- (2) logout
+- (2) see my personal information
+- (7) TODO See orders
+- (2) TODO: Credentials changing
+
+# Administrator
+- (8) login 
+- (8) Remeber me 
+- (8) logout
+- (9) Ban users -> delete user
+- (10) Delete orders
+- (10) see all orders
+- (9) see all users
+- (9) get user details
+- (9) modify users
+- (9) see all areas
+- (2) get farmer by areas
+- (2) get farmer details
+- (6) get product by seller
+- (6) get product by id
+- (2) add an area
+- (6) add product
+- (6) modify product
+- (6) delete product

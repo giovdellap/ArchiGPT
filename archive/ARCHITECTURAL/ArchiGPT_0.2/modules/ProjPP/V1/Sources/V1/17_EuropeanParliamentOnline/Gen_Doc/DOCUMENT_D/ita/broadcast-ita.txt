@@ -1,0 +1,15 @@
+
+Service Name: broadcast-ita
+Description:
+The "broadcast-ita" service is an integral part of the ITA container within the European Parliament Online project, facilitating the distribution of messages and data across various components and services. This service leverages RabbitMQ for efficient, real-time communication, ensuring that broadcast messages are reliably delivered to all participating services. It plays a pivotal role in consensus-building processes and the exchange of referendum proposals and results among EU member nations.
+
+Technologies, Programming Languages, Frameworks, and Libraries:
+1. Java (Version 17): The foundation programming language, providing a robust, secure, and high-performance base for the service.
+2. Spring Boot (Version 3.1.3): The primary framework for creating microservice applications, simplifying configuration and deployment.
+3. Spring AMQP: Offers comprehensive AMQP messaging support with RabbitMQ, enabling scalable and reliable message distribution.
+4. Spring Web: Utilized for constructing RESTful web services that interact with other system components and services.
+5. Spring Boot DevTools: Aids in development by providing fast application restarts, LiveReload, and other convenient development features.
+6. Spring Boot Starter Test: Includes support for testing the application, integrating well-known testing frameworks for comprehensive testing capabilities.
+7. Spring Rabbit Test: Specialized for testing Spring applications that use RabbitMQ for messaging, ensuring the reliability and robustness of the message communication.
+8. Google Gson: Used for serializing and deserializing Java objects to and from JSON, facilitating the easy exchange of data between services.
+

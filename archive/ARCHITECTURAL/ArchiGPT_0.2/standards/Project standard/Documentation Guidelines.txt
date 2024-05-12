@@ -1,0 +1,31 @@
+﻿PROJECTS DOCUMENTATION GUIDELINES
+
+
+DOCUMENT TYPE A (System Description)
+Textual description of the system architecture
+The document presents the system architecture from a general point of view, highlighting the defined subdivision of roles between subsystems, expected challenges and architectural patterns/systems to solve said challenges
+ 
+DOCUMENT TYPE B (Containers list)
+List of all containers inside the system
+
+
+For each container:
+DOCUMENT TYPE C (Container Documentation)
+This document must contain:
+* Textual description of the container's behaviour and the function it serves
+* List of all the services within the container
+* Table with the following columns:
+   * Exposed port
+   * Related service (the service that exposes this endpoint)
+
+
+For each service:
+DOCUMENT TYPE D (Service Description)
+This document must contain:
+* Textual description of the service's behaviour and purpose
+* Textual description of the service's technologies, programming languages, frameworks and libraries (include only the most important ones)
+* Table with the following column names:
+   * Endpoint URL and Path
+   * Request object (if present)
+   * Response Object
+   * HTTP Method

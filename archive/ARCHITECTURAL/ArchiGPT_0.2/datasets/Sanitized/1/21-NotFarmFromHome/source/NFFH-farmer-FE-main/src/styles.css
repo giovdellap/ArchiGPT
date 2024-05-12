@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  --primarydark: #00a5f3;
+  --primary: #22cbff;
+  --primarylight: #aee9fe;
+  --text: #ffffff;
+  --accent: #FF5722;
+  --primarytext: #212121;
+  --secondarytext: #757575;
+  --divider: #F5F5F5;
+  --background: #E0E0E0;
+}
+
+.basic-button {
+  background-color: var(--accent) !important;
+  color: var(--divider) !important;
+}

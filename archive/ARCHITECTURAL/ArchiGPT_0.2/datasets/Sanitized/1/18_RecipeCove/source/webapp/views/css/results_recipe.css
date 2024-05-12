@@ -1,0 +1,79 @@
+.recipe-box {
+	width: 100%;
+	/* border: solid yellow 1px; */
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: space-around;
+}
+.recipe-external-card {
+	background-color: rgb(255, 255, 255);
+	border-radius: 20px;
+	width: 180px;
+	height: 230px;
+	margin: 1%;
+	padding: 5px;
+	font-size: 17px;
+	transition-duration: 0.2s;
+	overflow: hidden;
+}
+.recipe-internal-card {
+	background-color: rgb(208, 208, 208);
+	border-radius: 20px;
+	width: 170px;
+	height: 220px;
+	border: 0px;
+	padding: 10px;
+	font-size: 17px;
+	transform: scale(1);
+	transition-duration: 0.2s;
+	/* overflow-y: scroll; */
+	overflow: hidden;
+	/* text-overflow: ellipsis; */
+}
+.recipe-internal-card:hover {
+	background-color: var(--green-2);
+	/* width: 180px;
+	height: 230px; */
+	transform: scale(1.05);
+	color: white;
+	transition-duration: 0.2s;
+}
+.immagine {
+	height: 100px;
+	border-radius: 10%;
+}
+.recipe-internal-card:hover .immagine {
+	transition-duration: 0.2s;
+	height: 100px;
+}
+/* custom scrollbar */
+.recipe-external-card ::-webkit-scrollbar {
+	width: 8px;
+}
+/* Track */
+.recipe-external-card ::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px transparent;
+	border-radius: 100px;
+}
+/* Handle */
+.recipe-external-card ::-webkit-scrollbar-thumb {
+	background: var(--green-2);
+	border-radius: 10px;
+}
+/* Handle on hover */
+.recipe-external-card ::-webkit-scrollbar-thumb:hover {
+	background: var(--green-1);
+}
+/* custom scrollbar-on hover*/
+.recipe-external-card:hover ::-webkit-scrollbar {
+	width: 12px;
+}
+/* Handle */
+.recipe-external-card:hover ::-webkit-scrollbar-thumb {
+	background: rgb(130, 130, 130);
+}
+/* Handle on hover */
+.recipe-external-card:hover ::-webkit-scrollbar-thumb:hover {
+	background: rgb(100, 100, 100);
+}

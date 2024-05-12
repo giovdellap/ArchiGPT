@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Stock Dashboard </title>
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/crypto.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Script -->
+  <script type="text/javascript" src="js/crypto.js"></script>
+  <script type="text/javascript" src="js/profile.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ag-charts-community@7.1.0/dist/ag-charts-community.min.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      renderUserBanner();
+    })
+  </script>
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class="bi bi-boxes"></i>
+      <span class="logo_name">StocksLab</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="/">
+          <i class="bi bi-grid"></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="/graph?symbol=AAPL">
+          <i class="bi bi-bar-chart-fill"></i>
+          <span class="links_name">Stocks</span>
+        </a>
+      </li>
+      <li>
+        <a href="/crypto" class="active">
+          <i class="bi bi-currency-bitcoin"></i>
+          <span class="links_name">Crypto</span>
+        </a>
+      </li>
+      <li id="prof_sidebar">
+        <a href="/profile">
+          <i class="bi bi-person"></i>
+          <span class="links_name">Profile</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="loader"></div>
+
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Crypto Market</span>
+      </div>
+  
+      <div class="dropdown" id="unknown">
+        <a class="button-dropdown"><i class="bi bi-person"></i></a>
+        <ul>
+          <li><a href="/signin">Login</a></li>
+          <li><a href="/signup">Signup</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown" id="signed">
+        <a class="button-dropdown" id="profile-name"></a>
+        <ul>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="#" onclick="logout();">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="home-content">
+
+      <div class="liste">
+        <div class="trending">
+          <div class="title">Most Trending</div>
+          <div class="table_container">
+            <table id="tb_trending">
+              <thead>
+                <tr>
+                  <th class="topic">RANK</th>
+                  <th class="topic">NAME</th>
+                  <th class="topic">COIN</th>
+                  <th class="topic">PRICE</th>
+                  <th class="topic">CHANGE 1H</th>
+                  <th class="topic">CHANGE 1D</th>
+                  <th class="topic">VOLUME</th>
+                  <th class="topic">MARKET CAP</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+        <div class="famous">
+          <div class="title">Most Famous</div>
+          <div class="table_container">
+            <table id="tb_famous">
+              <thead>
+                <tr>
+                  <th class="topic">RANK</th>
+                  <th class="topic">NAME</th>
+                  <th class="topic">SYMBOL</th>
+                  <th class="topic">IN CIRCULATION</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-overview">
+        <div class="overview-box">
+          <div class="title">Crypto Market Overview</div>
+          <div class="treemap-container">
+            <div id="treemap"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+
+    sidebarBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+      if (sidebar.classList.contains("active")) {
+        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else
+        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+  </script>
+
+</body>
+
+</html>

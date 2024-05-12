@@ -1,0 +1,232 @@
+.Surveys {
+    display: flex;
+    width: 100%;
+    height: 40vh;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.SurveyContainer {
+    display: flex;
+    width: fit-content;
+    padding: 2.5%;
+    width: 80%;
+    border-radius: 12px;
+    flex-direction: column;
+    background-color: antiquewhite;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 3px;
+    margin-bottom: 10px;
+}
+
+.SurveyHeader {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.SurveyHeader > h2 {
+    display: flex;
+    font-size: large;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+.SurveyHeader > h3 {
+    display: flex;
+    font-size: medium;
+    font-weight: normal;
+    margin: 0;
+}
+
+.SurveyBody {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.SurveyEntry {
+    display: flex;
+    width: 100%;
+    padding: 2%;
+    height: fit-content;
+    align-items: center;    
+}
+
+.SurveyEntry > h2 {
+    display: flex;
+    font-size: medium;
+    font-weight: bold;
+    margin: 0;
+}
+
+.SurveyValue {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: -webkit-fill-available;
+    margin-left: 5%;
+}
+
+.SurveyValue > h2 {
+    display: flex;
+    font-size: medium;
+    font-weight: bold;
+    margin: 0;
+}
+
+.SurveyValue > h3 {
+    display: flex;
+    font-size: medium;
+    font-weight: normal;
+    color: green;
+    margin-top: 4px;
+}
+
+.SurveyBar {
+    display: flex;
+    width: 50%;
+    height: 15px;
+    border-radius: 6px;
+    background-color: red;
+}
+
+
+.SurveyFooter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.SurveyFooter > div > h2{
+    display: flex;
+    font-size: medium;
+    font-weight: normal;
+    color: grey;
+    margin: 0;
+}
+
+.SurveyButtonCont {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.SurveyButton {
+    background-color: rgb(114, 179, 86);
+    border-radius: 8px; 
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10%;
+}
+
+.SurveyButton >h2 {
+    display: flex;
+    color: white;
+    margin: 1%;
+    font-size: medium;
+}
+
+.SurveyInputEntry {
+    display: flex;
+    flex-direction: row;
+}
+
+/* .SurveyInputEntry > input[type="radio"] {
+    width: 20px;
+    display: flex;
+} */
+
+.SurveyInputEntry > label {
+    display: flex;
+    font-size: large;
+    font-weight: bold;
+    margin: .8%;
+}
+
+.SurveySectionTopBar {
+    position: sticky;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.CreateSurvey {
+    height: auto;
+    display: flex;
+    padding: 1%;
+    background-color: green;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.CreateSurvey > h2 {
+    display: flex;
+    margin: 0;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    margin: 2%;
+}
+
+.SurveyHeader > input {
+    display: flex;
+    border-radius: 8px;
+    margin: 2%;
+}
+
+.SurveyHeader > input[type="text"]{
+    background-color: rgb(200, 200, 200);
+    border:none;
+    border-bottom: 1px solid #484848;
+    width: -webkit-fill-available;
+    font-size: larger;
+}
+
+.SurveyHeader > input[type="date"]{
+    background-color: rgb(200, 200, 200);
+    border:none;
+    border-bottom: 1px solid #484848;
+    width: auto;
+    font-size: larger;
+}
+
+.option {
+    background-color: #ffffff00;
+    border: none;
+    font-size: large;
+    width: -webkit-fill-available;
+}
+
+.option:focus,textarea:focus{
+    
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #484848;
+}
+
+.dot {
+    display: flex;
+    aspect-ratio: 1/1;
+    height: 25px;
+    width: 25px;
+    background-color: #3f3f3f;
+    border-radius: 50%;
+    display: inline-block;
+}
+.XIcon {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+.SurveyEntry > div >img {
+    aspect-ratio: 1 / 1;
+    max-height: 20px;
+    cursor: pointer;
+}

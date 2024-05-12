@@ -1,0 +1,14 @@
+Tickets Service Description and Technologies
+============================================
+
+Behavior and Purpose:
+---------------------
+The Tickets service is an integral part of the OneSport web application, providing users with a seamless and efficient way to search for, collect, and manage tickets for various sports events. It interfaces with external ticketing services to offer a wide range of ticketing options, enabling users to find tickets based on specific criteria such as event type, location, and date. The service also allows users to manage their collected tickets, enhancing the overall event-going experience.
+
+Technologies, Programming Languages, Frameworks, and Libraries:
+----------------------------------------------------------------
+1. Python: The core programming language used for developing the Tickets service, offering simplicity and versatility.
+2. Flask: A lightweight web framework for Python, used to facilitate HTTP request handling and API endpoint creation.
+3. Requests: Utilized for making HTTP requests to external ticketing APIs, enabling the service to fetch real-time ticket information.
+4. SQLAlchemy: Acts as the ORM tool for database interactions, simplifying the process of storing and retrieving user-collected tickets.
+5. Jinja2: Although not explicitly mentioned, it's a common templating engine used in Flask applications for rendering dynamic content based on user requests and search results.

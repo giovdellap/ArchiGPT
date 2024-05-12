@@ -1,0 +1,30 @@
+
+Endpoints:
+
+Endpoint URL | Request Object | Response Object | HTTP Method
+-------------------------------------------------------------
+/<int:user_id> | None | {'friends': [friends_list]} | GET
+/requests/<int:friend_id> | None | {'friends': [friends_list]} | GET
+/<int:friend_id>/cancel_friend | None | {"message": "Friendship deleted successfully"} | DELETE
+/create_request | {"user_id": "int", "friend_id": "int"} | friend.serialize | POST
+/<int:request_id>/accept_request | None | {"message": "Request accepted successfully"} | PUT
+/<int:request_id>/delete_request | None | {"message": "Request refused successfully"} | DELETE
+
+
+Data Structures:
+
+get_friends:
+Variable Name | Variable Type
+----------------------------
+friends_list | List of friend objects
+
+create_request:
+Variable Name | Variable Type
+----------------------------
+user_id | int
+friend_id | int
+
+General Response Message:
+Variable Name | Variable Type
+----------------------------
+message | string

@@ -1,0 +1,14 @@
+Frontend Service Description and Technologies
+============================================
+
+Behavior and Purpose:
+---------------------
+The Frontend service acts as the user interface for the OneSport web application, providing an interactive platform for users to access comprehensive sports news, purchase tickets for events, and connect with other sports enthusiasts. It integrates seamlessly with the backend services, including News, Authentication, Tickets, and Friends, to deliver a cohesive and dynamic user experience. The service is built with a focus on responsiveness and user engagement, featuring a modern and intuitive design that adapts to various devices and screen sizes.
+
+Technologies, Programming Languages, Frameworks, and Libraries:
+----------------------------------------------------------------
+1. React: A JavaScript library for building dynamic and responsive user interfaces, facilitating the development of single-page applications with efficient, reusable components.
+2. Bootstrap & React-Bootstrap: CSS frameworks for developing responsive and mobile-first web applications, providing a range of pre-designed components and layouts.
+3. React Router Dom: Manages in-app routing, enabling seamless navigation without page reloads, crucial for a single-page application structure.
+4. FontAwesome: Offers scalable vector icons that can be customized with CSS, enhancing the visual aesthetics and user interaction of the web application.
+5. Webpack & Babel (via react-scripts): Tools for bundling and transpiling JavaScript code, ensuring compatibility and performance across different browsers and devices.

@@ -1,0 +1,25 @@
+
+Endpoints:
+
+Endpoint URL | Request Object | Response Object | HTTP Method
+-------------------------------------------------------------
+/ | None | List of Tickets | GET
+/collect | Ticket Details | None | POST
+/<user_id> | None | List of User Tickets | GET
+/<ticket_id> | None | None | DELETE
+/<user_id>/all | None | None | DELETE
+
+
+Data Structures:
+
+Tickets:
+Variable Name | Variable Type
+----------------------------
+id | Integer
+name | String(500)
+info | String(1500)
+promoter | String(255)
+urlToImage | String(255)
+localDate | String(100)
+user_id | Integer
+url | String(500)

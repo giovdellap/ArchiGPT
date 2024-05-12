@@ -1,0 +1,11 @@
+X Finire user stories
+- Finire Gantt
+X Function point exel
+X COCOMOII Calcolo
+X UML(?)
+- Tabelle markdown con endpoint servizi
+- attacare client-FE a client BE
+- fare admin
+- attaccare client fe a order
+- testing
+
