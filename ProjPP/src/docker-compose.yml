@@ -14,6 +14,18 @@ services:
     networks:
       - main-network
 
+  api-handler:
+    container_name: api-handler
+    build: ./api_handler
+    ports:
+      - "10001:10001"
+    volumes:
+    - ./api_handler:/api_handler
+    depends_on:
+      - backend
+    networks:
+      - main-network
+
   frontend: 
     container_name: frontend
     build: ./frontend 

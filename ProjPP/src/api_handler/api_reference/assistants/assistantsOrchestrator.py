@@ -6,13 +6,13 @@ from api_reference.assistants.assistantFactory import AssistantFactory
 
 class AssistantOrchestrator:
 
-	def assistantCreation(self,name,model):
+	def assistantCreation(self,name,model, req_ci, req_vs):
 
 		# Factory Method pattern 
 		assistantObj = AssistantFactory()
 		assistantObj.set_assets(name,model)
 
-		assistant_id = creationHandler(assistantObj)
+		assistant_id = creationHandler(assistantObj, req_ci, req_vs)
 
 		return assistant_id
 	

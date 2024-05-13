@@ -9,9 +9,14 @@ def create_assistant():
             return jsonify({"message": "Name and model are required in the form-data"}), 400
         name = request.form['name']
         model = request.form['model']
-        
+        req_ci = []
+        req_vs = []
+        if 'ci_files' in request.files:
+            req_ci.append(request.files['ci_files'])
+        if 'vs_files' in request.files: 
+            req_vs. append(request.files['vs_files'])
         assistant = AssistantOrchestrator()
-        assistant_id = AssistantOrchestrator.assistantCreation(assistant,name,model)
+        assistant_id = AssistantOrchestrator.assistantCreation(assistant,name,model, req_ci, req_vs)
         return jsonify({"assistant_id": assistant_id}), 200
     except Exception as e:
         print("Exception: %s", e)

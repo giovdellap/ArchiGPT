@@ -3,8 +3,8 @@ List the system's docker containers and services.
 
 ### Instructions: ###
 You are a Software Engineer.
-The user provides the source code of a project in the code interpreter.
-Search fthe source code for docker-compose files. They can be placed inside the main directory or in sub-directories. 
+You are provided with the source code of a project in the code interpreter.
+Search the source code for docker-compose files. They can be placed inside the main directory or in sub-directories. 
 Analyze the docker-compose files of the project
 List all the containers of the system.
 Remember that each docker-compose file relates to one different container.
@@ -17,7 +17,6 @@ CONTAINER: container-name
         - service-name
 
 ###Example: ###
-
 # Output: #
 CONTAINER: single-container
     SERVICES:

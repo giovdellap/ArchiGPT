@@ -2,7 +2,6 @@ import json
 from flask import current_app, request, jsonify
 import requests
 
-from handlers.api_handler import getAssistantId, getThread
 from handlers.db_handler import DBHandler
 
 def createProject():
@@ -34,36 +33,21 @@ def generateDocumentB():
             return jsonify({"message": "project_name missing"}), 400
         if 'source' not in request.files:
             return jsonify({"message": "source"}), 400
-        print('aaa')
-        assistant_id = getAssistantId('Containers List Generator')
-        print("ass_id", assistant_id)
-        print('bbb')
-        thread = getThread()
-        print('ccc')
+        
         message = requests.post(
-            current_app.config['DEFAULT_PATH'] + "/thread/" + thread + '/message',
+            current_app.config['API_HANDLER'] + '/interrogation/interrogate',
             {
-                "source.zip": request.files['source'],
-                "content": "\"\"",
-                "tools": "{\"source.zip\": \"code_interpreter\"}"
+                'ass_name': "Containers List Generator",
+                'ass_model': 'gpt-3.5-turbo-0125',
+                #'ass_model': 'gpt-4-turbo-2024-04-09',
+                'ass_ci': request.files['source']
             }
         )
-        run = requests.post(
-            current_app.config['DEFAULT_PATH'] + "/thread/" + thread + '/run',
-            data = json.dumps({"assistant_id": assistant_id}),
-            headers = {"Content-Type": "application/json"}
-        )
-        #print(response.json())
-        result = {}
-        message_generated = False
-        while(message_generated == False):
-            response = requests.get(current_app.config['DEFAULT_PATH'] + "/thread/" + thread + '/message')
-            result = response.json()
-            message_generated = (len(result["last_message"]["content"]) > 30)
+        
+        
 
-        print('aaa')
-        print(result)
-        return jsonify({"message": result["last_message"]["content"]}), 200
+        print(message)
+        return jsonify(message), 200
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500

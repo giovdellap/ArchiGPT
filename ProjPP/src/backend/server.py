@@ -2,8 +2,6 @@ from flask import Flask
 from flask_cors import CORS
 import os
 from config import ApplicationConfig
-from routes.assistant_bp import assistant_bp
-from routes.thread_bp import thread_bp
 from routes.database_bp import database_bp
 from routes.project_bp import project_bp
 
@@ -14,8 +12,6 @@ CORS(app, supports_credentials=True)
 app.config['basedir'] = os.path.abspath(os.path.dirname(__file__))
 app.config.from_object(ApplicationConfig)
 
-app.register_blueprint(assistant_bp, url_prefix='/assistant')
-app.register_blueprint(thread_bp, url_prefix='/thread')
 app.register_blueprint(database_bp, url_prefix='/db')
 app.register_blueprint(project_bp, url_prefix='/project')
 

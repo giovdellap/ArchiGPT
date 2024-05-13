@@ -2,11 +2,12 @@ from flask import current_app
 from api_reference.fileHandlerAPI import fileDeleteHandler, filePathCreationHandler, uploadFileBatchesVectorStore, vectorStoreDeleteHandler, vectoreStoreCreationHandler
 
 
-def creationHandler(assistantObj):
+def creationHandler(assistantObj, req_ci, req_vs):
     try:
         with open(assistantObj.instructions_path, 'r') as file:
             instructions_text = file.read()
         tool_resources = {}
+        #print(assistantObj.tool_resources_path)
         
         if 'code_interpreter' in assistantObj.tool_resources_path:
             tool_resources['code_interpreter'] = {}
@@ -14,6 +15,12 @@ def creationHandler(assistantObj):
             for filePath in assistantObj.tool_resources_path['code_interpreter']['file_paths']:
                 fileObj = filePathCreationHandler(filePath)
                 fileObjIds.append(fileObj.id)
+            for item_req_ci in req_ci:
+                file = current_app.config['CLIENT'].files.create(
+                    file=item_req_ci.read(), 
+                    purpose="assistants"
+                )
+                fileObjIds.append(file.id)
             tool_resources['code_interpreter']['file_ids'] = fileObjIds
         
         if 'file_search' in assistantObj.tool_resources_path:
@@ -23,6 +30,8 @@ def creationHandler(assistantObj):
 
             vector_store = vectoreStoreCreationHandler(vector_store_name)
             file_batch_assistant = uploadFileBatchesVectorStore(vector_store, file_streams)
+            if len(req_vs) > 0:
+                file_batch_assistant = uploadFileBatchesVectorStore(vector_store, req_vs)
             tool_resources['file_search']['vector_store_ids'] = [vector_store.id]
 
         assistant = current_app.config['CLIENT'].beta.assistants.create(
@@ -125,14 +134,19 @@ def assistantUpdate(assistantObj):
 def assistantDelete(assistant_id):
     try:
         assistant = getAssistant(assistant_id)
-        file_ids = assistant["tool_resources"]["code_interpreter"]["file_ids"]
-        vector_store_ids = assistant["tool_resources"]["file_search"]["vector_store_ids"]
-
-        for file_id in file_ids:
-             fileDeleteHandler(file_id)
-
-        for vs_id in vector_store_ids:
-            vectorStoreDeleteHandler(vs_id)
+        print("ASSISTANT DELETE: assistant - ", assistant)
+        
+        #Code interpreter
+        if "code_interpreter" in assistant["tool_resources"]:
+            file_ids = assistant["tool_resources"]["code_interpreter"]["file_ids"]
+            for file_id in file_ids:
+                fileDeleteHandler(file_id)
+                
+        #File Search
+        if 'file_search' in assistant["tool_resources"]:
+            vector_store_ids = assistant["tool_resources"]["file_search"]["vector_store_ids"]
+            for vs_id in vector_store_ids:
+                vectorStoreDeleteHandler(vs_id)
 
         response = current_app.config['CLIENT'].beta.assistants.delete(assistant_id)
         if response.deleted: print("Assistant deleted successfully and related files")
