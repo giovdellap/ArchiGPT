@@ -9,7 +9,7 @@ from routes.project_bp import project_bp
 
 
 app = Flask(__name__)
-#CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True)
 
 app.config['basedir'] = os.path.abspath(os.path.dirname(__file__))
 app.config.from_object(ApplicationConfig)
