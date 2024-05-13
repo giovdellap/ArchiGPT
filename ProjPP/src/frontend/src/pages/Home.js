@@ -1,44 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import FlowOverview from '../components/flowOverview';
-import GenerationHandler from '../components/generationHandler';
+import React, { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
+import CardProject from '../components/cardProject';
+import CreateProjectTab from '../components/createProjectTab';
+import { useNavigate } from 'react-router-dom';
+
 
 function Home() {
-	const [data, setData] = useState(null);
+	const navigate = useNavigate();
+    const [listProjects, setListProjects] = useState([]);
 
-	const buildApiUrl = () => {
-		let apiUrl = 'http://localhost:5001/assistant';
-
-		return apiUrl;
-	};
-
-	const apiUrl = buildApiUrl();
-
-	useEffect(() => {
-		fetch(apiUrl)
+    function fetchprojects() {
+		const projectsApiUrl = 'http://localhost:5001/assistant' ;
+		fetch(projectsApiUrl)
 			.then((response) => {
 				if (response.status === 200) {
 					return response.json();
+				} else {
+					throw new Error('Failed to fetch projects');
 				}
 			})
-			.then((data) => {
-				setData(data);
+			.then((projectsData) => {
+				console.log(projectsData.list_assistants)
+				setListProjects(projectsData.list_assistants)
 			})
 			.catch((error) => {
-				console.error("Error fetching data:", error);
+				console.error('Error fetching projects:', error);
 			});
-	}, [apiUrl]);
+	};
+
+	function GoToProjectPage(projectId) {
+		navigate(`/project/${projectId}`);
+	}
+
+    useEffect(() => {
+        fetchprojects()
+	}, []);
 
 
-	return (
-		<div style={{ display: 'flex', height: '100vh' }}>
-		<div style={{ flex: 1, borderRight: '1px solid #ccc' }}>
-		  <FlowOverview />
-		</div>
-		<div style={{ flex: 1 }}>
-		  <GenerationHandler />
-		</div>
-	  </div>
-	);
+    return (
+			<div>
+				<CreateProjectTab />
+				{listProjects && listProjects.length > 0 ? (
+						<>
+							<CardProject listProjects={listProjects} goToProjectPage={GoToProjectPage} />
+						</>
+					) : (
+						<Container className="mt-4"><h4>No projects available</h4></Container>
+					)}
+			</div>
+    );
 }
 
 export default Home;

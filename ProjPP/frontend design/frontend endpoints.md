@@ -31,51 +31,101 @@ GET /status/Project_id
 
 Response (esempio del mockup):
 {
-    containersList: OK
+    containersList: "OK",
     containers: [
         {
-            container_name: "CONTAINER A",
-            status: OK,
-            specifications: OK,
-            description: OK,
+            name: "CONTAINER A",
+            status: "OK",
+            specifications: "OK",
+            description: "OK",
             services: [
                 {
-                    name: Service 1_A,
-                    status: OK,
-                    type: Backend,
-                    endpoints: OK,
-                    datastructures: OK,
-                    technologies: OK,
-                    behaviour: OK
+                    name: "Service 1_A",
+                    status: "OK",
+                    features: [
+                        {
+                            name: "Type:Backend",
+                            status: "OK"
+                        },
+                        {
+                            name: "endpoints",
+                            status: "OK"
+                        },
+                        {
+                            name: "datastructures",
+                            status: "OK"
+                        },
+                        {
+                            name: "technologies",
+                            status: "OK"
+                        },
+                        {
+                            name: "behaviour",
+                            status: "OK"
+                        },
+                    ]
                 },
                 {
-                    name: Service 2_A,
-                    status: OK,
-                    type: Frontend,
-                    technologies: OK,
-                    behaviour: OK
+                    name: "Service 2_A",
+                    status: "OK",
+                    features: [
+                        {
+                            name: "Type:Frontend",
+                            status: "OK"
+                        },
+                        {
+                            name: "behaviour",
+                            status: "OK"
+                        },
+                    ]
                 }
             ],
         },
-                {
-            container_name: "CONTAINER B",
-            status: PROGRESS,
-            specifications: NO,
-            description: NO,
+        {
+            name: "CONTAINER B",
+            status: "PROGRESS",
+            specifications: "NO",
+            description: "NO",
             services: [
                 {
-                    name: Service 1_B,
-                    status: PROGRESS,
-                    type: Backend,
-                    endpoints: OK,
-                    datastructures: OK,
-                    technologies: NO,
-                    behaviour: NO
+                    name: "Service 1_B",
+                    status: "PROGRESS",
+                    features: [
+                        {
+                            name: "Type:Backend",
+                            status: "OK"
+                        },
+                        {
+                            name: "endpoints",
+                            status: "OK"
+                        },
+                        {
+                            name: "datastructures",
+                            status: "OK"
+                        },
+                        {
+                            name: "technologies",
+                            status: "NO"
+                        },
+                        {
+                            name: "behaviour",
+                            status: "NO"
+                        },
+                    ]
                 },
                 {
-                    name: Service 2_A,
-                    type: Database,
-                    technologies: no
+                    name: "Service 2_A",
+                    status: "PROGRESS",
+                    features: [
+                        {
+                            name: "Type:Database",
+                            status: "OK"
+                        },
+                        {
+                            name: "behaviour",
+                            status: "NO"
+                        },
+                    ]
                 }
             ],
         }

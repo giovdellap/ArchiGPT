@@ -1,5 +1,4 @@
 import React, { useEffect, useState} from 'react';
-import { Container } from 'react-bootstrap';
 
 function GenerationView() {
 	const [threadID, serThreadID] = useState("thread_fpJyJ2gi48NcV090bo036ln9");
@@ -31,11 +30,9 @@ function GenerationView() {
 
 
     return (
-			<div>
-				<Container className="mt-4" style={{ whiteSpace: 'pre-line' }}>
-					<h4>{message.content}</h4>
-				</Container>
-			</div>
+        <div className="balloon" style={{ whiteSpace: 'pre-line' }}>
+            {message.content}
+        </div>
     );
 }
 

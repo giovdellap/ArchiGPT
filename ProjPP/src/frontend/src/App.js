@@ -10,6 +10,7 @@ import {
 import { Container } from 'react-bootstrap';
 import './App.css';
 import Home from './pages/Home';
+import ProjectOverview from './pages/ProjectOverview';
 
 function App() {
 
@@ -18,7 +19,8 @@ function App() {
 			<Router>
 				<Container className="d-flex justify-content-center align-items-center app-container" style={{ minHeight: '90vh' }}>
 					<Routes>
-						<Route path="*" element={<Home />} />
+						<Route path="/" element={<Home />} />
+						<Route path="/project/:id" element={<ProjectOverview/>} />
 					</Routes>
 				</Container>
 			</Router>

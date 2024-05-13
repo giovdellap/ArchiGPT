@@ -1,18 +1,17 @@
-import React, { useEffect, useState} from 'react';
-import GenerationView from './generationVIew';
+import React from 'react';
+import GenerationView from './generationView';
+import UploadFileButton from './uploadFileButton';
 
 function GenerationHandler() {
-	const [threadID, serThreadID] = useState(null);
-
-    useEffect(() => {
-        
-	}, []);
-
-
     return (
-			<div>
-				<GenerationView threadID={threadID} />
-			</div>
+        <div className="chat-container">
+            <div className="chat-messages">
+                <GenerationView />
+            </div>
+            <div className="chat-input">
+                <UploadFileButton />
+            </div>
+        </div>
     );
 }
 
