@@ -1,8 +1,0 @@
-### Programming Language, Frameworks, and Libraries:
-The 'admin-fe' service is developed using Node.js, specifically version 18, as indicated by the base image in the Dockerfile. It employs Angular as the front-end framework, which is a robust platform for building mobile and desktop web applications. The dependencies and project build are managed with npm, highlighting a modern JavaScript environment. The service is containerized using Docker, leveraging nginx for serving the compiled Angular static files, ensuring efficient delivery of content to clients.
-
-### Analysis of the Scaffolding and Architectural Patterns:
-The service uses a multi-stage Docker build process to create a lightweight production image. Initially, a Node.js image is used to install dependencies and build the Angular application. Following this, an nginx image is employed to serve the static files, resulting in reduced container size and improved security by minimizing the attack surface. The use of Docker Compose facilitates the configuration and deployment of the service by defining build contexts and setting up necessary arguments and port mappings.
-
-### Analysis of the Communication with the Database:
-The 'admin-fe' service, being a frontend service, does not directly interact with a database. Instead, it communicates with backend services responsible for data handling. This separation of concerns adheres to the microservices architecture principles, allowing independent scaling and management of each service component.
