@@ -35,7 +35,7 @@ def generateDocumentB():
             return jsonify({"message": "source"}), 400
         
         message = requests.post(
-            current_app.config['API_HANDLER'] + '/interrogation/interrogate',
+            current_app.config['API_HANDLER'] + '/interrogation',
             {
                 'ass_name': "Containers List Generator",
                 'ass_model': 'gpt-3.5-turbo-0125',
@@ -44,8 +44,6 @@ def generateDocumentB():
             }
         )
         
-        
-
         print(message)
         return jsonify(message), 200
     except Exception as e:
