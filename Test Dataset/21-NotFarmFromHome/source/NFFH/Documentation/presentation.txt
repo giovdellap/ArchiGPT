@@ -1,5 +1,0 @@
-- intro
-- screen
-    - userstory
-- Architetturale
-- FP 3 punti

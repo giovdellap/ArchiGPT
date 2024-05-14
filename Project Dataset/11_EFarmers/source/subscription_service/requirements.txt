@@ -1,5 +1,0 @@
-flask
-flask-restful
-pika
-python-environ
-flask_cors
