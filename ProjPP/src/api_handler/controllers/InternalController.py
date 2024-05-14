@@ -29,6 +29,7 @@ def interrogate():
         #ASSISTANT CREATION
         req_ci = []
         req_vs = []
+        print(request.files['ass_ci'].content_type)
         if 'ass_ci' in request.files:
             req_ci.append(request.files['ass_ci'])
         if 'ass_vs' in request.files: 
@@ -61,7 +62,7 @@ def interrogate():
         message = thread_messages[len(thread_messages)-1]
         
 
-        return jsonify(message), 200
+        return jsonify({"content": message['content']}), 200
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500
