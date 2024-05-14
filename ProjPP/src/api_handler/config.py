@@ -10,6 +10,6 @@ class ApplicationConfig:
     MONGO_USERNAME = "user"
     MONGO_PASSWORD = "pass"
     #OPENAI_API_KEY_G = "sk-proj-uoPd7wzdubIrsFdGwVDDT3BlbkFJRJIzt4ImRPIvvMhy9ShK"
-    DEFAULT_PATH = "http://127.0.0.1:5001"
+    DEFAULT_PATH = "http://127.0.0.1:10001"
 
     CLIENT = OpenAI(api_key = OPENAI_API_KEY)
