@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from controllers.ProjectController import createProject, deleteProject, generateDocumentB, getAllProject
+from controllers.ProjectController import createProject, deleteProject, generateDocumentB, generateEndpoints, getAllProject
 
 
 project_bp = Blueprint('project_bp', __name__)
@@ -10,4 +10,5 @@ project_bp.route('/', methods=['POST'])(createProject)
 project_bp.route('/', methods=['DELETE'])(deleteProject)
 
 project_bp.route('/generateDocumentB', methods=['POST'])(generateDocumentB)
+project_bp.route('/generateEndpoints', methods=['POST'])(generateEndpoints)
 

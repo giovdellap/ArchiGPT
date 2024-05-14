@@ -1,8 +1,0 @@
-CONTAINER: single-container
-SERVICES:
-    - news
-    - postgres
-    - frontend
-    - authentication
-    - tickets
-    - friends

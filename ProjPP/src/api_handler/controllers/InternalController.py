@@ -16,6 +16,8 @@ def interrogate():
         if 'ass_model' not in request.form:
             return jsonify({"message": "ass_model"}), 400
         model = request.form['ass_model']
+        
+        print(name)
 
 
         #ASSISTANT CLEANUP
@@ -29,10 +31,12 @@ def interrogate():
         #ASSISTANT CREATION
         req_ci = []
         req_vs = []
+        print('KEYS:', request.files.keys())
         if 'ass_ci' in request.files:
             req_ci.append(request.files['ass_ci'])
         if 'ass_vs' in request.files: 
             req_vs.append(request.files['ass_vs'])
+        print('LEN:', len(req_ci))
         assistant_id = AssistantOrchestrator.assistantCreation(assistant, name, model, req_ci, req_vs)
         
         #THREAD CREATION
@@ -58,10 +62,10 @@ def interrogate():
 
 
         print("messages", thread_messages)
-        message = thread_messages[len(thread_messages)-1]
+        message = thread_messages[0]['content']
         
 
-        return jsonify(message), 200
+        return jsonify({"content": message}), 200
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500

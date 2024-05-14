@@ -1,9 +1,0 @@
-### Services:
-- mysql-client
-- client-be  
-
-### Ports:
-| Exposed Port/Internal Port | Related Service |
-| -------------------------- | --------------- |
-| 8080:8080                  | client-be       |
-| 3306:3306                  | mysql-client    |

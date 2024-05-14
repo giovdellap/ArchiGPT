@@ -1,7 +1,0 @@
-Unified Endpoints Generator
-
-https://chat.openai.com/g/g-BjsVtTAVD-unified-endpoints-generator
-
-Endpoints Solo Generator
-
-https://chat.openai.com/g/g-ADSs7vOaH-endpoints-solo-generator

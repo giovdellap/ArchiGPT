@@ -13,7 +13,7 @@ class ContentFactory:
         elif name == 'Containers List Generator':
             self.getContent('CLG')
         elif name == 'Endpoints Solo Generator':
-            self.set_content_ESG()
+            self.getContent('ESG')
         elif name == 'DataStructures Solo Generator':
             self.set_content_DSG()
         else:

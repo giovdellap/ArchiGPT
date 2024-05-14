@@ -1,9 +1,0 @@
-services:
-  client-fe: 
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-      args:
-        APP_NAME: client-FE
-    ports:
-           - "4201:80"
