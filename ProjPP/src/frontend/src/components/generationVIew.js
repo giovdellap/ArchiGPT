@@ -5,7 +5,7 @@ function GenerationView() {
 	const [message, setMessage] = useState({});
 
 	const buildApiUrl = () => {
-		let apiUrl = 'http://localhost:5001/thread/' + threadID + "/message";
+		let apiUrl = 'http://localhost:10001/thread/' + threadID + "/message";
 
 		return apiUrl;
 	};

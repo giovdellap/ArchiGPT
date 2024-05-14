@@ -10,7 +10,7 @@ function Home() {
     const [listProjects, setListProjects] = useState([]);
 
     function fetchprojects() {
-		const projectsApiUrl = 'http://localhost:5001/assistant' ;
+		const projectsApiUrl = 'http://localhost:10001/assistant' ;
 		fetch(projectsApiUrl)
 			.then((response) => {
 				if (response.status === 200) {

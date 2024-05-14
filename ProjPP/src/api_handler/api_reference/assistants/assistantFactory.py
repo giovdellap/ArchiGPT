@@ -48,13 +48,13 @@ class AssistantFactory:
     def set_assets_ESG(self):
         ESG_path = self.resources_path + "/ESG"
         RAG_path = ESG_path + "/RAG"
-        RAG_files_paths = [RAG_path + '/EXAMPLE 1 - source file.py', RAG_path + '/EXAMPLE 2 - source files.zip']
-        vector_store_paths = [RAG_path + '/EXAMPLE 1 - result.txt', RAG_path + '/EXAMPLE 2 - result.txt']
+        #RAG_files_paths = [RAG_path + '/EXAMPLE 1 - source file.py', RAG_path + '/EXAMPLE 2 - source files.zip']
+        #vector_store_paths = [RAG_path + '/EXAMPLE 1 - result.txt', RAG_path + '/EXAMPLE 2 - result.txt']
 
         self.instructions_path = ESG_path +"/instructions.txt"
-        self.tools = [{"type": "code_interpreter"},{"type": "file_search"}]
-        self.tool_resources_path = { "code_interpreter": { "file_paths": RAG_files_paths }, "file_search": { "vector_store_paths": vector_store_paths , "vector_store_name" : "ESG_VS" }
-    }
+        self.tools = [{"type": "code_interpreter"}]
+        self.tool_resources_path = { "code_interpreter": { "file_paths": [] }}
+    
         
     def set_assets_DSG(self):
         DSG_path = self.resources_path + "/DSG"

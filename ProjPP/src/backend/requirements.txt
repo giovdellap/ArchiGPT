@@ -1,6 +1,5 @@
 Flask == 3.0.3
 Flask-Cors == 4.0.1
-openai
 pymongo == 4.7.1
 PYTHON-DOTENV == 1.0.0
 REQUESTS
