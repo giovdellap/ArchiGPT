@@ -10,7 +10,7 @@ function Home() {
     const [listProjects, setListProjects] = useState([]);
 
     function fetchprojects() {
-		const projectsApiUrl = 'http://localhost:10001/assistant' ;
+		const projectsApiUrl = 'http://localhost:5001/project' ;
 		fetch(projectsApiUrl)
 			.then((response) => {
 				if (response.status === 200) {
@@ -20,16 +20,16 @@ function Home() {
 				}
 			})
 			.then((projectsData) => {
-				console.log(projectsData.list_assistants)
-				setListProjects(projectsData.list_assistants)
+				console.log(projectsData.list_projects)
+				setListProjects(projectsData.list_projects)
 			})
 			.catch((error) => {
 				console.error('Error fetching projects:', error);
 			});
 	};
 
-	function GoToProjectPage(projectId) {
-		navigate(`/project/${projectId}`);
+	function GoToProjectPage(projectName) {
+		navigate(`/project/${projectName}`);
 	}
 
     useEffect(() => {
@@ -39,6 +39,7 @@ function Home() {
 
     return (
 			<div>
+				<div style={{ margin: '10px' }} />
 				<CreateProjectTab />
 				{listProjects && listProjects.length > 0 ? (
 						<>

@@ -20,7 +20,7 @@ function App() {
 				<Container className="d-flex justify-content-center align-items-center app-container" style={{ minHeight: '90vh' }}>
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="/project/:id" element={<ProjectOverview/>} />
+						<Route path="/project/:name" element={<ProjectOverview/>} />
 					</Routes>
 				</Container>
 			</Router>

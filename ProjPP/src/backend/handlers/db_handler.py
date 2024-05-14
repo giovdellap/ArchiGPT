@@ -21,6 +21,29 @@ class DBHandler:
 
     def shutdown_db_client(self):
         self.mongodb_client.close()
+
+    def getAllProjects(self):
+        try:
+            self.mongodb_client = MongoClient(self.mongo_uri)
+            projects_db = self.mongodb_client["projects"]
+            collection_names = projects_db.list_collection_names()
+            projects_info = []
+
+            for collection_name in collection_names:
+                collection = projects_db[collection_name]
+                num_documents = collection.count_documents({})
+                projects_info.append({
+                    'name': collection_name,
+                    'num_documents': num_documents
+                })
+
+            self.shutdown_db_client()
+
+            return projects_info
+
+        except Exception as e:
+            print("Exception: %s", e)
+            return e
         
     def create_database(self, db_name, collection_name):
         try:
@@ -41,6 +64,17 @@ class DBHandler:
             database = self.startup_db_client(self.project_db)
             collection = database.create_collection(collection_name)
             self.shutdown_db_client()
+        except Exception as e:
+            print("Exception: %s", e)
+            return e
+        
+    def delete_collection(self, collection_name):
+        try:
+            self.mongodb_client = MongoClient(self.mongo_uri)
+            projects_db = self.mongodb_client["projects"]
+            projects_db.drop_collection(collection_name)
+            self.shutdown_db_client()
+
         except Exception as e:
             print("Exception: %s", e)
             return e

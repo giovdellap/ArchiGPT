@@ -8,7 +8,7 @@ from routes.internal_bp import internal_bp
 
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+CORS(app)
 
 app.config['basedir'] = os.path.abspath(os.path.dirname(__file__))
 app.config.from_object(ApplicationConfig)

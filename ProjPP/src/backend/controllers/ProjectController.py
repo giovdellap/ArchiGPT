@@ -4,23 +4,52 @@ import requests
 
 from handlers.db_handler import DBHandler
 
+def getAllProject():
+    try:
+        handler = DBHandler()
+        list_projects = handler.getAllProjects()
+        
+        return jsonify({"list_projects": list_projects}), 200
+        
+    except Exception as e:
+        print("Exception: %s", e)
+        return jsonify({"message": "An error occurred"}), 500
+    
+
 def createProject():
     try:
+        print(request.form)
         if 'project_name' not in request.form:
             return jsonify({"message": "project_name missing"}), 400
-        if 'user_stories' not in request.files:
-            return jsonify({"message": "user_stories missing"}), 400
+        # if 'user_stories' not in request.files:
+        #     return jsonify({"message": "user_stories missing"}), 400
         name = request.form['project_name']
-        user_stories = request.files['user_stories']
-        content = user_stories.readlines();
-        print(content)
+        # user_stories = request.files['user_stories']
+        # content = user_stories.readlines();
+        # print(content)
 
         # Collection creation and User Stories document added
         handler = DBHandler()
         handler.create_collection(name)
-        handler.addDocument(name, {'user_stories': content})
+        # handler.addDocument(name, {'user_stories': content})
         
         return jsonify({"message": "project created"}), 200
+        
+    except Exception as e:
+        print("Exception: %s", e)
+        return jsonify({"message": "An error occurred"}), 500
+    
+    
+def deleteProject():
+    try:
+        if not request.json['project_name']:
+            return jsonify({"message": "project_name missing"}), 400
+        name = request.json['project_name']
+
+        handler = DBHandler()
+        handler.delete_collection(name)
+        
+        return jsonify({"message": "project deleted"}), 200
         
     except Exception as e:
         print("Exception: %s", e)
