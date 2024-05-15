@@ -6,7 +6,7 @@
 4) Assegnazione User Stories mancanti (GENERAL)
 5) Eventuale aggiunta container (GENERAL)
 6) Descrizione Container (Container purpose) (CONTAINER)
-7) Design servizi
+7) Design servizi (CONTAINER)
 8) Services Interaction (?)
 9) Service Description
 
