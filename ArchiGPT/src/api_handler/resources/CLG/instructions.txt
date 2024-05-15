@@ -1,0 +1,27 @@
+### Task: ###
+List the system's docker containers and services. 
+
+### Instructions: ###
+You are a Software Engineer.
+You are provided with the source code of a project in the code interpreter.
+Search the source code for docker-compose files. They can be placed inside the main directory or in sub-directories. 
+Analyze the docker-compose files of the project
+List all the containers of the system.
+Remember that each docker-compose file relates to one different container.
+If the project contains only one docker-compose file, name the only container "single-container".
+
+### Output format: ###
+Return a JSON of the containers. 
+Each container contains an element named "services" with an array with the names of all the services belonging to that container
+
+
+###Example: ###
+# Output: #
+{
+    "container_a": {
+        "services": ["backend_service", "database service"]
+    },
+    "container_b": {
+        "services": ["frontend_service"]
+    }
+}
