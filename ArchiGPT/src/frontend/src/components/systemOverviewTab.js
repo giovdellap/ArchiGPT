@@ -6,7 +6,8 @@ import { faCheckCircle, faExclamationTriangle, faTimesCircle } from '@fortawesom
 
 function SystemOverviewTab({ projectStatus }) {
 
-    const projectData = projectStatus
+    const containerStatus  = projectStatus.containers
+    const systemStatus  = projectStatus.system
 
     const getStatusIcon = (status) => {
         switch (status) {
@@ -21,7 +22,7 @@ function SystemOverviewTab({ projectStatus }) {
         }
     };
 
-	const getStatusColorClass = (status) => {
+    const getStatusColorClass = (status) => {
         switch (status) {
             case "OK":
                 return "bg-success";
@@ -34,50 +35,61 @@ function SystemOverviewTab({ projectStatus }) {
         }
     };
 
+
     return (
         <Container className="mt-4">
+
+            <Row style={{ marginBottom: '20px' }}>
+                {systemStatus ? systemStatus.map((system) => (
+                    <div key={system.id}>
+                        <Card>
+                            <Card.Body>
+                                {system.name} {getStatusIcon(system.status)}
+                            </Card.Body>
+                        </Card>
+                    </div>
+                    ))  
+                    : <Container>No system status available</Container>}
+            </Row>
+
             <Row>
                 <Accordion defaultActiveKey="0">
-                    {projectData.containers ? projectData.containers.map((container, containerIndex) => (
+                    {containerStatus ? containerStatus.map((container, containerIndex) => (
                         <Accordion.Item eventKey={containerIndex} key={containerIndex}>
                             <Accordion.Header >
-							<div style={{ display:'flex', gap: '10px' }}>
                                 {container.name}
-                                {getStatusIcon(container.status)}
-							</div>
                             </Accordion.Header>
                             <Accordion.Body>
                                 <Accordion defaultActiveKey="0">
                                     {container.services.map((service, serviceIndex) => (
                                         <Accordion.Item eventKey={serviceIndex} key={serviceIndex}>
                                             <Accordion.Header>
-											<div style={{ display:'flex', gap: '10px' }}>
 												{service.name}
-												{getStatusIcon(service.status)}
-											</div>
                                             </Accordion.Header>
                                             <Accordion.Body>
-                                                {service.features.map((feature, featureIndex) => (
-                                                	<Card key={featureIndex} className={getStatusColorClass(feature.status)}>
-														<Card.Title>{feature.name}</Card.Title>
-											 		 </Card>
-                                                ))}
+                                                <Card className={getStatusColorClass(service.datastructures)}>
+                                                    <Card.Title>Datastructures</Card.Title>
+                                                </Card>
+                                                <Card className={getStatusColorClass(service.endpoints)}>
+                                                    <Card.Title>Endpoints</Card.Title>
+                                                </Card>
                                             </Accordion.Body>
                                         </Accordion.Item>
                                     ))}
                                 </Accordion>
-									<Card className={getStatusColorClass(container.specifications)}>
-										<Card.Title>Specifications</Card.Title>
-							 		</Card>
-									 <Card className={getStatusColorClass(container.description)}>
+                                    <Card className={getStatusColorClass(container.containerDescription)}>
 										<Card.Title>Description</Card.Title>
+							 		</Card>
+									<Card className={getStatusColorClass(container.containerTechnologies)}>
+										<Card.Title>Technologies</Card.Title>
 							 		</Card>
                             </Accordion.Body>
                         </Accordion.Item>
                     )) 
-                    : <Container>No status available</Container>}
+                    : <Container>No containers status available</Container>}
                 </Accordion>
             </Row>
+
         </Container>
     );
 }

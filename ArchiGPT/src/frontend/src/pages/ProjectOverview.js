@@ -5,6 +5,8 @@ import ProjectHeader from '../components/projectHeader';
 
 function ProjectOverview() {
 	const [projectStatus, setProjectStatus] = useState({});
+	const [projectSystem, setProjectSystem] = useState({});
+
 
     function fetchProjectStatus() {
 
@@ -27,8 +29,30 @@ function ProjectOverview() {
 			});
 	};
 
+	function fetchProjectSystem() {
+
+		const projectName = window.location.pathname.split('/').pop();
+		const projectApiUrl = `http://localhost:5001/project/system` ;
+
+		fetch(projectApiUrl + `?project_name=${projectName}`)
+			.then((response) => {
+				if (response.status === 200) {
+					return response.json();
+				} else {
+					throw new Error('Failed to fetch project system');
+				}
+			})
+			.then((data) => {
+				setProjectSystem(data)
+			})
+			.catch((error) => {
+				console.error('Error fetching project system:', error);
+			});
+	};
+
     useEffect(() => {
         fetchProjectStatus()
+		fetchProjectSystem()
 	}, []);
 
 
@@ -40,7 +64,7 @@ function ProjectOverview() {
 			<SystemOverviewTab projectStatus={projectStatus} />
 			</div>
 			<div style={{ flex: 2 }}>
-			<GenerationHandler />
+			<GenerationHandler projectSystem={projectSystem} />
 			</div>
       	</div>
 	  </div>
