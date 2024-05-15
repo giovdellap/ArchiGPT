@@ -19,15 +19,6 @@ def create_database():
         print("Exception: %s", e)
         return jsonify({"message": str(e)}), 500
     
-def create_project():    
-    try:
-        if 'project_name' not in request.form:
-            return jsonify({'message': 'project_name missing from form-data'})
-        handler = DBHandler()
-        handler.create_collection(request.form['project_name'])
-        return jsonify({'message': 'project created'}), 200
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
 
 def testDB():
     print('prova')

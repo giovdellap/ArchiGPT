@@ -1,23 +1,86 @@
-def getTestProjectObj():
+def getTestProjectSystem():
     return {
-        'type': 'general',
-        'data': {
-            "UserStoriesAnalyzer": "prova UserStoriesAnalyzer",
-            "ContainerDesign": "prova ContainerDesign",
-            "UserStoriesClassifier": "prova UserStoriesClassifier",
-            "MissingUserStoriesMatcher": "prova MissingUserStoriesMatcher",
-            "Container Proposer": "Container Proposer"
-        }
+        'type': 'system',
+        'data': [
+            {
+                'name': "UserStoriesAnalyzer",
+                'message': "Test",
+            },
+            {
+                'name': "ContainerDesign",
+                'message': "Test",
+            },
+            {
+                'name': "UserStoriesClassifier",
+                'message': "Test",
+            },
+            {
+                'name': "MissingUserStoriesMatcher",
+                'message': "Test",
+            },
+            {
+                'name': "Container Proposer",
+                'message': "Test",
+            },
+        ],
     }
-    
+
+
 def getTestProjectStatus():
     return {
         'type': 'status',
         'data': {
-            "UserStoriesAnalyzer": "NO",
-            "ContainerDesign": "NO",
-            "UserStoriesClassifier": "NO",
-            "MissingUserStoriesMatcher": "NO",
-            "Container Proposer": "NO",
-        }
+
+                'system': [
+                    {
+                        'name': "UserStoriesAnalyzer",
+                        'status': "NO",
+                    },
+                    {
+                        'name': "ContainerDesign",
+                        'status': "NO",
+                    },
+                    {
+                        'name': "UserStoriesClassifier",
+                        'status': "NO",
+                    },
+                    {
+                        'name': "MissingUserStoriesMatcher",
+                        'status': "NO",
+                    },
+                    {
+                        'name': "Container Proposer",
+                        'status': "NO",
+                    },
+                ],
+
+                'containers': [
+                    {
+                        'name': "CONTAINER_A",
+                        'id_doc': "",
+                        'containerDescription': "NO",
+                        'containerTechnologies': "NO",
+                        'services': [
+                            {
+                                'name': "Service_1",
+                                'endpoints': "NO",
+                                'datastructures': "NO"
+                            },
+                            {
+                                'name': "Service_2",
+                                'endpoints': "NO",
+                                'datastructures': "NO"
+                            },
+                        ]
+                    },
+                    {
+                        'name': "CONTAINER_B",
+                        'id_doc': "",
+                        'containerDescription': "NO",
+                        'containerTechnologies': "NO",
+                        'services': []
+                    },
+                ],
+            
+        },
     }

@@ -26,6 +26,21 @@ services:
     networks:
       - main-network
 
+  
+  frontend: 
+    container_name: frontend
+    build: ./frontend 
+    ports:
+    - "3000:3000"
+    volumes:
+    - ./frontend:/frontend
+    environment:
+      - WATCHPACK_POLLING=true
+    depends_on:
+      - mongodb
+    networks:
+      - main-network
+
 
   mongodb:
     container_name: mongodb

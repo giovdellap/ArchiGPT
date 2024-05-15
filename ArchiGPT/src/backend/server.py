@@ -4,6 +4,7 @@ import os
 from config import ApplicationConfig
 from routes.database_bp import database_bp
 from routes.project_bp import project_bp
+from routes.generation_bp import generation_bp
 
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ app.config.from_object(ApplicationConfig)
 
 app.register_blueprint(database_bp, url_prefix='/db')
 app.register_blueprint(project_bp, url_prefix='/project')
+app.register_blueprint(generation_bp, url_prefix='/generation')
 
 
 @app.route("/", methods=['GET'])

@@ -6,7 +6,7 @@
 4) FE carica il menù di sinistra con i primi 5 rossi
 5) l'utente clicca il pulsante genera in basso e FE chiama /UserStoriesAnalyzer
 6) BE interroga l'assistente
-7) scrive OK IN status[steps][status] dove status[steps][name] è quello dell'endpoint
+7) scrive OK IN status[system][status] dove status[system][name] è quello dell'endpoint
 8) scrive la risposta in general[UserStoriesAnalyzer]
 9) se l'utente clicca di nuovo su genera, riparti da 6 (alla 8 sovrascrivi general[UserStoriesAnalyzer])
 
@@ -27,7 +27,7 @@ Es: click su UserStoriesAnalyzer e lui chima /project/UserStoriesAnalyzer[GET]
 DOCUMENTI IN PROJECT COLLECTION:
 1)status
 	{
-		"steps": [
+		"system": [
 			{
 				"name": "UserStoriesAnal",
 				"status": OK,
@@ -53,7 +53,7 @@ DOCUMENTI IN PROJECT COLLECTION:
 		]		
 	}
 
-2) steps
+2) system
 	{
 		"UserStoriesAnal": "adaasd",
 		"ContainerDesigner" "..."

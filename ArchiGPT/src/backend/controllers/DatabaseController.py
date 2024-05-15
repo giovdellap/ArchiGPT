@@ -4,7 +4,6 @@ from flask import jsonify, request
 from handlers.db_handler import DBHandler
 
 
-
 def create_database():
     try:
         if 'db_name' not in request.form or 'collection_name' not in request.form:
@@ -13,21 +12,12 @@ def create_database():
         response = handler.create_database(
             db_name=request.form['db_name'], 
             collection_name=request.form['collection_name'])
-        handler.shutdown_db_client()
+
         return jsonify({"DB_response": response}), 200
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": str(e)}), 500
-    
-def create_project():    
-    try:
-        if 'project_name' not in request.form:
-            return jsonify({'message': 'project_name missing from form-data'})
-        handler = DBHandler()
-        handler.create_collection(request.form['project_name'])
-        return jsonify({'message': 'project created'}), 200
-    except Exception as e:
-        return jsonify({"message": str(e)}), 500
+
 
 def testDB():
     print('prova')
