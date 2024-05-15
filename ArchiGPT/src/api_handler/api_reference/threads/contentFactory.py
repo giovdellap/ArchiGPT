@@ -8,16 +8,7 @@ class ContentFactory:
 
     def set_assets(self, name):
         self.name = name
-        if name == 'Unified Endpoints Generator':
-            self.set_content_UEG()
-        elif name == 'Containers List Generator':
-            self.getContent('CLG')
-        elif name == 'Endpoints Solo Generator':
-            self.getContent('ESG')
-        elif name == 'DataStructures Solo Generator':
-            self.set_content_DSG()
-        else:
-            raise ValueError("Invalid assistant name")
+        self.getContent(name)
             
     def getContent(self, folder):
         content_path = self.resources_path + '/' + folder + '/content.txt'

@@ -1,0 +1,61 @@
+**CATEGORY: Authentication and Security**\n
+- **Description:** User Stories dealing with registration, login, session management, and security aspects like logout to prevent unauthorized access.\n
+- **User Stories:**\n  
+- 1) As a Client, I want to be able to Register in the site so that I can use the site\n  
+- 2) As a Client, I want to be able to login in the site so that I can use the site\n  
+- 3) As a Client, I want to be able to not put my Credentials in the site every time I reload the site, so that I can use the site\n  
+- 4) As a Client, I want to be able to logout, so that no one else can use my account\n  
+- 17) As an Agricultural Company, I want to be able to Register in the site, so that I can be visible and start doing business in the site\n  
+- 18) As an Agricultural Company, I want to be able to Login, so that I can work on the site\n  
+- 19) As an Agricultural Company, I want to be able to not put my Credentials in the site every time I reload the site, so that I can use the site easily\n  
+- 20) As an Agricultural Company, I want to be able to logout from the site\n  
+- 22) As the Administrator of the site, I want to be able to login in the site, so that I can work on it\n  
+- 23) As the Administrator of the site, I want to be able to not put my Credentials in the site every time I reload the site, so that I can use the site easily\n  
+- 24) As the Administrator of the site, I want to be able to logout from the site\n\n
+
+**CATEGORY: User Management and Analysis**\n
+- **Description:** User Stories related to managing user information and analytical capabilities for users and activities on the platform.\n
+- **User Stories:**\n  
+- 5) As a Client, I want to be able to see my personal information\n  
+- 21) As an Agricultural Company, I want to be able to see my personal information\n  
+- 25) As the Administrator of the site, I want to be able to delete malevolent users, so that the platform is reliable\n  
+- 26) As the Administrator of the site, I want to be able to see all orders, so that I can better analyze how the platform is doing\n  - 27) As the Administrator of the site, I want to be able to see all users, so that I can better analyze how the platform is doing\n  
+- 28) As the Administrator of the site, I want to be able to get user details, so that I can have some clear view over the user\n  
+- 29) As the Administrator of the site, I want to be able to modify users, so that I can do site maintenance\n\n
+**CATEGORY: Product Management**\n
+- **Description:** User Stories centered around adding, removing, and modifying products in the inventory by both Agricultural Companies and Administrators.\n
+- **User Stories:**\n  
+- 14) As an Agricultural Company, I want to be able to Add products in inventory, so that I can show my clients the new produce\n  
+- 15) As an Agricultural Company, I want to be able to Remove products in inventory, so that My clients don't try to buy an item that I don't have anymore\n  
+- 16) As an Agricultural Company, I want to be able to Modify products in inventory, so that I can change price and quantities on the same item\n  
+- 36) As the Administrator of the site, I want to be able to add product, so that I can do site maintenance\n  
+- 37) As the Administrator of the site, I want to be able to modify product, so that I can do site maintenance\n  
+- 38) As the Administrator of the site, I want to be able to delete product, so that I can do site maintenance\n\n
+
+**CATEGORY: Buying Experience**\n
+- **Description:** User Stories pertaining to the consumer experience in reserving products, cart management, and order completion.\n
+- **User Stories:**\n  
+- 9) As a Client, I want to be able to Add to cart the products, so that I can buy them\n  
+- 10) As a Client, I want to be able to Remove products from the cart, so that I can decide what to buy\n  
+- 11) As a Client, I want to be able to see products in the cart, so that I can see what I am going to buy\n  
+- 12) As a Client, I want to be able to Complete an order, so that I can choose a date to go and pick up the products\n\n
+
+**CATEGORY: Discovery and Navigation**\n
+- **Description:** User Stories related to discovering products, viewing agricultural companies, and navigation aids like maps.\n
+- **User Stories:**\n  
+- 6) As a Client, I want to be able to View Hot products, so that I can discover the products in the season\n  
+- 7) As a Client, I want to be able to See Agricultural company in my area, so that I can choose where to buy products\n  
+- 8) As a Client, I want to be able to See The products for each Agricultural company, so that I can buy From them\n  
+- 13) As a Client, I want to be able to Open in Google Maps the Location of the Agricultural company, so that I can find directions to it easily\n\n
+**CATEGORY: Platform Management**\n
+- **Description:** User Stories focusing on the administrative functionality to manage geographical areas, agricultural company details, and product information.\n
+- **User Stories:**\n  
+- 30) As the Administrator of the site, I want to be able to see all areas, so that I can do site maintenance\n  
+- 31) As the Administrator of the site, I want to be able to get all Agricultural company by areas, so that I can analyze how they are distributed\n  
+- 32) As the Administrator of the site, I want to be able to get all Agricultural company details, so that I can do platform maintenance\n  
+- 33) As the Administrator of the site, I want to be able to get product by seller, so that I can do site maintenance\n  
+- 34) As the Administrator of the site, I want to be able to get product by id, so that I can do site maintenance\n  
+- 35) As the Administrator of the site, I want to be able to add an area, so that if there is some request for that area to be added, I can\n\n
+**CATEGORY: UNASSIGNED**\n
+- **Description:** User Stories that do not fit into the current categories due to insufficient information or non-aligning functionalities.\n
+- **User Stories:** None

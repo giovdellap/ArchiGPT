@@ -31,14 +31,12 @@ def interrogate():
         #ASSISTANT CREATION
         req_ci = []
         req_vs = []
-        print('KEYS:', request.files.keys())
         if 'ass_ci' in request.files:
             req_ci.append(request.files['ass_ci'])
         if 'ass_vs' in request.files: 
             req_vs.append(request.files['ass_vs'])
-        print('LEN:', len(req_ci))
         assistant_id = AssistantOrchestrator.assistantCreation(assistant, name, model, req_ci, req_vs)
-        
+        print('AO')
         #THREAD CREATION
         thread = threadCreationHandler()
         print("THREAD: ", thread)

@@ -1,7 +1,7 @@
 1) crea progetto da frontend
 2) lui crea una collection e ci mette:
 	- un documento status con i primi 5 a NO
-	- un documento general vuoto
+	- un documento system vuoto
 3) FE cambia pagina e chiama getStatus(project_name) per vedere come fare il menù di sinistra
 4) FE carica il menù di sinistra con i primi 5 rossi
 5) l'utente clicca il pulsante genera in basso e FE chiama /UserStoriesAnalyzer
