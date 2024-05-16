@@ -78,7 +78,6 @@ def getTestProjectStatus():
                         'status': "NEXT",
                     },
                 ],
-
                 'containers': [
                     {
                         'name': "CONTAINER_A",

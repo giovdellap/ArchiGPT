@@ -1,7 +1,9 @@
 import json
 from flask import current_app, request, jsonify
 import requests
+import os
 
+from handlers.container_handler import ContainerHandler
 from utils.assistant_name_matcher import getAssistantName, getNextAssistant
 from handlers.db_handler import DBHandler
 
@@ -19,11 +21,16 @@ def generateSystem():
         
         #CONTENT CREATION
         if assistant_name == 'ContainerDesigner':
-            if 'userstories' not in request.files:
-                return jsonify({"message": "userstories missing"}), 400
-            content = request.files['userstories'].read()
-        
-        
+            #if 'userstories' not in request.files:
+            #    return jsonify({"message": "userstories missing"}), 400
+            #content = request.files['userstories'].read()
+            current_path = os.getcwd()
+            path = current_path + ('/utils/UserStories.txt')
+            print(current_path)
+            file = open(path,'r')
+            content = file.read()
+
+
         
         #ASSISTANT INTERROGATION
         message = requests.post(
@@ -35,7 +42,6 @@ def generateSystem():
                 'content': content
             }
         )
-        
         result = message.json()['content']
         print('Message: ', result)
         
@@ -43,9 +49,22 @@ def generateSystem():
         handler = DBHandler()
         handler.database_setup()
         handler.updateSystemStatus(project_name, assistant_name, 'OK')
-        handler.updateSystemStatus(project_name, getNextAssistant(assistant_name), 'NEXT')
+        
         #SAVE ON DB
         handler.updateSystem(project_name, assistant_name, result)
+        
+        # NEXT ASSISTANT MANAGEMENT
+        nextAssistant = getNextAssistant(assistant_name)
+        if nextAssistant != "CONTAINER":
+            handler.updateSystemStatus(project_name, getNextAssistant(assistant_name), 'NEXT')
+        else:
+            container_handler = ContainerHandler(result, project_name)
+            container_handler.getContainersList(handler)
+        
+
+        #DB HANDLER SHUTDOWN
+        #handler.shutdown_db_client()
+        
         #print(message['content'])
         return jsonify({'content': result}), 200
     

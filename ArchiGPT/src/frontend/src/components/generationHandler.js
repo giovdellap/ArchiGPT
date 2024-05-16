@@ -2,7 +2,7 @@ import React from 'react';
 import GenerationView from './generationView';
 import { Button, Card, Container } from 'react-bootstrap';
 
-function GenerationHandler({ messageSystem, handleGenerate }) {
+function GenerationHandler({ messageSystem, handleGenerate, systemSelected }) {
 
     return (
         <div className="chat-container">
@@ -16,6 +16,7 @@ function GenerationHandler({ messageSystem, handleGenerate }) {
                     <Container style={{ margin: '150px', width: '250px' }}>
                         <Card>
                             <Button
+                                disabled={systemSelected === "" }
                                 variant="light"
                                 onClick={() => handleGenerate()}
                             >

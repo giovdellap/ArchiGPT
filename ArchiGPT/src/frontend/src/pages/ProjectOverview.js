@@ -7,7 +7,7 @@ function ProjectOverview() {
 	const projectName = window.location.pathname.split('/').pop();
 	const [projectStatus, setProjectStatus] = useState([]);
 	const [projectSystem, setProjectSystem] = useState([]);
-	const [systemSelected, setSystemSelected] = useState("ContainerDesigner");
+	const [systemSelected, setSystemSelected] = useState("");
 	const [messageSystem, setMessageSystem] = useState("");
 
 
@@ -75,7 +75,8 @@ function ProjectOverview() {
             .then((response) => {
               if (response.status === 200) {
                 console.log('Message sent:', { projectName, systemSelected });
-                // window.location.reload();
+                window.location.reload();
+				setSystemSelected("")
               } else {
                 window.alert('Failed to generate document');
                 throw new Error('Failed to generate document');
@@ -103,7 +104,7 @@ function ProjectOverview() {
 			<SystemOverviewTab projectStatus={projectStatus} setSystemSelected={setSystemSelected} />
 			</div>
 			<div style={{ flex: 2 }}>
-			<GenerationHandler messageSystem={messageSystem} handleGenerate={handleGenerate}/>
+			<GenerationHandler messageSystem={messageSystem} handleGenerate={handleGenerate} systemSelected={systemSelected}/>
 			</div>
       	</div>
 	  </div>

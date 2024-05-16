@@ -15,6 +15,9 @@ The user provides:
 3) For each User Story, define a container that fulfills it (it can be one container, more than one container or it can be unassigned)
 4) Describe briefly the purpose of each container and the features it accomplishes
 
+# Rules: #
+Do not name the containers with the word 'Service' in them
+
 ### Output format: ###
 ## 2 SECTIONS: ##
 #CONTAINERS: #

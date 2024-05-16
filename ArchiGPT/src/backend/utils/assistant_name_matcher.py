@@ -18,6 +18,10 @@ def getAssistantName(name):
     
 def getNextAssistant(name):
     index = system_assistants.index(name)
-    return system_assistants[index+1]
+    #if index == len(system_assistants):
+    if name == "ContainerDesigner":
+        return 'CONTAINER'
+    else:
+        return system_assistants[index+1]
 
     
