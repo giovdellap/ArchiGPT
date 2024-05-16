@@ -7,7 +7,7 @@ function ProjectOverview() {
 	const projectName = window.location.pathname.split('/').pop();
 	const [projectStatus, setProjectStatus] = useState([]);
 	const [projectSystem, setProjectSystem] = useState([]);
-	const [systemSelected, setSystemSelected] = useState("");
+	const [systemSelected, setSystemSelected] = useState("ContainerDesigner");
 	const [messageSystem, setMessageSystem] = useState("");
 
 
@@ -59,6 +59,34 @@ function ProjectOverview() {
 		});
 	}
 
+	const handleGenerate = () => {
+        
+        const generateApiUrl = 'http://localhost:5001/generation/generateSystem';
+    
+        const formData = new FormData();
+        formData.append('project_name', projectName);
+        formData.append('assistant', systemSelected);
+
+        fetch(generateApiUrl, {
+            method: 'POST',
+            mode: 'cors',
+            body: formData
+        })
+            .then((response) => {
+              if (response.status === 200) {
+                console.log('Message sent:', { projectName, systemSelected });
+                // window.location.reload();
+              } else {
+                window.alert('Failed to generate document');
+                throw new Error('Failed to generate document');
+              }
+          })
+          .catch((error) => {
+            window.alert('Failed to generate document');
+            console.error('Failed to generate document:', error);
+          });
+      };
+
 
     useEffect(() => {
         fetchProjectStatus()
@@ -75,7 +103,7 @@ function ProjectOverview() {
 			<SystemOverviewTab projectStatus={projectStatus} setSystemSelected={setSystemSelected} />
 			</div>
 			<div style={{ flex: 2 }}>
-			<GenerationHandler messageSystem={messageSystem} />
+			<GenerationHandler messageSystem={messageSystem} handleGenerate={handleGenerate}/>
 			</div>
       	</div>
 	  </div>
