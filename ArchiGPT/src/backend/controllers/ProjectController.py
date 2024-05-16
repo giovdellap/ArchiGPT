@@ -1,7 +1,7 @@
 import json
 from flask import request, jsonify
 
-from utils.test_factory import getTestProjectSystem, getTestProjectStatus
+from utils.object_factory import getBlankProjectStatus, getBlankProjectSystem, getTestProjectSystem, getTestProjectStatus
 from handlers.db_handler import DBHandler
 
 def getAllProject():
@@ -29,9 +29,12 @@ def createProject():
         handler.database_setup()
         handler.create_collection(name)
 
-        system = getTestProjectSystem()
-        status = getTestProjectStatus()
+        #system = getTestProjectSystem()
+        #status = getTestProjectStatus()
    
+        system = getBlankProjectSystem()
+        status = getBlankProjectStatus()
+        
         handler.addDocument(name, system)
         handler.addDocument(name, status)
         

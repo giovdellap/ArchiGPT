@@ -6,9 +6,9 @@ class ContentFactory:
     def __init__(self) :
         self.resources_path = current_app.config['basedir'] + '/resources'
 
-    def set_assets(self, name):
+    def set_assets(self, name, content):
         self.name = name
-        self.getContent(name)
+        self.content = content
             
     def getContent(self, folder):
         content_path = self.resources_path + '/' + folder + '/content.txt'

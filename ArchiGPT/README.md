@@ -1,11 +1,9 @@
 ## ArchiGPT
 
-1) Analisi User Stories (GENERAL)
-2) Design Container (GENERAL)
-3) Assegnazione User Stories (GENERAL)
-4) Assegnazione User Stories mancanti (GENERAL)
-5) Eventuale aggiunta container (GENERAL)
-6) Descrizione Container (Container purpose) (CONTAINER)
+1) Container Designer (GENERAL)
+2) Missing User Stories Matcher (GENERAL)
+3) Architectural Pattern Proposer (GENERAL)
+4) Container Purpose Generator (CONTAINER)
 7) Design servizi (CONTAINER)
 8) Services Interaction (?)
 9) Service Description
@@ -13,35 +11,21 @@
 ## Assistants
 
 ### Archi_1
-#### User Stories Analyzer
-
-Classifica le User Stories per utente
-
-### Archi_2
 #### Container Designer
 
 Propone i container con una breve descrizione per ognuno
 
-### Archi_3
-#### User Stories Classifier
-
-Assegna un container ad ogni User Stories
-3 possibilità:
-- container esistente
-- 2 o più container esistenti
-- boh (non riesce ad assegnare)
-
-### Archi_4
+### Archi_2
 #### Missing User Stories Matcher
 
-Controlla le User Stories orfane e le assegna ai container esistenti
+Controlla le User Stories orfane e le assegna ai container esistenti o ne propone di nuovi
 
-### Archi_5
-#### Container Proposer
+### Archi_3
+#### Architectural Pattern Proposer
 
-Propone un container con una breve descrizione da creare per le user stories orfane
+Propone pattern architetturali da applicare
 
-### Archi_6
+### Archi_4
 #### Container Purpose Generator
 
 Descrive ogni container dal punto di vista

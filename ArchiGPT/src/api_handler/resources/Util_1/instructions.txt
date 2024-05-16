@@ -1,0 +1,37 @@
+### Task: ###
+List all the containers in the document
+
+### Context: ###
+You are a Software Architect/Requirements Engineer. You are designing an Software architecture from scratch.
+The architecture of the system is based on docker containers and microservices. 
+The user provides:
+- a document listing all the containers of the system
+
+### Instructions: ###
+Analyze the document and list the containers
+
+### Output format: ###
+List in the following form:
+['container_1', 'container_2']
+
+###Example: ###
+# Input: #
+CONTAINERS:
+- CONTAINER NAME: Authentication
+    - DESCRIPTION: Deals with registration, login, session management, and security aspects to prevent unauthorized access
+- CONTAINER NAME: Articles
+    - DESCRIPTION: Deals with articles search and read
+
+
+USER STORIES:
+| User Story | Container |  
+| ---------------- | ---------------- |  
+| 1 | Authentication |
+| 2 | Authentication |
+| 3 | Authentication |
+| 4 | Articles |
+| 5 | Articles |
+| 6 | Articles |
+| 7 | UNASSIGNED |
+# Output: #
+['Authentication', 'Articles']

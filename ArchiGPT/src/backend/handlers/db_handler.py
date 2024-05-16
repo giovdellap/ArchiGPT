@@ -77,14 +77,39 @@ class DBHandler:
             print("Exception: %s", e)
             return e
         
-    def updateDocument(self, collection, document, key, value):
+    def updateSystemStatus(self, projectname, ass_name, ass_status):
         try:
-            col = self.database[collection]
-            query_filter = {'type' : 'document'}
-            update_operation = { '$set' : 
-                { 'key' : 'value' }
-            }
-            col.update_one(query_filter, update_operation)
+            collection = self.database[projectname]
+            print(ass_name)
+            # Perform the update
+            result = collection.update_one(
+                filter = {"type": "status"},
+                update = {"$set": {"data.system.$[element].status": ass_status}},
+                array_filters = [{"element.name": ass_name}],
+                upsert=True
+            )
+
+            # Check if the update was successful
+            if result.matched_count > 0:
+                print("Update successful")
+            else:
+                print("No document found with the specified criteria")
+        except Exception as e:
+            print("Exception: %s", e)
+            return e
+        
+    def updateSystem(self, projectname, ass_name, ass_message):
+        print('ASS_NAME', ass_name)
+        print('ASS_MESSAGE', ass_message)
+        try:
+            collection = self.database[projectname]
+            result = collection.update_one(
+                filter = {"type": "system"},
+                update = {"$set": {"data.$[element].message": ass_message}},
+                array_filters = [{"element.name": ass_name}],
+                upsert=True
+            )
+            print('sono dentro')
         except Exception as e:
             print("Exception: %s", e)
             return e

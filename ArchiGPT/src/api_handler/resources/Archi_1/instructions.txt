@@ -1,22 +1,37 @@
 ### Task: ###
-List categories in which categorize the User Stories 
+Design a Software architecture for the system based on docker containers.
+
+### Context: ###
+You are a Software Architect/Requirements Engineer. You are designing an Software architecture from scratch.
+The architecture of the system must be based on docker containers and microservices. 
+The user provides:
+- a brief description of the final system
+- user stories of the system
+
 
 ### Instructions: ###
-
-You are a Software Architect/Requirements Engineer. You are designing an Software architecture from scratch. 
-
-The user provides a brief description of the final system and User Stories of the system.
-
-Follow these instructions:
 1) Propose categories for the user stories. These categories can be based on users, actions, behaviour etc.
-2) Give a brief description of each category
-2) Assign each User Story to a category. A User Story can be unassigned.
-
+2) Based on the generated categories, design containers that match the categories and fulfill the user stories
+3) For each User Story, define a container that fulfills it (it can be one container, more than one container or it can be unassigned)
+4) Describe briefly the purpose of each container and the features it accomplishes
 
 ### Output format: ###
-List of categories specifying name, description and user stories.
-Unassigned User Stories are in the "UNASSIGNED" category
+## 2 SECTIONS: ##
+#CONTAINERS: #
+List of the containers in the following form:
+- CONTAINER NAME: "container"
+    - DESCRIPTION: "container description"
+#USER STORIES: #
+Table of the User Stories container assignment with the following columns:
+    - User Story number
+    - Assigned containers
+## INCLUDE ONLY THESE 2 SECTIONS IN THE OUTPUT ##
 
+# WRITING RULES: #
+- Use the following style to draw tables:  
+|Title 1 | Title 2 |  
+| ------------- | ------------- |  
+|text 1 | text 2 |
 
 ###Example: ###
 # Input: #
@@ -32,19 +47,20 @@ User Stories:
 6) As a user, I want to see all comments associated with an article so that I can read others' opinions and insights.
 7) As a logged-in user, I want to comment on an article so that I can share my thoughts and engage in discussions.
 # Output: #
-CATEGORY: Authentication
-    - Description: User Stories in which the user registers, logins and logouts from the website
-    - User Stories:
-        1) As a new user, I want to register an account so that I can log in and interact with the blog.
-        2) As a registered user, I want to log in to my account so that I can access and interact with the platform.
-        3) As a logged-in user, I want to log out of my account so that I can securely end my session.
-CATEGORY: Articles
-    - Description: User Stories related to the articles
-    - User Stories:
-        4) As a user, I want to read a list of articles on the homepage so that I can choose which articles to read in full.
-        5) As a user, I want to click on an article title to read the full content so that I can engage with the material.
-CATEGORY: Comments
-    - Description: User Stories related to comments on articles
-    - User Stories:
-        6) As a user, I want to see all comments associated with an article so that I can read others' opinions and insights.
-        7) As a logged-in user, I want to comment on an article so that I can share my thoughts and engage in discussions.
+CONTAINERS:
+- CONTAINER NAME: Authentication
+    - DESCRIPTION: Deals with registration, login, session management, and security aspects to prevent unauthorized access
+- CONTAINER NAME: Articles
+    - DESCRIPTION: Deals with articles search and read
+
+
+USER STORIES:
+| User Story | Container |  
+| ---------------- | ---------------- |  
+| 1 | Authentication |
+| 2 | Authentication |
+| 3 | Authentication |
+| 4 | Articles |
+| 5 | Articles |
+| 6 | Articles |
+| 7 | UNASSIGNED |

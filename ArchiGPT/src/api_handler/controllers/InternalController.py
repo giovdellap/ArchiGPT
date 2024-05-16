@@ -14,11 +14,16 @@ def interrogate():
             return jsonify({"message": "ass_name missing"}), 400
         name = request.form['ass_name']
         if 'ass_model' not in request.form:
-            return jsonify({"message": "ass_model"}), 400
+            return jsonify({"message": "ass_model missing"}), 400
         model = request.form['ass_model']
+        if 'content' not in request.form:
+            return jsonify({"message": "content missing"}), 400
+        content = request.form['content']
         
-        print(name)
-
+        print('NEW REQUEST')
+        print('NAME: ', name)
+        print('MODEL: ', model)
+        print('CONTENT: ', content)
 
         #ASSISTANT CLEANUP
         assistant = AssistantOrchestrator()
@@ -29,13 +34,7 @@ def interrogate():
 
         
         #ASSISTANT CREATION
-        req_ci = []
-        req_vs = []
-        if 'ass_ci' in request.files:
-            req_ci.append(request.files['ass_ci'])
-        if 'ass_vs' in request.files: 
-            req_vs.append(request.files['ass_vs'])
-        assistant_id = AssistantOrchestrator.assistantCreation(assistant, name, model, req_ci, req_vs)
+        assistant_id = AssistantOrchestrator.assistantCreation(assistant, name, model, [], [])
         print('AO')
         #THREAD CREATION
         thread = threadCreationHandler()
@@ -43,14 +42,14 @@ def interrogate():
 
         #MESSAGE CREATION
         contentFactory = ContentFactory()
-        contentFactory.set_assets(name)
+        contentFactory.set_assets(name, content)
         message = messageCreationHandler(thread.id, contentFactory.content, [])
         #print('message created')
         
         #RUN CREATION
         run = runCreationHandler(thread.id, assistant_id)
         print('run created')
-        time.sleep(120)
+        time.sleep(60)
         
         
         #MESSAGE RETRIEVAL
