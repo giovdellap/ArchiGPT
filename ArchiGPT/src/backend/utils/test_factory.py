@@ -4,23 +4,23 @@ def getTestProjectSystem():
         'data': [
             {
                 'name': "UserStoriesAnalyzer",
-                'message': "Test",
+                'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus pellentesque turpis, quis venenatis ligula tincidunt a. Sed eleifend diam dolor, ac suscipit lectus vulputate eget. Proin rhoncus rutrum ligula et sagittis. Donec vehicula turpis ipsum, et pharetra nunc convallis quis. Nam ultrices lectus et justo laoreet, at vehicula enim facilisis. Sed rutrum nulla in dui eleifend, sit amet tempor mi porta. Nullam commodo sapien nisi, quis venenatis eros eleifend sit amet. Pellentesque ut diam at mi accumsan luctus. Curabitur bibendum condimentum justo, in tincidunt nunc luctus in. Fusce pharetra lectus quis turpis blandit lobortis. Aenean porta velit elit, in finibus nulla auctor eget. Nunc non rhoncus tellus, vel molestie purus. Cras molestie porta augue scelerisque malesuada. In pretium quis enim vel fringilla. Nulla a quam urna. Curabitur eu nunc lacinia, venenatis ante nec, dignissim ante. ",
             },
             {
                 'name': "ContainerDesign",
-                'message': "Test",
+                'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus pellentesque turpis, quis venenatis ligula tincidunt a. Sed eleifend diam dolor, ac suscipit lectus vulputate eget. Proin rhoncus rutrum ligula et sagittis. Donec vehicula turpis ipsum, et pharetra nunc convallis quis. Nam ultrices lectus et justo laoreet, at vehicula enim facilisis. Sed rutrum nulla in dui eleifend, sit amet tempor mi porta. Nullam commodo sapien nisi, quis venenatis eros eleifend sit amet. Pellentesque ut diam at mi accumsan luctus. Curabitur bibendum condimentum justo, in tincidunt nunc luctus in. Fusce pharetra lectus quis turpis blandit lobortis. Aenean porta velit elit, in finibus nulla auctor eget. Nunc non rhoncus tellus, vel molestie purus. Cras molestie porta augue scelerisque malesuada. In pretium quis enim vel fringilla. Nulla a quam urna. Curabitur eu nunc lacinia, venenatis ante nec, dignissim ante. ",
             },
             {
                 'name': "UserStoriesClassifier",
-                'message': "Test",
+                'message': "",
             },
             {
                 'name': "MissingUserStoriesMatcher",
-                'message': "Test",
+                'message': "",
             },
             {
-                'name': "Container Proposer",
-                'message': "Test",
+                'name': "ContainerProposer",
+                'message': "",
             },
         ],
     }
@@ -34,15 +34,15 @@ def getTestProjectStatus():
                 'system': [
                     {
                         'name': "UserStoriesAnalyzer",
-                        'status': "NO",
+                        'status': "OK",
                     },
                     {
                         'name': "ContainerDesign",
-                        'status': "NO",
+                        'status': "OK",
                     },
                     {
                         'name': "UserStoriesClassifier",
-                        'status': "NO",
+                        'status': "NEXT",
                     },
                     {
                         'name': "MissingUserStoriesMatcher",

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Container, Row, Accordion, Card } from 'react-bootstrap';
+import { Container, Row, Accordion, Card, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faExclamationTriangle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 
-function SystemOverviewTab({ projectStatus }) {
+function SystemOverviewTab({ projectStatus, setSystemSelected }) {
 
     const containerStatus  = projectStatus.containers
     const systemStatus  = projectStatus.system
@@ -13,8 +13,8 @@ function SystemOverviewTab({ projectStatus }) {
         switch (status) {
             case "OK":
                 return <FontAwesomeIcon icon={faCheckCircle} className="text-success" />;
-            case "PROGRESS":
-                return <FontAwesomeIcon icon={faExclamationTriangle} className="text-warning" />;
+            case "NEXT":
+                return <FontAwesomeIcon icon={faCircle}  color='orange' className="text-next" />;
             case "NO":
                 return <FontAwesomeIcon icon={faTimesCircle} className="text-danger" />;
             default:
@@ -42,11 +42,17 @@ function SystemOverviewTab({ projectStatus }) {
             <Row style={{ marginBottom: '20px' }}>
                 {systemStatus ? systemStatus.map((system) => (
                     <div key={system.id}>
-                        <Card>
-                            <Card.Body>
-                                {system.name} {getStatusIcon(system.status)}
-                            </Card.Body>
-                        </Card>
+                            <Card>
+                                <Button
+                                    variant="light"
+                                    onClick={() => setSystemSelected(system.name)}
+                                    disabled={system.status === "NO"} 
+                                >
+                                    <Card.Body>
+                                        {system.name} {getStatusIcon(system.status)}
+                                    </Card.Body>
+                                </Button>
+                            </Card>
                     </div>
                     ))  
                     : <Container>No system status available</Container>}

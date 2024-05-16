@@ -4,13 +4,15 @@ import GenerationHandler from '../components/generationHandler';
 import ProjectHeader from '../components/projectHeader';
 
 function ProjectOverview() {
-	const [projectStatus, setProjectStatus] = useState({});
-	const [projectSystem, setProjectSystem] = useState({});
+	const projectName = window.location.pathname.split('/').pop();
+	const [projectStatus, setProjectStatus] = useState([]);
+	const [projectSystem, setProjectSystem] = useState([]);
+	const [systemSelected, setSystemSelected] = useState("");
+	const [messageSystem, setMessageSystem] = useState("");
 
 
     function fetchProjectStatus() {
 
-		const projectName = window.location.pathname.split('/').pop();
 		const projectApiUrl = `http://localhost:5001/project/status` ;
 
 		fetch(projectApiUrl + `?project_name=${projectName}`)
@@ -31,7 +33,6 @@ function ProjectOverview() {
 
 	function fetchProjectSystem() {
 
-		const projectName = window.location.pathname.split('/').pop();
 		const projectApiUrl = `http://localhost:5001/project/system` ;
 
 		fetch(projectApiUrl + `?project_name=${projectName}`)
@@ -50,21 +51,31 @@ function ProjectOverview() {
 			});
 	};
 
+	function updateMessage(){
+		projectSystem.forEach(system => {
+			if (system.name === systemSelected) {
+				setMessageSystem(system.message);
+			}
+		});
+	}
+
+
     useEffect(() => {
         fetchProjectStatus()
 		fetchProjectSystem()
-	}, []);
+		updateMessage()
+	}, [systemSelected]);
 
 
 	return (
 	<div>
-		<ProjectHeader />
+		<ProjectHeader projectName={projectName}/>
 		<div style={{ display: 'flex', paddingTop: '80px' }}>
 			<div style={{ flex: 1, borderRight: '1px solid #ccc' }}>
-			<SystemOverviewTab projectStatus={projectStatus} />
+			<SystemOverviewTab projectStatus={projectStatus} setSystemSelected={setSystemSelected} />
 			</div>
 			<div style={{ flex: 2 }}>
-			<GenerationHandler projectSystem={projectSystem} />
+			<GenerationHandler messageSystem={messageSystem} />
 			</div>
       	</div>
 	  </div>
