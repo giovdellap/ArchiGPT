@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SystemOverviewTab from '../components/systemOverviewTab';
 import GenerationHandler from '../components/generationHandler';
 import ProjectHeader from '../components/projectHeader';
+import LoadingScreen from '../components/loadingScreen';
 
 function ProjectOverview() {
 	const projectName = window.location.pathname.split('/').pop();
@@ -9,6 +10,8 @@ function ProjectOverview() {
 	const [projectSystem, setProjectSystem] = useState([]);
 	const [systemSelected, setSystemSelected] = useState("");
 	const [messageSystem, setMessageSystem] = useState("");
+	const [showLoadingScreen, setShowLoadingScreen] = useState(false);
+	const [file, setFile] = useState(null);
 
 
     function fetchProjectStatus() {
@@ -59,13 +62,20 @@ function ProjectOverview() {
 		});
 	}
 
+	const handleFileUpload = (event) => {
+        const uploadedFile = event.target.files[0];
+        setFile(uploadedFile);
+    };
+
 	const handleGenerate = () => {
-        
+
+        setShowLoadingScreen(true)
         const generateApiUrl = 'http://localhost:5001/generation/generateSystem';
     
         const formData = new FormData();
         formData.append('project_name', projectName);
         formData.append('assistant', systemSelected);
+		formData.append('userstories', file);
 
         fetch(generateApiUrl, {
             method: 'POST',
@@ -74,18 +84,21 @@ function ProjectOverview() {
         })
             .then((response) => {
               if (response.status === 200) {
-                console.log('Message sent:', { projectName, systemSelected });
-                window.location.reload();
-				setSystemSelected("")
+				return response.json();
               } else {
                 window.alert('Failed to generate document');
                 throw new Error('Failed to generate document');
               }
-          })
-          .catch((error) => {
-            window.alert('Failed to generate document');
-            console.error('Failed to generate document:', error);
-          });
+          	})
+			.then((generationResult) => {
+				fetchProjectStatus()
+				setMessageSystem(generationResult.content)
+				setShowLoadingScreen(false)
+			})
+			.catch((error) => {
+				window.alert('Failed to generate document');
+				console.error('Failed to generate document:', error);
+			});
       };
 
 
@@ -93,6 +106,7 @@ function ProjectOverview() {
         fetchProjectStatus()
 		fetchProjectSystem()
 		updateMessage()
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [systemSelected]);
 
 
@@ -104,7 +118,17 @@ function ProjectOverview() {
 			<SystemOverviewTab projectStatus={projectStatus} setSystemSelected={setSystemSelected} />
 			</div>
 			<div style={{ flex: 2 }}>
-			<GenerationHandler messageSystem={messageSystem} handleGenerate={handleGenerate} systemSelected={systemSelected}/>
+				{showLoadingScreen ?
+					<LoadingScreen messageText="Wait for document generation ..."/>
+						:
+					<GenerationHandler 
+						messageSystem={messageSystem} 
+						handleGenerate={handleGenerate} 
+						systemSelected={systemSelected} 
+						handleFileUpload={handleFileUpload}
+						file={file}
+					/>
+				}
 			</div>
       	</div>
 	  </div>

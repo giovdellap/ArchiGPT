@@ -35,7 +35,7 @@ def interrogate():
         
         #ASSISTANT CREATION
         assistant_id = AssistantOrchestrator.assistantCreation(assistant, name, model, [], [])
-        print('AO')
+        print("Assistant correctly created: ", name)
         #THREAD CREATION
         thread = threadCreationHandler()
         print("THREAD: ", thread)
@@ -49,6 +49,7 @@ def interrogate():
         #RUN CREATION
         run = runCreationHandler(thread.id, assistant_id)
         print('run created')
+        print('Waiting for message response from OpenAI ...')
         time.sleep(60)
         
         

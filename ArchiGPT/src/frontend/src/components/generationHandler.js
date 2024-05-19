@@ -1,31 +1,31 @@
 import React from 'react';
 import GenerationView from './generationView';
-import { Button, Card, Container } from 'react-bootstrap';
+import UploadFileButton from './uploadFileButton';
 
-function GenerationHandler({ messageSystem, handleGenerate, systemSelected }) {
+function GenerationHandler({ messageSystem, handleGenerate, systemSelected, handleFileUpload, file }) {
 
     return (
         <div className="chat-container">
-            {messageSystem && messageSystem !== "" ?          
-                <div className="chat-messages">
-                    <GenerationView messageSystem={messageSystem}/>
+            {systemSelected && systemSelected !== "" ?   
+                <div className="chat-messages">       
+                    {messageSystem === "" ?
+                            <>
+                            <GenerationView messageSystem={`No document generated in ${systemSelected}`} />
+                            <div className="chat-input">
+                                <UploadFileButton 
+                                    handleFileUpload={handleFileUpload} 
+                                    handleFileSend={handleGenerate}
+                                    file={file}    
+                                />
+                            </div>
+                            </>
+                        : 
+                            <GenerationView messageSystem={messageSystem} />
+                    }
                 </div>
             : 
                 <div className="chat-messages">
-                    <GenerationView messageSystem="No generation found"/>
-                    <Container style={{ margin: '150px', width: '250px' }}>
-                        <Card>
-                            <Button
-                                disabled={systemSelected === "" }
-                                variant="light"
-                                onClick={() => handleGenerate()}
-                            >
-                                <Card.Body>
-                                    Generate Document
-                                </Card.Body>
-                            </Button>
-                        </Card>
-                    </Container>
+                    <GenerationView messageSystem="Click on an assistant to view or generate documents"/>
                 </div>
             }
         </div>

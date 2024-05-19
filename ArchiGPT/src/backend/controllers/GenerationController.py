@@ -21,14 +21,14 @@ def generateSystem():
         
         #CONTENT CREATION
         if assistant_name == 'ContainerDesigner':
-            #if 'userstories' not in request.files:
-            #    return jsonify({"message": "userstories missing"}), 400
-            #content = request.files['userstories'].read()
-            current_path = os.getcwd()
-            path = current_path + ('/utils/UserStories.txt')
-            print(current_path)
-            file = open(path,'r')
-            content = file.read()
+            if 'userstories' not in request.files:
+               return jsonify({"message": "userstories missing"}), 400
+            content = request.files['userstories'].read()
+            # current_path = os.getcwd()
+            # path = current_path + ('/utils/UserStories.txt')
+            # print(current_path)
+            # file = open(path,'r')
+            # content = file.read()
 
 
         

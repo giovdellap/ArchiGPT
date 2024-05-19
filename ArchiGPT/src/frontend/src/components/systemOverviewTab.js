@@ -26,7 +26,7 @@ function SystemOverviewTab({ projectStatus, setSystemSelected }) {
         switch (status) {
             case "OK":
                 return "bg-success";
-            case "PROGRESS":
+            case "NEXT":
                 return "bg-warning";
             case "NO":
                 return "bg-danger";
