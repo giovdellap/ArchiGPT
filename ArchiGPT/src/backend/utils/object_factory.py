@@ -7,6 +7,11 @@ def getTestProjectSystem():
                 'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus pellentesque turpis, quis venenatis ligula tincidunt a. Sed eleifend diam dolor, ac suscipit lectus vulputate eget. Proin rhoncus rutrum ligula et sagittis. Donec vehicula turpis ipsum, et pharetra nunc convallis quis. Nam ultrices lectus et justo laoreet, at vehicula enim facilisis. Sed rutrum nulla in dui eleifend, sit amet tempor mi porta. Nullam commodo sapien nisi, quis venenatis eros eleifend sit amet. Pellentesque ut diam at mi accumsan luctus. Curabitur bibendum condimentum justo, in tincidunt nunc luctus in. Fusce pharetra lectus quis turpis blandit lobortis. Aenean porta velit elit, in finibus nulla auctor eget. Nunc non rhoncus tellus, vel molestie purus. Cras molestie porta augue scelerisque malesuada. In pretium quis enim vel fringilla. Nulla a quam urna. Curabitur eu nunc lacinia, venenatis ante nec, dignissim ante. ",
             },
             {
+                'name': "UserInteractionAnalyzer",
+                'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus pellentesque turpis, quis venenatis ligula tincidunt a. Sed eleifend diam dolor, ac suscipit lectus vulputate eget. Proin rhoncus rutrum ligula et sagittis. Donec vehicula turpis ipsum, et pharetra nunc convallis quis. Nam ultrices lectus et justo laoreet, at vehicula enim facilisis. Sed rutrum nulla in dui eleifend, sit amet tempor mi porta. Nullam commodo sapien nisi, quis venenatis eros eleifend sit amet. Pellentesque ut diam at mi accumsan luctus. Curabitur bibendum condimentum justo, in tincidunt nunc luctus in. Fusce pharetra lectus quis turpis blandit lobortis. Aenean porta velit elit, in finibus nulla auctor eget. Nunc non rhoncus tellus, vel molestie purus. Cras molestie porta augue scelerisque malesuada. In pretium quis enim vel fringilla. Nulla a quam urna. Curabitur eu nunc lacinia, venenatis ante nec, dignissim ante. ",
+
+            },
+            {
                 'name': "MissingUserStoriesMatcher",
                 'message': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus pellentesque turpis, quis venenatis ligula tincidunt a. Sed eleifend diam dolor, ac suscipit lectus vulputate eget. Proin rhoncus rutrum ligula et sagittis. Donec vehicula turpis ipsum, et pharetra nunc convallis quis. Nam ultrices lectus et justo laoreet, at vehicula enim facilisis. Sed rutrum nulla in dui eleifend, sit amet tempor mi porta. Nullam commodo sapien nisi, quis venenatis eros eleifend sit amet. Pellentesque ut diam at mi accumsan luctus. Curabitur bibendum condimentum justo, in tincidunt nunc luctus in. Fusce pharetra lectus quis turpis blandit lobortis. Aenean porta velit elit, in finibus nulla auctor eget. Nunc non rhoncus tellus, vel molestie purus. Cras molestie porta augue scelerisque malesuada. In pretium quis enim vel fringilla. Nulla a quam urna. Curabitur eu nunc lacinia, venenatis ante nec, dignissim ante. ",
             },
@@ -23,7 +28,15 @@ def getBlankProjectSystem():
         'type': 'system',
         'data': [
             {
+                'name': "userstories",
+                'message': "",
+            },
+            {
                 'name': "ContainerDesigner",
+                'message': "",
+            },
+            {
+                'name': "UserInteractionAnalyzer",
                 'message': "",
             },
             {
@@ -47,6 +60,10 @@ def getBlankProjectStatus():
                     'status': "NEXT",
                 },
                 {
+                    'name': "UserInteractionAnalyzer",
+                    'status': "NO",
+                },
+                {
                     'name': "MissingUserStoriesMatcher",
                     'status': "NO",
                 },
@@ -68,6 +85,10 @@ def getTestProjectStatus():
                     {
                         'name': "ContainerDesigner",
                         'status': "OK",
+                    },
+                    {
+                    'name': "UserInteractionAnalyzer",
+                    'status': "OK",
                     },
                     {
                         'name': "MissingUserStoriesMatcher",

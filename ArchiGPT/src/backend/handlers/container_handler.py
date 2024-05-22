@@ -13,8 +13,8 @@ class ContainerHandler:
             current_app.config['API_HANDLER'] + '/interrogation/interrogate',
             data={
                 'ass_name': 'Util_1',
-                #'ass_model': 'gpt-3.5-turbO',
-                'ass_model': 'gpt-4-turbo-2024-04-09',
+                'ass_model': 'gpt-3.5-turbo',
+                #'ass_model': 'gpt-4-turbo-2024-04-09',
                 'content': self.document
             }
         )
@@ -39,10 +39,13 @@ class ContainerHandler:
         documents = []
         for elem in list:
             documents.append({
-                'name': elem,
-                'containerDescription': "",
-                'containerTechnologies': "",
-                'services': []
+                'type': 'container',
+                'data': {
+                    'name': elem,
+                    'containerDescription': "",
+                    'containerTechnologies': "",
+                    'services': []
+                }
             })
         print('CONTAINER HANDLER 3')
         db_handler.insertContainersDocuments(documents, self.project_name)

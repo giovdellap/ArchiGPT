@@ -9,7 +9,7 @@ from utils.assistant_name_matcher import getAssistantName, getNextAssistant
 from handlers.db_handler import DBHandler
 
 
-def generateSystem():
+def generateContainer():
     try:
         if 'project_name' not in request.form:
             return jsonify({"message": "project_name missing"}), 400
@@ -17,6 +17,9 @@ def generateSystem():
         if 'assistant' not in request.form:
             return jsonify({"message": "assistant missing"}), 400
         assistant_name = request.form['assistant']
+        if 'container' not in request.form:
+            return jsonify({"message": "container missing"}), 400
+        container_name = request.form['container']
         
         content = ""
         handler = DBHandler()
@@ -24,20 +27,8 @@ def generateSystem():
         
         #CONTENT CREATION
         print('CONTENT CREATION')
-        if assistant_name == 'ContainerDesigner':
-            if 'userstories' not in request.files:
-               return jsonify({"message": "userstories missing"}), 400
-            content = request.files['userstories'].read()
-            print('TYPE: ', type(content))
-            handler.updateSystem(project_name, 'userstories', content.decode("utf-8"))
-            # current_path = os.getcwd()
-            # path = current_path + ('/utils/UserStories.txt')
-            # print(current_path)
-            # file = open(path,'r')
-            # content = file.read()
-        else:
-            contentFactory = ContentFactory(handler, project_name)
-            content = contentFactory.getSystemContent(getAssistantName(assistant_name))
+        contentFactory = ContentFactory(handler, project_name)
+        content = contentFactory.getSystemContent(getAssistantName(assistant_name))
 
 
         #ASSISTANT INTERROGATION
@@ -67,6 +58,10 @@ def generateSystem():
         else:
             container_handler = ContainerHandler(result, project_name)
             container_handler.getContainersList(handler)
+        
+
+        #DB HANDLER SHUTDOWN
+        #handler.shutdown_db_client()
         
         #print(message['content'])
         return jsonify({'content': result}), 200

@@ -15,7 +15,8 @@ function GenerationHandler({ messageSystem, handleGenerate, systemSelected, hand
                                 <UploadFileButton 
                                     handleFileUpload={handleFileUpload} 
                                     handleFileSend={handleGenerate}
-                                    file={file}    
+                                    file={file}
+                                    showFileInput={systemSelected === "ContainerDesigner"}
                                 />
                             </div>
                             </>

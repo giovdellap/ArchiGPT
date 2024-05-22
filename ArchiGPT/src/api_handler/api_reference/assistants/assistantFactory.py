@@ -13,19 +13,6 @@ class AssistantFactory:
         self.instructions_path = path +"/instructions.txt"
         self.tools = []
         self.tool_resources_path = {}
-       
-    def set_assets_Archi_1(self):
-        CLG_path = self.resources_path + "/Archi_1"
-        self.instructions_path = CLG_path +"/instructions.txt"
-        self.tools = []
-        self.tool_resources_path = {}
-        
-    def set_assets_Archi_2(self):
-        CLG_path = self.resources_path + "/Archi_2"
-        self.instructions_path = CLG_path +"/instructions.txt"
-        self.tools = []
-        self.tool_resources_path = {}
-    
         
     def set_assets_DSG(self):
         DSG_path = self.resources_path + "/DSG"

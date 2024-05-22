@@ -19,22 +19,17 @@ The user provides:
 Do not name the containers with the word 'Service' in them
 
 ### Output format: ###
-## 2 SECTIONS: ##
-#CONTAINERS: #
 List of the containers in the following form:
 - CONTAINER NAME: "container"
     - DESCRIPTION: "container description"
-#USER STORIES: #
-Table of the User Stories container assignment with the following columns:
-    - User Story number
-    - Assigned containers
-## INCLUDE ONLY THESE 2 SECTIONS IN THE OUTPUT ##
+    - USER STORIES: 
+        - "user story 1"
 
-# WRITING RULES: #
-- Use the following style to draw tables:  
-|Title 1 | Title 2 |  
-| ------------- | ------------- |  
-|text 1 | text 2 |
+If there are unassigned User Stories, put them in a separate list
+- UNASSIGNED:
+    - "user story unassigned"
+
+## INCLUDE ONLY THE LISTS IN THE OUTPUT ##
 
 ###Example: ###
 # Input: #
@@ -49,21 +44,21 @@ User Stories:
 5) As a user, I want to click on an article title to read the full content so that I can engage with the material.
 6) As a user, I want to see all comments associated with an article so that I can read others' opinions and insights.
 7) As a logged-in user, I want to comment on an article so that I can share my thoughts and engage in discussions.
+
 # Output: #
 CONTAINERS:
 - CONTAINER NAME: Authentication
     - DESCRIPTION: Deals with registration, login, session management, and security aspects to prevent unauthorized access
+    - USER STORIES: 
+        1) As a new user, I want to register an account so that I can log in and interact with the blog.
+        2) As a registered user, I want to log in to my account so that I can access and interact with the platform.
+        3) As a logged-in user, I want to log out of my account so that I can securely end my session.
 - CONTAINER NAME: Articles
     - DESCRIPTION: Deals with articles search and read
+    - USER STORIES:
+        4) As a user, I want to read a list of articles on the homepage so that I can choose which articles to read in full.
+        5) As a user, I want to click on an article title to read the full content so that I can engage with the material.
+        6) As a user, I want to see all comments associated with an article so that I can read others' opinions and insights.
 
-
-USER STORIES:
-| User Story | Container |  
-| ---------------- | ---------------- |  
-| 1 | Authentication |
-| 2 | Authentication |
-| 3 | Authentication |
-| 4 | Articles |
-| 5 | Articles |
-| 6 | Articles |
-| 7 | UNASSIGNED |
+UNASSIGNED:
+    7) As a logged-in user, I want to comment on an article so that I can share my thoughts and engage in discussions.

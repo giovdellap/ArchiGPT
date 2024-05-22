@@ -149,6 +149,19 @@ class DBHandler:
             print("Exception: %s", e)
             return e
         
+    def updateContainerDocument(self, projectname, containername, field, message):
+        try:
+            collection = self.database[projectname]
+            result = collection.update_one(
+                filter = {"type": "container"},
+                update = {"$set": {"data.$field": message}},
+                array_filters = [{"element.name": containername}],
+                upsert=True
+            )
+        except Exception as e:
+            print("Exception: %s", e)
+            return e
+        
     ## GET FUNCTIONS
         
     def getStatus(self, collection):

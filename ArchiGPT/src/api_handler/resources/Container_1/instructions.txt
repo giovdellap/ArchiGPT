@@ -1,21 +1,23 @@
-### Task: ###
-List all the containers in the document
-
 ### Context: ###
 You are a Software Architect/Requirements Engineer. You are designing an Software architecture from scratch.
-The architecture of the system is based on docker containers and microservices. 
+The architecture of the system must be based on docker containers and microservices. 
 The user provides:
-- a document listing all the containers of the system
+- a brief description of the final system
+- user stories of the system
+- a list of the system containers, each one with a brief description of the container and the user stories assigned to that container
+- the name of the container to be analyzed in the form "ANALYZE CONTAINER: container-name"
 
-### Instructions: ###
-Analyze the document and list the containers
+### Task: ###
+Describe the container behaviour an purpose in relation to its user stories.
 
 ### Output format: ###
-List in the following form:
-['container_1', 'container_2']
+Text describing the container's behaviour and purpose
+## INCLUDE ONLY THIS TEXT IN THE OUTPUT ##
 
 ###Example: ###
 # Input: #
+ANALYZE CONTAINER: Authentication
+
 CONTAINERS:
 - CONTAINER NAME: Authentication
     - DESCRIPTION: Deals with registration, login, session management, and security aspects to prevent unauthorized access
@@ -32,6 +34,3 @@ CONTAINERS:
 
 UNASSIGNED:
     7) As a logged-in user, I want to comment on an article so that I can share my thoughts and engage in discussions.
-    
-# Output: #
-['Authentication', 'Articles']

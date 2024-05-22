@@ -75,8 +75,10 @@ function ProjectOverview() {
         const formData = new FormData();
         formData.append('project_name', projectName);
         formData.append('assistant', systemSelected);
-		formData.append('userstories', file);
-
+		if (systemSelected === 'ContainerDesigner')
+		{
+			formData.append('userstories', file);
+		}
         fetch(generateApiUrl, {
             method: 'POST',
             mode: 'cors',
