@@ -1,11 +1,10 @@
-## CONTAINER 1 - Container Purpose Generator
-API HANDLER:
-	- Endpoint container
-	- Endpoint
+## ASSISTENTI
 
-BACKEND:
-	- Endpoint container (tutto)
-	- Content
+Aggiustare esempi di tutti quelli di container
 
-FRONTEND:
-	- Boh?
+## GENERALE
+
+- Aggiustare tempi risposta assistenti
+- aggiungere campi a db e fe:
+	- System -> description (solo DB)
+	- Container -> ports range (in ContainerDesigner)

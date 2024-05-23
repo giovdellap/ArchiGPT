@@ -9,7 +9,7 @@ class AssistantFactory:
     def set_assets(self, name, model):
         self.name = name
         self.model = model
-        path = self.resources_path + "/" + name
+        path = self.resources_path + "/" + name.rsplit('_')[0] + "/" + name
         self.instructions_path = path +"/instructions.txt"
         self.tools = []
         self.tool_resources_path = {}
@@ -24,4 +24,6 @@ class AssistantFactory:
         self.tools = [{"type": "code_interpreter"},{"type": "file_search"}]
         self.tool_resources_path = { "code_interpreter": { "file_paths": RAG_files_paths }, "file_search": { "vector_store_paths": vector_store_paths , "vector_store_name" : "DSG_VS" }
     }
+        
+            
     

@@ -16,7 +16,8 @@ The user provides:
 4) Describe briefly the purpose of each container and the features it accomplishes
 
 # Rules: #
-Do not name the containers with the word 'Service' in them
+1) Do not name the containers with the word 'Service' in them
+2) Use _ instead the space in the containers' names
 
 ### Output format: ###
 List of the containers in the following form:

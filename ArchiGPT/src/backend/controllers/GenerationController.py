@@ -46,8 +46,8 @@ def generateSystem():
             current_app.config['API_HANDLER'] + '/interrogation/interrogate',
             data={
                 'ass_name': getAssistantName(assistant_name),
-                'ass_model': 'gpt-3.5-turbo',
-                #'ass_model': 'gpt-4-turbo-2024-04-09',
+                #'ass_model': 'gpt-3.5-turbo',
+                'ass_model': 'gpt-4-turbo-2024-04-09',
                 'content': content
             }
         )

@@ -1,18 +1,37 @@
-## ArchiGPT
+# ArchiGPT
 
-1) Container Designer (SYSTEM)
-2) User Interaction Analyzer (SYSTEM)
-3) Missing User Stories Matcher (SYSTEM)
-4) Architectural Pattern Proposer (SYSTEM)
-5) Container Purpose Generator (CONTAINER)
-6) Design servizi (CONTAINER)
-7) Services Interaction (?)
-8) Service Description
+## Assistant Chart
+
+| Type | Phase | Assistant | Assistant ID |
+| ------- | ------- | ------- | ------- |
+| System | Container Design | ContainerDesigner | System_1 | 
+| System | User Interaction Analysis | UserInteractionAnalyzer | System_2 |
+| System | Match Missing User Stories | Missing User Stories Matcher | System_3 |
+| System | Architectural Patterns | ArchitecturalPatternProposer | System_4 |
+| Container | Container Description | ContainerDescriptionGenerator | Container_1 |
+| Container | Container Specifications | ContainerSpecificationGenerator | Container_2 |
+| Container | MicroServices | ServiceListGenerator | Container_3 |
+
+
+## Progress Chart
+
+| Phase | Assistant | api_handler | be content | be db | be logic | fe |
+| ------- | ------- | ------- | ------- | ------- | ------- | ------- |
+| System_1 | OK | OK | OK | OK | OK | OK |
+| System_2 | OK | OK | OK | OK | OK | OK |
+| System_3 | NO | OK | OK | NO | NO | OK |
+| System_4 | NO | OK | OK | OK | OK | OK |
+| Container_1 | OK | OK | OK | OK | OK | OK |
+| Container_2 | IN PROGRESS | OK | OK | OK | OK | OK |
+| Container_3 | IN PROGRESS | OK | OK | NO | NO | NO |
+
+
+
 
 ## Assistants
 
 ### System_1
-#### Container Designer
+#### Container Designer 
 
 Propone i container con una breve descrizione per ognuno
 
