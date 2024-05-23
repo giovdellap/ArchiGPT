@@ -100,30 +100,25 @@ class DBHandler:
             print("Exception: %s", e)
             return e
         
-    def updateContainerStatus(self, projectname, ass_name, ass_status):
+    def updateContainerStatus(self, projectname, ass_name, ass_status, container):
         try:
             collection = self.database[projectname]
-            print(ass_name)
+            print('DB HANDLER - UPDATE CONTAINER STATUS')
             # Perform the update
+            field = "data.containers.$[element]." + ass_name
             result = collection.update_one(
                 filter = {"type": "status"},
-                update = {"$set": {"data.containers.$[element].status": ass_status}},
-                array_filters = [{"element.name": ass_name}],
+                update = {"$set": {field: ass_status}},
+                array_filters = [{"element.name": container}],
                 upsert=True
             )
-
-            # Check if the update was successful
-            if result.matched_count > 0:
-                print("Update successful")
-            else:
-                print("No document found with the specified criteria")
+            print('DB HANDLER - UPDATE CONTAINER STATUS 2')
         except Exception as e:
             print("Exception: %s", e)
             return e
         
     def updateSystem(self, projectname, ass_name, ass_message):
-        print('ASS_NAME', ass_name)
-        print('ASS_MESSAGE', ass_message)
+        print('DB HANDLER - UPDATE SYSTEM')
         try:
             collection = self.database[projectname]
             result = collection.update_one(
@@ -132,23 +127,21 @@ class DBHandler:
                 array_filters = [{"element.name": ass_name}],
                 upsert=True
             )
-            print('sono dentro')
         except Exception as e:
             print("Exception: %s", e)
             return e
         
     def updateContainer(self, projectname, container, ass_name, ass_message):
-        print('ASS_NAME', ass_name)
-        print('ASS_MESSAGE', ass_message)
+
+        print('DB HANDLER - UPDATE CONTAINER')
         try:
+            field = "data." + ass_name
             collection = self.database[projectname]
             result = collection.update_one(
-                filter = {"type": "container"},
-                update = {"$set": {"data.$element.message": ass_message}},
-                array_filters = [{"name": container}],
+                filter = {"$and":[{"type": "container"}, {"data.name": container}]},
+                update = {"$set": {field: ass_message}},
                 upsert=True
             )
-            print('sono dentro')
         except Exception as e:
             print("Exception: %s", e)
             return e
@@ -219,6 +212,14 @@ class DBHandler:
             print("Exception: %s", e)
             return e
         
+    def getContainer(self, collection, container):
+        try:
+            col = self.database[collection]
+            system = col.find_one({"$and":[{"type": "container"}, {"data.name": container}]})
+            return bson.json_util.dumps(system)
+        except Exception as e:
+            print("Exception: %s", e)
+            return e
     def testDB(self):
         try: 
             db_list = current_app.config['MONGO_CLIENT'].list_database_names()

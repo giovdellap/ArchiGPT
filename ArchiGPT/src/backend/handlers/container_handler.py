@@ -27,8 +27,8 @@ class ContainerHandler:
             status_objs.append(
                 {
                     'name': elem,
-                    'ContainerDescriptionGeneration': "NEXT",
-                    'ContainerSpecificationGeneration': "NO",
+                    'ContainerDescriptionGenerator': "NEXT",
+                    'ContainerSpecificationGenerator': "NO",
                     'ServiceListGenerator': "NO",
                     'services': []
                 }
