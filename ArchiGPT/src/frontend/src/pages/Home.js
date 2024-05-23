@@ -20,13 +20,41 @@ function Home() {
 				}
 			})
 			.then((projectsData) => {
-				console.log(projectsData.list_projects)
 				setListProjects(projectsData.list_projects)
 			})
 			.catch((error) => {
 				console.error('Error fetching projects:', error);
 			});
 	};
+
+	function handleDeleteProject (projectName) {
+        const deleteApiUrl = 'http://localhost:5001/project/';
+
+        fetch(deleteApiUrl, {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "project_name": projectName
+            })
+        })
+            .then((response) => {
+              if (response.status === 200) {
+                console.log('Deleted:', { projectName });
+				fetchprojects()
+              } else {
+                window.alert('Failed to delete project');
+                throw new Error('Failed to delete project');
+              }
+          })
+          .catch((error) => {
+            window.alert('Failed to delete project');
+            console.error('Failed to delete project:', error);
+          });
+
+    };
 
 	function GoToProjectPage(projectName) {
 		navigate(`/project/${projectName}`);
@@ -40,10 +68,10 @@ function Home() {
     return (
 			<div>
 				<div style={{ margin: '10px' }} />
-				<CreateProjectTab />
+				<CreateProjectTab fetchprojects={fetchprojects}/>
 				{listProjects && listProjects.length > 0 ? (
 						<>
-							<CardProject listProjects={listProjects} goToProjectPage={GoToProjectPage} />
+							<CardProject listProjects={listProjects} goToProjectPage={GoToProjectPage} handleDeleteProject={handleDeleteProject}/>
 						</>
 					) : (
 						<Container className="mt-4"><h4>No projects available</h4></Container>

@@ -4,36 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderOpen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-function CardProject({ listProjects, goToProjectPage}) {
-
-    function handleDeleteProject (projectName) {
-        const deleteApiUrl = 'http://localhost:5001/project/';
-
-        fetch(deleteApiUrl, {
-            method: 'DELETE',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "project_name": projectName
-            })
-        })
-            .then((response) => {
-              if (response.status === 200) {
-                console.log('Deleted:', { projectName });
-                window.location.reload();
-              } else {
-                window.alert('Failed to delete project');
-                throw new Error('Failed to delete project');
-              }
-          })
-          .catch((error) => {
-            window.alert('Failed to delete project');
-            console.error('Failed to delete project:', error);
-          });
-
-    };
+function CardProject({ listProjects, goToProjectPage, handleDeleteProject}) {
 
     return (
         <Container className="mt-4">
