@@ -1,7 +1,7 @@
 import json
 from flask import request, jsonify
 
-from utils.object_factory import getBlankProjectStatus, getBlankProjectSystem, getTestProjectSystem, getTestProjectStatus
+from utils.object_factory import getBlankProjectStatus, getBlankProjectSystem
 from handlers.db_handler import DBHandler
 
 def getAllProject():
