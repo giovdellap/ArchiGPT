@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 
-function SystemOverviewTab({ projectStatus, setSystemSelected }) {
+function SystemOverviewTab({ projectStatus, setSystemSelected, setAssistantSelected, fetchContainerInfo }) {
 
     const containerStatus  = projectStatus.containers
     const systemStatus  = projectStatus.system
@@ -45,7 +45,7 @@ function SystemOverviewTab({ projectStatus, setSystemSelected }) {
                             <Card>
                                 <Button
                                     variant="light"
-                                    onClick={() => setSystemSelected(system.name)}
+                                    onClick={() => {setSystemSelected(system.name); setAssistantSelected({container:"",name:""})}}
                                     disabled={system.status === "NO"} 
                                 >
                                     <Card.Body>
@@ -59,18 +59,44 @@ function SystemOverviewTab({ projectStatus, setSystemSelected }) {
             </Row>
 
             <Row>
-                <Accordion defaultActiveKey="0">
+                <Accordion defaultActiveKey="0" onSelect={(eventKey) => {
+                    if (eventKey !== null) {
+                        fetchContainerInfo(containerStatus[eventKey].name);
+                    }
+                }}>
                     {containerStatus ? containerStatus.map((container, containerIndex) => (
                         <Accordion.Item eventKey={containerIndex} key={containerIndex}>
                             <Accordion.Header >
                                 {container.name}
                             </Accordion.Header>
                             <Accordion.Body>
+                                <Card>
+                                    <Button
+                                        variant="light"
+                                        onClick={() => {setAssistantSelected({container:container.name, name:"ContainerDescriptionGenerator"}); setSystemSelected("")}}
+                                        disabled={container.ContainerDescriptionGenerator === "NO"} 
+                                    >
+                                        <Card.Body>
+                                            Description {getStatusIcon(container.ContainerDescriptionGenerator)}
+                                        </Card.Body>
+                                    </Button>
+                                </Card>
+                                <Card>
+                                    <Button
+                                        variant="light"
+                                        onClick={() => {setAssistantSelected({container:container.name, name:"ContainerSpecificationGenerator"}); setSystemSelected("")}}
+                                        disabled={container.ContainerSpecificationGenerator === "NO"} 
+                                    >
+                                        <Card.Body>
+                                            Specification {getStatusIcon(container.ContainerSpecificationGenerator)}
+                                        </Card.Body>
+                                    </Button>
+                                </Card>
                                 <Accordion defaultActiveKey="0">
-                                    {container.services.map((service, serviceIndex) => (
+                                    {container.services ? container.services.map((service, serviceIndex) => (
                                         <Accordion.Item eventKey={serviceIndex} key={serviceIndex}>
                                             <Accordion.Header>
-												{service.name}
+                                                {service.name}
                                             </Accordion.Header>
                                             <Accordion.Body>
                                                 <Card className={getStatusColorClass(service.datastructures)}>
@@ -81,14 +107,9 @@ function SystemOverviewTab({ projectStatus, setSystemSelected }) {
                                                 </Card>
                                             </Accordion.Body>
                                         </Accordion.Item>
-                                    ))}
+                                    ))
+                                    : <Container>No services status available</Container> }
                                 </Accordion>
-                                    <Card className={getStatusColorClass(container.containerDescription)}>
-										<Card.Title>Description</Card.Title>
-							 		</Card>
-									<Card className={getStatusColorClass(container.containerTechnologies)}>
-										<Card.Title>Technologies</Card.Title>
-							 		</Card>
                             </Accordion.Body>
                         </Accordion.Item>
                     )) 

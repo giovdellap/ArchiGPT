@@ -4,8 +4,14 @@ function UploadFileButton({ handleFileUpload, handleFileSend, file, showFileInpu
 
     return (
         <div>
-            <input type="file" onChange={handleFileUpload} disabled={!showFileInput} />
-            <button className="file-send-btn" onClick={handleFileSend} disabled={!file && showFileInput}>Send</button>
+            {showFileInput ?
+                <>
+                    <input type="file" onChange={handleFileUpload}/>
+                    <button className="file-send-btn" onClick={handleFileSend} disabled={!file}>Send</button>
+                </>
+                : 
+                <button className="file-send-btn" onClick={handleFileSend}>Generate</button>
+            }
         </div>
     );
 }

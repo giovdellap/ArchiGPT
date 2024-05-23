@@ -37,8 +37,8 @@ def generateContainer():
             current_app.config['API_HANDLER'] + '/interrogation/interrogate',
             data={
                 'ass_name': getAssistantName(assistant_name),
-                #'ass_model': 'gpt-3.5-turbO',
-                'ass_model': 'gpt-4-turbo-2024-04-09',
+                'ass_model': 'gpt-3.5-turbo',
+                #'ass_model': 'gpt-4-turbo-2024-04-09',
                 'content': content
             }
         )
@@ -68,12 +68,12 @@ def generateContainer():
 
 def getContainer():
     try:
-        if 'project_name' not in request.form:
+        project_name = request.args.get('project_name')
+        if not project_name:
             return jsonify({"message": "project_name missing"}), 400
-        project_name = request.form['project_name']
-        if 'container' not in request.form:
-            return jsonify({"message": "container missing"}), 400
-        container_name = request.form['container']
+        container_name = request.args.get('container_name')
+        if not container_name:
+            return jsonify({"message": "container_name missing"}), 400
         
         handler = DBHandler()
         handler.database_setup()      

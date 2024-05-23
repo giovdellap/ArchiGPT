@@ -44,7 +44,7 @@ class ContainerHandler:
                 'data': {
                     'name': elem,
                     'ContainerDescriptionGenerator': "",
-                    'ContainerSpecificationGeneration': "",
+                    'ContainerSpecificationGenerator': "",
                     'ServiceListGenerator': "",
                     'services': []
                 }

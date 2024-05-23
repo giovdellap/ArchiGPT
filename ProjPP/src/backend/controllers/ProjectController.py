@@ -67,8 +67,8 @@ def generateDocumentB():
             current_app.config['API_HANDLER'] + '/interrogation/interrogate',
             data={
                 'ass_name': "Containers List Generator",
-                #'ass_model': 'gpt-3.5-turbO',
-                'ass_model': 'gpt-4-turbo-2024-04-09'
+                'ass_model': 'gpt-3.5-turbo',
+                #'ass_model': 'gpt-4-turbo-2024-04-09'
                 
             },
             files={'ass_ci': request.files['source']}
@@ -97,8 +97,8 @@ def generateEndpoints():
             current_app.config['API_HANDLER'] + '/interrogation/interrogate',
             data={
                 'ass_name': "Endpoints Solo Generator",
-                #'ass_model': 'gpt-3.5-turbo',
-                'ass_model': 'gpt-4-turbo-2024-04-09'                
+                'ass_model': 'gpt-3.5-turbo',
+                #'ass_model': 'gpt-4-turbo-2024-04-09'                
             },
             files={'ass_ci': request.files['source']}
         )
