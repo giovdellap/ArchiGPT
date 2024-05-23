@@ -5,21 +5,22 @@ system_assistants = [
     'ArchitecturalPatternProposer'
 ]
 
+container_assistants = [
+    'ContainerDescriptionGenerator',
+    'ContainerSpecificationGenerator',
+    'ServiceListGenerator'
+]
+
 def getAssistantName(name):
-    if name == 'ContainerDesigner':
-        return 'System_1'
-    elif name == 'UserInteractionAnalyzer':
-        return 'System_2'
-    elif name == 'MissingUserStoriesMatcher':
-        return 'System_3'
-    elif name == 'ArchitecturalPatternProposer':
-        return 'System_4'
-    elif name == 'ContainerDescriptionGenerator':
-        return 'Container_1'
+    
+    if name in system_assistants:
+        return 'System_' + str(system_assistants.index(name) + 1)
+    elif name in container_assistants:
+        return 'Container_' + str(container_assistants.index(name) + 1)
     else:
         return 'Wrong assistant name'
     
-def getNextAssistant(name):
+def getNextSystemAssistant(name):
     index = system_assistants.index(name)
     #if index == len(system_assistants):
     if name == "UserInteractionAnalyzer":
@@ -27,4 +28,11 @@ def getNextAssistant(name):
     else:
         return system_assistants[index+1]
 
+def getNextContainerAssistant(name):
+    index = container_assistants.index(name)
+    #if index == len(system_assistants):
+    if name == "ContainerDescriptionGenerator":
+        return 'SERVICE'
+    else:
+        return container_assistants[index+1]
     

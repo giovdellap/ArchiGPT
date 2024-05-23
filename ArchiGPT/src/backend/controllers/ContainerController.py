@@ -5,7 +5,7 @@ import os
 
 from utils.content_factory import ContentFactory
 from handlers.container_handler import ContainerHandler
-from utils.assistant_name_matcher import getAssistantName, getNextAssistant
+from utils.assistant_name_matcher import getAssistantName, getNextContainerAssistant
 from handlers.db_handler import DBHandler
 
 
@@ -33,31 +33,33 @@ def generateContainer():
 
         #ASSISTANT INTERROGATION
         print('ASSISTANT INTERROGATION')
-        message = requests.post(
-            current_app.config['API_HANDLER'] + '/interrogation/interrogate',
-            data={
-                'ass_name': getAssistantName(assistant_name),
-                #'ass_model': 'gpt-3.5-turbO',
-                'ass_model': 'gpt-4-turbo-2024-04-09',
-                'content': content
-            }
-        )
-        result = message.json()['content']
+        #message = requests.post(
+        #    current_app.config['API_HANDLER'] + '/interrogation/interrogate',
+        #    data={
+        #        'ass_name': getAssistantName(assistant_name),
+        #        #'ass_model': 'gpt-3.5-turbO',
+        #        'ass_model': 'gpt-4-turbo-2024-04-09',
+        #        'content': content
+        #    }
+        #)
+        #result = message.json()['content']
+        result = "provaprova"
         print('Message: ', result)
         
         #UPDATE DB STATUS
-        handler.updateSystemStatus(project_name, assistant_name, 'OK')
+        handler.updateContainerStatus(project_name, assistant_name, 'OK')
         
         #SAVE ON DB
-        handler.updateSystem(project_name, assistant_name, result)
+        handler.updateContainer(project_name, container_name, assistant_name, result)
         
         # NEXT ASSISTANT MANAGEMENT
-        nextAssistant = getNextAssistant(assistant_name)
-        if nextAssistant != "CONTAINER":
-            handler.updateSystemStatus(project_name, getNextAssistant(assistant_name), 'NEXT')
+        nextAssistant = getNextContainerAssistant(assistant_name)
+        if nextAssistant != "SERVICE":
+            handler.updateSystemStatus(project_name, getNextContainerAssistant(assistant_name), 'NEXT')
         else:
-            container_handler = ContainerHandler(result, project_name)
-            container_handler.getContainersList(handler)
+            print('AO')
+            #container_handler = ContainerHandler(result, project_name)
+            #container_handler.getContainersList(handler)
         
 
         #DB HANDLER SHUTDOWN

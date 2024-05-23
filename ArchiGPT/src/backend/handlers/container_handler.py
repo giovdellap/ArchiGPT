@@ -27,8 +27,9 @@ class ContainerHandler:
             status_objs.append(
                 {
                     'name': elem,
-                    'containerDescription': "NEXT",
-                    'containerTechnologies': "NO",
+                    'ContainerDescriptionGeneration': "NEXT",
+                    'ContainerSpecificationGeneration': "NO",
+                    'ServiceListGenerator': "NO",
                     'services': []
                 }
             )
@@ -42,8 +43,9 @@ class ContainerHandler:
                 'type': 'container',
                 'data': {
                     'name': elem,
-                    'containerDescription': "",
-                    'containerTechnologies': "",
+                    'ContainerDescriptionGenerator': "",
+                    'ContainerSpecificationGeneration': "",
+                    'ServiceListGenerator': "",
                     'services': []
                 }
             })

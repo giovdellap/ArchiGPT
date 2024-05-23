@@ -5,7 +5,7 @@ import os
 
 from utils.content_factory import ContentFactory
 from handlers.container_handler import ContainerHandler
-from utils.assistant_name_matcher import getAssistantName, getNextAssistant
+from utils.assistant_name_matcher import getAssistantName, getNextSystemAssistant
 from handlers.db_handler import DBHandler
 
 
@@ -61,9 +61,9 @@ def generateSystem():
         handler.updateSystem(project_name, assistant_name, result)
         
         # NEXT ASSISTANT MANAGEMENT
-        nextAssistant = getNextAssistant(assistant_name)
+        nextAssistant = getNextSystemAssistant(assistant_name)
         if nextAssistant != "CONTAINER":
-            handler.updateSystemStatus(project_name, getNextAssistant(assistant_name), 'NEXT')
+            handler.updateSystemStatus(project_name, nextAssistant, 'NEXT')
         else:
             container_handler = ContainerHandler(result, project_name)
             container_handler.getContainersList(handler)
