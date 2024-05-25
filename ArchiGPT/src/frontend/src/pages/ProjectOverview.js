@@ -110,7 +110,7 @@ function ProjectOverview() {
 		if(systemSelected !== ""){
 			generateApiUrl = 'http://localhost:5001/generation/generateSystem';
 			formData.append('assistant', systemSelected);
-			if (systemSelected === 'ContainerDesigner'){
+			if (systemSelected === 'Container Design'){
 				formData.append('userstories', file);
 			}
 		} else {

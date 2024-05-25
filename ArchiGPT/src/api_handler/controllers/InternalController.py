@@ -1,11 +1,12 @@
 import time
-from flask import request, jsonify
+from flask import request, jsonify, current_app
 
 from api_reference.threads.messagesAPI import messageCreationHandler, messageListRetriever
 from api_reference.threads.contentFactory import ContentFactory
 from api_reference.threads.threadsAPI import threadCreationHandler
 from api_reference.assistants.assistantsOrchestrator import AssistantOrchestrator
 from api_reference.threads.runsAPI import runCreationHandler
+from utils.demo import demoResponse
 
 
 def interrogate():
@@ -24,6 +25,10 @@ def interrogate():
         print('NAME: ', name)
         print('MODEL: ', model)
         print('CONTENT: ', content)
+
+        demo = current_app.config['DEMO']
+        if demo:
+            return jsonify({"content": demoResponse(name)}), 200
 
         #ASSISTANT CLEANUP
         assistant = AssistantOrchestrator()

@@ -21,7 +21,7 @@ function GenerationHandler({ generationMessage, handleGenerate, systemSelected, 
                                     handleFileUpload={handleFileUpload} 
                                     handleFileSend={handleGenerate}
                                     file={file}
-                                    showFileInput={itemSelected === "ContainerDesigner"}
+                                    showFileInput={itemSelected === "Container Design"}
                                 />
                             </div>
                             </>

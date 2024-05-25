@@ -24,7 +24,7 @@ def generateSystem():
         
         #CONTENT CREATION
         print('CONTENT CREATION')
-        if assistant_name == 'ContainerDesigner':
+        if assistant_name == 'Container Design':
             if 'userstories' not in request.files:
                return jsonify({"message": "userstories missing"}), 400
             content = request.files['userstories'].read()

@@ -7,19 +7,19 @@ def getBlankProjectSystem():
                 'message': "",
             },
             {
-                'name': "ContainerDesigner",
+                'name': "Container Design",
                 'message': "",
             },
             {
-                'name': "UserInteractionAnalyzer",
+                'name': "User Interaction Analysis",
                 'message': "",
             },
             {
-                'name': "MissingUserStoriesMatcher",
+                'name': "Match Missing User Stories",
                 'message': "",
             },
             {
-                'name': "ArchitecturalPatternProposer",
+                'name': "Architectural Patterns",
                 'message': "",
             },
         ],
@@ -31,19 +31,19 @@ def getBlankProjectStatus():
         'data': {
             'system': [
                 {
-                    'name': "ContainerDesigner",
+                    'name': "Container Design",
                     'status': "NEXT",
                 },
                 {
-                    'name': "UserInteractionAnalyzer",
+                    'name': "User Interaction Analysis",
                     'status': "NO",
                 },
                 {
-                    'name': "MissingUserStoriesMatcher",
+                    'name': "Match Missing User Stories",
                     'status': "NO",
                 },
                 {
-                    'name': "ArchitecturalPatternProposer",
+                    'name': "Architectural Patterns ",
                     'status': "NO",
                 },
             ],

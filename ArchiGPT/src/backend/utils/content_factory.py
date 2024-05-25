@@ -11,8 +11,10 @@ class ContentFactory:
         
     def getSystemContent(self, assistant):
         if assistant == "System_2":
+            print('test 1')
             system = json.loads(self.db_handler.getSystem(self.project))
-            self.content = getSystemDocument('userstories', system) + '/n' + getSystemDocument('ContainerDesigner', system)
+            print('test 2')
+            self.content = getSystemDocument('userstories', system) + '/n' + getSystemDocument('Container Design', system)
     
         print('CONTENT FACTORY - CONTENT: ', self.content)
         return self.content
@@ -22,18 +24,15 @@ class ContentFactory:
         if assistant == "Container_1":
             system = json.loads(self.db_handler.getSystem(self.project))
             container_content = "ANALYZE CONTAINER: " + attachments['container'] + "/n"
-            db_content = getSystemDocument('userstories', system) + '/n' + getSystemDocument('UserInteractionAnalyzer', system)
+            db_content = getSystemDocument('userstories', system) + '/n' + getSystemDocument('User Interaction Analysis', system)
             self.content = container_content + db_content
         
         print('CONTENT FACTORY - CONTENT: ', self.content)
         return self.content
         
 def getSystemDocument(name, system):
-    print('ppp')
     for item in system['data']:
-        print('eeee')
         if item['name'] == name:
-            print('oooo')
             return item['message']
             
             

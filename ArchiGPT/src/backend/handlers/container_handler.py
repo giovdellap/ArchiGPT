@@ -18,6 +18,7 @@ class ContainerHandler:
                 'content': self.document
             }
         )
+        print(message.json())
         result = message.json()['content']
         list = ast.literal_eval(result)
         
