@@ -8,7 +8,7 @@ The user provides:
 - the name of the container to be analyzed in the form "ANALYZE CONTAINER: container-name"
 
 ### Task: ###
-Describe the container behaviour an purpose.
+Describe the container behaviour and purpose.
 
 ### Output format: ###
 Text describing the container's behaviour and purpose
@@ -35,3 +35,6 @@ CONTAINERS:
 
 UNASSIGNED:
     7) As a logged-in user, I want to comment on an article so that I can share my thoughts and engage in discussions.
+
+# Output: #
+The Authentication container is responsible for handling registration of the users, login and logout. It also manages credentials storage and retrieval, along with the authentication tokens' management

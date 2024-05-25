@@ -3,6 +3,7 @@ from flask import current_app, request, jsonify
 import requests
 import os
 
+from handlers.post_processing_handler import PostProcessingHandler
 from utils.content_factory import ContentFactory
 from handlers.container_handler import ContainerHandler
 from utils.assistant_name_matcher import getAssistantName, getNextContainerAssistant
@@ -44,7 +45,9 @@ def generateContainer():
         )
         result = message.json()['content']
         #result = "provaprova"
-        print('Message: ', result)
+        print('RECEIVED MESSAGE: ', result)
+        post_handler = PostProcessingHandler()
+        result = post_handler(getAssistantName(assistant_name), result)
         
         #UPDATE DB STATUS
         handler.updateContainerStatus(project_name, assistant_name, 'OK', container_name)
