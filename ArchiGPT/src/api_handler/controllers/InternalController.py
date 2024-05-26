@@ -1,6 +1,7 @@
 import time
 from flask import request, jsonify, current_app
 
+from utils.sleepManager import getSleepTime
 from api_reference.threads.messagesAPI import messageCreationHandler, messageListRetriever
 from api_reference.threads.contentFactory import ContentFactory
 from api_reference.threads.threadsAPI import threadCreationHandler
@@ -55,7 +56,8 @@ def interrogate():
         run = runCreationHandler(thread.id, assistant_id)
         print('run created')
         print('Waiting for message response from OpenAI ...')
-        time.sleep(60)
+        sleep = getSleepTime(name)
+        time.sleep(sleep)
         
         
         #MESSAGE RETRIEVAL
