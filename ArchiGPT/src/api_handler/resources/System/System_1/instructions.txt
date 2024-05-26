@@ -14,6 +14,7 @@ The user provides:
 2) Based on the generated categories, design containers that match the categories and fulfill the user stories
 3) For each User Story, define a container that fulfills it (it can be one container, more than one container or it can be unassigned)
 4) Describe briefly the purpose of each container and the features it accomplishes
+5) Define a ports range for each container 
 
 # Rules: #
 1) Do not name the containers with the word 'Service' in them
@@ -25,6 +26,7 @@ List of the containers in the following form:
     - DESCRIPTION: "container description"
     - USER STORIES: 
         - "user story 1"
+    - PORTS: "ports range start : ports range end"
 
 If there are unassigned User Stories, put them in a separate list
 - UNASSIGNED:
@@ -34,10 +36,10 @@ If there are unassigned User Stories, put them in a separate list
 
 ###Example: ###
 # Input: #
-Description:
+DESCRIPTION:
 This blog platform allows users to register, log in, and log out securely. Once logged in, users can read articles, view comments on each article, and contribute their own comments. The platform features a user-friendly interface that makes navigation and interaction straightforward. Articles are displayed in a list format on the homepage, with individual article pages showing the full content and associated comments. The system ensures that all comments are attributed to registered users, promoting accountability and constructive discussions.
 
-User Stories:
+USER STORIES:
 1) As a new user, I want to register an account so that I can log in and interact with the blog.
 2) As a registered user, I want to log in to my account so that I can access and interact with the platform.
 3) As a logged-in user, I want to log out of my account so that I can securely end my session.
@@ -54,12 +56,15 @@ CONTAINERS:
         1) As a new user, I want to register an account so that I can log in and interact with the blog.
         2) As a registered user, I want to log in to my account so that I can access and interact with the platform.
         3) As a logged-in user, I want to log out of my account so that I can securely end my session.
+    - PORTS: 10000:10100
 - CONTAINER NAME: Articles
     - DESCRIPTION: Deals with articles search and read
     - USER STORIES:
         4) As a user, I want to read a list of articles on the homepage so that I can choose which articles to read in full.
         5) As a user, I want to click on an article title to read the full content so that I can engage with the material.
         6) As a user, I want to see all comments associated with an article so that I can read others' opinions and insights.
+    - PORTS: 11000:11100
+
 
 UNASSIGNED:
     7) As a logged-in user, I want to comment on an article so that I can share my thoughts and engage in discussions.

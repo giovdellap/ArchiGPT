@@ -7,6 +7,10 @@ def getBlankProjectSystem():
                 'message': "",
             },
             {
+                'name': "description",
+                'message': "",
+            },
+            {
                 'name': "Container Design",
                 'message': "",
             },

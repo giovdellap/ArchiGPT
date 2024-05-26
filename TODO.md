@@ -1,11 +1,20 @@
-## GENERALE
+# MICROSERVICES BRANCH
 
-Aggiungere campi:
-	- 
+## MODIFICHE
+1) container:
+   - user stories, description e ports
 
-- aggiungere campi a db e fe:
-	- System -> description (solo DB)
-	- Container -> ports range (in ContainerDesigner)
+## API HANDLER
+Assistente Microservices (mezzo fatto)
+
+## BACKEND
+1) Content per Container_3
+2) chiamata ad assistant Container_3
+3) 
+
+
+# GENERALE
+
 
 - aggiungere barra degli strumenti in FE, che raccoglierà dei possibili strumenti utili per la rigenerazione di messaggi. Esempio:
 	- Regenerate -> rigenera un messaggio, cancellando quello vecchio
