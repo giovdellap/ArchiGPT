@@ -32,9 +32,27 @@ class ContentFactory:
         if assistant == "Container_2":
             content = self.container2(system, container)
             self.content = container_prompt + content
+            
+        if assistant == "Container_3":
+            content = self.container3(system, container)
+            self.content = container_prompt + content
                         
         print('CONTENT FACTORY - CONTENT: ', self.content)
         return self.content
+    
+    def getUtilContent(self, assistant, attachments):
+        system = json.loads(self.db_handler.getSystem(self.project))
+        container_name = attachments['container']
+        container_prompt = "ANALYZE CONTAINER: " + container_name + "/n"
+        if assistant == "Util_2":
+            userInteraction = getSystemDocument('User Interaction Analysis', system)
+            self.content = container_prompt + userInteraction
+        if assistant == "Util_3":
+            container = json.loads(self.db_handler.getContainer(self.project, container_name))
+            self.content = getContainerDocument('MicroServices', container)
+        return self.content
+
+        
     
     def getDescription(self, system):
         return 'SYSTEM DESCRIPTION: \n' + getSystemDocument('description', system) + '\n'
@@ -56,7 +74,20 @@ class ContentFactory:
         
         return description + containerDesign + userInteraction + containerTitle + container_description
         
-load_container_data = ['Container_2']        
+    def container3(self, system, container):
+        description = self.getDescription(system)
+        containerDesign = getSystemDocument('Container Design', system) + '/n'
+        userInteraction = getSystemDocument('User Interaction Analysis', system) + '/n'
+        system_content = description + containerDesign + userInteraction
+        
+        containerTitle = 'CONTAINER: ' + getContainerDocument('name', container) + '/n'
+        container_description = getContainerDocument('ContainerDescriptionGenerator', container) + '/n'
+        container_specification = getContainerDocument('ContainerSpecificationGenerator', container) + '/n'
+        container_content = containerTitle + container_description + container_specification
+
+        return system_content + container_content
+        
+load_container_data = ['Container_2', 'Container_3']        
 
 def getSystemDocument(name, system):
     for item in system['data']:

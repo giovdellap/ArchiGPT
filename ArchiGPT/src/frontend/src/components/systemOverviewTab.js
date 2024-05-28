@@ -92,6 +92,17 @@ function SystemOverviewTab({ projectStatus, setSystemSelected, setAssistantSelec
                                         </Card.Body>
                                     </Button>
                                 </Card>
+                                <Card>
+                                    <Button
+                                        variant="light"
+                                        onClick={() => {setAssistantSelected({container:container.name, name:"MicroServices"}); setSystemSelected("")}}
+                                        disabled={container.MicroServices === "NO"} 
+                                    >
+                                        <Card.Body>
+                                            MicroServices {getStatusIcon(container.MicroServices)}
+                                        </Card.Body>
+                                    </Button>
+                                </Card>
                                 <Accordion defaultActiveKey="0">
                                     {container.services ? container.services.map((service, serviceIndex) => (
                                         <Accordion.Item eventKey={serviceIndex} key={serviceIndex}>
@@ -100,10 +111,10 @@ function SystemOverviewTab({ projectStatus, setSystemSelected, setAssistantSelec
                                             </Accordion.Header>
                                             <Accordion.Body>
                                                 <Card className={getStatusColorClass(service.datastructures)}>
-                                                    <Card.Title>Datastructures</Card.Title>
+                                                    <Card.Title>Specifications</Card.Title>
                                                 </Card>
                                                 <Card className={getStatusColorClass(service.endpoints)}>
-                                                    <Card.Title>Endpoints</Card.Title>
+                                                    <Card.Title>Endpoints-Datastructures</Card.Title>
                                                 </Card>
                                             </Accordion.Body>
                                         </Accordion.Item>

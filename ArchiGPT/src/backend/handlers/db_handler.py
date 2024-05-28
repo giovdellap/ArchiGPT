@@ -171,6 +171,28 @@ class DBHandler:
             print("Exception: %s", e)
             return e
         
+    def insertServicesinStatus(self, list, projectname, container):
+        try:
+            collection = self.database[projectname]
+            # Perform the update
+            for element in list:
+                result = collection.update_one(
+                    filter = {"type": "status"},
+                    update = 
+                        {"$addToSet": {"data.containers.$[container]": element}},
+                    
+                    upsert=True
+                )
+
+            # Check if the update was successful
+            if result.matched_count > 0:
+                print("Update successful")
+            else:
+                print("No document found with the specified criteria")
+        except Exception as e:
+            print("Exception: %s", e)
+            return e    
+    
     def insertContainersDocuments(self, documents, projectname):
         try:
             collection = self.database[projectname]

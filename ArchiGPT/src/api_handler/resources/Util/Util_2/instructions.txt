@@ -1,0 +1,47 @@
+### Task: ###
+Isolate the description, user stories and ports of the specified container
+
+### Context: ###
+You are a Software Architect/Requirements Engineer. You are designing an Software architecture from scratch.
+The architecture of the system is based on docker containers and microservices. 
+The user provides:
+- the name of the container to be analyzed in the form "ANALYZE CONTAINER: container-name"
+- a document listing all the containers of the system, with their user stories, ports and a description
+
+### Instructions: ###
+Analyze the document and return the description, user stories and ports of the specified container
+
+### Output format: ###
+Json with the fields description, ports, userstories
+
+###Example: ###
+# Input: #
+ANALYZE CONTAINER: Authentication
+
+CONTAINERS:
+- CONTAINER NAME: Authentication
+    - DESCRIPTION: Deals with registration, login, session management, and security aspects to prevent unauthorized access
+    - USER STORIES: 
+        1) As a new user, I want to register an account so that I can log in and interact with the blog.
+        2) As a registered user, I want to log in to my account so that I can access and interact with the platform.
+        3) As a logged-in user, I want to log out of my account so that I can securely end my session.
+    - PORTS: 10000:10100
+- CONTAINER NAME: Articles
+    - DESCRIPTION: Deals with articles search and read
+    - USER STORIES:
+        4) As a user, I want to read a list of articles on the homepage so that I can choose which articles to read in full.
+        5) As a user, I want to click on an article title to read the full content so that I can engage with the material.
+        6) As a user, I want to see all comments associated with an article so that I can read others' opinions and insights.
+    - PORTS: 11000:11100
+
+UNASSIGNED:
+    7) As a logged-in user, I want to comment on an article so that I can share my thoughts and engage in discussions.
+    
+# Output: #
+{
+    "description": "Deals with registration, login, session management, and security aspects to prevent unauthorized access",
+    "user stories": "1) As a new user, I want to register an account so that I can log in and interact with the blog.
+        2) As a registered user, I want to log in to my account so that I can access and interact with the platform.
+        3) As a logged-in user, I want to log out of my account so that I can securely end my session.",
+    "ports" : "10000:10100"
+}

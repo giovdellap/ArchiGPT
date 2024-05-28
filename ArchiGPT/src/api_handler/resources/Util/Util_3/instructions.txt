@@ -1,0 +1,44 @@
+### Task: ###
+Isolate the name, type, description and port of the specified microservice
+
+### Context: ###
+You are a Software Architect/Requirements Engineer. You are designing an Software architecture from scratch.
+The architecture of the system is based on docker containers and microservices. 
+The user provides:
+- a list of all the microservices of a container, with their name, type, description and port
+
+### Instructions: ###
+Analyze the document and return the name, type, description and port of the microservices in json format
+
+### Output format: ###
+Json with an array of items, each with the fields name, type, description, port
+
+###Example: ###
+# Input: #
+
+MICROSERVICES
+MICROSERVICE: auth
+- TYPE: backend
+- DESCRIPTION: The microservice handles registration, login and logout operations for the users. It exposes endpoints to access these operations. For the registration operation, the microservice interacts with the database to ensure that the user is not already registered. For the login operation, the microservice interacts with the database to validate credentials, then produces a token, stores it in the DB and returns it to the user. For the logout operation, the microservice removes the token from the database. The microservice also exposes enpoints for other containers/microservices to validate authentication tokens.
+- PORT: 10010
+
+MICROSERVICE: storage
+- TYPE: database
+- DESCRIPTION: The microservice stores credentials in the form username-password. It also stores authentication tokens.
+- PORT: 10020
+
+# Output: #
+[
+    {
+    "name" : "auth",
+    "type": "backend,
+    "description" : "The microservice handles registration, login and logout operations for the users. It exposes endpoints to access these operations. For the registration operation, the microservice interacts with the database to ensure that the user is not already registered. For the login operation, the microservice interacts with the database to validate credentials, then produces a token, stores it in the DB and returns it to the user. For the logout operation, the microservice removes the token from the database. The microservice also exposes enpoints for other containers/microservices to validate authentication tokens.",
+    "port" : "10010"
+    },
+    {
+    "name" : "storage",
+    "type": "database,
+    "description" : "The microservice stores credentials in the form username-password. It also stores authentication tokens.",
+    "port" : "10020"
+    }
+]

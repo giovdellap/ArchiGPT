@@ -91,6 +91,8 @@ function ProjectOverview() {
 				setGenerationMessage(containerInfo.ContainerDescriptionGenerator)
 			if(assistantSelected.name === "ContainerSpecificationGenerator")
 				setGenerationMessage(containerInfo.ContainerSpecificationGenerator)
+			if(assistantSelected.name === "MicroServices")
+				setGenerationMessage(containerInfo.MicroServices)
 		}
 
 	}

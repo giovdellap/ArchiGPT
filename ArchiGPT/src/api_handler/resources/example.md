@@ -1,6 +1,6 @@
 # Initial
 
-DESCRIPTION:
+SYSTEM DESCRIPTION:
 This blog platform allows users to register, log in, and log out securely. Once logged in, users can read articles, view comments on each article, and contribute their own comments. The platform features a user-friendly interface that makes navigation and interaction straightforward. Articles are displayed in a list format on the homepage, with individual article pages showing the full content and associated comments. The system ensures that all comments are attributed to registered users, promoting accountability and constructive discussions.
 
 USER STORIES:
@@ -69,6 +69,16 @@ The container needs to store credentials in order to manage registration and log
 The credentials are tuples username, passsword.
 The container also needs to store authentication tokens.
 
-
 EXTERNAL SERVICES CONNECTIONS
 Based on the container's behaviour and purpose, there is no need for the container to connect to external services.
+
+# Container_3
+MICROSERVICE: auth
+- TYPE: backend
+- DESCRIPTION: The microservice handles registration, login and logout operations for the users. It exposes endpoints to access these operations. For the registration operation, the microservice interacts with the database to ensure that the user is not already registered. For the login operation, the microservice interacts with the database to validate credentials, then produces a token, stores it in the DB and returns it to the user. For the logout operation, the microservice removes the token from the database. The microservice also exposes enpoints for other containers/microservices to validate authentication tokens.
+- PORT: 10010
+
+MICROSERVICE: storage
+- TYPE: database
+- DESCRIPTION: The microservice stores credentials in the form username-password. It also stores authentication tokens.
+- PORT: 10020
