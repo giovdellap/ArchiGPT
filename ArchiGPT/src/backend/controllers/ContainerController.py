@@ -37,9 +37,9 @@ def generateContainer():
         message = requests.post(
             current_app.config['API_HANDLER'] + '/interrogation/interrogate',
             data={
-                'ass_name': 'Util_2',
-                'ass_model': 'gpt-3.5-turbo',
-                #'ass_model': 'gpt-4-turbo-2024-04-09',
+                'ass_name': getAssistantName(assistant_name),
+                #'ass_model': 'gpt-3.5-turbo',
+                'ass_model': 'gpt-4-turbo-2024-04-09',
                 'content': content
             }
         )
@@ -61,7 +61,7 @@ def generateContainer():
             dbhandler.updateContainerStatus(project_name, getNextContainerAssistant(assistant_name), 'NEXT', container_name)
         else:
             container_handler = ContainerHandler(result, project_name)
-            container_handler.getServicesList(dbhandler)
+            container_handler.getServicesList(dbhandler, container_name)
         
         #print(message['content'])
         return jsonify({'content': result}), 200

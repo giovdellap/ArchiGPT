@@ -12,7 +12,8 @@ The user provides:
 Analyze the document and return the description, user stories and ports of the specified container
 
 ### Output format: ###
-Json with the fields description, ports, userstories
+Json with the fields description, ports, userstories.
+The userstories value must be delimited by 3 " (""")
 
 ###Example: ###
 # Input: #
@@ -40,8 +41,8 @@ UNASSIGNED:
 # Output: #
 {
     "description": "Deals with registration, login, session management, and security aspects to prevent unauthorized access",
-    "user stories": "1) As a new user, I want to register an account so that I can log in and interact with the blog.
+    "userstories": """1) As a new user, I want to register an account so that I can log in and interact with the blog.
         2) As a registered user, I want to log in to my account so that I can access and interact with the platform.
-        3) As a logged-in user, I want to log out of my account so that I can securely end my session.",
+        3) As a logged-in user, I want to log out of my account so that I can securely end my session.""",
     "ports" : "10000:10100"
 }

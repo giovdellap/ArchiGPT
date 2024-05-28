@@ -82,7 +82,7 @@ class ContainerHandler:
         message_content = message.json()['content']
         print('CONTAINER HANDLER UTIL 2- RECEIVED MESSAGE: ', message_content)
         obj = ast.literal_eval(message_content)
-
+        print('CONTAINER HANDLER UTIL 2- OBJ: ', obj)
         
         #SAVE ON DB
         dbhandler.updateContainer(self.project_name, container, 'description', obj['description'])
@@ -107,9 +107,35 @@ class ContainerHandler:
         )
         message_content = message.json()['content']
         print('CONTAINER HANDLER UTIL 3 - RECEIVED MESSAGE: ', message_content)
-        obj = ast.literal_eval(message_content)
+        list = ast.literal_eval(message_content)
+
+        #OBJECT CONSTRUCTION
+        for microservice in list:
+            microservice['specifications'] = ""
+            if microservice['type'] == "backend":
+                microservice['endpoints'] = ""
+            if microservice['type'] == "frontend":
+                microservice['pages'] = ""
         
+        print('CONTAINER HANDLER UTILS 3 - LIST: ', list)
+
         #SAVE ON DB
-        dbhandler.updateContainer(self.project_name, container, 'services', obj)
+        dbhandler.updateContainer(self.project_name, container, 'services', list)
         
+        #STATUS OBJECT
+        status_list = []
+        for microservice in list:
+            service = {}
+            service['name'] = microservice['name']
+            service['specifications'] = 'NEXT'
+            if microservice['type'] == 'backend':
+                service['endpoints'] = 'NO'
+            if microservice['type'] == 'frontend':
+                service['pages'] = 'NO'
+            status_list.append(service)
+        
+        print('CONTAINER HANDLER UTILS 3 - STATUS LIST: ', status_list)
+
+        #SAVE STATUS ON DB
+        dbhandler.updateContainerStatus(self.project_name, 'services', status_list, container)
         
