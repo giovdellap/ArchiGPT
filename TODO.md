@@ -32,34 +32,34 @@ Assistente Util_3: (V - da provare)
 
 services: [
 	{
-		"name": "service_1",
-		"type": "backend",
-		"port": "101110",
-		"description": "prova",
-		"specifications": "prova",
-		"endpoints": "prova"
+		name: 'service_1',
+		type: 'backend',
+		port: '101110',
+		description: 'NO',
+		specifications: 'NO',
+		endpoints: 'NO'
 	},
 	{
-		"name": "service_2",
-		"type": "frontend",
-		"port": "101111",
-		"description": "prova",
-		"specifications": "prova",
-		"pages": "prova"
+		name: 'service_2',
+		type: 'frontend',
+		port: '101111',
+		description: 'NO',
+		specifications: 'NO',
+		pages: 'NO'
 	},
 	{
-		"name": "service_3",
-		"type": "database",
-		"port": "101111",
-		"description": "prova",
-		"specifications": "prova",
+		name: 'service_3',
+		type: 'database',
+		port: '101111',
+		description: 'NO',
+		specifications: 'NO'
 	},
 	{
-		"name": "service_3",
-		"type": "other",
-		"port": "101111",
-		"description": "prova",
-		"specifications": "prova",
+		name: 'service_4',
+		type: 'other',
+		port: '101111',
+		description: 'NO',
+		specifications: 'NO'
 	}
 ]
 

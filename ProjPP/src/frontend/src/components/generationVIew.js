@@ -20,7 +20,6 @@ function GenerationView() {
 				}
 			})
 			.then((data) => {
-				console.log(data.last_message)
 				setMessage(data.last_message);
 			})
 			.catch((error) => {
