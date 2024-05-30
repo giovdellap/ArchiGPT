@@ -1,9 +1,8 @@
 import json
-from flask import current_app, request, jsonify
-import requests
-import os
+from flask import request, jsonify
 
-from handlers.post_processing_handler import processMessage
+from utils.api_handler_bridge import assistant_call
+from handlers.post_processing_handler import buildPreMessage
 from utils.content_factory import ContentFactory
 from handlers.container_handler import ContainerHandler
 from utils.assistant_name_matcher import getAssistantName, getNextContainerAssistant
@@ -31,21 +30,10 @@ def generateContainer():
         contentFactory = ContentFactory(dbhandler, project_name)
         content = contentFactory.getContainerContent(getAssistantName(assistant_name), {"container": container_name})
 
-
         #ASSISTANT INTERROGATION
-        print('ASSISTANT INTERROGATION')
-        message = requests.post(
-            current_app.config['API_HANDLER'] + '/interrogation/interrogate',
-            data={
-                'ass_name': getAssistantName(assistant_name),
-                #'ass_model': 'gpt-3.5-turbo',
-                'ass_model': 'gpt-4-turbo-2024-04-09',
-                'content': content
-            }
-        )
-        message_content = message.json()['content']
-        print('RECEIVED MESSAGE: ', message_content)
-        result = processMessage(getAssistantName(assistant_name), message_content)
+        message_content = assistant_call( getAssistantName(assistant_name), content )
+
+        result = buildPreMessage(getAssistantName(assistant_name), message_content)
         
         print('AFTER PROCESSING: ', result)
         
@@ -63,7 +51,6 @@ def generateContainer():
             container_handler = ContainerHandler(result, project_name)
             container_handler.getServicesList(dbhandler, container_name)
         
-        #print(message['content'])
         return jsonify({'content': result}), 200
     
     except Exception as e:

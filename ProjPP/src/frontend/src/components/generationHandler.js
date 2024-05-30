@@ -1,5 +1,5 @@
 import React from 'react';
-import GenerationView from './generationView';
+import GenerationView from 'generationView';
 import UploadFileButton from './uploadFileButton';
 
 function GenerationHandler() {

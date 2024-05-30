@@ -1,8 +1,6 @@
-import json
-from flask import current_app, request, jsonify
-import requests
-import os
+from flask import request, jsonify
 
+from utils.api_handler_bridge import assistant_call
 from handlers.pre_processing_handler import PreProcessingHandler
 from utils.content_factory import ContentFactory
 from handlers.container_handler import ContainerHandler
@@ -48,18 +46,7 @@ def generateSystem():
 
 
         #ASSISTANT INTERROGATION
-        print('ASSISTANT INTERROGATION')
-        message = requests.post(
-            current_app.config['API_HANDLER'] + '/interrogation/interrogate',
-            data={
-                'ass_name': getAssistantName(assistant_name),
-                #'ass_model': 'gpt-3.5-turbo',
-                'ass_model': 'gpt-4-turbo-2024-04-09',
-                'content': content
-            }
-        )
-        result = message.json()['content']
-        print('Message: ', result)
+        result = assistant_call( getAssistantName(assistant_name), content )
         
         #UPDATE DB STATUS
         dbhandler.updateSystemStatus(project_name, assistant_name, 'OK')
@@ -75,7 +62,6 @@ def generateSystem():
             container_handler = ContainerHandler(result, project_name)
             container_handler.getContainersList(dbhandler)
         
-        #print(message['content'])
         return jsonify({'content': result}), 200
     
     except Exception as e:

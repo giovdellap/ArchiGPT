@@ -28,9 +28,6 @@ def createProject():
         handler = DBHandler()
         handler.database_setup()
         handler.create_collection(name)
-
-        #system = getTestProjectSystem()
-        #status = getTestProjectStatus()
    
         system = getBlankProjectSystem()
         status = getBlankProjectStatus()

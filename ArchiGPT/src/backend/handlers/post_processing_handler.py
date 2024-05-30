@@ -1,4 +1,4 @@
-def processMessage(assistant, message):
+def buildPreMessage(assistant, message):
     premessage = ""
     if assistant == 'Container_1':
         premessage = "DESCRIPTION: \n"

@@ -1,7 +1,6 @@
-from flask import current_app
-import requests
 import ast
 
+from utils.api_handler_bridge import assistant_call
 from utils.content_factory import ContentFactory
 
 class ContainerHandler:
@@ -11,16 +10,10 @@ class ContainerHandler:
         self.project_name = project_name
         
     def getContainersList(self, db_handler):
-        message = requests.post(
-            current_app.config['API_HANDLER'] + '/interrogation/interrogate',
-            data={
-                'ass_name': 'Util_1',
-                'ass_model': 'gpt-3.5-turbo',
-                #'ass_model': 'gpt-4-turbo-2024-04-09',
-                'content': self.document
-            }
-        )
-        result = message.json()['content']
+
+        #ASSISTANT INTERROGATION
+        result = assistant_call( 'Util_1', self.document )
+
         list = ast.literal_eval(result)
         
         # STATUS UPDATE
@@ -35,9 +28,9 @@ class ContainerHandler:
                     'services': []
                 }
             )
-        print('CONTAINER HANDLER 1')
+        
         db_handler.insertContainersinStatus(status_objs, self.project_name)
-        print('CONTAINER HANDLER 2')
+        print('CONTAINER HANDLER: STATUS UPDATED')
         
         #DOCUMENTS INSERTION
         documents = []
@@ -55,9 +48,9 @@ class ContainerHandler:
                     'services': []
                 }
             })
-        print('CONTAINER HANDLER 3')
+
         db_handler.insertContainersDocuments(documents, self.project_name)
-        print('CONTAINER HANDLER 4')
+        print('CONTAINER HANDLER: CONTAINER DOCUMENTS CREATED')
         
     def getServicesList(self, dbhandler, container):
         
@@ -67,20 +60,9 @@ class ContainerHandler:
         content = contentFactory.getUtilContent('Util_2', {"container": container})
         print('CONTAINER HANDLER - CONTENT UTIL 2: ', content)
 
-
         #ASSISTANT INTERROGATION UTIL 2
-        print('CONTAINER HANDLER - ASSISTANT INTERROGATION UTIL 2')
-        message = requests.post(
-            current_app.config['API_HANDLER'] + '/interrogation/interrogate',
-            data={
-                'ass_name': 'Util_2',
-                'ass_model': 'gpt-3.5-turbo',
-                #'ass_model': 'gpt-4-turbo-2024-04-09',
-                'content': content
-            }
-        )
-        message_content = message.json()['content']
-        print('CONTAINER HANDLER UTIL 2- RECEIVED MESSAGE: ', message_content)
+        message_content = assistant_call( 'Util_2', content )
+       
         obj = ast.literal_eval(message_content)
         print('CONTAINER HANDLER UTIL 2- OBJ: ', obj)
         
@@ -95,18 +77,8 @@ class ContainerHandler:
         print('CONTAINER HANDLER - CONTENT UTIL 3: ', content)
 
         #ASSISTANT INTERROGATION UTIL 3
-        print('CONTAINER HANDLER - ASSISTANT INTERROGATION UTIL 3')
-        message = requests.post(
-            current_app.config['API_HANDLER'] + '/interrogation/interrogate',
-            data={
-                'ass_name': 'Util_3',
-                'ass_model': 'gpt-3.5-turbo',
-                #'ass_model': 'gpt-4-turbo-2024-04-09',
-                'content': content
-            }
-        )
-        message_content = message.json()['content']
-        print('CONTAINER HANDLER UTIL 3 - RECEIVED MESSAGE: ', message_content)
+        message_content = assistant_call( 'Util_3', content )
+
         list = ast.literal_eval(message_content)
 
         #OBJECT CONSTRUCTION

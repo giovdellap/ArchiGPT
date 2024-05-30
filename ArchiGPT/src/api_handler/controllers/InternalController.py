@@ -44,7 +44,7 @@ def interrogate():
         print("Assistant correctly created: ", name)
         #THREAD CREATION
         thread = threadCreationHandler()
-        print("THREAD: ", thread)
+        #print("THREAD: ", thread)
 
         #MESSAGE CREATION
         contentFactory = ContentFactory()
