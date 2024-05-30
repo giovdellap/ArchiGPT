@@ -99,6 +99,7 @@ class ContainerHandler:
         for microservice in list:
             service = {}
             service['name'] = microservice['name']
+            service['description'] = 'OK'
             service['specifications'] = 'NEXT'
             if microservice['type'] == 'backend':
                 service['endpoints'] = 'NO'

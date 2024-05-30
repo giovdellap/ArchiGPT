@@ -5,7 +5,7 @@ import { faCheckCircle, faCircle, faTimesCircle } from '@fortawesome/free-solid-
 import ServiceOverviewTab from './serviceOverviewTab';
 
 
-function SystemOverviewTab({ projectStatus, setSystemSelected, setAssistantSelected, fetchContainerInfo }) {
+function SystemOverviewTab({ projectStatus, setSystemSelected, setAssistantSelected, containerInfo, fetchContainerInfo }) {
 
     const containerStatus  = projectStatus.containers
     const systemStatus  = projectStatus.system
@@ -94,6 +94,7 @@ function SystemOverviewTab({ projectStatus, setSystemSelected, setAssistantSelec
                                 <ServiceOverviewTab 
                                     services={container.services}
                                     getStatusIcon={getStatusIcon}
+                                    servicesInfo={containerInfo.services}
                                 />
                             </Accordion.Body>
                         </Accordion.Item>

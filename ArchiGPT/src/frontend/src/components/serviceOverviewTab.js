@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Accordion, Card, Button } from 'react-bootstrap';
 
 
-function ServiceOverviewTab({ services, getStatusIcon }) {
+function ServiceOverviewTab({ services, getStatusIcon, servicesInfo }) {
 
     const getServiceTypeColor = (type) => {
         switch (type) {
@@ -36,7 +36,7 @@ function ServiceOverviewTab({ services, getStatusIcon }) {
 											<span className="mr-2">{service.name}</span>
 										</div>
 										<div className="col-auto">
-											<span style={{ ...getServiceTypeColor(service.type), padding: '2px', border: '1px solid', borderRadius: '5px' }}>{service.type}</span>
+											<span style={{ ...getServiceTypeColor(servicesInfo[serviceIndex].type), padding: '2px', border: '1px solid', borderRadius: '5px' }}>{servicesInfo[serviceIndex].type}</span>
 										</div>
 									</Row>
 									</Accordion.Header>
@@ -44,7 +44,7 @@ function ServiceOverviewTab({ services, getStatusIcon }) {
 										<Card>
 											<Button
 												variant="light"
-												onClick={() => { }}
+												onClick={() => { /*TODO: update messageView based on servicesInfo[serviceIndex].description */}}
 												disabled={service.description === "NO"} 
 											>
 												<Card.Body>
