@@ -91,6 +91,8 @@ function ProjectOverview() {
 				setGenerationMessage(containerInfo.ContainerDescriptionGenerator)
 			if(assistantSelected.name === "ContainerSpecificationGenerator")
 				setGenerationMessage(containerInfo.ContainerSpecificationGenerator)
+			if(assistantSelected.name === "MicroServices")
+				setGenerationMessage(containerInfo.MicroServices)
 		}
 
 	}
@@ -134,6 +136,7 @@ function ProjectOverview() {
           	})
 			.then((generationResult) => {
 				fetchProjectStatus()
+				fetchContainerInfo(assistantSelected.container)
 				setGenerationMessage(generationResult.content)
 				setShowLoadingScreen(false)
 			})
@@ -158,7 +161,9 @@ function ProjectOverview() {
 		<ProjectHeader projectName={projectName}/>
 		<div style={{ display: 'flex', paddingTop: '80px' }}>
 			<div style={{ flex: 1, borderRight: '1px solid #ccc' }}>
-			<SystemOverviewTab projectStatus={projectStatus} 
+			<SystemOverviewTab 
+				projectStatus={projectStatus} 
+				containerInfo={containerInfo}
 				setSystemSelected={setSystemSelected} 
 				setAssistantSelected={setAssistantSelected}
 				fetchContainerInfo={fetchContainerInfo}

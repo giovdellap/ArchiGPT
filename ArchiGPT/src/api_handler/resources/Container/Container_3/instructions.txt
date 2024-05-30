@@ -15,12 +15,15 @@ For each microservice, provide:
     - DESCRIPTION: description of the microservice purpose and logic
     - PORTS: Based on the ports' range assigned to this container, define the ports for each microservice to communicate
 
-# TYPES: #
-- backend: 
+# TYPES OF MICROSERVICES: #
+- backend: microservices that hosts business logic, exposes endpoints and possibly interacts with databases inside the container or extenral services/containers
+- frontend: microservices that serve a web application
+- databse: microservice that hosts a databse for data storage
+- other: none of the previous types 
 
 ### Output format: ###
 List in the following form:
-SERVICE: service_1
+MICROSERVICE: service_1
 - TYPE: backend
 - DESCRIPTION: service description
 - PORTS: ports
@@ -30,6 +33,9 @@ SERVICE: service_1
 ###Example: ###
 # Input: #
 ANALYZE CONTAINER: Authentication
+
+SYSTEM DESCRIPTION:
+This blog platform allows users to register, log in, and log out securely. Once logged in, users can read articles, view comments on each article, and contribute their own comments. The platform features a user-friendly interface that makes navigation and interaction straightforward. Articles are displayed in a list format on the homepage, with individual article pages showing the full content and associated comments. The system ensures that all comments are attributed to registered users, promoting accountability and constructive discussions.
 
 CONTAINERS:
 - CONTAINER NAME: Authentication
@@ -47,3 +53,27 @@ CONTAINERS:
 
 UNASSIGNED:
     7) As a logged-in user, I want to comment on an article so that I can share my thoughts and engage in discussions.
+
+CONTAINER: Authentication
+
+CONTAINER DESCRIPTION:
+The Authentication container is responsible for handling registration of the users, login and logout. It also manages credentials storage and retrieval, along with the authentication tokens' management
+
+PERSISTANCE EVALUATION
+The container needs to store credentials in order to manage registration and login.
+The credentials are tuples username, passsword.
+The container also needs to store authentication tokens.
+
+EXTERNAL SERVICES CONNECTIONS
+Based on the container's behaviour and purpose, there is no need for the container to connect to external services.
+
+# Output: #
+MICROSERVICE: auth
+- TYPE: backend
+- DESCRIPTION: The microservice handles registration, login and logout operations for the users. It exposes endpoints to access these operations. For the registration operation, the microservice interacts with the database to ensure that the user is not already registered. For the login operation, the microservice interacts with the database to validate credentials, then produces a token, stores it in the DB and returns it to the user. For the logout operation, the microservice removes the token from the database. The microservice also exposes enpoints for other containers/microservices to validate authentication tokens.
+- PORT: 10010
+
+MICROSERVICE: storage
+- TYPE: database
+- DESCRIPTION: The microservice stores credentials in the form username-password. It also stores authentication tokens.
+- PORT: 10020

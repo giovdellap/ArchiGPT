@@ -1,6 +1,5 @@
 import bson
 from flask import current_app
-from pymongo import MongoClient
 
 
 class DBHandler:
@@ -82,7 +81,7 @@ class DBHandler:
     def updateSystemStatus(self, projectname, ass_name, ass_status):
         try:
             collection = self.database[projectname]
-            print(ass_name)
+
             # Perform the update
             result = collection.update_one(
                 filter = {"type": "status"},
@@ -91,11 +90,8 @@ class DBHandler:
                 upsert=True
             )
 
-            # Check if the update was successful
-            if result.matched_count > 0:
-                print("Update successful")
-            else:
-                print("No document found with the specified criteria")
+            print('DB HANDLER - UPDATE SYSTEM STATUS')
+
         except Exception as e:
             print("Exception: %s", e)
             return e
@@ -103,7 +99,7 @@ class DBHandler:
     def updateContainerStatus(self, projectname, ass_name, ass_status, container):
         try:
             collection = self.database[projectname]
-            print('DB HANDLER - UPDATE CONTAINER STATUS')
+
             # Perform the update
             field = "data.containers.$[element]." + ass_name
             result = collection.update_one(
@@ -112,13 +108,14 @@ class DBHandler:
                 array_filters = [{"element.name": container}],
                 upsert=True
             )
-            print('DB HANDLER - UPDATE CONTAINER STATUS 2')
+
+            print('DB HANDLER - UPDATE CONTAINER STATUS')
+
         except Exception as e:
             print("Exception: %s", e)
             return e
         
     def updateSystem(self, projectname, ass_name, ass_message):
-        print('DB HANDLER - UPDATE SYSTEM')
         try:
             collection = self.database[projectname]
             result = collection.update_one(
@@ -127,13 +124,15 @@ class DBHandler:
                 array_filters = [{"element.name": ass_name}],
                 upsert=True
             )
+
+            print('DB HANDLER - UPDATE SYSTEM')
+
         except Exception as e:
             print("Exception: %s", e)
             return e
         
     def updateContainer(self, projectname, container, ass_name, ass_message):
 
-        print('DB HANDLER - UPDATE CONTAINER')
         try:
             field = "data." + ass_name
             collection = self.database[projectname]
@@ -142,12 +141,15 @@ class DBHandler:
                 update = {"$set": {field: ass_message}},
                 upsert=True
             )
+
+            print('DB HANDLER - UPDATE CONTAINER')
+            
         except Exception as e:
             print("Exception: %s", e)
             return e
         
         
-    # CONTAINER FUNCTIONS
+    # INSERTION FUNCTIONS
     
     def insertContainersinStatus(self, list, projectname):
         try:
@@ -162,19 +164,38 @@ class DBHandler:
                     upsert=True
                 )
 
-            # Check if the update was successful
-            if result.matched_count > 0:
-                print("Update successful")
-            else:
-                print("No document found with the specified criteria")
+            print('DB HANDLER - CONTAINERS INSERTED IN STATUS')
+
         except Exception as e:
             print("Exception: %s", e)
             return e
         
+    def insertServicesinStatus(self, list, projectname, container):
+        try:
+            collection = self.database[projectname]
+            # Perform the update
+            for element in list:
+                result = collection.update_one(
+                    filter = {"type": "status"},
+                    update = 
+                        {"$addToSet": {"data.containers.$[container]": element}},
+                    
+                    upsert=True
+                )
+
+            print('DB HANDLER - SERVICES INSERTED IN STATUS')
+
+        except Exception as e:
+            print("Exception: %s", e)
+            return e    
+    
     def insertContainersDocuments(self, documents, projectname):
         try:
             collection = self.database[projectname]
             result = collection.insert_many(documents)
+
+            print('DB HANDLER - CONTAINER DOCUMENTS INSERTED')
+
         except Exception as e:
             print("Exception: %s", e)
             return e
@@ -188,9 +209,13 @@ class DBHandler:
                 array_filters = [{"element.name": containername}],
                 upsert=True
             )
+
+            print('DB HANDLER - CONTAINER DOCUMENTS UPDATED')
+
         except Exception as e:
             print("Exception: %s", e)
             return e
+        
         
     ## GET FUNCTIONS
         

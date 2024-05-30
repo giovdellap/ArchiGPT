@@ -1,6 +1,8 @@
-def processMessage(assistant, message):
+def buildPreMessage(assistant, message):
+    premessage = ""
     if assistant == 'Container_1':
         premessage = "DESCRIPTION: \n"
-        return premessage + message
-    else:
-        return message
+    elif assistant == 'Container_3':
+        premessage = "MICROSERVICES: \n"
+    
+    return premessage + message

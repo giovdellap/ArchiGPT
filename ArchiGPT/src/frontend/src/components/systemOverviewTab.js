@@ -2,9 +2,10 @@ import React from 'react';
 import { Container, Row, Accordion, Card, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import ServiceOverviewTab from './serviceOverviewTab';
 
 
-function SystemOverviewTab({ projectStatus, setSystemSelected, setAssistantSelected, fetchContainerInfo }) {
+function SystemOverviewTab({ projectStatus, setSystemSelected, setAssistantSelected, containerInfo, fetchContainerInfo }) {
 
     const containerStatus  = projectStatus.containers
     const systemStatus  = projectStatus.system
@@ -22,26 +23,13 @@ function SystemOverviewTab({ projectStatus, setSystemSelected, setAssistantSelec
         }
     };
 
-    const getStatusColorClass = (status) => {
-        switch (status) {
-            case "OK":
-                return "bg-success";
-            case "NEXT":
-                return "bg-warning";
-            case "NO":
-                return "bg-danger";
-            default:
-                return "";
-        }
-    };
-
 
     return (
         <Container className="mt-4">
 
             <Row style={{ marginBottom: '20px' }}>
                 {systemStatus ? systemStatus.map((system) => (
-                    <div key={system.id}>
+                    <div key={system.name}>
                             <Card>
                                 <Button
                                     variant="light"
@@ -65,7 +53,7 @@ function SystemOverviewTab({ projectStatus, setSystemSelected, setAssistantSelec
                     }
                 }}>
                     {containerStatus ? containerStatus.map((container, containerIndex) => (
-                        <Accordion.Item eventKey={containerIndex} key={containerIndex}>
+                        <Accordion.Item eventKey={containerIndex} key={container.name}>
                             <Accordion.Header >
                                 {container.name}
                             </Accordion.Header>
@@ -92,24 +80,22 @@ function SystemOverviewTab({ projectStatus, setSystemSelected, setAssistantSelec
                                         </Card.Body>
                                     </Button>
                                 </Card>
-                                <Accordion defaultActiveKey="0">
-                                    {container.services ? container.services.map((service, serviceIndex) => (
-                                        <Accordion.Item eventKey={serviceIndex} key={serviceIndex}>
-                                            <Accordion.Header>
-                                                {service.name}
-                                            </Accordion.Header>
-                                            <Accordion.Body>
-                                                <Card className={getStatusColorClass(service.datastructures)}>
-                                                    <Card.Title>Datastructures</Card.Title>
-                                                </Card>
-                                                <Card className={getStatusColorClass(service.endpoints)}>
-                                                    <Card.Title>Endpoints</Card.Title>
-                                                </Card>
-                                            </Accordion.Body>
-                                        </Accordion.Item>
-                                    ))
-                                    : <Container>No services status available</Container> }
-                                </Accordion>
+                                <Card>
+                                    <Button
+                                        variant="light"
+                                        onClick={() => {setAssistantSelected({container:container.name, name:"MicroServices"}); setSystemSelected("")}}
+                                        disabled={container.MicroServices === "NO"} 
+                                    >
+                                        <Card.Body>
+                                            MicroServices Overview {getStatusIcon(container.MicroServices)}
+                                        </Card.Body>
+                                    </Button>
+                                </Card>
+                                <ServiceOverviewTab 
+                                    services={container.services}
+                                    getStatusIcon={getStatusIcon}
+                                    servicesInfo={containerInfo.services}
+                                />
                             </Accordion.Body>
                         </Accordion.Item>
                     )) 

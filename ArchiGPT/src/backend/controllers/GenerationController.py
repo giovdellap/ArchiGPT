@@ -1,8 +1,7 @@
-import json
-from flask import current_app, request, jsonify
-import requests
-import os
+from flask import request, jsonify
 
+from utils.api_handler_bridge import assistant_call
+from handlers.pre_processing_handler import PreProcessingHandler
 from utils.content_factory import ContentFactory
 from handlers.container_handler import ContainerHandler
 from utils.assistant_name_matcher import getAssistantName, getNextSystemAssistant
@@ -19,8 +18,8 @@ def generateSystem():
         assistant_name = request.form['assistant']
         
         content = ""
-        handler = DBHandler()
-        handler.database_setup()      
+        dbhandler = DBHandler()
+        dbhandler.database_setup()      
         
         #CONTENT CREATION
         print('CONTENT CREATION')
@@ -28,47 +27,41 @@ def generateSystem():
             if 'userstories' not in request.files:
                return jsonify({"message": "userstories missing"}), 400
             content = request.files['userstories'].read()
-            print('TYPE: ', type(content))
-            handler.updateSystem(project_name, 'userstories', content.decode("utf-8"))
-            # current_path = os.getcwd()
-            # path = current_path + ('/utils/UserStories.txt')
-            # print(current_path)
-            # file = open(path,'r')
-            # content = file.read()
+            preprocessinghandler = PreProcessingHandler()
+            preprocessinghandler.userStories(content.decode("utf-8"))
+            dbhandler.updateSystem(
+                project_name, 
+                'userstories', 
+                preprocessinghandler.getUserStories()
+            )
+            dbhandler.updateSystem(
+                project_name,
+                'description',
+                preprocessinghandler.getDescription()
+            )
+
         else:
-            contentFactory = ContentFactory(handler, project_name)
+            contentFactory = ContentFactory(dbhandler, project_name)
             content = contentFactory.getSystemContent(getAssistantName(assistant_name))
 
 
         #ASSISTANT INTERROGATION
-        print('ASSISTANT INTERROGATION')
-        message = requests.post(
-            current_app.config['API_HANDLER'] + '/interrogation/interrogate',
-            data={
-                'ass_name': getAssistantName(assistant_name),
-                #'ass_model': 'gpt-3.5-turbo',
-                'ass_model': 'gpt-4-turbo-2024-04-09',
-                'content': content
-            }
-        )
-        result = message.json()['content']
-        print('Message: ', result)
+        result = assistant_call( getAssistantName(assistant_name), content )
         
         #UPDATE DB STATUS
-        handler.updateSystemStatus(project_name, assistant_name, 'OK')
+        dbhandler.updateSystemStatus(project_name, assistant_name, 'OK')
         
         #SAVE ON DB
-        handler.updateSystem(project_name, assistant_name, result)
+        dbhandler.updateSystem(project_name, assistant_name, result)
         
         # NEXT ASSISTANT MANAGEMENT
         nextAssistant = getNextSystemAssistant(assistant_name)
         if nextAssistant != "CONTAINER":
-            handler.updateSystemStatus(project_name, nextAssistant, 'NEXT')
+            dbhandler.updateSystemStatus(project_name, nextAssistant, 'NEXT')
         else:
             container_handler = ContainerHandler(result, project_name)
-            container_handler.getContainersList(handler)
+            container_handler.getContainersList(dbhandler)
         
-        #print(message['content'])
         return jsonify({'content': result}), 200
     
     except Exception as e:

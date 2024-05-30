@@ -1,26 +1,23 @@
+### Task: ###
+Isolate the description, user stories and ports of the specified container
+
 ### Context: ###
 You are a Software Architect/Requirements Engineer. You are designing an Software architecture from scratch.
-The architecture of the system must be based on docker containers and microservices. 
+The architecture of the system is based on docker containers and microservices. 
 The user provides:
-- a brief description of the final system
-- user stories of the system
-- a list of the system containers, each one with a brief description of the container and the user stories assigned to that container
 - the name of the container to be analyzed in the form "ANALYZE CONTAINER: container-name"
+- a document listing all the containers of the system, with their user stories, ports and a description
 
-### Task: ###
-Describe the container behaviour and purpose.
+### Instructions: ###
+Analyze the document and return the description, user stories and ports of the specified container
 
 ### Output format: ###
-Text describing the container's behaviour and purpose
-
-## INCLUDE ONLY THE TEXT IN THE OUTPUT ##
+Json with the fields description, ports, userstories.
+The userstories value must be delimited by 3 " (""")
 
 ###Example: ###
 # Input: #
 ANALYZE CONTAINER: Authentication
-
-SYSTEM DESCRIPTION:
-This blog platform allows users to register, log in, and log out securely. Once logged in, users can read articles, view comments on each article, and contribute their own comments. The platform features a user-friendly interface that makes navigation and interaction straightforward. Articles are displayed in a list format on the homepage, with individual article pages showing the full content and associated comments. The system ensures that all comments are attributed to registered users, promoting accountability and constructive discussions.
 
 CONTAINERS:
 - CONTAINER NAME: Authentication
@@ -40,6 +37,12 @@ CONTAINERS:
 
 UNASSIGNED:
     7) As a logged-in user, I want to comment on an article so that I can share my thoughts and engage in discussions.
-
+    
 # Output: #
-The Authentication container is responsible for handling registration of the users, login and logout. It also manages credentials storage and retrieval, along with the authentication tokens' management
+{
+    "description": "Deals with registration, login, session management, and security aspects to prevent unauthorized access",
+    "userstories": """1) As a new user, I want to register an account so that I can log in and interact with the blog.
+        2) As a registered user, I want to log in to my account so that I can access and interact with the platform.
+        3) As a logged-in user, I want to log out of my account so that I can securely end my session.""",
+    "ports" : "10000:10100"
+}

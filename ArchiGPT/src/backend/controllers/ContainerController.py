@@ -1,9 +1,8 @@
 import json
-from flask import current_app, request, jsonify
-import requests
-import os
+from flask import request, jsonify
 
-from handlers.post_processing_handler import processMessage
+from utils.api_handler_bridge import assistant_call
+from handlers.post_processing_handler import buildPreMessage
 from utils.content_factory import ContentFactory
 from handlers.container_handler import ContainerHandler
 from utils.assistant_name_matcher import getAssistantName, getNextContainerAssistant
@@ -23,48 +22,35 @@ def generateContainer():
         container_name = request.form['container']
         
         content = ""
-        handler = DBHandler()
-        handler.database_setup()      
+        dbhandler = DBHandler()
+        dbhandler.database_setup()      
         
         #CONTENT CREATION
         print('CONTENT CREATION')
-        contentFactory = ContentFactory(handler, project_name)
+        contentFactory = ContentFactory(dbhandler, project_name)
         content = contentFactory.getContainerContent(getAssistantName(assistant_name), {"container": container_name})
 
-
         #ASSISTANT INTERROGATION
-        print('ASSISTANT INTERROGATION')
-        message = requests.post(
-            current_app.config['API_HANDLER'] + '/interrogation/interrogate',
-            data={
-                'ass_name': getAssistantName(assistant_name),
-                #'ass_model': 'gpt-3.5-turbo',
-                'ass_model': 'gpt-4-turbo-2024-04-09',
-                'content': content
-            }
-        )
-        message_content = message.json()['content']
-        #result = "provaprova"
-        print('RECEIVED MESSAGE: ', message_content)
-        print('IN MEZZO')
-        result = processMessage(getAssistantName(assistant_name), message_content)
+        message_content = assistant_call( getAssistantName(assistant_name), content )
+
+        result = buildPreMessage(getAssistantName(assistant_name), message_content)
         
-        
+        print('AFTER PROCESSING: ', result)
         
         #UPDATE DB STATUS
-        handler.updateContainerStatus(project_name, assistant_name, 'OK', container_name)
+        dbhandler.updateContainerStatus(project_name, assistant_name, 'OK', container_name)
         
         #SAVE ON DB
-        handler.updateContainer(project_name, container_name, assistant_name, result)
+        dbhandler.updateContainer(project_name, container_name, assistant_name, result)
         
         # NEXT ASSISTANT MANAGEMENT
         nextAssistant = getNextContainerAssistant(assistant_name)
         if nextAssistant != "SERVICE":
-            handler.updateContainerStatus(project_name, getNextContainerAssistant(assistant_name), 'NEXT', container_name)
+            dbhandler.updateContainerStatus(project_name, getNextContainerAssistant(assistant_name), 'NEXT', container_name)
         else:
-            print('AO')
+            container_handler = ContainerHandler(result, project_name)
+            container_handler.getServicesList(dbhandler, container_name)
         
-        #print(message['content'])
         return jsonify({'content': result}), 200
     
     except Exception as e:
@@ -80,9 +66,9 @@ def getContainer():
         if not container_name:
             return jsonify({"message": "container_name missing"}), 400
         
-        handler = DBHandler()
-        handler.database_setup()      
-        result = handler.getContainer(project_name, container_name)
+        dbhandler = DBHandler()
+        dbhandler.database_setup()      
+        result = dbhandler.getContainer(project_name, container_name)
         
         return json.loads(result)['data'], 200
     

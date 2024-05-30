@@ -31,7 +31,7 @@ def getNextSystemAssistant(name):
 def getNextContainerAssistant(name):
     index = container_phases.index(name)
     #if index == len(system_assistants):
-    if name == "ContainerSpecificationGenerator":
+    if name == "MicroServices":
         return 'SERVICE'
     else:
         return container_phases[index+1]
