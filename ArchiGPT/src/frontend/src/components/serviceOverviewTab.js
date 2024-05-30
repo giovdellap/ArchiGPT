@@ -36,7 +36,7 @@ function ServiceOverviewTab({ services, getStatusIcon, servicesInfo }) {
 											<span className="mr-2">{service.name}</span>
 										</div>
 										<div className="col-auto">
-											<span style={{ ...getServiceTypeColor(servicesInfo[serviceIndex].type), padding: '2px', border: '1px solid', borderRadius: '5px' }}>{servicesInfo[serviceIndex].type}</span>
+											{/* <span style={{ ...getServiceTypeColor(servicesInfo[serviceIndex].type), padding: '2px', border: '1px solid', borderRadius: '5px' }}>{servicesInfo[serviceIndex].type}</span> */}
 										</div>
 									</Row>
 									</Accordion.Header>
@@ -44,7 +44,7 @@ function ServiceOverviewTab({ services, getStatusIcon, servicesInfo }) {
 										<Card>
 											<Button
 												variant="light"
-												onClick={() => { /*TODO: update messageView based on servicesInfo[serviceIndex].description */}}
+												onClick={() => { /*TODO: update messageView based on servicesInfo[serviceIndex].description or updateMessage() */}}
 												disabled={service.description === "NO"} 
 											>
 												<Card.Body>
