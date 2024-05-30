@@ -7,3 +7,4 @@ def demoResponse(assistant):
         return "[{'name' : 'service_1', 'type': 'backend', 'description' : 'description service_1 test', 'port' : '10010'},{'name' : 'service_1','type': 'backend','description': 'description service_1 test', 'port' : '10010'}]"
     else:
         return "DEMO MESSAGE: " + assistant
+    

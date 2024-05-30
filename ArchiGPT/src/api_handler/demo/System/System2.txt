@@ -1,0 +1,42 @@
+CONTAINERS:
+- CONTAINER NAME: Authentication
+- DESCRIPTION: Handles user authentication, sign up, login, logout, profile settings, account deletion, and credential modification
+- USER STORIES:
+1) As a User, I want to be able to signup in order to have an account
+2) As a User, I want to be able to login
+3) As a User, I want to logout from the account by clicking on the Navbar
+4) As a User, I want to be able to have access to my profile settings
+5) As a User, I want to be able to delete my account by clicking on a button from the profile settings page
+6) As a User, I want to be able to modify my email and password in order to change my credentials
+- PORTS: 20000:20100
+- CONTAINER NAME: News
+- DESCRIPTION: Responsible for managing news articles, displaying recent news, filtering news by country, adding, deleting, and managing favorite news
+- USER STORIES:
+7) As a User, I want to see all recent news
+8) As a User, I want to filter Italian news by selecting from the menu of available countries
+9) As a User, I want to add to my favourite news all the news I'm interested in, in order to read them later
+10) As a User, I want to delete from my favourite news all the news that I'm no longer interested
+15) As a User, I want to delete all the news and tickets in my favourite list
+- PORTS: 21000:21100
+- CONTAINER NAME: Tickets
+- DESCRIPTION: Manages sporting event tickets, displays available tickets, filters tickets by country, adds, deletes, and manages collection of tickets
+- USER STORIES:
+11) As a User, I want to see available tickets for upcoming sporting events
+12) As a User, I want to filter Italian tickets by selecting from the menu of available countries
+13) As a User, I want to add to my collection all the tickets I'm interested in, in order to purchase them later
+14) As a User, I want to delete from my collection all the tickets that I'm no longer interested
+- PORTS: 22000:22100
+- CONTAINER NAME: Friends
+- DESCRIPTION: Manages friend requests, friend lists, and interactions with other users
+- USER STORIES:
+16) As a User, I want to send a friend request to another user, in order to add him to my friend list
+17) As a User, I want to check if someone has sent me a friend request, in order to accept or delete it
+18) As a User, I want to delete a friend from my friend list
+- PORTS: 23000:23100
+
+- CONTAINER NAME: Frontend
+- DESCRIPTION: Handles the frontend exposure to the user and acts as a starting endpoint for the system
+- PORTS: 24000:24100
+
+UNASSIGNED:
+- "As a User, I want to be able to delete all the news and tickets in my favourite list"

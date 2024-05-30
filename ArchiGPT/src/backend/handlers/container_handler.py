@@ -78,7 +78,7 @@ class ContainerHandler:
 
         #ASSISTANT INTERROGATION UTIL 3
         message_content = assistant_call( 'Util_3', content )
-
+        print('AO', message_content)
         list = ast.literal_eval(message_content)
 
         #OBJECT CONSTRUCTION
