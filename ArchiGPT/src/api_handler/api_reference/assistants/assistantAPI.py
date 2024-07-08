@@ -134,7 +134,7 @@ def assistantUpdate(assistantObj):
 def assistantDelete(assistant_id):
     try:
         assistant = getAssistant(assistant_id)
-        print("ASSISTANT DELETE: assistant - ", assistant.name)
+        print("ASSISTANT DELETE: assistant - ", assistant["name"])
         
         #Code interpreter
         if "code_interpreter" in assistant["tool_resources"]:

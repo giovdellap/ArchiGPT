@@ -1,3 +1,8 @@
+# TO FIX
+- ##FIXED -> TO CONFIRM -> Assistant delete failed: 'dict' object has no attribute 'name' (assistant.name is undefined ? possible getAssistant(assistant.id) wrong)
+- src/components/serviceOverviewTab.js: 'getServiceTypeColor' is assigned a value but never used  (handle microservices tag)
+
+
 # MICROSERVICES BRANCH
 
 ## API HANDLER
