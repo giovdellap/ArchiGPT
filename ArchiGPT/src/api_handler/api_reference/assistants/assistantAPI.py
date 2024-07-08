@@ -33,6 +33,7 @@ def creationHandler(assistantObj, req_ci, req_vs):
             if len(req_vs) > 0:
                 file_batch_assistant = uploadFileBatchesVectorStore(vector_store, req_vs)
             tool_resources['file_search']['vector_store_ids'] = [vector_store.id]
+            
         assistant = current_app.config['CLIENT'].beta.assistants.create(
             instructions=instructions_text,
             name=assistantObj.name,
