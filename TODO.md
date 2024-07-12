@@ -1,3 +1,7 @@
+# TO FIX
+- src/components/serviceOverviewTab.js: 'getServiceTypeColor' is assigned a value but never used  (handle microservices tag)
+
+
 # MICROSERVICES BRANCH
 
 ## API HANDLER

@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from controllers.ProjectController import createProject, deleteProject, getAllProject, getStatus, getSystem
+from controllers.ProjectController import createProject, deleteProject, getAllProject, getJson, getStatus, getSystem
 
 
 project_bp = Blueprint('project_bp', __name__)
@@ -12,3 +12,4 @@ project_bp.route('/', methods=['DELETE'])(deleteProject)
 project_bp.route('/status', methods=['GET'])(getStatus)
 project_bp.route('/system', methods=['GET'])(getSystem)
 
+project_bp.route('/generateJson', methods=['GET'])(getJson)

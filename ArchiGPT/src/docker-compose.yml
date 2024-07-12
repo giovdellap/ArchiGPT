@@ -6,7 +6,7 @@ services:
     ports:
       - "5001:5001"
     volumes:
-    - ./backend:/backend
+      - ./backend:/backend
     environment:
       - MONGODB_URL=mongodb://mongodb:27017
     depends_on:
@@ -20,20 +20,19 @@ services:
     ports:
       - "10001:10001"
     volumes:
-    - ./api_handler:/api_handler
+      - ./api_handler:/api_handler
     depends_on:
       - backend
     networks:
       - main-network
 
-  
-  frontend: 
+  frontend:
     container_name: frontend
-    build: ./frontend 
+    build: ./frontend
     ports:
-    - "3000:3000"
+      - "3000:3000"
     volumes:
-    - ./frontend:/frontend
+      - ./frontend:/frontend
     environment:
       - WATCHPACK_POLLING=true
     depends_on:
@@ -41,10 +40,9 @@ services:
     networks:
       - main-network
 
-
   mongodb:
     container_name: mongodb
-    image: mongodb_image
+    image: mongo:latest
     ports:
       - '27017:27017'
     environment:
@@ -57,7 +55,7 @@ services:
 
   mongo-express:
     container_name: express
-    image: mongo-express
+    image: mongo-express:latest
     restart: always
     depends_on:
       - mongodb
@@ -70,7 +68,6 @@ services:
       ME_CONFIG_MONGODB_PORT: "27017"
     networks:
       - main-network
-
 
 networks:
   main-network:

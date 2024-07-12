@@ -136,7 +136,7 @@ function ProjectOverview() {
           	})
 			.then((generationResult) => {
 				fetchProjectStatus()
-				fetchContainerInfo(assistantSelected.container)
+				if(systemSelected === "") fetchContainerInfo(assistantSelected.container)
 				setGenerationMessage(generationResult.content)
 				setShowLoadingScreen(false)
 			})

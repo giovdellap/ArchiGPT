@@ -42,6 +42,7 @@ def interrogate():
         #ASSISTANT CREATION
         assistant_id = AssistantOrchestrator.assistantCreation(assistant, name, model, [], [])
         print("Assistant correctly created: ", name)
+
         #THREAD CREATION
         thread = threadCreationHandler()
         #print("THREAD: ", thread)

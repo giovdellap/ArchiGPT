@@ -64,7 +64,7 @@ class ContainerHandler:
         message_content = assistant_call( 'Util_2', content )
        
         obj = ast.literal_eval(message_content)
-        print('CONTAINER HANDLER UTIL 2- OBJ: ', obj)
+        print('CONTAINER HANDLER UTIL 2 - OBJ: ', obj)
         
         #SAVE ON DB
         dbhandler.updateContainer(self.project_name, container, 'description', obj['description'])
@@ -78,8 +78,9 @@ class ContainerHandler:
 
         #ASSISTANT INTERROGATION UTIL 3
         message_content = assistant_call( 'Util_3', content )
-        print('AO', message_content)
+ 
         list = ast.literal_eval(message_content)
+        print('CONTAINER HANDLER UTIL 3 - OBJ: ', list)
 
         #OBJECT CONSTRUCTION
         for microservice in list:
@@ -89,7 +90,7 @@ class ContainerHandler:
             if microservice['type'] == "frontend":
                 microservice['pages'] = ""
         
-        print('CONTAINER HANDLER UTILS 3 - LIST: ', list)
+        print('CONTAINER HANDLER UTIL 3 - LIST: ', list)
 
         #SAVE ON DB
         dbhandler.updateContainer(self.project_name, container, 'services', list)
