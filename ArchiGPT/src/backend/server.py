@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
 import os
-from handlers.db_handler import DBHandler
 from config import ApplicationConfig
 from routes.database_bp import database_bp
 from routes.project_bp import project_bp
@@ -10,10 +9,6 @@ from routes.generation_bp import generation_bp
 
 app = Flask(__name__)
 CORS(app)
-
-handler = DBHandler()
-handler.database_setup()
-handler.import_json()
 
 app.config['basedir'] = os.path.abspath(os.path.dirname(__file__))
 app.config.from_object(ApplicationConfig)

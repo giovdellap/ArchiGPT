@@ -78,9 +78,9 @@ class ContainerHandler:
 
         #ASSISTANT INTERROGATION UTIL 3
         message_content = assistant_call( 'Util_3', content )
- 
+        print('CONTAINER HANDLER UTIL 3 - OBJ: ', message_content)
+        
         list = ast.literal_eval(message_content)
-        print('CONTAINER HANDLER UTIL 3 - OBJ: ', list)
 
         #OBJECT CONSTRUCTION
         for microservice in list:

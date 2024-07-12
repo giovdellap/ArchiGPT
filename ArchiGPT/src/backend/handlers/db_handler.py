@@ -1,4 +1,3 @@
-import json
 import bson
 from flask import current_app
 
@@ -16,23 +15,6 @@ class DBHandler:
                 return 'DB created'
             else:
                 return 'DB creation failed'
-        except Exception as e:
-            print("Exception: %s", e)
-            return e
-        
-    def import_json(self):
-        try:
-            
-            self.database = current_app.config['MONGO_CLIENT'][self.project_dbName]
-            collection = self.database['OneSport']
-            with open('OneSport.json') as file:
-                file_data = json.load(file)
-     
-            if isinstance(file_data, list):
-                collection.insert_many(file_data)  
-            else:
-                collection.insert_one(file_data)
-
         except Exception as e:
             print("Exception: %s", e)
             return e
