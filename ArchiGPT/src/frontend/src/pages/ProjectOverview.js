@@ -3,13 +3,15 @@ import SystemOverviewTab from '../components/systemOverviewTab';
 import GenerationHandler from '../components/generationHandler';
 import ProjectHeader from '../components/projectHeader';
 import LoadingScreen from '../components/loadingScreen';
+import ContainerOverviewTab from '../components/containerOverviewTab';
 
 function ProjectOverview() {
 	const projectName = window.location.pathname.split('/').pop();
 	const [projectStatus, setProjectStatus] = useState([]);
 	const [projectSystem, setProjectSystem] = useState([]);
 	const [systemSelected, setSystemSelected] = useState("");
-	const [assistantSelected, setAssistantSelected] = useState({container:"",name:""});
+	const [containerSelected, setContainerSelected] = useState({container:"",assistant:""});
+	const [serviceSelected, setServiceSelected] = useState({service:"",assistant:""});
 	const [containerInfo, setContainerInfo] = useState("");
 	const [generationMessage, setGenerationMessage] = useState("");
 	const [showLoadingScreen, setShowLoadingScreen] = useState(false);
@@ -84,16 +86,21 @@ function ProjectOverview() {
 					setGenerationMessage(system.message);
 				}
 			});
-		}
-		
-		if(assistantSelected.name !== "") {
-			if(assistantSelected.name === "ContainerDescriptionGenerator")
+		} else if(containerSelected.assistant !== "" && serviceSelected.service === "") {
+			if(containerSelected.assistant === "ContainerDescriptionGenerator")
 				setGenerationMessage(containerInfo.ContainerDescriptionGenerator)
-			if(assistantSelected.name === "ContainerSpecificationGenerator")
+			if(containerSelected.assistant === "ContainerSpecificationGenerator")
 				setGenerationMessage(containerInfo.ContainerSpecificationGenerator)
-			if(assistantSelected.name === "MicroServices")
+			if(containerSelected.assistant === "MicroServices")
 				setGenerationMessage(containerInfo.MicroServices)
-		}
+		} else if(containerSelected.assistant !== "" && serviceSelected.service !== "") {
+			if(serviceSelected.assistant === "ServiceDescriptionGenerator")
+				setGenerationMessage(containerInfo.services.find(service => service.name === serviceSelected.service).description)
+			if(serviceSelected.assistant === "ServiceSpecificationGenerator")
+				setGenerationMessage(containerInfo.services.find(service => service.name === serviceSelected.service).specifications)
+			if(serviceSelected.assistant === "ServiceEndpointGenerator")
+				setGenerationMessage(containerInfo.services.find(service => service.name === serviceSelected.service).endpoints)
+		} 
 
 	}
 
@@ -117,8 +124,8 @@ function ProjectOverview() {
 			}
 		} else {
 			generateApiUrl = 'http://localhost:5001/generation/generateContainer';
-			formData.append('assistant', assistantSelected.name);
-			formData.append('container', assistantSelected.container);
+			formData.append('assistant', containerSelected.assistant);
+			formData.append('container', containerSelected.container);
 		}
 
         fetch(generateApiUrl, {
@@ -136,7 +143,7 @@ function ProjectOverview() {
           	})
 			.then((generationResult) => {
 				fetchProjectStatus()
-				if(systemSelected === "") fetchContainerInfo(assistantSelected.container)
+				if(systemSelected === "") fetchContainerInfo(containerSelected.container)
 				setGenerationMessage(generationResult.content)
 				setShowLoadingScreen(false)
 			})
@@ -144,8 +151,7 @@ function ProjectOverview() {
 				window.alert('Failed to generate document');
 				console.error('Failed to generate document:', error);
 			});
-      };
-
+    };
 
 
     useEffect(() => {
@@ -153,7 +159,7 @@ function ProjectOverview() {
 		fetchProjectStatus()
 		updateMessage()
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [systemSelected, assistantSelected]);
+	}, [systemSelected, containerSelected]);
 
 
 	return (
@@ -163,9 +169,14 @@ function ProjectOverview() {
 			<div style={{ flex: 1, borderRight: '1px solid #ccc' }}>
 			<SystemOverviewTab 
 				projectStatus={projectStatus} 
+				setSystemSelected={setSystemSelected} 
+			/>
+			<ContainerOverviewTab 
+				projectStatus={projectStatus} 
 				containerInfo={containerInfo}
 				setSystemSelected={setSystemSelected} 
-				setAssistantSelected={setAssistantSelected}
+				setContainerSelected={setContainerSelected}
+				setServiceSelected={setServiceSelected}
 				fetchContainerInfo={fetchContainerInfo}
 			/>
 			</div>
@@ -177,7 +188,8 @@ function ProjectOverview() {
 						generationMessage={generationMessage} 
 						handleGenerate={handleGenerate} 
 						systemSelected={systemSelected} 
-						assistantSelected={assistantSelected}
+						containerSelected={containerSelected}
+						serviceSelected={serviceSelected}
 						handleFileUpload={handleFileUpload}
 						file={file}
 					/>
