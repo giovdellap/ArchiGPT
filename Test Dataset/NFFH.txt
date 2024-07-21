@@ -11,7 +11,7 @@ As a Client , I want to be able to login in the site so that I can use the site
 As a Client , I want to be able to not put my Credentials in the site every time a reload the site, so that I can use the site
 As a Client , I want to be able to logout, so that no one else use my account
 As a Client , I want to be able to see my personal information
-As a Client , I want to be able to Hot products, so that i can discover the product in the season
+As a Client , I want to be able to See Hot products, so that i can discover the product in the season
 As a Client , I want to be able to See Agricultural company in my area, so that i can choose where to buy products
 As a Client , I want to be able to See The products for each Agricultural company, so that I can buy From them
 As a Client , I want to be able to Add to cart the products, so that i can buy them
