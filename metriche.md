@@ -1,45 +1,18 @@
-## Final index
+## Final index #TODO
 fi = 100*((r1/100))*(r2/100)
 
 
 ### INPUT:
 n_us = numero user stories
-[
-    {
-        container_name: string,
-        user stories: string[]
-    }
-]
+
 
 ### METRICHE:
 
-### tutte le user stories soddisfatte?
+- USER STORIES METRICS (1x)
+
+### user stories satisfaction coverage
 n_sod = user stories soddisfatte
 r1 = 100 *(n_sod/n_us)
-  
-### container integrity coverage
-n_ss = set di user stories completi
-n_set = numero di set di user stories
-r2 = 100*(n_ss/n_set)
-idee:
-    - dare un peso ai set (in base alla dimensione?)
-
-### granularity index
-n_set = numero di set di user stories
-n_c = numero container
-ig = 100*(n_c/n_set)
-per ig>100 => ig = 100
-ig:100 = n_c : n_set
-
-### metrica numero container rispetto ai set (granularity index esteso)
-r3 = 100*(n_c/n_set) per n_c <= n_set
-r3 = 100*((2*n_set-n_c)/n_set per n_c >= n_set
-
-### ### metrica numero container rispetto ai set (granularity index esteso v2)
-n_copt = numero di container ottimale
-r3 = 100*(n_c/n_copt) per n_c <= n_copt
-r3 = 100*((2*n_copt-n_c)/n_copt per n_c >= n_set
-
 
 ### idea tutte le user stories soddisfatte
 
@@ -79,4 +52,38 @@ n_err = numero errori singola user story
 
 Per ogni user story, v_us = 1 - (0.1 * n_err)
 r1 = 100 * (sommatoria v_us)/n_us
+
+
+  
+- CONTAINER METRICS (1x)
+
+### container integrity coverage
+n_ss = set di user stories completi
+n_set = numero di set di user stories
+r2 = 100*(n_ss/n_set)
+idee:
+    - dare un peso ai set (in base alla dimensione?)
+
+### granularity index
+n_set = numero di set di user stories
+n_c = numero container
+ig = 100*(n_c/n_set) per ig>100 => ig = 100
+
+### metrica numero container rispetto ai set (granularity index esteso n_c)
+r3 = 100*(n_c/n_set) per n_c <= n_set
+r3 = 100*((2*n_set-n_c)/n_set per n_c >= n_set
+
+### ### metrica numero container rispetto ai set (granularity index esteso n_copt)
+n_copt = numero di container ottimale
+r3 = 100*(n_c/n_copt) per n_c <= n_copt
+r3 = 100*((2*n_copt-n_c)/n_copt per n_c >= n_set
+  
+- SERVICE METRICS (n_c x)
+
+### service integrity coverage
+n_serv_be = numero di servizi backend
+n_set = numero di set assegnati al container
+r2 = 100*(n_ss/n_set)
+
+
 

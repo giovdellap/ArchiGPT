@@ -88,6 +88,7 @@ Based on the provided user stories and the container's purpose, there is no appa
 - TYPE: backend
 - DESCRIPTION: Handles session persistence and state management across site visits, utilizing tokens to ensure users remain logged in without re-entering credentials continually. It interacts with the user database to validate session tokens and manage session data.
 - PORTS: 10020
+
 #### MICROSERVICE: credentials_db
 - TYPE: database
 - DESCRIPTION: Stores and manages user credentials, including usernames and passwords, along with session tokens. This database is crucial for the authentication process and session management, providing quick data access for verification and security checks.
