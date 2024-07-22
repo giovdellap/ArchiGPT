@@ -1,14 +1,17 @@
 # SET LIST:
-- SET 1: ... []
+- SET 1: AUTH [1, 2, 3, 4, 5, 6]
 
-- SET 2: ... []
+- SET 2: EXTERNAL API NEWS [7, 8]
 
-- SET 3: ... []
+- SET 3: NEWS [9, 10, 15] / SET 2
 
-- SET 4: ... []
+- SET 4: EXTERNAL API TICKETS [11, 12]
 
-- SET 5: ... []
+- SET 5: TICKETS [13, 14, 15] / SET 4
 
+- SET 6: SOCIAL [16, 17, 18]
+
+- SET 7: FRONTEND []
 
 - NO ASSOCIATION: []
 

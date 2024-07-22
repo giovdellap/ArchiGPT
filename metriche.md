@@ -66,7 +66,7 @@ idee:
 
 ### granularity index
 n_set = numero di set di user stories
-n_c = numero container
+n_c = numero container con almeno una user story
 ig = 100*(n_c/n_set) per ig>100 => ig = 100
 
 ### metrica numero container rispetto ai set (granularity index esteso n_c)
