@@ -74,9 +74,10 @@ r3 = 100*(n_c/n_set) per n_c <= n_set
 r3 = 100*((2*n_set-n_c)/n_set per n_c >= n_set
 
 ### ### metrica numero container rispetto ai set (granularity index esteso n_copt)
-n_copt = numero di container ottimale
-r3 = 100*(n_c/n_copt) per n_c <= n_copt
-r3 = 100*((2*n_copt-n_c)/n_copt per n_c >= n_set
+n_cl = numero cluster
+r3 = 100*(n_c/n_cl) per n_c <= n_cl
+r3 = 100 per n_cl < n_c < n_set>
+r3 = 100*((2*n_set-n_c)/n_set per n_c >= n_set
   
 - SERVICE METRICS (n_c x)
 

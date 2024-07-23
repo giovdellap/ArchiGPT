@@ -1,4 +1,4 @@
-# CONTAINER IDENTITY COVERAGE
+# CONTAINER IDENTITY COVERAGE / GRANULARITY INDEX
 
 ### User Input
 [
@@ -9,6 +9,11 @@
 ]
 
 ### Benchmark input
+[
+    {
+        set_name: string,
+        user_stories: number[]
+    }
+]
 
 
-# GRANULARITY INDEX

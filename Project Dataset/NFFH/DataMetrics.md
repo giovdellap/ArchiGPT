@@ -23,3 +23,11 @@
 
 - NO ASSOCIATION: []
 
+[
+    {
+        set_id: 1
+        set_name: auth,
+        user_stories: [1, 2, 3, 4, 5, 6],
+        cluster_id: 1
+    },
+]
