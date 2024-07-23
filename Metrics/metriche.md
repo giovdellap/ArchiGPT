@@ -73,7 +73,7 @@ ig = 100*(n_c/n_set) per ig>100 => ig = 100
 r3 = 100*(n_c/n_set) per n_c <= n_set
 r3 = 100*((2*n_set-n_c)/n_set per n_c >= n_set
 
-### ### metrica numero container rispetto ai set (granularity index esteso n_copt)
+### ### metrica numero container rispetto ai set (granularity index esteso n_cl)
 n_cl = numero cluster
 r3 = 100*(n_c/n_cl) per n_c <= n_cl
 r3 = 100 per n_cl < n_c < n_set>
