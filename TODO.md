@@ -8,12 +8,15 @@ Possiamo sanitizzare le user stories ? (Gran parte non sono scritte bene e quind
 ## COSE DA FARE
 
 ### Granularity Evaluation
+DEFINIZIONE OK:
 ALGORITMI:
 Minimo Numero clicque - OK
-
+Algoritmo completo: no
 
 
 ### Container Integrity Coverage
+DEFINIZIONE: OK
+ALGORITMO: NO
 
 ### Endpoints User Stories Coverage
 
