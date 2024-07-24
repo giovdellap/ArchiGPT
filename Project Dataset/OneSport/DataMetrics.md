@@ -1,24 +1,3 @@
-# SET LIST:
-- SET 1: AUTH [1, 2, 3, 4, 5, 6]
-
-- SET 2: EXTERNAL API NEWS [7, 8]
-
-- SET 3: NEWS [9, 10, 15] / SET 2
-
-- SET 4: EXTERNAL API TICKETS [11, 12]
-
-- SET 5: TICKETS [13, 14, 15] / SET 4
-
-- SET 6: SOCIAL [16, 17, 18]
-
-- NO ASSOCIATION: []
-
-n_cl = 4
-n_ set = 6
-n_c = 3 => r3 = 75
-n_c = 4, 5, 6 => r3 = 100
-n_c = 7 => 82
-
 [
     {
         set_id: 1
@@ -55,6 +34,6 @@ n_c = 7 => 82
         set_name: social,
         user_stories: [16, 17, 18],
         links: []
-    },
+    }
 ]
 

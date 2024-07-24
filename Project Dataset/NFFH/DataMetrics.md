@@ -1,5 +1,5 @@
 # SET LIST:
-set = [
+[
     {
         set_id: 1
         set_name: auth client,
