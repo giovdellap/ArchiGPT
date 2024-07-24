@@ -58,7 +58,7 @@ cluster = [
         cluster_name: auth,
         sets: [1, 2, 3]
     },
-        {
+    {
         cluster_id: 2,
         cluster_name: farmer,
         sets: [4, 9]
@@ -68,27 +68,10 @@ cluster = [
         cluster_name: frontend,
         sets: [6, 7]
     },
-]
-
-
-
-- SET 3: CLIENT-RELATED ACTIONS [5, 25, 27, 28, 29]
-
-- SET 5: CART [9, 10, 11]
-
-- SET 6: ORDER [12, 26]
-
-- SET 7: FRONTEND [ 13 ]
-
-- SET 8: PRODUCTS [6, 14, 15, 16, 8, 33, 34, 36, 37, 38]
-- SET 11: AREA-RELATED ACTIONS [7, 30, 35, 31]
-
-- NO ASSOCIATION: []
-
-[
     {
-        set_id: 1
-        set_name: auth,
-        user_stories: [1, 2, 3, 4, 5, 6],
+        cluster_id: 4,
+        cluster_name: ,
+        sets: []
     },
 ]
+
