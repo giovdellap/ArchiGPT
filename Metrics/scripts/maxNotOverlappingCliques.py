@@ -1,10 +1,14 @@
-# Python code to find non-overlapping maximal cliques
+# Python code to find non-overlapping maximal cliques = minimum acceptable number of containers
 # Explanation:
 # 1. Graph Representation: The adjacency list represents the connections as described.
 # 2. Bron-Kerbosch Algorithm: This algorithm is used to find all maximal cliques in an undirected graph.
 # 3. Finding Non-overlapping Cliques:
 #   	The find_cliques function uses the Bron-Kerbosch algorithm to find all cliques.
 #       The find_non_overlapping_cliques function selects the largest cliques ensuring no node overlap by sorting all cliques by size and iterating through them, ensuring nodes are used only once.
+
+import json
+
+json_file = 'Project Dataset/OneSport/DataMetrics.json'
 
 def bron_kerbosch(R, P, X, graph, cliques):
     if not P and not X:
@@ -39,21 +43,16 @@ def find_non_overlapping_cliques(graph):
     
     return selected_cliques
 
-# Graph represented as an adjacency list
-graph = {
-    1: [2],
-    2: [1, 3],
-    3: [2, 4, 5],
-    4: [3, 5],
-    5: [3, 4, 6],
-    6: [5],
-    7: [],
-    8: [9],
-    9: [8, 10],
-    10: [9]
-}
+def fromSetsToGraph(sets):
+    graph = {}
+    for elem in sets:
+        graph[elem['set_id']] = elem['links']
+    return graph
 
-# Find non-overlapping maximal cliques
+
+f = open(json_file)
+sets = json.load(f)
+graph = fromSetsToGraph(sets)
 non_overlapping_cliques = find_non_overlapping_cliques(graph)
 print("Non-overlapping maximal cliques:", non_overlapping_cliques)
 print("Number of non-overlapping cliques:", len(non_overlapping_cliques))
