@@ -5,4 +5,34 @@ L'algoritmo della metrica (che calcola la metrica) può prendere in input dirett
 Possiamo sanitizzare le user stories ? (Gran parte non sono scritte bene e quindi non sono comprensibili)
 
 
-Possiamo frae un assistant che genera json di set e cluster? Usarlo sia come assistente su Archi e sia per generazione metriche?
+## COSE DA FARE
+
+### Granularity Evaluation
+ALGORITMI:
+Minimo Numero clicque - OK
+
+
+
+### Container Integrity Coverage
+
+### Endpoints User Stories Coverage
+
+
+ARCHI DICE:
+Container 1: Auth
+US: 1, 2, 3, 4
+endpoint container 1 coprono solo 1, 2, 3, manca 4
+tabella DataMetrics:
+| POST | 1, 2 |
+| POST | 3 |
+| POST | 4 |
+
+tabella Endpoint Archi:
+| POST | 1, 2 |
+| POST | 3 |
+
+Set: 1, 2, 3, 4
+
+CONTAINER INTEGRITY COVERAGE: 100%
+
+

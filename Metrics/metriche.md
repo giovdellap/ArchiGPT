@@ -30,16 +30,16 @@ r3 = 100*((2*n_set-n_c)/n_set per n_c >= n_set
   
 - SERVICE METRICS (n_c x)
 
-### service integrity coverage
+### service coverage (per ogni container)
 n_serv_be = numero di servizi backend
 n_set = numero di set assegnati al container
-r2 = 100*(n_ss/n_set)
+scc = 100*(n_serv_be/n_set)
 
-### service coverage
-n_us_container = numero di servizi backend
-n_us_ser = numero di set assegnati al container
-r2 = 100*(n_us_ser/n_us_container)
+### container service coverage
+ssc = sommatoria di (Per ogni container, (1/n_c)*scc)
 
+### service user stories coverage
+x = 
 
 
 
