@@ -3,75 +3,63 @@ set = [
     {
         set_id: 1
         set_name: auth client,
-        user_stories: [1, 2, 3, 4]
+        user_stories: [1, 2, 3, 4],
+        links: [2, 3, 5]
     },
     {
         set_id: 2
         set_name: auth admin,
-        user_stories: [22, 23, 24]
+        user_stories: [22, 23, 24],
+        links: [1, 3]
     },
     {
         set_id: 3
         set_name: auth farmer,
-        user_stories: [17, 18, 19, 20]
+        user_stories: [17, 18, 19, 20],
+        links: [1, 2, 4]
     },
     {
         set_id: 4
         set_name: farmer,
-        user_stories: [21, 32]
+        user_stories: [21, 32],
+        links: [3, 9]
     },
     {
         set_id: 5
         set_name: client,
-        user_stories: [5, 25, 27, 28, 29]
+        user_stories: [5, 25, 27, 28, 29],
+        links: [1]
     },
     {
         set_id: 6
         set_name: cart,
-        user_stories: [9, 10, 11]
+        user_stories: [9, 10, 11],
+        links: [7, 10]
     },
     {
         set_id: 7
         set_name: frontend,
-        user_stories: [13]
+        user_stories: [13],
+        links: [6]
     },
     {
         set_id: 8
         set_name: products,
-        user_stories: [6, 14, 15, 16, 8, 33, 34, 36, 37, 38]
+        user_stories: [6, 14, 15, 16, 8, 33, 34, 36, 37, 38],
+        links: []
     },
     {
         set_id: 9
         set_name: area,
-        user_stories: [7, 30, 35, 31]
+        user_stories: [7, 30, 35, 31],
+        links: [4]
     },
     {
         set_id: 10
         set_name: order,
-        user_stories: [12, 26]
+        user_stories: [12, 26],
+        links: [6]
     },
 ]
 
-cluster = [
-    {
-        cluster_id: 1,
-        cluster_name: auth,
-        sets: [1, 2, 3]
-    },
-    {
-        cluster_id: 2,
-        cluster_name: farmer,
-        sets: [4, 9]
-    },
-    {
-        cluster_id: 3,
-        cluster_name: frontend,
-        sets: [6, 7]
-    },
-    {
-        cluster_id: 4,
-        cluster_name: ,
-        sets: []
-    },
-]
 
