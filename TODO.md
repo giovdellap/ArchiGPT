@@ -5,37 +5,18 @@ L'algoritmo della metrica (che calcola la metrica) può prendere in input dirett
 Possiamo sanitizzare le user stories ? (Gran parte non sono scritte bene e quindi non sono comprensibili)
 
 
-## COSE DA FARE
+### PROGETTI 
 
-### Granularity Evaluation
-DEFINIZIONE OK:
-ALGORITMI:
-Minimo Numero clicque - OK
-Algoritmo completo: no
+#### EUGENIO
 
+6 - QuizTime: NO
+11 - EFarmers: NO
+18 - RecipeCove: NO
+22 - Teamify: NO
 
-### Container Integrity Coverage
-DEFINIZIONE: OK
-ALGORITMO: NO
+#### GIOVANNI
 
-### Endpoints User Stories Coverage
-
-
-ARCHI DICE:
-Container 1: Auth
-US: 1, 2, 3, 4
-endpoint container 1 coprono solo 1, 2, 3, manca 4
-tabella DataMetrics:
-| POST | 1, 2 |
-| POST | 3 |
-| POST | 4 |
-
-tabella Endpoint Archi:
-| POST | 1, 2 |
-| POST | 3 |
-
-Set: 1, 2, 3, 4
-
-CONTAINER INTEGRITY COVERAGE: 100%
-
-
+9 - CDC: NO
+17 - EuropeanParliamentOnline: NO
+20 - StocksPlayground
+23 - GYA: NO

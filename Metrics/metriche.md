@@ -10,25 +10,25 @@ n_c = numero di container
 
 ### METRICHE:
 
-- USER STORIES METRICS (1x)
+## USER STORIES METRICS (1x)
 
 ### user stories satisfaction coverage
 n_sod = user stories soddisfatte
 r1 = 100 *(n_sod/n_us)
   
-- CONTAINER METRICS (1x)
+## CONTAINER METRICS (1x)
 
 ### container integrity coverage
 n_ss = set di user stories completi
 r2 = 100*(n_ss/n_set)
 
-### ### granularity evaulation
+### granularity evaulation
 n_cl = numero not overlapping cliques (found by maxNotOverllapingCliques.py)
 r3 = 100*(n_c/n_cl) per n_c <= n_cl
 r3 = 100 per n_cl < n_c < n_set
 r3 = 100*((2*n_set-n_c)/n_set per n_c >= n_set
   
-- SERVICE METRICS (n_c x)
+## SERVICE METRICS (n_c x)
 
 ### service coverage (per ogni container)
 n_serv_be = numero di servizi backend
@@ -38,8 +38,30 @@ scc = 100*(n_serv_be/n_set)
 ### container service coverage
 ssc = sommatoria di (Per ogni container, (1/n_c)*scc)
 
-### service user stories coverage
-x = 
+### container persistance coverage (per ogni container)
+Si considerano solo i container che contengono set con db = true
+n_serv_db = numero di servizi db
+if (esiste almeno un servizio db) {
+    cpc = 100
+} else {
+    cpc = 0
+}
+
+### persistance coverage
+n_cdb = numero di container con almeno un set con db = true
+ssc = sommatoria di (Per ogni container con un set con db = true, (1/n_cdb)*scc)
+
+
+## ENDPOINTS METRICS
+
+### Container Endpoint Coverage (per ogni container)
+n_usc = user stories container
+n_use = numero user stories coperte dagli endpoint
+cec = 100*(n_use/n_usc)
+
+### System Container Endpoint Coverage 
+scec = sommatoria di (Per ogni container, (1/n_c)*cec)
+
 
 
 
