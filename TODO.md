@@ -4,6 +4,8 @@ L'algoritmo della metrica (che calcola la metrica) può prendere in input dirett
 
 Possiamo sanitizzare le user stories ? (Gran parte non sono scritte bene e quindi non sono comprensibili)
 
+Come confrontarsi con progetti simili a QuizTime ? (gestore di code, etc..)
+
 
 ### PROGETTI 
 
