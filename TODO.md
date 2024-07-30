@@ -11,8 +11,8 @@ Come confrontarsi con progetti simili a QuizTime ? (gestore di code, etc..)
 
 #### EUGENIO
 
-6 - QuizTime: NO
-11 - EFarmers: NO
+6 - QuizTime: ? (Progetto probabile da scartare perchè out of scope, troppi servizi dedicati solo alla parte di DDS)
+11 - EFarmers: YES (Archi_DOC è parzialmente generato)
 18 - RecipeCove: NO
 22 - Teamify: NO
 
