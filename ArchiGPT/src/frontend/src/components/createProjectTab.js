@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Form } from 'react-bootstrap';
 
 function CreateProjectTab({ fetchprojects }) {
   const [projectName, setProjectName] = useState('');
@@ -37,22 +37,24 @@ function CreateProjectTab({ fetchprojects }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit} style={{ border: '1px solid grey', padding: '20px' }}>
-      <Form.Group controlId="projectName">
-        <Form.Label>Project Name</Form.Label>
-        <Form.Control 
-          type="text" 
-          placeholder="Enter project name" 
-          value={projectName} 
-          onChange={(e) => setProjectName(e.target.value)} 
-        />
-      </Form.Group>
+    <Col style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Form onSubmit={handleSubmit} style={{ border: '1px solid grey', padding: '20px' }}>
+        <Form.Group controlId="projectName">
+          <Form.Label>Project Name</Form.Label>
+          <Form.Control 
+            type="text" 
+            placeholder="Enter project name" 
+            value={projectName} 
+            onChange={(e) => setProjectName(e.target.value)} 
+          />
+        </Form.Group>
 
-	  <div style={{ margin: '10px' }} />
-      <Button variant="success" type="submit">
-        <FontAwesomeIcon icon={faPlus} /> Add Project
-      </Button>
-    </Form>
+      <div style={{ margin: '10px' }} />
+        <Button variant="success" type="submit">
+          <FontAwesomeIcon icon={faPlus} /> Add Project
+        </Button>
+      </Form>
+    </Col>
   );
 }
 

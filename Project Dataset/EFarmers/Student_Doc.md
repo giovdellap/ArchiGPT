@@ -89,46 +89,46 @@ This only EFarmers container is designed to handle all core functionalities rela
 The container handles persistent and accessible storage for user, insertions, payments orders, shopping carts and subscriptions data. 
 
 ### EXTERNAL SERVICES CONNECTIONS
-The container .
+The container connects to external services for processing secure payments. In particular it uses Stripe library in Python, a popular payment processing platform that provides a suite of APIs and tools for handling online payments.
 
 ### MICROSERVICES:
 
 #### MICROSERVICE: frontend
 - TYPE: frontend
-- DESCRIPTION: 
+- DESCRIPTION: Manages user-specific pages and calendar features, including individual user account and farmer profiles, user subscriptions to farmers, and user feedback mechanisms like comments and reviews.
 - PORTS: 3000
 
 #### MICROSERVICE: user_service
 - TYPE: backend
-- DESCRIPTION: 
+- DESCRIPTION: Manages user accounts, including registration (both email and OAuth), login, logout, session management, reviews, and updating user roles (such as customer to farmer, or customer to rider).
 - PORTS: 8080
 
 #### MICROSERVICE: insertions_service
 - TYPE: backend
-- DESCRIPTION: 
+- DESCRIPTION: Handles the creation, modification, and deletion of insertions, managing boxes booking (send boxes booking request, retrieve boxes list and booking request), and maintaining details of expiring insertions.
 - PORTS: 8081
 
 #### MICROSERVICE: shoppingcart_service
 - TYPE: backend
-- DESCRIPTION: 
+- DESCRIPTION: Manages shopping cart functions, including adding, modifying, and removing items.
 - PORTS: 8082
 
 #### MICROSERVICE: payments_order_service
 - TYPE: backend
-- DESCRIPTION: 
+- DESCRIPTION: Processes secure payments with Stripe library, handling delivery options and functionalities specific to riders, such as setting availability status.
 - PORTS: 8083
 
 #### MICROSERVICE: subscription_service
 - TYPE: backend
-- DESCRIPTION: 
+- DESCRIPTION: This service implements the subscription funcionality: a customer (user) can subscribe to a farmer in order to be notified when that farmer publishes new insertions.
 - PORTS: 5000
 
 #### MICROSERVICE: db
 - TYPE: database
-- DESCRIPTION: 
+- DESCRIPTION: The db microservice is responsible for storing: all user-related data including registration information, login credentials, and profile settings for admin, customers and riders; details of insertions, boxes and order requests lists; data regarding available riders and carts; persisting user interactions data such as reviews and subscription. This microservice ensures data integrity and swift access to data in a secure and persistent storage environment.
 - PORTS: 5432
 
 #### MICROSERVICE: rabbitmq
 - TYPE: other
-- DESCRIPTION: 
+- DESCRIPTION: The rabbitmq microservice hosts RabbitMQ, an open-source message broker software that implements the Advanced Message Queuing Protocol (AMQP). It is used to facilitate communication between different parts of a distributed system by sending and receiving messages, in this case between customers and farmers.
 - PORTS: 5672

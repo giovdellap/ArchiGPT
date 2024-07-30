@@ -71,10 +71,10 @@ Manages all functionalities related to registration, login, session persistence,
 ### DESCRIPTION:
 The Authentication container is responsible for managing all the security-related functionalities that involve registration, login, session persistence, and logout processes for various types of users, including clients, agricultural companies, and the site administrator. This includes handling user authentication to ensure that each user can securely access and interact with the site according to their privileges and ensuring that user sessions are maintained properly across site visits. Additionally, it provides mechanisms for these users to securely log out, thus helping prevent unauthorized access to the accounts.
 
-### PERSISTANCE EVALUATION
+### PERSISTANCE EVALUATION:
 The Authentication container crucially requires data persistence primarily to manage user credentials and session information for different types of stakeholders such as clients, agricultural companies, and the site administrator. Specifically, it must securely store credentials such as usernames and passwords, session tokens, and possibly security-related audit logs to track login attempts and modifications. This persistent data storage ensures that users do not need to reauthenticate every time they access the system but instead rely on session persistence mechanisms, enhancing user experience and system security.
 
-### EXTERNAL SERVICES CONNECTIONS
+### EXTERNAL SERVICES CONNECTIONS:
 Based on the provided user stories and the container's purpose, there is no apparent requirement for this container to connect to external services directly. Its primary role is focused on authentication, session management, and security, which involves internal data handling and interactions with other internal system components rather than external entities. The functionalities described do not suggest a dependency on external data sources or services; hence, external connections for this container are likely unnecessary.
 
 ### MICROSERVICES:
