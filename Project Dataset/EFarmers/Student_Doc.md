@@ -85,10 +85,10 @@ Manages and displays user account, insertions, payments orders, shopping carts a
 ### DESCRIPTION:
 This only EFarmers container is designed to handle all core functionalities related to user account, insertions, payments orders, shopping carts and subscriptions features within the EFarmers platform.
 
-### PERSISTANCE EVALUATION
+### PERSISTANCE EVALUATION:
 The container handles persistent and accessible storage for user, insertions, payments orders, shopping carts and subscriptions data. 
 
-### EXTERNAL SERVICES CONNECTIONS
+### EXTERNAL SERVICES CONNECTIONS:
 The container connects to external services for processing secure payments. In particular it uses Stripe library in Python, a popular payment processing platform that provides a suite of APIs and tools for handling online payments.
 
 ### MICROSERVICES:
