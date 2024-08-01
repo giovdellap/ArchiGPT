@@ -106,25 +106,25 @@ Main Goals:
 
 #### MICROSERVICE: db
 - TYPE: database
-- DESCRIPTION: 
+- DESCRIPTION: The database microservice provides a database management system, that will be able to manage all the data that are necessary for the correct behavior of the application.
 - PORTS: 5432
 
 #### MICROSERVICE: db-backup
 - TYPE: database
-- DESCRIPTION: 
+- DESCRIPTION: This microservice hosts a replica of the db microservice, in order to increase fault tolerance and the availability of the system.
 - PORTS: 5432
 
 #### MICROSERVICE: backend
 - TYPE: backend
-- DESCRIPTION: 
+- DESCRIPTION: The backend microservice provides the REST web services that are necessary for implementing all the logic of the application. Within the routes that will be reached when issuing a REST API, there will be a function implementing the specific logic for providing that particular functionality. This microservice will be able to communicate with the database server, in order to retrieve, insert or update the necessary data, and with the frontend microservice, in order to permit the presentation of the results of the application logic.
 - PORTS: 5000
 
 #### MICROSERVICE: backend-backup
 - TYPE: backend
-- DESCRIPTION: 
+- DESCRIPTION: This microservice hosts a replica of the backend microservice, in order to increase fault tolerance and the availability of the system.
 - PORTS: 5001
 
 #### MICROSERVICE: frontend
 - TYPE: frontend
-- DESCRIPTION: 
+- DESCRIPTION: The frontend microservice will be able to provide all the web pages to the end user, and it will also be able to communicate with the backend server when necessary, in order to present to the end user all the data (s)he asked for, and more in general to manage the user input.
 - PORTS: 3000

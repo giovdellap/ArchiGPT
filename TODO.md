@@ -8,6 +8,7 @@ Come confrontarsi con progetti simili a QuizTime ? (gestore di code, etc..)
 
 ## TODO
 - Reworkare type dei microservizi da frontend, backend, database e other a : frontend, backend, database, hybrid and middleware.
+- Doppia Descrizione per ogni container ?
 
 ### PROGETTI 
 
