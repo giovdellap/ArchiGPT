@@ -17,7 +17,7 @@ Come confrontarsi con progetti simili a QuizTime ? (gestore di code, etc..)
 6 - QuizTime: ? (Progetto probabile da scartare perchè out of scope, troppi servizi dedicati solo alla parte di DDS)
 11 - EFarmers: YES (Archi_DOC è parzialmente generato)
 18 - RecipeCove: YES (Archi_DOC è parzialmente generato)
-22 - Teamify: WIP
+22 - Teamify: YES (Archi_DOC è parzialmente generato)
 
 #### GIOVANNI
 

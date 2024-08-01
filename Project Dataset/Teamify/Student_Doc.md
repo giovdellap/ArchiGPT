@@ -54,7 +54,7 @@ Main Goals:
 ## CONTAINER_NAME: Teamify
 
 ### DESCRIPTION: 
-
+Manages and displays user account, personal and shared agenda including tasks and events, notifications, live chat, teams and polls.
 
 ### USER STORIES:
 1) As a user, I want to create an account, so that I can use the application.
@@ -94,13 +94,13 @@ Main Goals:
 3000:5432
 
 ### DESCRIPTION:
-
+This only Teamify container is designed to handle all core functionalities related to user account, personal and shared agenda including tasks and events, notifications, live chat, polls and teams features within the Teamify platform.
 
 ### PERSISTANCE EVALUATION:
-
+The container handles persistent and accessible storage for user, teams, personal and shared agenda, chat and polls data. 
 
 ### EXTERNAL SERVICES CONNECTIONS:
-
+The container does not connect to external services.
 
 ### MICROSERVICES:
 
