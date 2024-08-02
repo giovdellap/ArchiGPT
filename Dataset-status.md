@@ -9,7 +9,7 @@
 | 6 | QuizTime | Y | N | N | N | N | E |  | NI |
 | 17 | EPO | Y | N | P | Y | Y | G | Codice student molto strano | NI |
 | 20 | StocksPlayground | Y | N | P | Y | Y | G |  |  |
-| 9 | CDC | N | N | N | N | N | G |  |  |
+| 9 | CDC | Y | N | P | N | N | G |  |  |
 | 1 | Project Eco | N | N | N | N | N |  |  | NI |
 | 3 | News Feed | N | N | N | N | N |  | User Stories inusabili | X |
 | 8 | Be Safe Mail | N | N | N | N | N |  | DDS, User Stories pessime, progetto inusabile | X |
