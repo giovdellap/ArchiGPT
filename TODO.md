@@ -8,6 +8,7 @@ Come confrontarsi con progetti simili a QuizTime ? (gestore di code, etc..)
 
 ## TODO
 - Reworkare type dei microservizi da frontend, backend, database e other a : frontend, backend, database, hybrid and middleware.
+- In Archi, il frontend dovrebbe sere visto direttamente da container design invece di fare un assistente a parte, perché a volte sfattona
 
 ## DUBBI DA RIVEDERE INSIEME
 - Per quanto riguarda lo scope "auth", su NFFH abbiamo messo tre scope, uno per l'autenticazione di ognuno degli utenti
@@ -29,7 +30,7 @@ Come confrontarsi con progetti simili a QuizTime ? (gestore di code, etc..)
 
 #### GIOVANNI
 
-9 - CDC: WIP
+9 - CDC: Manca Student, Archi parziale
 17 - EuropeanParliamentOnline: Manca Student (?)
 20 - StocksPlayground: Manca Student, Archi parziale
 23 - GYA: NO
