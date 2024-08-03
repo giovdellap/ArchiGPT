@@ -30,8 +30,8 @@ Come confrontarsi con progetti simili a QuizTime ? (gestore di code, etc..)
 
 #### GIOVANNI
 
-9 - CDC: Manca Student, Archi parziale
-17 - EuropeanParliamentOnline: Manca Student (?)
-20 - StocksPlayground: Manca Student, Archi parziale
+9 - CDC: YES, Archi parziale
+17 - EuropeanParliamentOnline: (?) (Manca student, progetto probabilmente da scartare, container completamente out of scope)
+20 - StocksPlayground: (?) Archi parziale, troppo DDS
 23 - GYA: NO
 12 - EventTicket: NO

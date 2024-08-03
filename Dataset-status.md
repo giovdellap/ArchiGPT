@@ -1,30 +1,36 @@
-| Id | Name | User Stories | Student | Archi | DataMetrics | Graph | Editor | Problemi | Inusabile |
-|----|------|--------------|---------|-------|-------------|-------|--------|----------|-----------|
-| 19 | OneSport | Y | Y | Y | Y | Y | E |  |  |
-| 21 | NFFH | Y | Y | Y | Y | Y | G |  |  |
-| 11 | EFarmers | Y | Y | P | Y | Y | E |  |  |
-| 18 | RecipeCove | Y | Y | P | Y | Y | E |  |  |
-| 22 | Teamify | Y | Y | P | Y | Y | E |  |  |
-| 23 | GYA | Y | N | N | N | N | G |  |  |
-| 6 | QuizTime | Y | N | N | N | N | E |  | NI |
-| 17 | EPO | Y | N | P | Y | Y | G | Codice student molto strano | NI |
-| 20 | StocksPlayground | Y | N | P | Y | Y | G |  |  |
-| 9 | CDC | Y | N | P | Y | Y | G |  |  |
-| 1 | Project Eco | N | N | N | N | N |  |  | NI |
-| 3 | News Feed | N | N | N | N | N |  | User Stories inusabili | X |
-| 8 | Be Safe Mail | N | N | N | N | N |  | DDS, User Stories pessime, progetto inusabile | X |
-| 10 | RentYourExpert | N | N | N | N | N | E |  |  |
-| 12 | Event Ticket | N | N | N | N | N | G |  |  |
-| 13 | Market Future | N | N | N | N | N |  |  | NI |
-| 14 | Travel Mania | N | N | N | N | N | E |  |  |
-| 15 | Your Online Store | N | N | N | N | N |  |  | NI |
-| 24 | MovieIn | N | N | N | N | N |  |  | NI |
-| 25 | EnergyXChange | N | N | N | N | N |  | Troppo basico | X | 
-| 26 | Proio | N | N | N | N | N |  | Pessime User stories | X |
-| 28 | PlaceAdvisor | N | N | N | N | N |  | NI |
+| Id | Name | Inusabile |User Stories | Student | Archi | DataMetrics | Graph | Editor | Problemi | Completo |
+|----|------|--------------|---------|-------|-------------|-------|--------|----------|-----------|------------|
+| 19 | OneSport |   | Y | Y | Y | Y | Y | E |  | Y |
+| 21 | NFFH |  | Y |Y | Y | Y | Y | G |  | Y |
+| 11 | EFarmers |  | Y | Y | P | Y | Y | E |  | Y |
+| 18 | RecipeCove |  | Y | Y | P | Y | Y | E |  | Y |
+| 22 | Teamify |  | Y | Y | P | Y | Y | E |  | Y |
+| 9 | CDC |  | Y | Y | P | Y | Y | G |  | Y |
+| 23 | GYA |  | Y |  |  |  |  | G |  | N |
+| 10 | RentYourExpert |  |  |  |  |  |  | E |  | N |
+| 12 | Event Ticket |  |  |  |  |  |  | G |  | N |
+| 14 | Travel Mania |  |  |  |  |  |  | E |  | N |
+| 6 | QuizTime | NI | Y |  |  |  |  | E |  | P |
+| 17 | EPO | NI | Y |  | P | Y | Y | G | Codice student molto strano | P |
+| 20 | StocksPlayground | NI | Y |  | P | Y | Y | G |  | P |
+| 1 | Project Eco | NI |  |  |  |  |  |  |  |  |
+| 13 | Market Future | NI |  |  |  |  |  |  |  |  |
+| 15 | Your Online Store | NI |  |  |  |  |  |  |  |  |
+| 24 | MovieIn | NI |  |  |  |  |  |  |  |  |
+| 28 | PlaceAdvisor | NI |  |  |  |  |  |  |  |
+| 25 | EnergyXChange | Y |  |  |  |  |  |  | Troppo basico |  | 
+| 26 | Proio | Y |  |  |  |  |  |  | Pessime User stories |  |
+| 3 | News Feed | Y |  |  |  |  |  |  | User Stories inusabili |  |
+| 8 | Be Safe Mail | Y |  |  |  |  |  |  | DDS, User Stories pessime, progetto inusabile |  |
 
-Eugenio missing: 2  
-Giovanni Missing: 3  
-NI: 7  
-Complete: 5  
-Partial: 1 
+
+# PROGETTI ACCETTABILI
+
+- Completi: 6
+- Mancanti:
+  - Eugenio: 2
+  - Giovanni: 2
+
+# PROGETTI NI
+- Parziali: 3
+- Mancanti: 5
