@@ -30,12 +30,12 @@ r3 = 100*((2*n_set-n_c)/n_set per n_c >= n_set
   
 ## SERVICE METRICS (n_c x)
 
-### service coverage (per ogni container)
+### container service coverage (per ogni container)
 n_serv_be = numero di servizi backend
 n_set = numero di set assegnati al container
 scc = 100*(n_serv_be/n_set)
 
-### container service coverage
+### service coverage
 ssc = sommatoria di (Per ogni container, (1/n_c)*scc)
 
 ### container persistance coverage (per ogni container)

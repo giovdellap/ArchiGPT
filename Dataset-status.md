@@ -6,10 +6,8 @@
 | 18 | RecipeCove |  | Y | Y | P | Y | Y | E |  | Y |
 | 22 | Teamify |  | Y | Y | P | Y | Y | E |  | Y |
 | 9 | CDC |  | Y | Y | P | Y | Y | G |  | Y |
-| 23 | GYA |  | Y |  |  |  |  | G |  | N |
 | 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  | Y |
 | 12 | Event Ticket |  |  |  |  |  |  | G |  | N |
-| 14 | Travel Mania |  |  |  |  |  |  | E |  | N |
 | 6 | QuizTime | NI | Y |  |  |  |  | E |  | P |
 | 17 | EPO | NI | Y |  | P | Y | Y | G | Codice student molto strano | P |
 | 20 | StocksPlayground | NI | Y |  | P | Y | Y | G |  | P |
@@ -22,14 +20,18 @@
 | 26 | Proio | Y |  |  |  |  |  |  | Pessime User stories |  |
 | 3 | News Feed | Y |  |  |  |  |  |  | User Stories inusabili |  |
 | 8 | Be Safe Mail | Y |  |  |  |  |  |  | DDS, User Stories pessime, progetto inusabile |  |
+| 14 | Travel Mania | Y |  |  |  |  |  | E | Pessime User Stories, codice DDS |  |
+| 23 | GYA | Y |  |  |  |  |  | G |  | N |
+
+
 
 
 # PROGETTI ACCETTABILI
 
-- Completi: 6
+- Completi: 7
 - Mancanti:
-  - Eugenio: 2
-  - Giovanni: 2
+  - Eugenio: 0
+  - Giovanni: 1
 
 # PROGETTI NI
 - Parziali: 3

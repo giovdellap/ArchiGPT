@@ -10,11 +10,9 @@ Come confrontarsi con progetti simili a QuizTime ? (gestore di code, etc..)
 - Reworkare type dei microservizi da frontend, backend, database e other a : frontend, backend, database, hybrid and middleware.
 - In Archi, il frontend dovrebbe sere visto direttamente da container design invece di fare un assistente a parte, perché a volte sfattona
 
-## DUBBI DA RIVEDERE INSIEME
-- Per quanto riguarda lo scope "auth", su NFFH abbiamo messo tre scope, uno per l'autenticazione di ognuno degli utenti
-  - Sugli ultimi abbiamo fatto uno scope unico
-  - Alcune user stories di auth relative alla singola tipologia di utente sono confusionarie, altre sono mancanti
-    - Esempio: EFarmers fa davvero schifo, forse va scartato 
+## SLIDE
+- Granularity evaluation: fare slide per spiegare le palle
+- Slide metriche: manca un pezzo
 
 ### PROGETTI 
 
