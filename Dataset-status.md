@@ -7,7 +7,7 @@
 | 22 | Teamify |  | Y | Y | P | Y | Y | E |  | Y |
 | 9 | CDC |  | Y | Y | P | Y | Y | G |  | Y |
 | 23 | GYA |  | Y |  |  |  |  | G |  | N |
-| 10 | RentYourExpert |  |  |  |  |  |  | E |  | N |
+| 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  | Y |
 | 12 | Event Ticket |  |  |  |  |  |  | G |  | N |
 | 14 | Travel Mania |  |  |  |  |  |  | E |  | N |
 | 6 | QuizTime | NI | Y |  |  |  |  | E |  | P |

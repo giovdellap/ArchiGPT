@@ -24,7 +24,7 @@ Come confrontarsi con progetti simili a QuizTime ? (gestore di code, etc..)
 11 - EFarmers: YES (Archi_DOC è parzialmente generato)
 18 - RecipeCove: YES (Archi_DOC è parzialmente generato)
 22 - Teamify: YES (Archi_DOC è parzialmente generato)
-10 - RentYourExpert: NO
+10 - RentYourExpert: YES (Archi_DOC è parzialmente generato)
 14 - TravelMania: NO
 
 
