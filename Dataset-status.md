@@ -7,7 +7,7 @@
 | 22 | Teamify |  | Y | Y | P | Y | Y | E |  | Y |
 | 9 | CDC |  | Y | Y | P | Y | Y | G |  | Y |
 | 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  | Y |
-| 12 | Event Ticket |  |  |  |  |  |  | G |  | N |
+| 12 | Event Ticket |  | Y |  | P |  |  | G |  | N |
 | 6 | QuizTime | NI | Y |  |  |  |  | E |  | P |
 | 17 | EPO | NI | Y |  | P | Y | Y | G | Codice student molto strano | P |
 | 20 | StocksPlayground | NI | Y |  | P | Y | Y | G |  | P |
