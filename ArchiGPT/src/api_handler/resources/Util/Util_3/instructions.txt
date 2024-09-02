@@ -12,6 +12,7 @@ Analyze the document and return the name, type, description and port of the micr
 
 ### Output format: ###
 Json with an array of items, each with the fields name, type, description, port
+Include in the output only the json without any additional characters 
 
 ###Example: ###
 # Input: #

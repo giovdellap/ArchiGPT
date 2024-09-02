@@ -14,6 +14,7 @@ Analyze the document and return the user stories and ports of the specified cont
 ### Output format: ###
 Json with the fields ports, userstories.
 The userstories value must be delimited by 3 " (""")
+Include in the output only the json without any additional characters 
 
 ###Example: ###
 # Input: #
