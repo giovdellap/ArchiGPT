@@ -1,35 +1,38 @@
 # DA CHIEDERE A MECELLA
-L'algoritmo della metrica (che calcola la metrica) può prendere in input direttamente un json estratto dalla documentazione in stile Archi? Se si, dobbiamo fornire un tool che passa dalla documentazione in txt al json?
 
 
-Possiamo sanitizzare le user stories ? (Gran parte non sono scritte bene e quindi non sono comprensibili)
-
-Come confrontarsi con progetti simili a QuizTime ? (gestore di code, etc..)
 
 ## TODO
+
+1) Codice Archi
+   1) Assistenit:
+      1) Fare assistenti microservizi - LUNEDI 9
+      2) Vedere se accorpare assistenti util
+      3) Aggiustare assitenti system
+         1) Architectural Patterns
+         2) Quello del frontend
+   2) Generic:
+      1) Reworkare type dei microservizi
+2) Dataset/metriche
+   1) Pulizia User Stories
+   2) Algoritmo calcolo punteggio metriche
+      1) Definire formato input
+      2) Backend REST
+      3) Scrivere algoritmi calcolo punteggio
+3) Scrittura
+   1) Introduzione - Comune
+   2) Architettura a microservizi - Comune - LUNEDI 9
+   3) LLM - Comune - LUNEDI 9
+   4) Stato dell'Arte - Comune
+   5) Design ArchiGPT - G
+   6) Dataset for validation - E
+   7) Validazione - Comune
+   
+## DEADLINE 09/09:
+- Capitoli tesi segnati
+- Assistenti microservizi fatti partire
+
+
 - Reworkare type dei microservizi da frontend, backend, database e other a : frontend, backend, database, hybrid and middleware.
 - In Archi, il frontend dovrebbe sere visto direttamente da container design invece di fare un assistente a parte, perché a volte sfattona
 
-## SLIDE
-- Granularity evaluation: fare slide per spiegare le palle
-- Slide metriche: manca un pezzo
-
-### PROGETTI 
-
-#### EUGENIO
-
-6 - QuizTime: ? (Progetto probabile da scartare perchè out of scope, troppi servizi dedicati solo alla parte di DDS)
-11 - EFarmers: YES (Archi_DOC è parzialmente generato)
-18 - RecipeCove: YES (Archi_DOC è parzialmente generato)
-22 - Teamify: YES (Archi_DOC è parzialmente generato)
-10 - RentYourExpert: YES (Archi_DOC è parzialmente generato)
-14 - TravelMania: NO
-
-
-#### GIOVANNI
-
-9 - CDC: YES, Archi parziale
-17 - EuropeanParliamentOnline: (?) (Manca student, progetto probabilmente da scartare, container completamente out of scope)
-20 - StocksPlayground: (?) Archi parziale, troppo DDS
-23 - GYA: NO
-12 - EventTicket: NO
