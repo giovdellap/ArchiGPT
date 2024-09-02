@@ -42,7 +42,6 @@ class ContainerHandler:
                     'ContainerDescriptionGenerator': "",
                     'ContainerSpecificationGenerator': "",
                     'MicroServices': "",
-                    'description': '',
                     'ports': '',
                     'userstories': '',
                     'services': []
@@ -67,7 +66,6 @@ class ContainerHandler:
         print('CONTAINER HANDLER UTIL 2 - OBJ: ', obj)
         
         #SAVE ON DB
-        dbhandler.updateContainer(self.project_name, container, 'description', obj['description'])
         dbhandler.updateContainer(self.project_name, container, 'ports', obj['ports'])
         dbhandler.updateContainer(self.project_name, container, 'userstories', obj['userstories'])
         
@@ -78,9 +76,9 @@ class ContainerHandler:
 
         #ASSISTANT INTERROGATION UTIL 3
         message_content = assistant_call( 'Util_3', content )
- 
+        print('CONTAINER HANDLER UTIL 3 - OBJ: ', message_content)
+        
         list = ast.literal_eval(message_content)
-        print('CONTAINER HANDLER UTIL 3 - OBJ: ', list)
 
         #OBJECT CONSTRUCTION
         for microservice in list:

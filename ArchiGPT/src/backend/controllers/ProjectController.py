@@ -90,14 +90,3 @@ def getSystem():
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500
-    
-def getJson():
-    try:
-        handler = DBHandler()
-        handler.database_setup()
-        handler.import_json()
-        
-        return jsonify({"message", "OK"}), 200
-    except Exception as e:
-        print("Exception: %s", e)
-        return jsonify({"message": "An error occurred"}), 500

@@ -2,10 +2,11 @@ import React from 'react';
 import GenerationView from './generationView';
 import UploadFileButton from './uploadFileButton';
 
-function GenerationHandler({ generationMessage, handleGenerate, systemSelected, assistantSelected, handleFileUpload, file }) {
+function GenerationHandler({ generationMessage, handleGenerate, systemSelected, containerSelected, serviceSelected, handleFileUpload, file }) {
 
     var itemSelected = ""
-    systemSelected !== "" ? itemSelected = systemSelected : itemSelected = assistantSelected.container
+    systemSelected !== "" ? itemSelected = systemSelected : itemSelected = containerSelected.container + " - " + containerSelected.assistant
+    serviceSelected.service !== "" ? itemSelected = itemSelected + "\n " + serviceSelected.service + " - " + serviceSelected.assistant : itemSelected = itemSelected + ""
 
     return (
         <div className="chat-container">
@@ -14,7 +15,7 @@ function GenerationHandler({ generationMessage, handleGenerate, systemSelected, 
                     {generationMessage === "" ?
                             <>
                             <div className="balloon" style={{ whiteSpace: 'pre-line', margin: '50px'}}>
-                                {`No document generated in ${itemSelected}`}
+                                {`No document generated in \n ${itemSelected}`}
                             </div>
                             <div className="chat-input">
                                 <UploadFileButton 
@@ -26,7 +27,12 @@ function GenerationHandler({ generationMessage, handleGenerate, systemSelected, 
                             </div>
                             </>
                         : 
+                            <>
+                            <div className="balloon" style={{ whiteSpace: 'pre-line', margin: '50px'}}>
+                                {`Document generated in \n ${itemSelected} : `}
+                            </div>
                             <GenerationView generationMessage={generationMessage} />
+                            </>
                     }
                 </div>
             : 

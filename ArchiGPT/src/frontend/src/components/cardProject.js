@@ -11,7 +11,7 @@ function CardProject({ listProjects, goToProjectPage, handleDeleteProject}) {
             <Row>
                 {listProjects.map((item, index) => {
                     return (
-                        <Col xs={3} sm={3} md={3} lg={3} key={index}>
+                        <Col xs={12} sm={12} md={12} lg={12} key={index}>
                             <Card className="mb-4 card-projects">
                                 <Card.Body>
                                     <Card.Title>{item.name}</Card.Title>

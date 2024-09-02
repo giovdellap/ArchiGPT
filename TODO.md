@@ -1,6 +1,6 @@
 # DA CHIEDERE A MECELLA
 
-
+Ch G: sk-Gh8ay845lCAnUT1jwOoh_htZJJZwtwMN2vfgXWAnoQT3BlbkFJ6BssRUDfseGmeK3_ZNGX4ciBhe9e4bF8HfqeU5WO0A
 
 ## TODO
 
@@ -31,6 +31,7 @@
 ## DEADLINE 09/09:
 - Capitoli tesi segnati
 - Assistenti microservizi fatti partire
+- Pulizia 2 User Stories
 
 
 - Reworkare type dei microservizi da frontend, backend, database e other a : frontend, backend, database, hybrid and middleware.
