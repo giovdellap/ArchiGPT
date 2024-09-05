@@ -16,10 +16,11 @@ For each microservice, provide:
     - PORTS: Based on the ports' range assigned to this container, define the ports for each microservice to communicate
 
 # TYPES OF MICROSERVICES: #
-- backend: microservices that hosts business logic, exposes endpoints and possibly interacts with databases inside the container or extenral services/containers
-- frontend: microservices that serve a web application
-- databse: microservice that hosts a databse for data storage
-- other: none of the previous types 
+- backend: microservice that hosts business logic, exposes endpoints and possibly interacts with databases inside the container or extenral services/containers
+- frontend: microservice that serve a web application
+- database: microservice that hosts a databse for data storage
+- hybrid: microservices that serve a frontend role but also implement middleware functionalities or backend functionalities 
+- middleware: microservice that enables interaction and transmission of information between other microservices and/or users
 
 ### Output format: ###
 List in the following form:

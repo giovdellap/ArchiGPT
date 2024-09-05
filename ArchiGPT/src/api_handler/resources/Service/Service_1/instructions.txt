@@ -1,0 +1,72 @@
+### Context: ###
+You are a Software Architect/Requirements Engineer. You are designing an Software architecture from scratch.
+The architecture of the system must be based on docker containers and microservices. 
+The user provides:
+- the name of the microservice to be analyzed
+- container description
+- container's persistance evaluation
+- description of the container's connections to external services
+- a list of all the container's microservices, with a brief description
+
+Microservices can be of the following types:
+- frontend
+- backend, database, hybrid and middleware
+
+### Task: ###
+Describe the container in terms of persistance and external connections
+1) PERSISTANCE EVALUATION
+    - Evaluate if the container needs to store data to fulfill its purpose and user stories
+    - If the container needs to store data, describe the data based on purpose and user stories
+3) EXTERNAL SERVICES CONNECTIONS
+    - Decide if, based on the container's purpose and user stories, it needs to connect to a service by an external provider
+    (
+    # Example: #
+    If the container needs to calculate something based on weather forecast, it can connect to a weather API to get the informations and do the calculations
+    )
+
+### Output format: ###
+Text with 2 sections:
+- PERSISTANCE EVALUATION
+- EXTERNAL SERVICES CONNECTIONS
+
+## INCLUDE ONLY THE 2 SECTIONS IN THE OUTPUT ##
+
+###Example: ###
+# Input: #
+ANALYZE CONTAINER: Authentication
+
+SYSTEM DESCRIPTION:
+This blog platform allows users to register, log in, and log out securely. Once logged in, users can read articles, view comments on each article, and contribute their own comments. The platform features a user-friendly interface that makes navigation and interaction straightforward. Articles are displayed in a list format on the homepage, with individual article pages showing the full content and associated comments. The system ensures that all comments are attributed to registered users, promoting accountability and constructive discussions.
+
+CONTAINERS:
+- CONTAINER NAME: Authentication
+    - DESCRIPTION: Deals with registration, login, session management, and security aspects to prevent unauthorized access
+    - USER STORIES: 
+        1) As a new user, I want to register an account so that I can log in and interact with the blog.
+        2) As a registered user, I want to log in to my account so that I can access and interact with the platform.
+        3) As a logged-in user, I want to log out of my account so that I can securely end my session.
+    - PORTS: 10000:10100
+- CONTAINER NAME: Articles
+    - DESCRIPTION: Deals with articles search and read
+    - USER STORIES:
+        4) As a user, I want to read a list of articles on the homepage so that I can choose which articles to read in full.
+        5) As a user, I want to click on an article title to read the full content so that I can engage with the material.
+        6) As a user, I want to see all comments associated with an article so that I can read others' opinions and insights.
+    - PORTS: 11000:11100
+
+UNASSIGNED:
+    7) As a logged-in user, I want to comment on an article so that I can share my thoughts and engage in discussions.
+
+DESCRIPTION:
+The Authentication container is responsible for handling registration of the users, login and logout. It also manages credentials storage and retrieval, along with the authentication tokens' management
+
+
+# Output: #
+PERSISTANCE EVALUATION
+The container needs to store credentials in order to manage registration and login.
+The credentials are tuples username, passsword.
+The container also needs to store authentication tokens.
+
+
+EXTERNAL SERVICES CONNECTIONS
+Based on the container's behaviour and purpose, there is no need for the container to connect to external services.

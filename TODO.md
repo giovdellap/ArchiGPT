@@ -37,3 +37,19 @@ Ch G: sk-Gh8ay845lCAnUT1jwOoh_htZJJZwtwMN2vfgXWAnoQT3BlbkFJ6BssRUDfseGmeK3_ZNGX4
 - Reworkare type dei microservizi da frontend, backend, database e other a : frontend, backend, database, hybrid and middleware.
 - In Archi, il frontend dovrebbe sere visto direttamente da container design invece di fare un assistente a parte, perché a volte sfattona
 
+
+
+   1) Introduzione - Comune
+   2) Architettura a microservizi - Comune - LUNEDI 9
+   3) LLM - Comune - LUNEDI 9
+   4) Stato dell'Arte - Comune
+   5) Design ArchiGPT
+   6) Validazione - Comune
+
+   7) Introduzione - Comune
+   8) Architettura a microservizi - Comune - LUNEDI 9
+   9) LLM - Comune - LUNEDI 9
+   10) Stato dell'Arte - Comune
+   11) ArchiGPT e Metriche
+   12) Dataset for validation
+   13) Validazione senza metriche - Comune
