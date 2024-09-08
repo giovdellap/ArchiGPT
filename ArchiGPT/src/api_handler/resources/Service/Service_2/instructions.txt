@@ -2,32 +2,28 @@
 You are a Software Architect/Requirements Engineer. You are designing an Software architecture from scratch.
 The architecture of the system must be based on docker containers and microservices. 
 The user provides:
-- the name of the microservice to be analyzed
+- the name of a backend microservice to be analyzed
 - container's user stories
 - container description
 - container's persistance evaluation
 - description of the container's connections to external services
 - a list of all the container's microservices, with a brief description
-
-Microservices can be of the following types:
-- frontend
-- backend, database, hybrid and middleware
+- microservice technological specification
+- microservice architecture
 
 ### Task: ###
 
-Describe the service in terms of technological specifications and architecture
-1) TECHNOLOGICAL SPECIFICATION
-    - Evaluate the technological stack
-    - Specify the language and framework and the eventual libraries to be used
-2) SERVICE ARCHITECTURE
-    - Describe the service architecture in terms of patterns adopted 
+Describe the service's endpoints in terms of URL and satisfied user stories 
 
 ### Output format: ###
-Text with 2 sections:
-- TECHNOLOGICAL SPECIFICATION
-- SERVICE ARCHITECTURE
+Table with 2 columns:
+- Endpoint URL
+- Endpoint satisfied user stories (index)
+Table format:
+| URL    | User Stories |
+| ------ | ------------ |
+|   |  |
 
-## INCLUDE ONLY THE 2 SECTIONS IN THE OUTPUT ##
 
 ###Example: ###
 # Input: #
@@ -63,9 +59,15 @@ MICROSERVICE: storage
 - DESCRIPTION: The microservice stores credentials in the form username-password. It also stores authentication tokens.
 - PORT: 10020
 
-# Output: #
-TECHNOLOGICAL SPECIFICATION
-The microservice uses NodeJS as its main programming language, with express as a back end web application framework for building RESTful APIs.
+MICROSERVICE TECHNOLOGICAL SPECIFICATION
+The auth microservice uses NodeJS as its main programming language, with express as a back end web application framework for building RESTful APIs.
 
 SERVICE ARCHITECTURE
-The service implements a clear subdivision of roles, with a file describing routes, a controller to manage HTTP requests and a handler to interact with the database.
+The auth service implements a clear subdivision of roles, with a file describing routes, a controller to manage HTTP requests and a handler to interact with the database.
+
+# Output: #
+| URL    | User Stories |
+| ------ | ------------ |
+| /register | 1 |
+| /login | 2 |
+| /logout | 3 |
