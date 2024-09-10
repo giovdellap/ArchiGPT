@@ -11,7 +11,7 @@ The user provides:
 ### Task: ###
 List all the micro-services within the container.
 For each microservice, provide:
-    - TYPE: Type of microservice (backend, frontend, database, other)
+    - TYPE: Type of microservice (backend, frontend, database, hybrid, middleware)
     - DESCRIPTION: description of the microservice purpose and logic
     - PORTS: Based on the ports' range assigned to this container, define the ports for each microservice to communicate
 

@@ -97,9 +97,9 @@ function ProjectOverview() {
 			if(serviceSelected.assistant === "ServiceDescriptionGenerator")
 				setGenerationMessage(containerInfo.services.find(service => service.name === serviceSelected.service).description)
 			if(serviceSelected.assistant === "ServiceSpecificationGenerator")
-				setGenerationMessage(containerInfo.services.find(service => service.name === serviceSelected.service).specifications)
+				setGenerationMessage(containerInfo.services.find(service => service.name === serviceSelected.service).ServiceSpecificationGenerator)
 			if(serviceSelected.assistant === "ServiceEndpointGenerator")
-				setGenerationMessage(containerInfo.services.find(service => service.name === serviceSelected.service).endpoints)
+				setGenerationMessage(containerInfo.services.find(service => service.name === serviceSelected.service).ServiceEndpointGenerator)
 		} 
 
 	}
@@ -122,11 +122,19 @@ function ProjectOverview() {
 			if (systemSelected === 'Container Design'){
 				formData.append('userstories', file);
 			}
-		} else {
-			generateApiUrl = 'http://localhost:5001/generation/generateContainer';
-			formData.append('assistant', containerSelected.assistant);
-			formData.append('container', containerSelected.container);
+		} else if (containerSelected !== ""){
+			if(serviceSelected.service !== ""){
+				generateApiUrl = 'http://localhost:5001/generation/generateService';
+				formData.append('container', containerSelected.container);
+				formData.append('service', serviceSelected.service);
+				formData.append('assistant', serviceSelected.assistant);
+			} else {
+				generateApiUrl = 'http://localhost:5001/generation/generateContainer';
+				formData.append('assistant', containerSelected.assistant);
+				formData.append('container', containerSelected.container);
+			}
 		}
+
 
         fetch(generateApiUrl, {
             method: 'POST',

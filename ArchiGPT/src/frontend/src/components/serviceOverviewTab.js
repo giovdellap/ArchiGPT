@@ -55,23 +55,23 @@ function ServiceOverviewTab({ services, getStatusIcon, servicesInfo, resetItemSe
 										<Button
 											variant="light"
 											onClick={() => {resetItemSelected("Service", {service: service.name, assistant: "ServiceSpecificationGenerator"})}}
-											disabled={service.specifications === "NO"} 
+											disabled={service.ServiceSpecificationGenerator === "NO"} 
 										>
 											<Card.Body>
-												Specifications {getStatusIcon(service.specifications)}
+												Specifications {getStatusIcon(service.ServiceSpecificationGenerator)}
 											</Card.Body>
 										</Button>
 									</Card>
 
-									{service.endpoints ? 
+									{service.ServiceEndpointGenerator ? 
 										<Card>
 											<Button
 												variant="light"
 												onClick={() => {resetItemSelected("Service", {service: service.name, assistant: "ServiceEndpointGenerator"})}}
-												disabled={service.endpoints === "NO"} 
+												disabled={service.ServiceEndpointGenerator === "NO"} 
 											>
 												<Card.Body>
-													Endpoints {getStatusIcon(service.endpoints)}
+													Endpoints {getStatusIcon(service.ServiceEndpointGenerator)}
 												</Card.Body>
 											</Button>
 										</Card>

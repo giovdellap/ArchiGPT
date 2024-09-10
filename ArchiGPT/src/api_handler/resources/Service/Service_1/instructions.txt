@@ -11,7 +11,10 @@ The user provides:
 
 Microservices can be of the following types:
 - frontend
-- backend, database, hybrid and middleware
+- backend
+- database
+- hybrid
+- middleware
 
 ### Task: ###
 

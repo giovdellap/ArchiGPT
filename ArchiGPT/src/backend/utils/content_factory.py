@@ -52,7 +52,26 @@ class ContentFactory:
             self.content = getContainerDocument('MicroServices', container)
         return self.content
 
+    def getServiceContent(self, assistant, attachments):
+        container_name = attachments['container']
+        service_name = attachments['service']
+        service_prompt = "ANALYZE SERVICE: " + service_name + "/n"
+ 
+        container = json.loads(self.db_handler.getContainer(self.project, container_name))
+        print('CONTAINER DATA: ', container)
+
+        if assistant == "Service_1":
+            content = self.service1(container)
+            self.content = service_prompt + content
         
+        if assistant == "Service_2":
+            content = self.service2(container, service_name)
+            self.content = service_prompt + content
+                        
+        print('CONTENT FACTORY - CONTENT: ', self.content)
+        return self.content
+    
+
     
     def getDescription(self, system):
         return 'SYSTEM DESCRIPTION: \n' + getSystemDocument('description', system) + '\n'
@@ -86,6 +105,30 @@ class ContentFactory:
         container_content = containerTitle + container_description + container_specification
 
         return system_content + container_content
+    
+    def service1(self, container):
+        containerTitle = 'CONTAINER: ' + getContainerDocument('name', container) + '/n'
+        container_description = getContainerDocument('ContainerDescriptionGenerator', container) + '/n'
+        container_specification = getContainerDocument('ContainerSpecificationGenerator', container) + '/n'
+        container_userstories = 'USERSTORIES: ' + getContainerDocument('userstories', container) + '/n'
+        container_microservices = getContainerDocument('MicroServices', container) + '/n'
+
+        container_content = containerTitle + container_description + container_specification + container_userstories + container_microservices
+
+        return container_content
+    
+    def service2(self, container, service_name):
+        containerTitle = 'CONTAINER: ' + getContainerDocument('name', container) + '/n'
+        container_description = getContainerDocument('ContainerDescriptionGenerator', container) + '/n'
+        container_specification = getContainerDocument('ContainerSpecificationGenerator', container) + '/n'
+        container_userstories = 'USERSTORIES: ' + getContainerDocument('userstories', container) + '/n'
+        container_microservices = getContainerDocument('MicroServices', container) + '/n'
+
+        service_specification = getServiceDocument('ServiceSpecificationGenerator', container, service_name)
+        
+        container_content = containerTitle + container_description + container_specification + container_userstories + container_microservices + service_specification
+
+        return container_content
         
 load_container_data = ['Container_2', 'Container_3']        
 
@@ -96,6 +139,11 @@ def getSystemDocument(name, system):
         
 def getContainerDocument(name, container):
     return container['data'][name]
+
+def getServiceDocument(name, container, service_name):
+    for item in container['data']['services']:
+        if item['name'] == service_name:
+            return item[name]
     
             
             

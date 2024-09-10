@@ -82,9 +82,9 @@ class ContainerHandler:
 
         #OBJECT CONSTRUCTION
         for microservice in list:
-            microservice['specifications'] = ""
+            microservice['ServiceSpecificationGenerator'] = ""
             if microservice['type'] == "backend":
-                microservice['endpoints'] = ""
+                microservice['ServiceEndpointGenerator'] = ""
             if microservice['type'] == "frontend":
                 microservice['pages'] = ""
         
@@ -99,9 +99,9 @@ class ContainerHandler:
             service = {}
             service['name'] = microservice['name']
             service['description'] = 'OK'
-            service['specifications'] = 'NEXT'
+            service['ServiceSpecificationGenerator'] = 'NEXT'
             if microservice['type'] == 'backend':
-                service['endpoints'] = 'NO'
+                service['ServiceEndpointGenerator'] = 'NO'
             if microservice['type'] == 'frontend':
                 service['pages'] = 'NO'
             status_list.append(service)

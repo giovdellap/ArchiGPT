@@ -115,6 +115,25 @@ class DBHandler:
             print("Exception: %s", e)
             return e
         
+    def updateServiceStatus(self, projectname, ass_name, ass_status, container, service):
+        try:
+            collection = self.database[projectname]
+
+            # Perform the update
+            field = "data.containers.$[containerElement].services.$[serviceElement]." + ass_name
+            result = collection.update_one(
+                filter = {"type": "status"},
+                update = {"$set": {field: ass_status}},
+                array_filters = [{"containerElement.name": container},{"serviceElement.name": service}],
+                upsert=True
+            )
+
+            print('DB HANDLER - UPDATE SERVICE STATUS')
+
+        except Exception as e:
+            print("Exception: %s", e)
+            return e
+        
     def updateSystem(self, projectname, ass_name, ass_message):
         try:
             collection = self.database[projectname]
@@ -143,6 +162,24 @@ class DBHandler:
             )
 
             print('DB HANDLER - UPDATE CONTAINER')
+            
+        except Exception as e:
+            print("Exception: %s", e)
+            return e
+        
+    def updateService(self, projectname, container, service, ass_name, ass_message):
+
+        try:
+            field = "data.services.$[element]." + ass_name
+            collection = self.database[projectname]
+            result = collection.update_one(
+                filter = {"$and":[{"type": "container"}, {"data.name": container}]},
+                update = {"$set": {field: ass_message}},
+                array_filters = [{"element.name": service}],
+                upsert=True
+            )
+
+            print('DB HANDLER - UPDATE SERVICE')
             
         except Exception as e:
             print("Exception: %s", e)

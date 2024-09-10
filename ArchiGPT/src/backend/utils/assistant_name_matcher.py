@@ -11,12 +11,19 @@ container_phases = [
     'MicroServices'
 ]
 
+service_phases = [
+    'ServiceSpecificationGenerator',
+    'ServiceEndpointGenerator'
+]
+
 def getAssistantName(name):
     
     if name in system_phases:
         return 'System_' + str(system_phases.index(name) + 1)
     elif name in container_phases:
         return 'Container_' + str(container_phases.index(name) + 1)
+    elif name in service_phases:
+        return 'Service_' + str(service_phases.index(name) + 1)
     else:
         return 'Wrong assistant name'
     
@@ -35,4 +42,12 @@ def getNextContainerAssistant(name):
         return 'SERVICE'
     else:
         return container_phases[index+1]
+    
+def getNextServiceAssistant(name):
+    index = service_phases.index(name)
+    #if index == len(system_assistants):
+    if name == "ServiceEndpointGenerator":
+        return ''
+    else:
+        return service_phases[index+1]
     
