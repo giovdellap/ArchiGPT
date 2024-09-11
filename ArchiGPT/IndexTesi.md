@@ -1,4 +1,7 @@
+# TITLE : ARCHIGPT LLM FOR GENERATION SOFTWARE ARCHITECTURE, DESIGN OF THE COMPONENT FOR VALIDATION
+
 1) Introduzione - Comune
+
 2) Architettura a microservizi - Comune
    1) Overview of Containerization
       1) Introduction to Containers
@@ -13,6 +16,7 @@
       1) Role of Containers in Microservices Deployment
       2) Scaling Microservices with Containers
       3) Challenges in Managing Containerized Microservices
+
 3) LLM - Comune
    1) General Overview
       1) Introduction to Large Language Models (LLMs)
@@ -27,6 +31,7 @@
       1) OpenAI’s GPT and its Capabilities
       2) Generative and Assistive Functionalities
       3) ChatGPT API Overview
+
 4) State of the art - Comune
    1) SE Tasks (?)
       1) General Overview
@@ -45,31 +50,42 @@
       3) Data Types
    4) Evaluation Data and Benchmark
       1) General Overview and Trends
-5) Design ArchiGPT - Non Comune
-   1) Overview
-   2) Prompt Chaining
+   5) ArchiGPT
+      1) Description and Purpose
+
+5) Design ArchiGPT - Non Comune - Focus Giovanni
+   1) General Overview - Comune
+   2) Prompt Chaining - Comune
    3) Technological/Architectural Choices
       1) Docker
-      2) Servizi
+      2) Services
       3) Mongo
-      4) ...
+      4) External OpenAI API
+      5) React
    4) API Handler (interaction with OpenAI API)
-   5) Assistenti
-      1) Come funzionano
-      2) Come sono fatti (framework prompt)
-      3) Che risultati vogliamo
+   5) Assistants
+      1) Description and Purpsoe
+      2) How they work (framework prompt)
+      3) What results we want
       4) Come sono dati gli esempi (magari confronto?)
          1) One-shot learning
          2) Few-shots (in RAG?)
          3) Fine Tuning (?)
-6) Dataset for validation - Non Comune
-   1) Overview
-   2) Student's projects description
+
+6) Dataset for validation - Non Comune - Focus Eugenio
+   1) General Overview - Comune
+   2) Student's projects description - Comune 
    3) Projects' selection
    4) Projects' cleaning
-   5) Projects' documentation generation (code scouting)
-   6) Datametrics dei progetti
-7) Validazione - Comune
-   1) Metriche
-   2) Algoritmi di calcolo
-   3) Risultati
+   5) Projects' documentation generation (code analysis)
+   6) Projects Datametrics
+
+7) Validation - Comune
+   1) Defnition of Metrics
+   2) Definition of Algoritms used for Metrics
+   3) Results on Dataset
+
+8) Conclusion - Comune
+   1) Thoughts on Results
+   2) Future Challenges
+   3) Final Conclusion
