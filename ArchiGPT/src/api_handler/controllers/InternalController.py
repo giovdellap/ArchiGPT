@@ -60,8 +60,11 @@ def interrogate():
         #MESSAGE RETRIEVAL
         thread_messages = []
 
-        while(not run.status == 'completed'):
-            print('STATUS RUN: ', run.status)
+        print('STATUS RUN: ', run.status)
+        if(run.status == 'failed'): print('Something get wrong!\n')
+
+        # while(not run.status == 'completed'):
+        #     print('STATUS RUN: ', run.status)
         
         thread_messages = messageListRetriever(thread.id)
 

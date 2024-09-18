@@ -24,6 +24,12 @@ The project strives to serve as a one-stop destination for comprehensive sports 
 16) As a User, I want to send a friend request to another user, in order to add him to my friend list
 17) As a User, I want to check if someone has sent me a friend request, in order to accept or delete it
 18) As a User, I want to delete a friend from my friend list
+19) As a User, I want to find another user by email, in order to see his details
+20) As a User, I want to see my collection of saved news 
+21) As a User, I want to see my collection of saved tickets 
+22) As a User, I want to see my friend list, in order to see their details
+23) As a User, I want to be able to accept a friend request, in order to add the sender as a friend
+24) As a User, I want to be able to delete a friend request, in order to refuse the friend request
 
 # CONTAINERS:
 
