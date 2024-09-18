@@ -23,7 +23,7 @@ function SystemOverviewTab({ projectStatus, setSystemSelected}) {
 
 
     return (
-        <Container className="mt-4">
+        <Container className="mt-4" >
 
             <Row style={{ marginBottom: '20px' }}>
                 {systemStatus ? systemStatus.map((system) => (

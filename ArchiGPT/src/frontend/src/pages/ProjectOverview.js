@@ -173,7 +173,7 @@ function ProjectOverview() {
 	return (
 	<div>
 		<ProjectHeader projectName={projectName}/>
-		<div style={{ display: 'flex', paddingTop: '80px' }}>
+		<div style={{ display: 'flex', paddingTop: '100px'}}>
 			<div style={{ flex: 1, borderRight: '1px solid #ccc' }}>
 			<SystemOverviewTab 
 				projectStatus={projectStatus} 
