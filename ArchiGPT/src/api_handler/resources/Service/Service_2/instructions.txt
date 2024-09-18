@@ -13,18 +13,19 @@ The user provides:
 
 ### Task: ###
 
-Describe the service's endpoints in terms of HTTP Method, URL and satisfied user stories 
+Describe the service's endpoints in terms of HTTP Method, URL, smart description and satisfied user stories 
 
 ### Output format: ###
-Table with 3 columns:
+Json with 4 fields:
 - HTTP Method
 - Endpoint URL
 - A smart description of the endpoint behaviour
 - Endpoint satisfied user stories (index)
-Table format:
-| HTTP METHOD | URL | Description | User Stories |
-| ----------- | --- | ----------- | ------------ |
-|   |   |   |   |
+Json format:
+[{ "Method" : "", "URL" : "", "Description" : "", "UserStories" : [] },
+{ "Method" : "", "URL" : "", "Description" : "", "UserStories" : [] }]
+
+Include in the output only the json without any additional characters 
 
 
 ###Example: ###
@@ -68,8 +69,6 @@ SERVICE ARCHITECTURE
 The auth service implements a clear subdivision of roles, with a file describing routes, a controller to manage HTTP requests and a handler to interact with the database.
 
 # Output: #
-| HTTP METHOD | URL | Description | User Stories |
-| ----------- | --- | ----------- | ------------ |
-| POST | /auth/register | Create a new user using the inserted information, return a message that confirm the action | 1 |
-| POST | /auth/login | Handle the login for the current user, generating as response a token | 2 |
-| POST | /auth/logout | Remove the token for the logged user, and execute the logout from current session, return a confirmation message | 3 |
+[{ "Method" : "POST", "URL" : "/auth/register", "Description" : "Create a new user using the inserted information, return a message that confirm the action", "UserStories" : [1] },
+{ "Method" : "POST", "URL" : "/auth/login", "Description" : "Handle the login for the current user, generating as response a token", "UserStories" : [2] },
+{ "Method" : "POST", "URL" : "/auth/logout", "Description" : "Remove the token for the logged user, and execute the logout from current session, return a confirmation message", "UserStories" : [3] }]

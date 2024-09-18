@@ -11,7 +11,7 @@ function GenerationHandler({ generationMessage, handleGenerate, systemSelected, 
     return (
         <div className="chat-container">
             {itemSelected && itemSelected !== "" && itemSelected !== " - " ?   
-                <div className="chat-messages">       
+                <div className="chat-messages"  style={{ width: '150%', height: '500px' }}>       
                     {generationMessage === "" ?
                             <>
                             <div className="balloon" style={{ whiteSpace: 'pre-line', margin: '50px'}}>

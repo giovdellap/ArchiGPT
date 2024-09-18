@@ -124,7 +124,7 @@ class DBHandler:
             result = collection.update_one(
                 filter = {"type": "status"},
                 update = {"$set": {field: ass_status}},
-                array_filters = [{"containerElement.name": container},{"serviceElement.name": service}],
+                array_filters = [{"containerElement.name": container},{"serviceElement.name": service, f"serviceElement.{ass_name}": {"$exists": True}}],
                 upsert=True
             )
 
