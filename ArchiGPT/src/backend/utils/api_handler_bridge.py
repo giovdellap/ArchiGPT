@@ -9,8 +9,8 @@ def assistant_call( ass_name, content ):
 		current_app.config['API_HANDLER'] + '/interrogation/interrogate',
 		data={
 			'ass_name': ass_name,
-			#'ass_model': 'gpt-4o-mini',
-			'ass_model': 'gpt-4o',
+			'ass_model': 'gpt-4o-mini',
+			#'ass_model': 'gpt-4o',
 			#'ass_model': 'gpt-4-turbo-2024-04-09',
 			'content': content
 		}

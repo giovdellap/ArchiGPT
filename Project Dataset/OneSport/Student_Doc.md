@@ -81,6 +81,21 @@ The container handles connection to external services that provide real-time acc
 - TYPE: backend
 - DESCRIPTION: The authentication microservice is designed to handle all core functionalities related to user accounts within the OneSport platform. This includes the processes of registering for a new account, logging into an existing account, and securely logging out. Additionally, it manages user profile settings, allowing users to access and modify their personal information such as updating email addresses and passwords. It also provides the functionality to delete a user account altogether. It is responsible for managing the user session through jwt tokens.
 - PORTS: 5001
+- TECHNOLOGICAL SPECIFICATION: 
+- SERVICE ARCHITECTURE:
+- ENDPOINTS:
+		
+	| HTTP METHOD | URL | Description | User Stories |
+	| ----------- | --- | ----------- | ------------ |
+	| GET | /users | Returns all the users of the application |  |
+	| GET | /users/{user_id} | Returns the user with id = {user_id} |  |
+	| GET | /users/get_by_email/{email} | Return the user with the email = {email} |  |
+	| GET | /users/checkToken | Check if the current user has a valid token, or it is expired |  |
+	| POST | /users/login | Handle the login for the current user, generating as response a token |  |
+	| POST | /users/signup | Create a new user using the inserted information, return a message that confirm the action |  |
+	| POST | /users/logout | Remove the token for the logged user, and execute the logout from current session, return a confirmation message |  |
+	| PUT | /users/{user_id}/edit | Update the information of user with id = {user_id}, and return the json of the updated user |  |
+	| DELETE | /users/{user_id} | Delete the user with id = {user_id} |  |
 
 #### MICROSERVICE: tickets
 - TYPE: backend

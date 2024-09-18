@@ -1,26 +1,26 @@
-| Id | Name | Inusabile |User Stories | Student | Archi | DataMetrics | Graph | Editor | Problemi | Completo |
-|----|------|--------------|---------|-------|-------------|-------|--------|----------|-----------|------------|
-| 19 | OneSport |   | Y | Y | Y | Y | Y | E |  | Y |
-| 21 | NFFH |  | Y |Y | Y | Y | Y | G |  | Y |
-| 11 | EFarmers |  | Y | Y | P | Y | Y | E |  | Y |
-| 18 | RecipeCove |  | Y | Y | P | Y | Y | E |  | Y |
-| 22 | Teamify |  | Y | Y | P | Y | Y | E |  | Y |
-| 9 | CDC |  | Y | Y | P | Y | Y | G |  | Y |
-| 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  | Y |
-| 12 | Event Ticket |  | Y |  | P |  |  | G |  | N |
-| 6 | QuizTime | NI | Y |  |  |  |  | E |  | P |
-| 17 | EPO | NI | Y |  | P | Y | Y | G | Codice student molto strano | P |
-| 20 | StocksPlayground | NI | Y |  | P | Y | Y | G |  | P |
-| 1 | Project Eco | NI |  |  |  |  |  |  |  |  |
-| 13 | Market Future | NI |  |  |  |  |  |  |  |  |
-| 15 | Your Online Store | NI |  |  |  |  |  |  |  |  |
-| 24 | MovieIn | NI |  |  |  |  |  |  |  |  |
-| 28 | PlaceAdvisor | NI |  |  |  |  |  |  |  |
-| 25 | EnergyXChange | Y |  |  |  |  |  |  | Troppo basico |  | 
-| 26 | Proio | Y |  |  |  |  |  |  | Pessime User stories |  |
-| 3 | News Feed | Y |  |  |  |  |  |  | User Stories inusabili |  |
-| 8 | Be Safe Mail | Y |  |  |  |  |  |  | DDS, User Stories pessime, progetto inusabile |  |
-| 14 | Travel Mania | Y |  |  |  |  |  | E | Pessime User Stories, codice DDS |  |
+| Id | Name | Inusabile |User Stories | Student | Archi | DataMetrics | Graph | Editor | Problemi | UserStoriesSanization | Endpoint | Deliver ID | Ready to Deliver |
+|----|------|--------------|---------|-------|-------------|-------|--------|----------|-----------|------------|------------|------------|------------|
+| 19 | OneSport |   | Y | Y | Y | Y | Y | E |  |  |  | 1 |  |
+| 21 | NFFH |  | Y |Y | Y | Y | Y | G |  |  |  |  |  |
+| 11 | EFarmers |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
+| 18 | RecipeCove |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
+| 22 | Teamify |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
+| 9 | CDC |  | Y | Y | P | Y | Y | G |  |  |  |  |  |
+| 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
+| 12 | Event Ticket |  | Y |  | P |  |  | G |  |  |  |  |  |
+| 6 | QuizTime | NI | Y |  |  |  |  | E |  |  |  |  |  |
+| 17 | EPO | NI | Y |  | P | Y | Y | G | Codice student molto strano |  |  |  |  |
+| 20 | StocksPlayground | NI | Y |  | P | Y | Y | G |  |  |  |  |  |
+| 1 | Project Eco | NI |  |  |  |  |  |  |  |  |  |  |  |
+| 13 | Market Future | NI |  |  |  |  |  |  |  |  |  |  |  |
+| 15 | Your Online Store | NI |  |  |  |  |  |  |  |  |  |  |  |
+| 24 | MovieIn | NI |  |  |  |  |  |  |  |  |  |  |  |
+| 28 | PlaceAdvisor | NI |  |  |  |  |  |  |  |  |  |  |
+| 25 | EnergyXChange | Y |  |  |  |  |  |  | Troppo basico |  |  |  |  |
+| 26 | Proio | Y |  |  |  |  |  |  | Pessime User stories |  |  |  |  |
+| 3 | News Feed | Y |  |  |  |  |  |  | User Stories inusabili |  |  |  |  |
+| 8 | Be Safe Mail | Y |  |  |  |  |  |  | DDS, User Stories pessime, progetto inusabile |  |  |  |  |
+| 14 | Travel Mania | Y |  |  |  |  |  | E | Pessime User Stories, codice DDS |  |  |  |  |
 | 23 | GYA | Y |  |  |  |  |  | G |  | N |
 
 

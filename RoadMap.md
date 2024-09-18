@@ -20,7 +20,7 @@ SCHEDULE FROM 12/09 TO 20/10
 
 ## PHASE 1 : 20/09 - 05/10
 
-- Call 26/09 col prof
+- Call 24/09 col prof
 
 ### ARCHIGPT
 - Definire ultime features (finalizzare prompt - User Interaction Analysis, ecc..)

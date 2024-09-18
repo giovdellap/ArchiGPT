@@ -44,3 +44,6 @@ Ch G: sk-Gh8ay845lCAnUT1jwOoh_htZJJZwtwMN2vfgXWAnoQT3BlbkFJ6BssRUDfseGmeK3_ZNGX4
 - User Interaction Analyzer da mantenere o da aggiustare? - da aggiustare
 - Architectural Patterns da fare ? - No per scarsità di materiale 
 
+- Aggiungere Pages a Frontend service? Db Structure a Database Service? ENdpoint a Middleware service?
+- Aggiungere Datastracture Designer for Endpoints?
+

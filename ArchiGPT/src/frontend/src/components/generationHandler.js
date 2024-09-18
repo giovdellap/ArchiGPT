@@ -10,7 +10,7 @@ function GenerationHandler({ generationMessage, handleGenerate, systemSelected, 
 
     return (
         <div className="chat-container">
-            {itemSelected !== "" ?   
+            {itemSelected && itemSelected !== "" && itemSelected !== " - " ?   
                 <div className="chat-messages">       
                     {generationMessage === "" ?
                             <>
