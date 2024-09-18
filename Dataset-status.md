@@ -1,6 +1,6 @@
 | Id | Name | Inusabile |User Stories | Student | Archi | DataMetrics | Graph | Editor | Problemi | UserStoriesSanization | Endpoint | Deliver ID | Ready to Deliver |
 |----|------|--------------|---------|-------|-------------|-------|--------|----------|-----------|------------|------------|------------|------------|
-| 19 | OneSport |   | Y | Y | Y | Y | Y | E |  |  |  | 1 |  |
+| 19 | OneSport |   | Y | Y | Y | Y | Y | E |  | Y | Y | 1 | WaitForCheck |
 | 21 | NFFH |  | Y |Y | Y | Y | Y | G |  |  |  |  |  |
 | 11 | EFarmers |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
 | 18 | RecipeCove |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
