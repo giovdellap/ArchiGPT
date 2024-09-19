@@ -84,17 +84,17 @@ The container handles connection to external services that provide real-time acc
 - DESCRIPTION: The frontend microservice serves as the user interface for the OneSport platform. It is designed to provide a seamless and interactive experience, allowing users to access services like viewing sports news, buying tickets, and managing their user accounts. This container integrates the platform's functionalities into a cohesive graphical interface that users interact with. It is the entry point for carrying out all user interactions described in the user stories and ensures that they are intuitive and efficient, enhancing the overall user experience on the platform.
 - PORTS: 3000
 - TECHNOLOGICAL SPECIFICATION: The frontend microservice utilizes ReactJS as its primary framework for building user interfaces, leveraging its component-based architecture to create a responsive and dynamic web application.
-- SERVICE ARCHITECTURE: The architecture of the frontends microservice follows a component-based design pattern, allowing for reusable UI components that are modular and isolated. To interact with other microservices, it offers several functions that call microservice APIs, handling both requests and responses.
+- SERVICE ARCHITECTURE: The architecture of the frontend microservice follows a component-based design pattern, allowing for reusable UI components that are modular and isolated. To interact with other microservices, it offers several functions that call microservice APIs, handling both requests and responses.
 - PAGES:
 
-	| Name | Description | Related Microservice |
-	| ---- | ----------- | -------------------- |
-	| Home.js | Displays and manages news and user collection news | news |
-	| Login.js | Manages user authentication and login process | authentication |
-	| Profile.js | Displays and manages user profile information | authentication |
-	| Signup.js | Handles new user registration | authentication |
-	| Tickets.js | Displays and manages tickets and user collection tickets | tickets |
-	| Friends.js | Displays and manages friends and friend requests | friends |
+	| Name | Description | Related Microservice | User Stories |
+	| ---- | ----------- | -------------------- | ------------ |
+	| Home.js | Displays and manages news and user collection news | news |  |
+	| Login.js | Manages user authentication and login process | authentication |  |
+	| Profile.js | Displays and manages user profile information | authentication |  |
+	| Signup.js | Handles new user registration | authentication |  |
+	| Tickets.js | Displays and manages tickets and user collection tickets | tickets |  |
+	| Friends.js | Displays and manages friends and friend requests | friends |  |
 
 #### MICROSERVICE: news
 - TYPE: backend
@@ -120,7 +120,7 @@ The container handles connection to external services that provide real-time acc
 
 - DB STRUCTURE: 
 
-	**_news_**:	 | **_id_** | title | author | urlToImage | published_at | user_id | url |
+	**_News_** :	 | **_id_** | title | author | urlToImage | published_at | user_id | url |
 
 #### MICROSERVICE: authentication
 - TYPE: backend
@@ -152,7 +152,7 @@ The container handles connection to external services that provide real-time acc
 
 - DB STRUCTURE: 
 
-	**_user_** :	| **_id_** | name | email | role | password |
+	**_User_** :	| **_id_** | name | email | role | password |
 
 #### MICROSERVICE: tickets
 - TYPE: backend
@@ -178,7 +178,7 @@ The container handles connection to external services that provide real-time acc
 
 - DB STRUCTURE: 
 
-	**_tickets_**:	| **_id_** | name | info | promoter | urlToImage | localDate | user_id | url |
+	**_Tickets_** :	| **_id_** | name | info | promoter | urlToImage | localDate | user_id | url |
 
 #### MICROSERVICE: friends
 - TYPE: backend
@@ -205,7 +205,7 @@ The container handles connection to external services that provide real-time acc
 
 - DB STRUCTURE: 
 
-	**_friends_**:	| **_id_** | user_id | friend_id | status |
+	**_Friends_** :	| **_id_** | user_id | friend_id | status |
 
 #### MICROSERVICE: postgres
 - TYPE: database

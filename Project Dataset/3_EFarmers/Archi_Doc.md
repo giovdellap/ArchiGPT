@@ -39,6 +39,7 @@ the products to your home
 27) As a customer, I want to select a delivery option, so that I can receive the products at home 
 28) As a farmer, I want to achieve a badge 
 29) As a visitor, I want to register to the website with OAuth
+30) As a user, I want to be able to modify my informations
 
 
 # CONTAINERS:

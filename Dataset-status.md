@@ -1,8 +1,8 @@
 | Id | Name | Inusabile |User Stories | Student | Archi | DataMetrics | Graph | Editor | Problemi | UserStoriesSanization | Endpoint | Deliver ID | Ready to Deliver |
 |----|------|--------------|---------|-------|-------------|-------|--------|----------|-----------|------------|------------|------------|------------|
-| 19 | OneSport |   | Y | Y | Y | Y | Y | E |  | Y | Y | 1 | WaitForCheck |
+| 19 | OneSport |   | Y | Y | Y | Y | Y | E |  | Y | Y | 1 | Ready |
 | 21 | NFFH |  | Y |Y | Y | Y | Y | G |  |  |  |  |  |
-| 11 | EFarmers |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
+| 11 | EFarmers |  | Y | Y | P | Y | Y | E |  | P |  | 3 |  |
 | 18 | RecipeCove |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
 | 22 | Teamify |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
 | 9 | CDC |  | Y | Y | P | Y | Y | G |  |  |  |  |  |

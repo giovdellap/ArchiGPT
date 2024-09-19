@@ -2,7 +2,7 @@
     {
         "set_id": 1,
         "set_name": "auth",
-        "user_stories": [1, 2, 12, 24, 29],
+        "user_stories": [1, 2, 12, 24, 29, 30],
         "links": [],
         "db": "true"
     },
