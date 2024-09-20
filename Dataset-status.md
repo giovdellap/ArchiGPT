@@ -3,12 +3,12 @@
 | 19 | OneSport |   | Y | Y | Y | Y | Y | E |  | Y | Y | 1 | Ready |
 | 21 | NFFH |  | Y |Y | Y | Y | Y | G |  |  |  |  |  |
 | 11 | EFarmers |  | Y | Y | P | Y | Y | E |  | Y | Y | 3 | Ready |
-| 18 | RecipeCove |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
-| 22 | Teamify |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
 | 9 | CDC |  | Y | Y | P | Y | Y | G |  |  |  |  |  |
-| 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  |  |  |  |  |
+| 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  | P |  | 4 |  |
 | 12 | Event Ticket |  | Y |  | P |  |  | G |  |  |  |  |  |
 | 6 | QuizTime | NI | Y |  |  |  |  | E |  |  |  |  |  |
+| 22 | Teamify |  | Y | Y | P | Y | Y | E | Troppo verso DDS | P |  |  |  |
+| 18 | RecipeCove |  | Y | Y | P | Y | Y | E | Microservices solo hybrid e middleware | P |  |  |  |
 | 17 | EPO | NI | Y |  | P | Y | Y | G | Codice student molto strano |  |  |  |  |
 | 20 | StocksPlayground | NI | Y |  | P | Y | Y | G |  |  |  |  |  |
 | 1 | Project Eco | NI |  |  |  |  |  |  |  |  |  |  |  |

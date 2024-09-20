@@ -64,24 +64,26 @@ The container connects to google external services such as GoogleAuth, GoogleCal
 - TYPE: database
 - DESCRIPTION: Its main function is to store the data related to users, including personal information and the recipes added to the favorite list. CouchDB is a document based database, providing a straightforward communication and management of files in the form of JSON documents, which in turn are easily parsable and not too verbose. Additionally, CouchDB provides resiliency of data in the form of replication, always keeping a replica set for the stored data and providing fault tolerance.
 - PORTS: 5984
+- TECHNOLOGICAL SPECIFICATION: The couchdb microservice will use CouchDB as its database management system in order to support distributed data with built-in replication and synchronization, ensuring high availability and scalability across multiple nodes.
+- SERVICE ARCHITECTURE: There is no architecture.
 
 #### MICROSERVICE: webapp
-- TYPE: frontend/backend
+- TYPE: hybrid
 - DESCRIPTION: The main functionalities included in webapp microservice are the registration and login of the user with an existing Google account, the management of his profile, the Chat-BOT microservice implemented using web sockets, and the management of the discovery and visualization of recipes and their information as well as ingredients and related data.
 - PORTS: 3000
 
 #### MICROSERVICE: calendar
-- TYPE: frontend/backend
+- TYPE: hybrid
 - DESCRIPTION: this microservice is employed to serve the Google Calendar endpoints. It allows the user to create a Google Calendar directly from our system, while also allowing him to correctly delete it from the application. Additionally, there is the possibility for the user to directly create an event (which will function as a reminder) for each recipe the user may intend to prepare on a specific day.
 - PORTS: 3001
 
 #### MICROSERVICE: nodemailer
-- TYPE: other
+- TYPE: middleware
 - DESCRIPTION: this microservice is devoted to providing a mail service, sending emails to the users that are registered in our application. It communicates with the Webapp microservice through the RabbitMQ microservice.
 - PORTS: undefined
 
 #### MICROSERVICE: rabbitmq
-- TYPE: other
+- TYPE: middleware
 - DESCRIPTION: this microservice allows communication, in an asynchronous exchange of messages, between the Webapp and the Nodemailer containers. It works as a middleware that provides multiple messaging protocols.
 - PORTS: 5672
 
