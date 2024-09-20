@@ -16,35 +16,35 @@
     {
         "set_id": 3,
         "set_name": "insertion",
-        "user_stories": [4, 8, 9, 10, 11],
+        "user_stories": [4, 8, 9, 10, 11, 31],
         "links": [4],
         "db": "true"
     },
     {
         "set_id": 4,
         "set_name": "calendar",
-        "user_stories": [7, 18],
+        "user_stories": [7, 18, 21, 32],
         "links": [3],
         "db": "false"
     },
     {
         "set_id": 5,
         "set_name": "cart",
-        "user_stories": [14, 15, 16],
+        "user_stories": [14, 15, 33],
         "links": [6],
         "db": "true"
     },
     {
         "set_id": 6,
         "set_name": "order",
-        "user_stories": [17, 21, 22, 27],
+        "user_stories": [16, 17, 22, 27, 34],
         "links": [5, 8],
         "db": "true"
     },
     {
         "set_id": 7,
         "set_name": "subscription",
-        "user_stories": [19, 20],
+        "user_stories": [19, 20, 35, 36],
         "links": [],
         "db": "true"
     },
