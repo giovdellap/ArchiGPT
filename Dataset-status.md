@@ -4,7 +4,7 @@
 | 21 | NFFH |  | Y |Y | Y | Y | Y | G |  |  |  |  |  |
 | 11 | EFarmers |  | Y | Y | P | Y | Y | E |  | Y | Y | 3 | Ready |
 | 9 | CDC |  | Y | Y | P | Y | Y | G |  |  |  |  |  |
-| 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  | P |  | 4 |  |
+| 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  | Y | Y | 4 | Ready |
 | 12 | Event Ticket |  | Y |  | P |  |  | G |  |  |  |  |  |
 | 6 | QuizTime | NI | Y |  |  |  |  | E |  |  |  |  |  |
 | 22 | Teamify |  | Y | Y | P | Y | Y | E | Troppo verso DDS | P |  |  |  |
