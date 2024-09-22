@@ -6,11 +6,11 @@
 | 9 | CDC |  | Y | Y | P | Y | Y | G |  |  |  |  |  |
 | 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  | Y | Y | 4 | Ready |
 | 12 | Event Ticket |  | Y |  | P |  |  | G |  |  |  |  |  |
-| 6 | QuizTime | NI | Y |  |  |  |  | E |  |  |  |  |  |
 | 22 | Teamify |  | Y | Y | P | Y | Y | E | Troppo verso DDS | P |  |  |  |
 | 18 | RecipeCove |  | Y | Y | P | Y | Y | E | Microservices solo hybrid e middleware | P |  |  |  |
 | 17 | EPO | NI | Y |  | P | Y | Y | G | Codice student molto strano |  |  |  |  |
 | 20 | StocksPlayground | NI | Y |  | P | Y | Y | G |  |  |  |  |  |
+| 6 | QuizTime | NI | Y |  |  |  |  | E |  |  |  |  |  |
 | 1 | Project Eco | NI |  |  |  |  |  |  |  |  |  |  |  |
 | 13 | Market Future | NI |  |  |  |  |  |  |  |  |  |  |  |
 | 15 | Your Online Store | NI |  |  |  |  |  |  |  |  |  |  |  |
