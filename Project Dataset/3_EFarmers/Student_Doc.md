@@ -1,11 +1,6 @@
 # SYSTEM DESCRIPTION:
 
-E-Farmers is an e-commerce website that aims to connect local farmers with customers who are interested in
-buying fresh and locally sourced products. Our platform allows farmers to showcase their products by publishing
-insertions, while customers can easily browse and purchase these goods. Whether you are a farmer looking
-to sell your products or a customers seeking high-quality ”farm-to-table” items, E-Farmers has something for
-everyone. Moreover, if you cannot reach the farmer’s warehouse yourself, you can rely on riders who can ship
-the products to your home
+E-Farmers is an e-commerce website that aims to connect local farmers with customers who are interested in buying fresh and locally sourced products. Our platform allows farmers to showcase their products by publishing insertions, while customers can easily browse and purchase these goods. Whether you are a farmer looking to sell your products or a customers seeking high-quality ”farm-to-table” items, E-Farmers has something for everyone. Moreover, if you cannot reach the farmer’s warehouse yourself, you can rely on riders who can ship the products to your home
 
 # USER STORIES:
 

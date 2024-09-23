@@ -1,10 +1,10 @@
 | Id | Name | Inusabile |User Stories | Student | Archi | DataMetrics | Graph | Editor | Problemi | UserStoriesSanization | Endpoint | Deliver ID | Ready to Deliver |
 |----|------|--------------|---------|-------|-------------|-------|--------|----------|-----------|------------|------------|------------|------------|
 | 19 | OneSport |   | Y | Y | Y | Y | Y | E |  | Y | Y | 1 | Ready |
-| 21 | NFFH |  | Y |Y | Y | Y | Y | G |  |  |  |  |  |
+| 21 | NFFH |  | Y |Y | Y | Y | Y | G |  | Y | Y | 2 | Ready |
 | 11 | EFarmers |  | Y | Y | P | Y | Y | E |  | Y | Y | 3 | Ready |
-| 9 | CDC |  | Y | Y | P | Y | Y | G |  |  |  |  |  |
 | 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  | Y | Y | 4 | Ready |
+| 9 | CDC |  | Y | Y | P | Y | Y | E |  | Y | Y | 5 | Ready |
 | 12 | Event Ticket |  | Y |  | P |  |  | G |  |  |  |  |  |
 | 22 | Teamify |  | Y | Y | P | Y | Y | E | Troppo verso DDS | P |  |  |  |
 | 18 | RecipeCove |  | Y | Y | P | Y | Y | E | Microservices solo hybrid e middleware | P |  |  |  |

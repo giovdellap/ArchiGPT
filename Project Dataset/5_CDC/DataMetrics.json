@@ -16,7 +16,7 @@
     {
         "set_id": 3,
         "set_name": "cart",
-        "user_stories": [4],
+        "user_stories": [4,24,25],
         "links": [],
         "db": "true"
     },
