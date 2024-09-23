@@ -58,14 +58,14 @@
     {
         "set_id": 9,
         "set_name": "area",
-        "user_stories": [7, 30, 35, 31],
+        "user_stories": [7, 30, 35, 31, 39],
         "links": [4],
         "db": "true"
     },
     {
         "set_id": 10,
         "set_name": "order",
-        "user_stories": [12, 26],
+        "user_stories": [12, 26, 40, 41],
         "links": [6],
         "db": "true"
     }

@@ -12,7 +12,6 @@ The user provides:
 - microservice architecture
 
 ### Task: ###
-
 Describe the service's endpoints in terms of HTTP Method, URL, smart description and satisfied user stories 
 
 ### Output format: ###
