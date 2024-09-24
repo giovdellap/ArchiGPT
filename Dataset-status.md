@@ -5,7 +5,7 @@
 | 11 | EFarmers |  | Y | Y | P | Y | Y | E |  | Y | Y | 3 | Ready |
 | 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  | Y | Y | 4 | Ready |
 | 9 | CDC |  | Y | Y | P | Y | Y | E |  | Y | Y | 5 | Ready |
-| 12 | Event Ticket |  | Y |  | P |  |  | G |  |  |  |  |  |
+| 12 | Event Ticket |  | Y | Y | P | Y | Y | E |  | Y | Y | 6 | Ready |
 | 22 | Teamify |  | Y | Y | P | Y | Y | E | Troppo verso DDS | P |  |  |  |
 | 18 | RecipeCove |  | Y | Y | P | Y | Y | E | Microservices solo hybrid e middleware | P |  |  |  |
 | 17 | EPO | NI | Y |  | P | Y | Y | G | Codice student molto strano |  |  |  |  |
