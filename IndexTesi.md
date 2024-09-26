@@ -3,9 +3,9 @@
 
 ## VERSION 1
 
-1) Introduzione - Comune
+1) [Introduzione - Comune]()
 
-2) Microservices Architecture - Comune
+2) [Microservices Architecture - Comune]()
    1) Overview of Containerization
       1) Introduction to Containers
       2) Benefits of Containerization
@@ -20,7 +20,7 @@
       2) Scaling Microservices with Containers
       3) Challenges in Managing Containerized Microservices
 
-3) LLM - Comune
+3) [LLM - Comune](https://www.overleaf.com/project/66d97be4ccb0bd4078b2a640)
    1) General Overview
       1) Introduction to Large Language Models (LLMs)
       2) Key Concepts in LLMs
@@ -35,7 +35,7 @@
       2) Generative and Assistive Functionalities
       3) ChatGPT API Overview
 
-4) State of the art - Comune
+4) [State of the art - Comune](https://www.overleaf.com/project/65d4cfc777e42fd16398f59b)
    1) SE Tasks (?)
       1) General Overview
       2) Trend Analysis
@@ -54,7 +54,7 @@
    4) Evaluation Data and Benchmark
       1) General Overview and Trends
 
-5) ArchiGPT Overview - Comune
+5) [ArchiGPT Overview - Comune]()
    1) Idea Overview
    2) ArchiGPT Overview
    3) Dataset Overview
