@@ -112,24 +112,24 @@ function ProjectOverview() {
 	const handleGenerate = () => {
 
         setShowLoadingScreen(true)
-		var generateApiUrl = ''
+		var generateApiUrl = 'http://localhost:5001/generation/'
         const formData = new FormData();
 		formData.append('project_name', projectName);
 
 		if(systemSelected !== ""){
-			generateApiUrl = 'http://localhost:5001/generation/generateSystem';
+			generateApiUrl = generateApiUrl + 'generateSystem';
 			formData.append('assistant', systemSelected);
 			if (systemSelected === 'Container Design'){
 				formData.append('userstories', file);
 			}
 		} else if (containerSelected !== ""){
 			if(serviceSelected.service !== ""){
-				generateApiUrl = 'http://localhost:5001/generation/generateService';
+				generateApiUrl = generateApiUrl + 'generateService';
 				formData.append('container', containerSelected.container);
 				formData.append('service', serviceSelected.service);
 				formData.append('assistant', serviceSelected.assistant);
 			} else {
-				generateApiUrl = 'http://localhost:5001/generation/generateContainer';
+				generateApiUrl = generateApiUrl + 'generateContainer';
 				formData.append('assistant', containerSelected.assistant);
 				formData.append('container', containerSelected.container);
 			}
@@ -158,6 +158,51 @@ function ProjectOverview() {
 			.catch((error) => {
 				window.alert('Failed to generate document');
 				console.error('Failed to generate document:', error);
+			});
+    };
+
+	const handleRegenerate = () => {
+
+        setShowLoadingScreen(true)
+		var generateApiUrl = 'http://localhost:5001/generation/'
+        const formData = new FormData();
+		formData.append('project_name', projectName);
+
+		if (containerSelected !== ""){
+			if(serviceSelected.service !== ""){
+				generateApiUrl = generateApiUrl + 'regenerateService';
+				formData.append('container', containerSelected.container);
+				formData.append('service', serviceSelected.service);
+				formData.append('assistant', serviceSelected.assistant);
+			} else {
+				generateApiUrl = generateApiUrl + 'regenerateContainer';
+				formData.append('assistant', containerSelected.assistant);
+				formData.append('container', containerSelected.container);
+			}
+		}
+
+        fetch(generateApiUrl, {
+            method: 'PATCH',
+            mode: 'cors',
+            body: formData
+        })
+            .then((response) => {
+              if (response.status === 200) {
+				return response.json();
+              } else {
+                window.alert('Failed to regenerate document');
+                throw new Error('Failed to regenerate document');
+              }
+          	})
+			.then((generationResult) => {
+				fetchProjectStatus()
+				if(systemSelected === "") fetchContainerInfo(containerSelected.container)
+				setGenerationMessage(generationResult.content)
+				setShowLoadingScreen(false)
+			})
+			.catch((error) => {
+				window.alert('Failed to regenerate document');
+				console.error('Failed to regenerate document:', error);
 			});
     };
 
@@ -195,6 +240,7 @@ function ProjectOverview() {
 					<GenerationHandler 
 						generationMessage={generationMessage} 
 						handleGenerate={handleGenerate} 
+						handleRegenerate={handleRegenerate}
 						systemSelected={systemSelected} 
 						containerSelected={containerSelected}
 						serviceSelected={serviceSelected}

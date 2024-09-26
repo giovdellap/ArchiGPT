@@ -56,6 +56,49 @@ def generateService():
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500
+    
+
+def regenerateService():
+    try:
+        if 'project_name' not in request.form:
+            return jsonify({"message": "project_name missing"}), 400
+        project_name = request.form['project_name']
+        if 'assistant' not in request.form:
+            return jsonify({"message": "assistant missing"}), 400
+        assistant_name = request.form['assistant']
+        if 'container' not in request.form:
+            return jsonify({"message": "container missing"}), 400
+        container_name = request.form['container']
+        if 'service' not in request.form:
+            return jsonify({"message": "service missing"}), 400
+        service_name = request.form['service']
+        
+        content = ""
+        dbhandler = DBHandler()
+        dbhandler.database_setup()   
+        
+        
+        #CONTENT CREATION
+        print('CONTENT CREATION')
+        contentFactory = ContentFactory(dbhandler, project_name)
+        content = contentFactory.getServiceContent(getAssistantName(assistant_name), {"container": container_name, "service": service_name})
+
+        #ASSISTANT INTERROGATION
+        message_content = assistant_call( getAssistantName(assistant_name), content )
+
+        result = buildPreMessage(getAssistantName(assistant_name), message_content)
+        
+        print('AFTER PROCESSING: ', result)
+        
+        #SAVE ON DB
+        dbhandler.updateService(project_name, container_name, service_name, assistant_name, result)
+        
+        return jsonify({'content': result}), 200
+    
+    except Exception as e:
+        print("Exception: %s", e)
+        return jsonify({"message": "An error occurred"}), 500
+
 
 def getService():
     try:
@@ -71,7 +114,7 @@ def getService():
         
         dbhandler = DBHandler()
         dbhandler.database_setup()    
-        #TODO: add dbhandler.getSerice
+        #TODO: add dbhandler.getService
         result = dbhandler.getContainer(project_name, container_name)
         
         return json.loads(result)['data'], 200

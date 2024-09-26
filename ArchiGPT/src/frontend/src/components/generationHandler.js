@@ -1,12 +1,17 @@
 import React from 'react';
 import GenerationView from './generationView';
 import UploadFileButton from './uploadFileButton';
+import RegenerateButton from './regenerateButton';
 
-function GenerationHandler({ generationMessage, handleGenerate, systemSelected, containerSelected, serviceSelected, handleFileUpload, file }) {
+function GenerationHandler({ generationMessage, handleGenerate, handleRegenerate, systemSelected, containerSelected, serviceSelected, handleFileUpload, file }) {
 
+    var generationHandler = true
     var itemSelected = ""
     systemSelected !== "" ? itemSelected = systemSelected : itemSelected = containerSelected.container + " - " + containerSelected.assistant
     serviceSelected.service !== "" ? itemSelected = itemSelected + "\n " + serviceSelected.service + " - " + serviceSelected.assistant : itemSelected = itemSelected + ""
+
+    // Use cases without generation
+    if(systemSelected !== "" || serviceSelected.assistant === "ServiceDescriptionGenerator" ) generationHandler = false
 
     return (
         <div className="chat-container">
@@ -30,6 +35,7 @@ function GenerationHandler({ generationMessage, handleGenerate, systemSelected, 
                             <>
                             <div className="balloon" style={{ whiteSpace: 'pre-line', margin: '50px'}}>
                                 {`Document generated in \n ${itemSelected} : `}
+                                {generationHandler ? <RegenerateButton handleRegenerate={handleRegenerate} /> : <></>}
                             </div>
                             <GenerationView generationMessage={generationMessage} />
                             </>

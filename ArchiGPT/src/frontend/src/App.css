@@ -89,6 +89,16 @@
   margin-left: 10px;
 }
 
+.file-send-btn:hover {
+  background-color: darkgreen; /* Optional: Change color on hover */
+}
+
+.styleRegendiv {
+  display: flex;
+  justify-content: right;  /* Horizontally center */
+  align-items: center;      /* Vertically center */
+  height: 0vh;            /* Optional: Full viewport height to test vertical centering */
+}
 
 .spinner {
   border: 5px solid rgba(0, 0, 0, 0.1);
@@ -107,4 +117,23 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.file-retry-btn {
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 27px; /* Icon size */
+  position: absolute;
+}
+
+.file-retry-btn:hover {
+  background-color: darkgreen; /* Optional: Change color on hover */
 }

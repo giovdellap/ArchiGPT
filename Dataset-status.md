@@ -6,8 +6,8 @@
 | 10 | RentYourExpert |  | Y | Y | P | Y | Y | E |  | Y | Y | 4 | Ready |
 | 9 | CDC |  | Y | Y | P | Y | Y | E |  | Y | Y | 5 | Ready |
 | 12 | Event Ticket |  | Y | Y | P | Y | Y | E |  | Y | Y | 6 | Ready |
-| 22 | Teamify |  | Y | Y | P | Y | Y | E | Troppo verso DDS | P |  |  |  |
-| 18 | RecipeCove |  | Y | Y | P | Y | Y | E | Microservices solo hybrid e middleware | P |  |  |  |
+| 22 | Teamify |  | Y | Y | P | Y | Y | E | Troppo verso DDS |  |  | 7 | Ready |
+| 18 | RecipeCove |  | Y | Y | P | Y | Y | E | Microservices solo hybrid e middleware |  |  | 8 | Ready |
 | 17 | EPO | NI | Y |  | P | Y | Y | G | Codice student molto strano |  |  |  |  |
 | 20 | StocksPlayground | NI | Y |  | P | Y | Y | G |  |  |  |  |  |
 | 6 | QuizTime | NI | Y |  |  |  |  | E |  |  |  |  |  |

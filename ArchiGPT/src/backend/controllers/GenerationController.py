@@ -67,4 +67,42 @@ def generateSystem():
     except Exception as e:
         print("Exception: %s", e)
         return jsonify({"message": "An error occurred"}), 500
+    
+
+def regenerateSystem():
+    try:
+        if 'project_name' not in request.form:
+            return jsonify({"message": "project_name missing"}), 400
+        project_name = request.form['project_name']
+        if 'assistant' not in request.form:
+            return jsonify({"message": "assistant missing"}), 400
+        assistant_name = request.form['assistant']
+        
+        content = ""
+        dbhandler = DBHandler()
+        dbhandler.database_setup()      
+        
+        #CONTENT CREATION
+        print('CONTENT CREATION')
+
+        contentFactory = ContentFactory(dbhandler, project_name)
+        content = contentFactory.getSystemContent(getAssistantName(assistant_name))
+
+        #ASSISTANT INTERROGATION
+        result = assistant_call( getAssistantName(assistant_name), content )
+        
+        #SAVE ON DB
+        dbhandler.updateSystem(project_name, assistant_name, result)
+        
+        # NEXT ASSISTANT MANAGEMENT
+        nextAssistant = getNextSystemAssistant(assistant_name)
+        if nextAssistant == "CONTAINER":
+            container_handler = ContainerHandler(result, project_name)
+            container_handler.getContainersList(dbhandler)
+        
+        return jsonify({'content': result}), 200
+    
+    except Exception as e:
+        print("Exception: %s", e)
+        return jsonify({"message": "An error occurred"}), 500
 
