@@ -23,7 +23,6 @@ SCHEDULE FROM 12/09 TO 14/10 (WORST CASE Discussione il 21/10)
 
 ### THESIS PAPER
 Scrittura capitoli :
-  - [ ] 1) Introduzione - Comune
 
   - [ ] 2) Microservices Architecture - Comune
      - [ ] 1) Overview of Containerization
@@ -74,12 +73,6 @@ Scrittura capitoli :
      - [ ] 4) Evaluation Data and Benchmark
         - [ ] 1) General Overview and Trends
 
-  - [ ] 5) ArchiGPT Overview - Comune
-     - [ ] 1) Idea Overview
-     - [ ] 2) ArchiGPT Overview
-     - [ ] 3) Dataset Overview
-     - [ ] 4) Evaluation Overview
-
 
 ## PHASE 2 : 03/10 - 10/10
 
@@ -94,6 +87,13 @@ Scrittura capitoli :
 
 ### THESIS PAPER
 Scrittura capitoli :
+  - [ ] 1) Introduzione - Comune
+
+  - [ ] 5) ArchiGPT Overview - Comune
+     - [ ] 1) Idea Overview
+     - [ ] 2) ArchiGPT Overview
+     - [ ] 3) Dataset Overview
+     - [ ] 4) Evaluation Overview
 
 
 ## PHASE 3 : 11/10 - 14/10
