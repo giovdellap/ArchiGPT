@@ -80,8 +80,8 @@
          3) Fine Tuning (?)
 
 7) Dataset for validation - Non Comune - Focus Eugenio
-   1) General Overview - Comune
-   2) Student's projects description - Comune 
+   1) General Overview
+   2) Student's projects description
    3) Projects' selection
    4) Projects' cleaning
    5) Projects' documentation generation (code analysis)
