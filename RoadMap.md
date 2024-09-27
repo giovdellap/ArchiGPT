@@ -87,7 +87,7 @@ Scrittura capitoli :
 
 ### THESIS PAPER
 Scrittura capitoli :
-  - [ ] 1) Introduzione - Comune
+  - [ ] 1) Introduction - Comune
 
   - [ ] 5) ArchiGPT Overview - Comune
      - [ ] 1) Idea Overview
