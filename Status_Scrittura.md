@@ -1,10 +1,9 @@
 | Capitolo | Titolo | Assigned |Tesi | Phase I | Biblio | Review | Mecella Review |
 |----------|------------|----------|-------|----------------|------------------|----------| -------- |
 | 1 | Introduction | NO | Comune | NO | NO | NO | NO |
-| 2 | Microservices Architecture | Giovanni | Comune | NO | NO | NO | NO |
-| 2.1 | Overview of Containerization | Giovanni | Comune | WIP | NO | NO | NO |
-| 2.2 | Microservices Architecture | Giovanni | Comune | NO | NO | NO | NO |
-| 2.3 | Integration of Containers and Microservices | Giovanni | Comune | NO | NO | NO | NO |
+| 2 | Microservices Architecture | Giovanni | Comune | YES | NO | NO | NO |
+| 2.1 | Overview of Containerization | Giovanni | Comune | YES | NO | NO | NO |
+| 2.2 | Microservices Architecture | Giovanni | Comune | YES | NO | NO | NO |
 | 3 | LLM | Eugenio | Comune | NO | NO | NO | NO |
 | 3.1 | General Overview | Eugenio | Comune | NO | NO | NO | NO |
 | 3.2 | Evolution | Eugenio | Comune | NO | NO | NO | NO |
