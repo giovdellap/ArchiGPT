@@ -28,10 +28,9 @@
    2) Evolution
       1) Early NLP Techniques
       2) Introduction of Word Embeddings
-      3) Transformers and Attention Mechanisms
-      4) Growth of LLMs
-   3) OpenAI's GPT and its capabilities
-      1) OpenAI’s GPT and its Capabilities
+      3) Growth of LLMs
+   3) OpenAI's GPTs
+      1) GPTs Models and their Capabilities
       2) Generative and Assistive Functionalities
       3) ChatGPT API Overview
 
