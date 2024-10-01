@@ -8,11 +8,11 @@
 | 3.1 | General Overview | Eugenio | Comune | NO | NO | NO | NO |
 | 3.2 | Evolution | Eugenio | Comune | NO | NO | NO | NO |
 | 3.3 | OpenAI's GPT and its capabilities | Eugenio | Comune | NO | NO | NO | NO |
-| 4 | State of the art | Giovanni | Comune | NO | NO | NO | NO |
-| 4.1 | SE Tasks | Giovanni | Comune | NO | NO | NO | NO |
-| 4.2 | Techniques | Giovanni | Comune | NO | NO | NO | NO |
-| 4.3 | Training Data | Giovanni | Comune | NO | NO | NO | NO |
-| 4.4 | Evaluation Data and Benchmark | Giovanni | Comune | NO | NO | NO | NO |
+| 4 | State of the art | Giovanni | Comune | YES | NO | NO | NO |
+| 4.1 | SE Tasks | Giovanni | Comune | NO | YES | NO | NO |
+| 4.2 | Techniques | Giovanni | Comune | YES | NO | NO | NO |
+| 4.3 | Training Data | Giovanni | Comune | YES | NO | NO | NO |
+| 4.4 | Evaluation Data and Benchmark | Giovanni | Comune | YES | NO | NO | NO |
 | 5 | ArchiGPT Overview | NO | Comune | NO | NO | NO | NO |
 | 5.1 | Idea Overview | NO | Comune | NO | NO | NO | NO |
 | 5.2 | ArchiGPT Overview | NO | Comune | NO | NO | NO | NO |
