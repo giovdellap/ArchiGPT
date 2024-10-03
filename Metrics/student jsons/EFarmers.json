@@ -1,0 +1,411 @@
+{
+    "modelName": "student",
+    "projects": [
+        {
+            "name": "EFarmers",
+            "containers": [
+                {
+                    "name": "EFarmers",
+                    "userStories": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+                    "services": [
+						{
+                            "name": "frontend",
+                            "type": "frontend",
+                            "pages": [
+								{
+                                    "name": "AddBoxes.js",
+                                    "userStoryIndex": [31]
+                                },
+								{
+                                    "name": "BookedProducts.js",
+                                    "userStoryIndex": [32]
+                                },
+								{
+                                    "name": "Delivery.js",
+                                    "userStoryIndex": [27]
+                                },
+								{
+                                    "name": "EditInsertion.js",
+                                    "userStoryIndex": [10]
+                                },
+								{
+                                    "name": "FarmerProfile.js",
+                                    "userStoryIndex": [13, 28]
+                                },
+								{
+                                    "name": "Home.js",
+                                    "userStoryIndex": [5, 11]
+                                },
+								{
+                                    "name": "Inbox.js",
+                                    "userStoryIndex": [21]
+                                },
+								{
+                                    "name": "InsertionDetails.js",
+                                    "userStoryIndex": []
+                                },
+								{
+                                    "name": "Insertions.js",
+                                    "userStoryIndex": [8]
+                                },
+								{
+                                    "name": "Login.js",
+                                    "userStoryIndex": [3]
+                                },
+								{
+                                    "name": "OrdersMainPage.js",
+                                    "userStoryIndex": [22]
+                                },
+								{
+                                    "name": "PaymentPage.js",
+                                    "userStoryIndex": [17]
+                                },
+								{
+                                    "name": "PublishInsertion.js",
+                                    "userStoryIndex": []
+                                },
+								{
+                                    "name": "Registration.js",
+                                    "userStoryIndex": [1, 29]
+                                },
+								{
+                                    "name": "RiderProfile.js",
+                                    "userStoryIndex": [25, 26]
+                                },
+								{
+                                    "name": "ShoppingCart.js",
+                                    "userStoryIndex": [33]
+                                },
+								{
+                                    "name": "UserChanges.js",
+                                    "userStoryIndex": []
+                                },
+								{
+                                    "name": "UserProfile.js",
+                                    "userStoryIndex": [6]
+                                },
+								{
+                                    "name": "SeasonCalendar.js",
+                                    "userStoryIndex": [7, 18]
+                                },
+								{
+                                    "name": "NavBar.js",
+                                    "userStoryIndex": [36]
+                                }
+							]
+                        },
+                        {
+							"name": "user_service",
+							"type": "backend",
+							"endpoints": [
+								{
+									"url": "login/",
+									"method": "POST",
+									"userStoryIndex": [3]
+								},
+								{
+									"url": "token/refresh/",
+									"method": "POST",
+									"userStoryIndex": []
+								},
+								{
+									"url": "token/verify/",
+									"method": "POST",
+									"userStoryIndex": []
+								},
+								{
+									"url": "oauth/token/",
+									"method": "POST",
+									"userStoryIndex": [29]
+								},
+								{
+									"url": "logout/blacklist/",
+									"method": "POST",
+									"userStoryIndex": [2]
+								},
+								{
+									"url": "login/",
+									"method": "POST",
+									"userStoryIndex": [3]
+								},
+								{
+									"url": "users/",
+									"method": "GET",
+									"userStoryIndex": []
+								},
+								{
+									"url": "users/",
+									"method": "POST",
+									"userStoryIndex": [1]
+								},
+								{
+									"url": "users/{user_id}/",
+									"method": "GET",
+									"userStoryIndex": [6, 13]
+								},
+								{
+									"url": "users/{user_id}/name/",
+									"method": "GET",
+									"userStoryIndex": []
+								},
+								{
+									"url": "users/{user_id}/",
+									"method": "PATCH",
+									"userStoryIndex": [12, 24]
+								},
+								{
+									"url": "users/{user_id}/changes/",
+									"method": "PATCH",
+									"userStoryIndex": [30]
+								},
+								{
+									"url": "users/{user_id}/{type}",
+									"method": "POST",
+									"userStoryIndex": [12, 24]
+								},
+								{
+									"url": "farmers/{user_id}/",
+									"method": "GET",
+									"userStoryIndex": []
+								},
+								{
+									"url": "farmers/{user_id}/id",
+									"method": "PATCH",
+									"userStoryIndex": []
+								},
+								{
+									"url": "riders/",
+									"method": "GET",
+									"userStoryIndex": []
+								},
+								{
+									"url": "riders/{user_id}/",
+									"method": "GET",
+									"userStoryIndex": []
+								},
+								{
+									"url": "riders/{user_id}/",
+									"method": "PATCH",
+									"userStoryIndex": [26]
+								},
+								{
+									"url": "review/{user_id}/",
+									"method": "GET",
+									"userStoryIndex": [13]
+								},
+								{
+									"url": "review/{user_id}/",
+									"method": "POST",
+									"userStoryIndex": [23]
+								}
+							]
+						},
+                        {
+							"name": "insertions_service",
+							"type": "backend",
+							"endpoints": [
+								{
+									"url": "insertions/",
+									"method": "GET",
+									"userStoryIndex": [8, 11]
+								},
+								{
+									"url": "insertions/",
+									"method": "POST",
+									"userStoryIndex": [4]
+								},
+								{
+									"url": "insertions/{id}/",
+									"method": "GET",
+									"userStoryIndex": []
+								},
+								{
+									"url": "insertions/{id}/image/",
+									"method": "GET",
+									"userStoryIndex": []
+								},
+								{
+									"url": "insertions/{id}/",
+									"method": "PUT",
+									"userStoryIndex": [10]
+								},
+								{
+									"url": "insertions/{id}/",
+									"method": "DELETE",
+									"userStoryIndex": [9]
+								},
+								{
+									"url": "insertions/{id}/boxes/",
+									"method": "GET",
+									"userStoryIndex": [11]
+								},
+								{
+									"url": "insertions/{id}/boxes/",
+									"method": "POST",
+									"userStoryIndex": [31]
+								},
+								{
+									"url": "insertions/{box_id}/decrease",
+									"method": "PATCH",
+									"userStoryIndex": []
+								},
+								{
+									"url": "booking/{request_id}/",
+									"method": "GET",
+									"userStoryIndex": []
+								},
+								{
+									"url": "booking/{request_id}/",
+									"method": "PUT",
+									"userStoryIndex": [21]
+								},
+								{
+									"url": "booking/requests/{user_id}/",
+									"method": "GET",
+									"userStoryIndex": [32]
+								},
+								{
+									"url": "booking/inbox/{farmer_id}/",
+									"method": "GET",
+									"userStoryIndex": [21]
+								},
+								{
+									"url": "booking/",
+									"method": "POST",
+									"userStoryIndex": [18]
+								},
+								{
+									"url": "booking/{id}/",
+									"method": "DELETE",
+									"userStoryIndex": [21]
+								}
+							]
+						},						
+                        {
+							"name": "shoppingcart_service",
+							"type": "backend",
+							"endpoints": [
+								{
+									"url": "users/{user_id}/cart/",
+									"method": "GET",
+									"userStoryIndex": [33]
+								},
+								{
+									"url": "users/{user_id}/cart/",
+									"method": "POST",
+									"userStoryIndex": []
+								},
+								{
+									"url": "users/{user_id}/cart/",
+									"method": "DELETE",
+									"userStoryIndex": []
+								},
+								{
+									"url": "users/{user_id}/cart/items/",
+									"method": "GET",
+									"userStoryIndex": []
+								},
+								{
+									"url": "users/{user_id}/cart/items/",
+									"method": "POST",
+									"userStoryIndex": [14]
+								},
+								{
+									"url": "users/{user_id}/cart/items/",
+									"method": "DELETE",
+									"userStoryIndex": [15]
+								}
+							]
+						},						
+                        {
+							"name": "payments_order_service",
+							"type": "backend",
+							"endpoints": [
+								{
+									"url": "getSpecificOrder/{payment_method_id}/",
+									"method": "GET",
+									"userStoryIndex": []
+								},
+								{
+									"url": "getSpecificOrderByRider/{rider_id}/",
+									"method": "GET",
+									"userStoryIndex": []
+								},
+								{
+									"url": "update-order/",
+									"method": "PATCH",
+									"userStoryIndex": [27]
+								},
+								{
+									"url": "update-status-rider/",
+									"method": "PATCH",
+									"userStoryIndex": [34]
+								},
+								{
+									"url": "get-orders/{email}/",
+									"method": "GET",
+									"userStoryIndex": [22]
+								},
+								{
+									"url": "save-strip-info/",
+									"method": "POST",
+									"userStoryIndex": [16, 17]
+								}
+							]
+						},
+						{
+							"name": "subscription_service",
+							"type": "backend",
+							"endpoints": [
+								{
+									"url": "customer/{user_id}/subscriptions/",
+									"method": "GET",
+									"userStoryIndex": [20]
+								},
+								{
+									"url": "customer/{user_id}/",
+									"method": "PUT",
+									"userStoryIndex": [19]
+								},
+								{
+									"url": "customer/{user_id}/",
+									"method": "PATCH",
+									"userStoryIndex": [35]
+								},
+								{
+									"url": "customer/{user_id}/",
+									"method": "GET",
+									"userStoryIndex": [36]
+								},
+								{
+									"url": "customer/{user_id}/",
+									"method": "DELETE",
+									"userStoryIndex": [35]
+								},
+								{
+									"url": "farmer/{farmer_id}/",
+									"method": "POST",
+									"userStoryIndex": [19]
+								},
+								{
+									"url": "farmer/{farmer_id}/",
+									"method": "DELETE",
+									"userStoryIndex": [35]
+								}
+							]
+						},												
+                        {
+                            "name": "db",
+                            "type": "database"
+                        },												
+                        {
+                            "name": "rabbitmq",
+                            "type": "middleware"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+    
+}

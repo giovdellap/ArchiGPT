@@ -31,8 +31,8 @@
       3) Growth of LLMs
    3) OpenAI's GPTs
       1) GPTs Models and their Capabilities
-      2) Generative and Assistive Functionalities
-      3) ChatGPT API Overview
+      2) ChatGPT API Architecture
+      3) ChatGPT Assistant API Overview
 
 4) [State of the art - Comune](https://www.overleaf.com/project/65d4cfc777e42fd16398f59b)
    1) SE Tasks (?)
@@ -70,7 +70,7 @@
       5) React
    4) API Handler (interaction with OpenAI API)
    5) Assistants
-      1) Description and Purpsoe
+      1) Description and Purpose
       2) How they work (framework prompt)
       3) What results we want
       4) Come sono dati gli esempi (magari confronto?)
@@ -87,7 +87,7 @@
    6) Projects Datametrics
 
 8) Validation - Comune
-   1) Defnition of Metrics
+   1) Definition of Metrics
    2) Definition of Algoritms used for Metrics
    3) Results on Dataset
 
