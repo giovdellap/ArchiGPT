@@ -14,6 +14,7 @@ function getDataMetricsProject(name) {
         case 'OneSport':
             projData = onesportProjData
             projData.metrics = onesportDataMetrics
+            return projData
         default:
             return {}
     }
