@@ -10,6 +10,7 @@ function usscMetrics(project, data) {
                 if (service.type === 'backend') {
                     for (const endpoint of service.endpoints) {
                         if(endpoint.userStoryIndex.includes(usIndex)) {
+                            console.log('USER STORY FULFILLED', usIndex, service.name)
                             fulfilled = true
                         }
                     }
@@ -19,7 +20,7 @@ function usscMetrics(project, data) {
         if (fulfilled) n_sod++
     }
 
-    console.log('N_SOD', n_sod)
+    //console.log('N_SOD', n_sod)
     const result = 100 * (n_sod/n_us)
     return result
 }

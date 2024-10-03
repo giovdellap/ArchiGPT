@@ -20,8 +20,8 @@ const start = ( async (req, res) => {
       const dataMetrics = getDataMetricsProject(proj.name)
       const metricRes = getMetricResult(metric, proj, dataMetrics)
       projResult[metric] = metricRes
-      console.log('METRIC', metric)
-      console.log('METRICRES', metricRes)
+      console.log(proj.name, 'METRIC', metric)
+      console.log(proj.name, 'METRIC RESULT', metricRes)
     }
 
     response.projectsResults.push(projResult)

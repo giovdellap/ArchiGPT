@@ -1,0 +1,176 @@
+{
+    "modelName": "student",
+    "projects": [
+        {
+            "name": "OneSport",
+            "containers": [
+                {
+                    "name": "OneSport",
+                    "userStories": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+                    "services": [
+                        {
+                            "name": "news",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "/news",
+                                    "method": "GET",
+                                    "userStoryIndex": [7, 8]
+                                },
+                                {
+                                    "url": "/news/<user_id>",
+                                    "method": "GET",
+                                    "userStoryIndex": [20]
+                                },
+                                {
+                                    "url": "/news/create",
+                                    "method": "POST",
+                                    "userStoryIndex": [9]
+                                },
+                                {
+                                    "url": "/news/<news_id>",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [10]
+                                },
+                                {
+                                    "url": "/news/<user_id>/all",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [15]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "authentication",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "/users",
+                                    "method": "GET",
+                                    "userStoryIndex": []
+                                },
+                                {
+                                    "url": "/users/<user_id>",
+                                    "method": "GET",
+                                    "userStoryIndex": [4]
+                                },
+                                {
+                                    "url": "/users/get_by_email/<email>",
+                                    "method": "GET",
+                                    "userStoryIndex": [19]
+                                },
+                                {
+                                    "url": "/users/checkToken",
+                                    "method": "GET",
+                                    "userStoryIndex": [2]
+                                },
+                                {
+                                    "url": "/users/login",
+                                    "method": "POST",
+                                    "userStoryIndex": [2]
+                                },
+                                {
+                                    "url": "/users/signup",
+                                    "method": "POST",
+                                    "userStoryIndex": [1]
+                                },
+                                {
+                                    "url": "/users/logout",
+                                    "method": "POST",
+                                    "userStoryIndex": [3]
+                                },
+                                {
+                                    "url": "/users/<user_id>/edit",
+                                    "method": "PUT",
+                                    "userStoryIndex": [6]
+                                },
+                                {
+                                    "url": "/users/<user_id>",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [5]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "tickets",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "/tickets",
+                                    "method": "GET",
+                                    "userStoryIndex": [11, 12]
+                                },
+                                {
+                                    "url": "/tickets/<user_id>",
+                                    "method": "GET",
+                                    "userStoryIndex": [21]
+                                },
+                                {
+                                    "url": "/tickets/collect",
+                                    "method": "POST",
+                                    "userStoryIndex": [13]
+                                },
+                                {
+                                    "url": "/tickets/<ticket_id>",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [14]
+                                },
+                                {
+                                    "url": "/tickets/<user_id>/all",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [15]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "friends",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "/friends/<user_id>",
+                                    "method": "GET",
+                                    "userStoryIndex": [22]
+                                },
+                                {
+                                    "url": "/friends/requests/<friend_id>",
+                                    "method": "GET",
+                                    "userStoryIndex": [17]
+                                },
+                                {
+                                    "url": "/friends/create_request",
+                                    "method": "POST",
+                                    "userStoryIndex": [16]
+                                },
+                                {
+                                    "url": "/friends/<request_id>/accept_request",
+                                    "method": "PUT",
+                                    "userStoryIndex": [23]
+                                },
+                                {
+                                    "url": "/friends/<friend_id>/cancel_friend",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [18]
+                                },
+                                {
+                                    "url": "/friends/<request_id>/delete_request",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [24]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "frontend",
+                            "type": "frontend",
+                            "endpoints": []
+                        },
+                        {
+                            "name": "postgres",
+                            "type": "database",
+                            "endpoints": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+    
+}

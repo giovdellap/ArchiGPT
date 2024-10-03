@@ -5,7 +5,7 @@ function cicMetrics(project, data) {
         let setComplete = false
         for (const container of project.containers) {
             let usFulfilled = 0
-            console.log(container.userStories)
+            //console.log(container.userStories)
             for (const us of set.user_stories) {
                 if(container.userStories.includes(us)) usFulfilled++
             }
