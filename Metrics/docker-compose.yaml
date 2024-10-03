@@ -1,0 +1,16 @@
+services:
+
+  backend:
+    container_name: backend-metrics
+    restart: always
+    ports:
+      - 5001:5001
+    build:
+      context: ./be-node
+      dockerfile: ./Dockerfile
+    networks:
+      - main
+
+networks:
+  main:
+    driver: bridge

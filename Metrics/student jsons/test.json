@@ -1,0 +1,80 @@
+{
+    "modelName": "testModel",
+    "projects": [
+        {
+            "name": "test",
+            "containers": [
+                {
+                    "name": "auth",
+                    "userStories": [1, 2, 3],
+                    "services": [
+                        {
+                            "name": "auth-be",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "login",
+                                    "method": "POST",
+                                    "userStoryIndex": [2]
+                                },
+                                {
+                                    "url": "register",
+                                    "method": "POST",
+                                    "userStoryIndex": [1]
+                                },
+                                {
+                                    "url": "logout",
+                                    "method": "POST",
+                                    "userStoryIndex": [3]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "auth-db",
+                            "type": "database",
+                            "endpoints": []
+                        }
+                    ]
+                },
+                {
+                    "name": "blog",
+                    "userStories": [4, 5, 6, 7],
+                    "services": [
+                        {
+                            "name": "blog-be",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "articles",
+                                    "method": "GET",
+                                    "userStoryIndex": [4]
+                                },
+                                {
+                                    "url": "article/<id>",
+                                    "method": "GET",
+                                    "userStoryIndex": [5]
+                                },
+                                {
+                                    "url": "comments/<id>",
+                                    "method": "GET",
+                                    "userStoryIndex": [6]
+                                },
+                                {
+                                    "url": "comment",
+                                    "method": "POST",
+                                    "userStoryIndex": [7]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "blog-db",
+                            "type": "database",
+                            "endpoints": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+    
+}
