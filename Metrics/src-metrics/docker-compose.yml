@@ -1,0 +1,31 @@
+services:
+
+  backend-metrics:
+    container_name: backend-metrics
+    restart: always
+    ports:
+      - 5002:5002
+    build:
+      context: ./be-node
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./be-node:/code
+    networks:
+      - main
+
+
+  frontend-metrics:
+    container_name: frontend-metrics
+    build: ./frontend
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./frontend:/frontend
+    environment:
+      - WATCHPACK_POLLING=true
+    networks:
+      - main
+
+networks:
+  main:
+    driver: bridge

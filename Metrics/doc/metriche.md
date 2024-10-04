@@ -3,24 +3,24 @@ fi = 100*((r1/100))*(r2/100)
 
 
 ### INPUT:
-n_us = numero user stories
-n_set = numero di set di user stories
-n_c = numero di container
+num_us = numero user stories
+num_set = numero di set di user stories
+num_c = numero di container
 
 
 ### METRICHE:
 
 ## USER STORIES METRICS (1x)
 
-### user stories satisfaction coverage
-n_sod = user stories soddisfatte
-r1 = 100 *(n_sod/n_us)
+### User Stories Satisfaction Coverage
+us_sod = user stories soddisfatte
+metric_result = 100 *(us_sod/num_us)
   
 ## CONTAINER METRICS (1x)
 
 ### container integrity coverage
-n_ss = set di user stories completi
-r2 = 100*(n_ss/n_set)
+num_set_us = set di user stories completi
+metric_result = 100*(num_set_us/num_set)
 
 ### granularity evaulation
 n_cl = numero not overlapping cliques (found by maxNotOverllapingCliques.py)

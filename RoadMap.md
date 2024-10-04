@@ -16,74 +16,111 @@ SCHEDULE FROM 12/09 TO 14/10 (WORST CASE Discussione il 21/10)
 
 ## PHASE 1 : 25/09 - 02/10
 
-- [ ] Call 02/10 col prof
+- [x] Call 02/10 col prof
 
 ### ARCHIGPT
 - [x] Aggiungere tasto Rigenera
 
 ### THESIS PAPER
-Scrittura capitoli :
+Scrittura capitoli (senza bibliografia e immagini):
 
-  - [ ] 2) Microservices Architecture - Comune
-     - [ ] 1) Overview of Containerization
-        - [ ] 1) Introduction to Containers
-        - [ ] 2) Benefits of Containerization
-        - [ ] 3) Popular Containerization Tools
-     - [ ] 2) Microservices Architecture
-        - [ ] 1) Introduction to Microservices
-        - [ ] 2) Microservices vs Monolithic Architecture
-        - [ ] 3) Key Characteristics of Microservices
-        - [ ] 4) Communication between Microservices
-     - [ ] 3) Integration of Containers and Microservices
-        - [ ] 1) Role of Containers in Microservices Deployment
-        - [ ] 2) Scaling Microservices with Containers
-        - [ ] 3) Challenges in Managing Containerized Microservices
+  - [x] 2) Microservices Architecture - Comune
+     - [x] 1) Overview of Containerization
+        - [x] 1) Introduction to Containers
+        - [x] 2) Benefits of Containerization
+        - [x] 3) Popular Containerization Tools
+     - [x] 2) Microservices Architecture
+        - [x] 1) Introduction to Microservices
+        - [x] 2) Microservices vs Monolithic Architecture
+        - [x] 3) Key Characteristics of Microservices
+        - [x] 4) Communication between Microservices
+     - [x] 3) Integration of Containers and Microservices
+        - [x] 1) Role of Containers in Microservices Deployment
+        - [x] 2) Scaling Microservices with Containers
+        - [x] 3) Challenges in Managing Containerized Microservices
 
   - [ ] 3) LLM - Comune
-     - [ ] 1) General Overview
-        - [ ] 1) Introduction to Large Language Models (LLMs)
-        - [ ] 2) Key Concepts in LLMs
-        - [ ] 3) Main Types of LLM Architectures
-     - [ ] 2) Evolution
-        - [ ] 1) Early NLP Techniques
-        - [ ] 2) Introduction of Word Embeddings
-        - [ ] 3) Transformers and Attention Mechanisms
-        - [ ] 4) Growth of LLMs
+     - [x] 1) General Overview
+        - [x] 1) Introduction to Large Language Models (LLMs)
+        - [x] 2) Key Concepts in LLMs
+        - [x] 3) Main Types of LLM Architectures
+     - [x] 2) Evolution
+        - [x] 1) Early NLP Techniques
+        - [x] 2) Introduction of Word Embeddings
+        - [x] 3) Growth of LLMs
      - [ ] 3) OpenAI's GPT and its capabilities
-        - [ ] 1) OpenAI’s GPT and its Capabilities
-        - [ ] 2) Generative and Assistive Functionalities
+        - [ ] 1) GPTs Models and their Capabilities
+        - [ ] 2) ChatGPT API Architecture
         - [ ] 3) ChatGPT API Overview
 
-  - [ ] 4) State of the art - Comune
-     - [ ] 1) SE Tasks (?)
-        - [ ] 1) General Overview
-        - [ ] 2) Trend Analysis
-        - [ ] 3) Full System realization
-        - [ ] 4) Requirements Classification
-        - [ ] 5) Code Evaluation
-     - [ ] 2) Techniques (?)
-        - [ ] 1) General Overview
-        - [ ] 2) Basic Prompting techniques
-        - [ ] 3) Chain of Thoughts
-        - [ ] 4) Multiple Agents
-     - [ ] 3) Training Data
-        - [ ] 1) General Overview
-        - [ ] 2) Data Sources
-        - [ ] 3) Data Types
-     - [ ] 4) Evaluation Data and Benchmark
-        - [ ] 1) General Overview and Trends
+  - [x] 4) State of the art - Comune
+     - [x] 1) SE Tasks
+        - [x] 1) General Overview
+        - [x] 2) Trend Analysis
+        - [x] 3) Full System realization
+        - [x] 4) Requirements Classification
+        - [x] 5) Code Evaluation
+     - [x] 2) Techniques
+        - [x] 1) General Overview
+        - [x] 2) Basic Prompting techniques
+        - [x] 3) Chain of Thoughts
+        - [x] 4) Multiple Agents
+     - [x] 3) Training Data
+        - [x] 1) General Overview
+        - [x] 2) Data Sources
+        - [x] 3) Data Types
+     - [x] 4) Evaluation Data and Benchmark
+        - [x] 1) General Overview and Trends
 
 
-## PHASE 2 : 03/10 - 10/10
+## PHASE 2 : 03/10 - 09/10
+- [ ] Call 09/10 col prof
+- [ ] Inviare Capitoli 2-3-4 completi con Biblio e Immagini al prof 06/10
 
 ### ARCHIGPT
 
 ### DATASET/METRICS
-- Script Metriche per Validazione
-- Algoritmo calcolo punteggio metriche :
-	- Definire formato input/output
-	- Backend REST
-	- Scrivere algoritmi calcolo punteggio
+- [ ] Script Metriche per Validazione
+- [ ] Algoritmo calcolo punteggio metriche :
+	- [ ] Definire formato input/output
+	- [ ] Backend REST
+	- [ ] Scrivere algoritmi calcolo punteggio
+
+### THESIS PAPER
+Scrittura capitoli :
+  - [ ] 6) Design ArchiGPT - Non Comune - Focus Giovanni
+     - [ ] 1) Overview
+     - [ ] 2) Prompt Chaining
+     - [ ] 3) Technological/Architectural Choices
+        - [ ] 1) Docker
+        - [ ] 2) Services
+        - [ ] 3) Mongo
+        - [ ] 4) External OpenAI API
+        - [ ] 5) React
+     - [ ] 4) API Handler (interaction with OpenAI API)
+     - [ ] 5) Assistants
+        - [ ] 1) Description and Purpose
+        - [ ] 2) How they work (framework prompt)
+        - [ ] 3) What results we want
+        - [ ] 4) Come sono dati gli esempi (magari confronto?)
+           - [ ] 1) One-shot learning
+           - [ ] 2) Few-shots (in RAG?)
+           - [ ] 3) Fine Tuning (?)
+
+  - [ ] 7) Dataset for validation - Non Comune - Focus Eugenio
+     - [ ] 1) General Overview
+     - [ ] 2) Student's projects description
+     - [ ] 3) Projects' selection
+     - [ ] 4) Projects' cleaning
+     - [ ] 5) Projects' documentation generation (code analysis)
+     - [ ] 6) Projects Datametrics
+
+
+## PHASE 3 : 10/10 - 15/10
+
+### ARCHIGPT
+
+### DATASET/METRICS
 
 ### THESIS PAPER
 Scrittura capitoli :
@@ -94,14 +131,4 @@ Scrittura capitoli :
      - [ ] 2) ArchiGPT Overview
      - [ ] 3) Dataset Overview
      - [ ] 4) Evaluation Overview
-
-
-## PHASE 3 : 11/10 - 14/10
-
-### ARCHIGPT
-
-### DATASET/METRICS
-
-### THESIS PAPER
-- [ ] Consegna Tesi
 
