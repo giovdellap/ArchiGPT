@@ -38,5 +38,8 @@
     "test-ci": "nyc --reporter=lcovonly --reporter=text npm test",
     "test-cov": "nyc --reporter=html --reporter=text npm test",
     "version": "node scripts/version-history.js && git add HISTORY.md"
+  },
+  "dependencies": {
+    "content-type": "file:"
   }
 }

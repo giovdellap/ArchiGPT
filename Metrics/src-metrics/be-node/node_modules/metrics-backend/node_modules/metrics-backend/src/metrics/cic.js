@@ -4,7 +4,7 @@
 
 function cicMetrics(project, benchmarkData) {
 
-    const n_set = benchmarkData.metrics.length
+    const num_set = benchmarkData.metrics.length
     let num_set_us = 0
     //Miss set links
     for (const set of benchmarkData.metrics) {
@@ -20,7 +20,7 @@ function cicMetrics(project, benchmarkData) {
         if (setComplete) n_ss++
     }
 
-    const result = 100 * (num_set_us/n_set)
+    const result = 100 * (num_set_us/num_set)
     return result
 }
 

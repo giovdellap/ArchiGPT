@@ -12,6 +12,7 @@
   ],
   "repository": "jshttp/content-disposition",
   "dependencies": {
+    "content-disposition": "file:",
     "safe-buffer": "5.2.1"
   },
   "devDependencies": {
