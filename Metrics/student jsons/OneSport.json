@@ -160,17 +160,40 @@
                         {
                             "name": "frontend",
                             "type": "frontend",
-                            "endpoints": []
+                            "pages": [
+                                {
+                                    "name": "Home.js",
+                                    "userStoryIndex": []
+                                },
+								{
+                                    "name": "Login.js",
+                                    "userStoryIndex": []
+                                },
+								{
+                                    "name": "Profile.js",
+                                    "userStoryIndex": []
+                                },
+								{
+                                    "name": "Signup.js",
+                                    "userStoryIndex": []
+                                },
+								{
+                                    "name": "Tickets.js",
+                                    "userStoryIndex": []
+                                },
+								{
+                                    "name": "Friends.js",
+                                    "userStoryIndex": []
+                                }
+                            ]
                         },
                         {
                             "name": "postgres",
-                            "type": "database",
-                            "endpoints": []
+                            "type": "database"
                         }
                     ]
                 }
             ]
         }
     ]
-    
 }

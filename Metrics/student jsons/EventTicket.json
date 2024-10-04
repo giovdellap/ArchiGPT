@@ -1,0 +1,154 @@
+{
+    "modelName": "student",
+    "projects": [
+        {
+            "name": "EventTicket",
+            "containers": [
+                {
+                    "name": "EventTicket",
+                    "userStories": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+                    "services": [                                       
+                        {
+                            "name": "rabbit_producer",
+                            "type": "middleware"
+                        },
+                        {
+                            "name": "rabbit_consumer",
+                            "type": "middleware"
+                        },
+                        {
+                            "name": "mongo",
+                            "type": "database"
+                        },
+                        {
+                            "name": "mongo_event",
+                            "type": "database"
+                        },
+                        {
+                            "name": "mongodb",
+                            "type": "database"
+                        },
+                        {
+                            "name": "event",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "method": "GET",
+                                    "url": "/events",
+                                    "userStoryIndex": [4]
+                                },
+                                {
+                                    "method": "POST",
+                                    "url": "/createEvent",
+                                    "userStoryIndex": [14]
+                                },
+                                {
+                                    "method": "GET",
+                                    "url": "/single_event",
+                                    "userStoryIndex": []
+                                },
+                                {
+                                    "method": "GET",
+                                    "url": "/eventi_manager",
+                                    "userStoryIndex": [13]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "auth1",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "method": "POST",
+                                    "url": "/register",
+                                    "userStoryIndex": [2]
+                                },
+                                {
+                                    "method": "POST",
+                                    "url": "/registerManager",
+                                    "userStoryIndex": [17]
+                                },
+                                {
+                                    "method": "GET",
+                                    "url": "/activate/:token",
+                                    "userStoryIndex": []
+                                },
+                                {
+                                    "method": "POST",
+                                    "url": "/forgot",
+                                    "userStoryIndex": [20]
+                                },
+                                {
+                                    "method": "POST",
+                                    "url": "/reset/:id",
+                                    "userStoryIndex": [20]
+                                },
+                                {
+                                    "method": "GET",
+                                    "url": "/forgot/:token",
+                                    "userStoryIndex": []
+                                },
+                                {
+                                    "method": "POST",
+                                    "url": "/login",
+                                    "userStoryIndex": [3]
+                                },
+                                {
+                                    "method": "GET",
+                                    "url": "/logout",
+                                    "userStoryIndex": [12, 16, 18]
+                                },
+                                {
+                                    "method": "POST",
+                                    "url": "/setPreferenza",
+                                    "userStoryIndex": [6]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "payments",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "method": "GET",
+                                    "url": "/checkout",
+                                    "userStoryIndex": [10]
+                                },
+                                {
+                                    "method": "POST",
+                                    "url": "/create-checkout-session",
+                                    "userStoryIndex": [9, 11]
+                                },
+                                {
+                                    "method": "GET",
+                                    "url": "/return_tickets",
+                                    "userStoryIndex": [8]
+                                },
+                                {
+                                    "method": "GET",
+                                    "url": "/return_prevendite",
+                                    "userStoryIndex": [7]
+                                },
+                                {
+                                    "method": "GET",
+                                    "url": "/prenotazioni",
+                                    "userStoryIndex": []
+                                }
+                            ]                            
+                        },
+                        {
+                            "name": "nginx",
+                            "type": "frontend",
+                            "pages": [
+                                {
+                                    "name": "Home.js",
+                                    "userStoryIndex": [1, 5, 15, 19]
+                                }
+                            ]
+                        }                                                
+                    ]
+                }
+            ]
+        }
+    ]
+}

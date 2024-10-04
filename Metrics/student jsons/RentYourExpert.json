@@ -1,0 +1,328 @@
+{
+    "modelName": "student",
+    "projects": [
+        {
+            "name": "RentYourExpert",
+            "containers": [
+                {
+                    "name": "RentYourExpert",
+                    "userStories": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35],
+                    "services": [
+                        {
+                            "name": "frontend",
+                            "type": "frontend",
+                            "pages": [
+                                {
+                                    "name": "RegisterCustomer.js",
+                                    "userStoryIndex": [1]
+                                },
+                                {
+                                    "name": "LoginCustomer.js",
+                                    "userStoryIndex": [2]
+                                },
+                                {
+                                    "name": "CustomerProfile.js",
+                                    "userStoryIndex": [3]
+                                },
+                                {
+                                    "name": "ExpertsList.js",
+                                    "userStoryIndex": [4]
+                                },
+                                {
+                                    "name": "WorkerProfile.js",
+                                    "userStoryIndex": [5]
+                                },
+                                {
+                                    "name": "CustomerRequests.js",
+                                    "userStoryIndex": [6]
+                                },
+                                {
+                                    "name": "Reviews.js",
+                                    "userStoryIndex": [11, 35]
+                                },
+                                {
+                                    "name": "Logout.js",
+                                    "userStoryIndex": [13]
+                                },
+                                {
+                                    "name": "AdminLogin.js",
+                                    "userStoryIndex": [14]
+                                },
+                                {
+                                    "name": "CustomersList.js",
+                                    "userStoryIndex": [15]
+                                },
+                                {
+                                    "name": "WorkerRequests.js",
+                                    "userStoryIndex": [23, 24]
+                                },
+                                {
+                                    "name": "RegisterWorker.js",
+                                    "userStoryIndex": [25]
+                                },
+                                {
+                                    "name": "LoginWorker.js",
+                                    "userStoryIndex": [26]
+                                },
+                                {
+                                    "name": "EditWorkerProfile.js",
+                                    "userStoryIndex": [28]
+                                },
+                                {
+                                    "name": "QeA.js",
+                                    "userStoryIndex": [33]
+                                }
+                            ]
+                        },                        
+                        {
+                            "name": "catalogue_ms",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "/catalogue",
+                                    "method": "GET",
+                                    "userStoryIndex": [4, 19]
+                                },
+                                {
+                                    "url": "/catalogue/{worker_id}",
+                                    "method": "GET",
+                                    "userStoryIndex": [5, 20, 27]
+                                }
+                            ]
+                        },                        
+                        {
+                            "name": "worker_login_ms",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "/worker_login/",
+                                    "method": "POST",
+                                    "userStoryIndex": [26]
+                                },
+                                {
+                                    "url": "/worker_register/",
+                                    "method": "POST",
+                                    "userStoryIndex": [25]
+                                },
+                                {
+                                    "url": "/worker_profile/{worker_id}",
+                                    "method": "GET",
+                                    "userStoryIndex": [5, 20, 27]
+                                },
+                                {
+                                    "url": "/worker_profile/{worker_id}",
+                                    "method": "PUT",
+                                    "userStoryIndex": [28]
+                                },
+                                {
+                                    "url": "/worker_profile/{worker_id}/pending_requests",
+                                    "method": "GET",
+                                    "userStoryIndex": [23]
+                                },
+                                {
+                                    "url": "/worker_profile/{worker_id}/accepted_requests",
+                                    "method": "GET",
+                                    "userStoryIndex": []
+                                }
+                            ]
+                        },                        
+                        {
+                            "name": "management_ms",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "/customers",
+                                    "method": "GET",
+                                    "userStoryIndex": [15]
+                                },
+                                {
+                                    "url": "/customers",
+                                    "method": "POST",
+                                    "userStoryIndex": [16]
+                                },
+                                {
+                                    "url": "/customers/{customer_id}",
+                                    "method": "GET",
+                                    "userStoryIndex": [3, 17]
+                                },
+                                {
+                                    "url": "/customers/{customer_id}",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [18]
+                                },
+                                {
+                                    "url": "/workers",
+                                    "method": "GET",
+                                    "userStoryIndex": [4, 19]
+                                },
+                                {
+                                    "url": "/workers/{worker_id}",
+                                    "method": "GET",
+                                    "userStoryIndex": [5, 20, 27]
+                                },
+                                {
+                                    "url": "/workers/{worker_id}",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [30]
+                                },
+                                {
+                                    "url": "/workers",
+                                    "method": "POST",
+                                    "userStoryIndex": [29]
+                                },
+                                {
+                                    "url": "/requests",
+                                    "method": "GET",
+                                    "userStoryIndex": [21]
+                                },
+                                {
+                                    "url": "/requests/{worker_id}",
+                                    "method": "GET",
+                                    "userStoryIndex": [23]
+                                },
+                                {
+                                    "url": "/requests",
+                                    "method": "POST",
+                                    "userStoryIndex": [22]
+                                },
+                                {
+                                    "url": "/requests/{request_id}",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [22]
+                                },
+                                {
+                                    "url": "/login_admin/",
+                                    "method": "POST",
+                                    "userStoryIndex": [14]
+                                },
+                                {
+                                    "url": "/catalogue/{worker_id}/{review_id}",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [31]
+                                }
+                            ]
+                        },                        
+                        {
+                            "name": "cust_login_ms",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "/login_customer/",
+                                    "method": "POST",
+                                    "userStoryIndex": [2]
+                                },
+                                {
+                                    "url": "/register_customer/",
+                                    "method": "POST",
+                                    "userStoryIndex": [1]
+                                },
+                                {
+                                    "url": "/customer_profile/{customer_id}",
+                                    "method": "GET",
+                                    "userStoryIndex": [3]
+                                },
+                                {
+                                    "url": "/customer_profile/{customer_id}",
+                                    "method": "PUT",
+                                    "userStoryIndex": [32]
+                                },
+                                {
+                                    "url": "/customer_profile/{customer_id}/pending_requests",
+                                    "method": "GET",
+                                    "userStoryIndex": [7]
+                                },
+                                {
+                                    "url": "/customer_profile/{customer_id}/accepted_requests",
+                                    "method": "GET",
+                                    "userStoryIndex": []
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "request_ms",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "/catalogue/{worker_id}",
+                                    "method": "POST",
+                                    "userStoryIndex": [6, 22]
+                                },
+                                {
+                                    "url": "/worker_profile/{worker_id}/request/{request_id}",
+                                    "method": "PATCH",
+                                    "userStoryIndex": [24]
+                                },
+                                {
+                                    "url": "/customer_profile/{customer_id}/request/{request_id}",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [8, 22]
+                                }
+                            ]
+                        },        
+                        {
+                            "name": "qea_ms",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "/catalogue/{worker_id}",
+                                    "method": "GET",
+                                    "userStoryIndex": [9]
+                                },
+                                {
+                                    "url": "/catalogue/{worker_id}",
+                                    "method": "POST",
+                                    "userStoryIndex": [10]
+                                },
+                                {
+                                    "url": "/worker_profile/{worker_id}/qea/{question_id}",
+                                    "method": "POST",
+                                    "userStoryIndex": [33]
+                                },
+                                {
+                                    "url": "/worker_profile/{worker_id}/qea/{question_id}",
+                                    "method": "PUT",
+                                    "userStoryIndex": [33]
+                                },
+                                {
+                                    "url": "/question/{question_id}",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [34]
+                                }
+                            ]
+                        },          
+                        {
+                            "name": "review_ms",
+                            "type": "backend",
+                            "endpoints": [
+                                {
+                                    "url": "/catalogue/{worker_id}",
+                                    "method": "GET",
+                                    "userStoryIndex": [35]
+                                },
+                                {
+                                    "url": "/catalogue/{worker_id}",
+                                    "method": "POST",
+                                    "userStoryIndex": [11]
+                                },
+                                {
+                                    "url": "/catalogue/{worker_id}/{review_id}",
+                                    "method": "PUT",
+                                    "userStoryIndex": [12]
+                                },
+                                {
+                                    "url": "/catalogue/{worker_id}/{review_id}",
+                                    "method": "DELETE",
+                                    "userStoryIndex": [12, 31]
+                                }
+                            ]
+                        },                                                                        
+                        {
+                            "name": "db",
+                            "type": "database"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
