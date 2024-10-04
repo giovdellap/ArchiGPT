@@ -1,0 +1,65 @@
+[
+    {
+        "set_id": 1,
+        "set_name": "auth",
+        "user_stories": [1, 2, 12, 24, 29, 30],
+        "links": [],
+        "db": "true"
+    },
+    {
+        "set_id": 2,
+        "set_name": "frontend",
+        "user_stories": [3, 5, 6, 13, 25],
+        "links": [],
+        "db": "false"
+    },
+    {
+        "set_id": 3,
+        "set_name": "insertion",
+        "user_stories": [4, 8, 9, 10, 11, 31],
+        "links": [4],
+        "db": "true"
+    },
+    {
+        "set_id": 4,
+        "set_name": "calendar",
+        "user_stories": [7, 18, 21, 32],
+        "links": [3],
+        "db": "false"
+    },
+    {
+        "set_id": 5,
+        "set_name": "cart",
+        "user_stories": [14, 15, 33],
+        "links": [6],
+        "db": "true"
+    },
+    {
+        "set_id": 6,
+        "set_name": "order",
+        "user_stories": [16, 17, 22, 27, 34],
+        "links": [5, 8],
+        "db": "true"
+    },
+    {
+        "set_id": 7,
+        "set_name": "subscription",
+        "user_stories": [19, 20, 35, 36],
+        "links": [],
+        "db": "true"
+    },
+    {
+        "set_id": 8,
+        "set_name": "delivery",
+        "user_stories": [25, 26],
+        "links": [6],
+        "db": "true"
+    },
+    {
+        "set_id": 9,
+        "set_name": "feedback",
+        "user_stories": [23, 28],
+        "links": [],
+        "db": "true"
+    }
+]
