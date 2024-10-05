@@ -6,18 +6,21 @@ function cicMetrics(project, benchmarkData) {
 
     const num_set = benchmarkData.metrics.length
     let num_set_us = 0
-    //Miss set links
+
     for (const set of benchmarkData.metrics) {
         let setComplete = false
+
         for (const container of project.containers) {
-            let usFulfilled = 0
-            //console.log(container.userStories)
-            for (const us of set.user_stories) {
-                if(container.userStories.includes(us)) usFulfilled++
-            }
-            if (usFulfilled === set.user_stories.length) setComplete = true
+
+            const usFulfilled = set.user_stories.every(us => container.userStories.includes(us))
+
+            if (usFulfilled){
+                setComplete = true
+                break
+            } 
         }
-        if (setComplete) n_ss++
+
+        if (setComplete) num_set_us++
     }
 
     const result = 100 * (num_set_us/num_set)
