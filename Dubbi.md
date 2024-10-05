@@ -5,6 +5,9 @@ Ch G: sk-Gh8ay845lCAnUT1jwOoh_htZJJZwtwMN2vfgXWAnoQT3BlbkFJ6BssRUDfseGmeK3_ZNGX4
 # DA CHIEDERE A PROF MECELLA
 
 ## THESIS
+- Farsi mandare programma corso Software Engineering
+- Li teniamo gli altri 2 progetti? Si
+- 
 
 
 ## ARCHIGPT

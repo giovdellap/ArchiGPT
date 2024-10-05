@@ -69,6 +69,18 @@ Manages all functionalities related to registration, login, session persistence,
 
 19) As an Agricultural Company, I want to not put my Credentials in the site every time a reload the site, so that I can use the site easily
 
+4) As a Client , I want to logout, so that no one else use my account
+
+20) As an Agricultural Company, I want to logout from the site
+
+22) As the Administrator of the site, I want to login in the site
+    
+23) As the Administrator of the site, I want to not put my Credentials in the site every time a reload the site
+    
+24) As the Administrator of the site, I want to logout from the site
+
+
+
 ### PORTS: 
 9701:9701
 
@@ -101,9 +113,11 @@ The service uses a single file to manage login and signup, with functions to cre
 		
 	| HTTP METHOD | URL | Description | User Stories |
 	| ----------- | --- | ----------- | ------------ |
-    | POST | /{role}/login | Verifies encrypted password and creates and sends out a JWT token | 2, 18 |
+    | POST | /{role}/login | Verifies encrypted password and creates and sends out a JWT token | 2, 18, 22 |
     | POST | /{role}/signup | Creates encrypted password and creates and sends out a JWT token | 1, 17 |
-    | POST | /verifyToken | Verifies the validity of a JWT token | 3, 19 |
+    | POST | /{role}/logout | Deletes the token | 4, 20, 24 |
+
+    | POST | /verifyToken | Verifies the validity of a JWT token | 3, 19, 23 |
 
 
 ## CONTAINER_NAME: Client-BE
@@ -208,6 +222,9 @@ Manages operations regarding products, including adding, modifying, and removing
 37) As the Administrator of the site, I want to modify product, so that I can do site maintenance
 38) As the Administrator of the site, I want to delete product, so that I can do site maintenance
 39) As the Administrator of the site, I want to delete an area, so that I can do site maintenance
+21) As an Agricultural Company, I want to see my personal information
+
+
 
 ### PORTS: 
 9703:9703
@@ -255,10 +272,10 @@ The service is realized with:
 	| ----------- | --- | ----------- | ------------ |
     | POST | /farmer | Inserts a new farmer in the database and interacts with the auth container | 17 |
     | GET | /farmers | Returns all the clients in the database | 27 |
-    | GET | /farmer/{id} | Returns the farmer informations | 8 |
+    | GET | /farmer/{id} | Returns the farmer informations | 8, 21 |
     | DELETE | /farmer/{id} | Deletes the farmer | 25 |
     | POST | /farmer/login | Manages the client login and interacts with the auth container | 18 |
-    | GET | /farmer/areas | Returns the farmers divided by Area | 31 |
+    | GET | /farmer/areas | Returns the farmers divided by Area | 31, 7, 32 |
     | POST | /area | Inserts a new area | 35 |
     | GET | /area | Returns all the areas | 30 |
     | DELETE | /area/{id} | Deletes the area | 39 |
@@ -266,7 +283,7 @@ The service is realized with:
     | DELETE | /product/{id} | Deletes the area | 15, 38 |
     | GET | /product/findBySeller | Returns all the products of an agricultural company | 33, 8 |
     | POST | /product/modify/{id} | Modifies a product | 16, 37 |
-    | GET | /product/{id} | Returns the product with the specified id | 34 |
+    | GET | /product/{id} | Returns the product with the specified id | 34, 6 |
 
 - DB STRUCTURE: 
 
@@ -352,6 +369,8 @@ The service is realized with:
 8) As a Client , I want to Add to cart the products, so that i can buy them
 9) As a Client, I want to Remove products to the cart, so that i can decide what to buy
 10) As a Client , I want to see product in the cart, so that i can see want I am going to buy
+11) As a Client , I want to see the products in my cart, so that i can see want I am going to buy
+
 
 ### PORTS: 
 4201:4201
@@ -371,6 +390,11 @@ The Client-FE container connects to Google Maps API to show the Agricultural com
 - TYPE: frontend
 - DESCRIPTION: This microservice serves the main user interface for the Customer.
 - PORTS: 4201
+- - PAGES:
+
+	| Name | Description | Related Microservice | User Stories |
+	| ---- | ----------- | -------------------- | ------------ |
+	| Home.js | Displays and manages yhe client SPA | client-be, farmer-be | 8, 9, 10, 11, 13 |
 
 
 ## CONTAINER_NAME: Admin-FE
