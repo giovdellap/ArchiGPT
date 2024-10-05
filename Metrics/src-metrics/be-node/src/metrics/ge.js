@@ -8,7 +8,7 @@ function geMetrics(projectData, benchmarkData) {
 
     const num_c = projectData.containers.length
     const num_set = benchmarkData.metrics.length
-    const num_clique =  maxNotOverllapingCliques(benchmarkData.metrics)
+    const num_clique =  maxNotOverllapingCliques(benchmarkData.metrics)[0]
     let result = 0
 
     if ( num_c <= num_clique ) result = 100 * (num_c/num_clique)
@@ -19,7 +19,8 @@ function geMetrics(projectData, benchmarkData) {
 }
 
 module.exports = {
-    geMetrics
+    geMetrics,
+    getCliquesUserStories
 }
 
 
@@ -102,8 +103,37 @@ function maxNotOverllapingCliques(setData){
 
     const nonOverlappingCliques = findNotOverlappingCliques(graph);
     
-    console.log("Non-overlapping maximal cliques:", nonOverlappingCliques);
+    //console.log("Non-overlapping maximal cliques:", nonOverlappingCliques);
     console.log("Number of non-overlapping cliques:", nonOverlappingCliques.length);
 
-    return nonOverlappingCliques.length
+    return [nonOverlappingCliques.length, nonOverlappingCliques]
+}
+
+
+// Return all cliques with their related user stories
+function getCliquesUserStories(benchmarkDataMetrics){
+    
+    cliques = maxNotOverllapingCliques(benchmarkDataMetrics)[1]
+    cliqueUserStories = []
+
+    cliques.forEach(sets => {
+
+        let cliqueStory = { "sets": sets, "user_stories": [] };
+    
+        sets.forEach(set => {
+
+            const element = benchmarkDataMetrics.find(element => {
+                if (element.set_id === Number(set)) {
+                    let temp = [...cliqueStory.user_stories]
+                    cliqueStory.user_stories = temp.concat(element.user_stories)
+                }
+            });
+    
+        });
+    
+        cliqueUserStories.push(cliqueStory);
+    });    
+
+    return cliqueUserStories
+
 }
