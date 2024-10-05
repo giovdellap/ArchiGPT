@@ -11,6 +11,7 @@ class ProjectResult {
     ussc = 0
     cic = 0
     ge = 0
+    csc = []
     sc = 0
     pc = 0
     scec = 0

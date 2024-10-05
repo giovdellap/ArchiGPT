@@ -19,7 +19,7 @@ const benchmark = ( async (req, res) => {
 
     for (const metric of metrics) {
       const benchmarkProjects = getBenchmarkProjects(proj.name)
-      const metricResult = getMetricResult(metric, proj, benchmarkProjects)
+      const metricResult = getMetricResult(metric, proj, benchmarkProjects, projResult)
       projResult[metric] = metricResult
       console.log('Metric : ', metric, ' Result : ', metricResult)
     }

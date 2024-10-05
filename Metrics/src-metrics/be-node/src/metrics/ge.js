@@ -9,11 +9,12 @@ function geMetrics(projectData, benchmarkData) {
     const num_c = projectData.containers.length
     const num_set = benchmarkData.metrics.length
     const num_clique =  maxNotOverllapingCliques(benchmarkData.metrics)[0]
+    console.log("Number of non-overlapping cliques:", num_clique);
     let result = 0
 
     if ( num_c <= num_clique ) result = 100 * (num_c/num_clique)
-    if ( num_clique <= num_c && num_c <= num_set ) result = 100
-    if ( num_c >= num_set ) result = 100 * (2*num_set-num_c)/num_set
+    else if ( num_clique <= num_c && num_c <= num_set ) result = 100
+    else if ( num_c >= num_set ) result = 100 * (2*num_set-num_c)/num_set
 
     return result
 }
@@ -104,7 +105,7 @@ function maxNotOverllapingCliques(setData){
     const nonOverlappingCliques = findNotOverlappingCliques(graph);
     
     //console.log("Non-overlapping maximal cliques:", nonOverlappingCliques);
-    console.log("Number of non-overlapping cliques:", nonOverlappingCliques.length);
+    //console.log("Number of non-overlapping cliques:", nonOverlappingCliques.length);
 
     return [nonOverlappingCliques.length, nonOverlappingCliques]
 }

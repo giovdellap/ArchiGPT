@@ -40,10 +40,10 @@ function cscMetrics(projectData, benchmarkData) {
         }
 
         let metric_result = 0
-        if(num_clique_fulfilled == 0 || num_set_fullfilled == 0) metric_result = null
-        if ( num_serv_be <= num_clique_fulfilled ) metric_result = 100 * (num_serv_be/num_clique_fulfilled)
-        if ( num_clique_fulfilled <= num_serv_be && num_serv_be <= num_set_fullfilled ) metric_result = 100
-        if ( num_serv_be >= num_set_fullfilled ) metric_result = 100 * (2*num_set_fullfilled-num_serv_be)/num_set_fullfilled
+        if ( num_clique_fulfilled === 0 || num_set_fullfilled === 0 ) metric_result = null
+        else if ( num_serv_be <= num_clique_fulfilled ) metric_result = 100 * (num_serv_be/num_clique_fulfilled)
+        else if ( num_clique_fulfilled <= num_serv_be && num_serv_be <= num_set_fullfilled ) metric_result = 100
+        else if ( num_serv_be >= num_set_fullfilled ) metric_result = 100 * (2*num_set_fullfilled-num_serv_be)/num_set_fullfilled
 
         result.push({ "containerName": container.name, "result": metric_result })
 

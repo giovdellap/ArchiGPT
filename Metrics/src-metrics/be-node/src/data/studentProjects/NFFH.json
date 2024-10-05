@@ -3,7 +3,7 @@
 	"containers": [
 		{
 			"name": "Authentication",
-			"userStories": [1, 2, 3, 17, 18, 19],
+			"userStories": [1, 2, 3, 4, 17, 18, 19, 20, 22, 23, 24],
 			"services": [
 				{
 					"name": "auth",
@@ -12,7 +12,7 @@
 						{
 							"url": "/{role}/login",
 							"method": "POST",
-							"userStoryIndex": [2, 18]
+							"userStoryIndex": [2, 18, 22]
 						},
 						{
 							"url": "/{role}/signup",
@@ -22,7 +22,12 @@
 						{
 							"url": "/verifyToken",
 							"method": "POST",
-							"userStoryIndex": [3, 19]
+							"userStoryIndex": [3, 19, 23]
+						},
+						{
+							"url": "/logout",
+							"method": "POST",
+							"userStoryIndex": [4, 20, 24]
 						}
 					]
 				}
@@ -39,7 +44,7 @@
 						{
 							"url": "/client",
 							"method": "POST",
-							"userStoryIndex": [1]
+							"userStoryIndex": [2]
 						},
 						{
 							"url": "/clients",
@@ -71,7 +76,7 @@
 		},
 		{
 			"name": "Farmer-BE",
-			"userStories": [6, 7, 8, 14, 15, 16, 17, 18, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39],
+			"userStories": [6, 7, 8, 14, 15, 16, 17, 18, 21, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39],
 			"services": [
 				{
 					"name": "farmer-be",
@@ -90,7 +95,7 @@
 						{
 							"url": "/farmer/{id}",
 							"method": "GET",
-							"userStoryIndex": [8]
+							"userStoryIndex": [8, 21]
 						},
 						{
 							"url": "/farmer/{id}",
@@ -157,7 +162,7 @@
 		},
 		{
 			"name": "Order-BE",
-			"userStories": [12, 26],
+			"userStories": [12, 26, 40, 41],
 			"services": [
 				{
 					"name": "order_be",
@@ -188,11 +193,17 @@
 		},
 		{
 			"name": "Client-FE",
-			"userStories": [8, 9, 10, 13],
+			"userStories": [8, 9, 10, 11, 13],
 			"services": [
 				{
 					"name": "client-fe",
-					"type": "frontend"
+					"type": "frontend",
+					"pages":[
+						{
+							"name": "Home.js",
+							"userStoryIndex": [8, 9, 10, 11, 13]
+						}
+					]
 				}
 			]
 		},

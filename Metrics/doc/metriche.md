@@ -38,17 +38,12 @@ num_set_full = numero di set fullfilled
 metric_result =     if num_clique_full < num_serv_be < num_set_full    | = 100
                     if num_serv_be >= num_set_full                     | = 100*(2*num_set_full-num_serv_be)/num_set_full 
 
-### service coverage
-ssc = sommatoria di (Per ogni container, (1/n_c)*scc)
+### Service Coverage
+metric_result = sommatoria di (for each container, (1/n_c)*metric_result)
 
-### container persistance coverage (per ogni container)
-Si considerano solo i container che contengono set con db = true
-n_serv_db = numero di servizi db
-if (esiste almeno un servizio db) {
-    cpc = 100
-} else {
-    cpc = 0
-}
+### Container Persistance Coverage
+If a container contains a set with db = true, than this container must have at least a database microservice
+(for each container, sommatoria di (1/n_c)*metric_result)
 
 ### persistance coverage
 n_cdb = numero di container con almeno un set con db = true
