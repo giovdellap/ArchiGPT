@@ -2,7 +2,7 @@
 // num_set_us = set di user stories completi
 // metric_result = 100*(num_set_us/num_set)
 
-function cicMetrics(project, benchmarkData) {
+function cicMetrics(projectData, benchmarkData) {
 
     const num_set = benchmarkData.metrics.length
     let num_set_us = 0
@@ -10,7 +10,7 @@ function cicMetrics(project, benchmarkData) {
     for (const set of benchmarkData.metrics) {
         let setComplete = false
 
-        for (const container of project.containers) {
+        for (const container of projectData.containers) {
 
             const usFulfilled = set.user_stories.every(us => container.userStories.includes(us))
 

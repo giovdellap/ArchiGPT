@@ -2,12 +2,12 @@
 // us_sod = user stories soddisfatte
 // metric_result = 100 *(us_sod/num_us_tot)
 
-function usscMetrics(project, benchmarkData) {
+function usscMetrics(projectData, benchmarkData) {
 
     const num_us_tot = benchmarkData.userStories
     let us_sod = []
 
-    for (const container of project.containers) {
+    for (const container of projectData.containers) {
         for (const service of container.services) {
             if (service.type === 'backend' && service.endpoints) {
                 for (const endpoint of service.endpoints) {

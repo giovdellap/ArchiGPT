@@ -8,9 +8,10 @@
 
 import json
 
-json_file = 'Project Dataset/OneSport/DataMetrics.json'
+json_file = 'Project Dataset/1_OneSport/DataMetrics.json'
 
 def bron_kerbosch(R, P, X, graph, cliques):
+    print("R:", R, "P:", P, "X:", X)
     if not P and not X:
         cliques.append(R)
         return
@@ -53,6 +54,7 @@ def fromSetsToGraph(sets):
 f = open(json_file)
 sets = json.load(f)
 graph = fromSetsToGraph(sets)
+print("Graph Structure :" , graph)
 non_overlapping_cliques = find_non_overlapping_cliques(graph)
 print("Non-overlapping maximal cliques:", non_overlapping_cliques)
 print("Number of non-overlapping cliques:", len(non_overlapping_cliques))

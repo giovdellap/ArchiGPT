@@ -18,15 +18,15 @@ metric_result = 100 *(us_sod/num_us)
   
 ## CONTAINER METRICS (1x)
 
-### container integrity coverage
+### Container Integrity Coverage
 num_set_us = set di user stories completi
 metric_result = 100*(num_set_us/num_set)
 
-### granularity evaulation
-n_cl = numero not overlapping cliques (found by maxNotOverllapingCliques.py)
-r3 = 100*(n_c/n_cl) per n_c <= n_cl
-r3 = 100 per n_cl < n_c < n_set
-r3 = 100*((2*n_set-n_c)/n_set per n_c >= n_set
+### Granularity Evaulation
+num_clique = numero not overlapping cliques (found by maxNotOverllapingCliques.py)
+                    if num_c <= num_clique             | = 100*(num_c/num_clique)
+metric_result =     if num_clique < num_c < num_set    | = 100
+                    if num_c >= num_set                | = 100*(2*num_set-num_c)/num_set 
   
 ## SERVICE METRICS (n_c x)
 
