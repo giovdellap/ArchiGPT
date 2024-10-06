@@ -116,7 +116,6 @@ The service uses a single file to manage login and signup, with functions to cre
     | POST | /{role}/login | Verifies encrypted password and creates and sends out a JWT token | 2, 18, 22 |
     | POST | /{role}/signup | Creates encrypted password and creates and sends out a JWT token | 1, 17 |
     | POST | /{role}/logout | Deletes the token | 4, 20, 24 |
-
     | POST | /verifyToken | Verifies the validity of a JWT token | 3, 19, 23 |
 
 
@@ -180,7 +179,7 @@ The service is realized with:
 
     | HTTP METHOD | URL | Description | User Stories |
 	| ----------- | --- | ----------- | ------------ |
-    | POST | /client | Inserts a new client in the database and interacts with the auth container | 1 |
+    | POST | /client | Inserts a new client in the database and interacts with the auth container | 2 |
     | GET | /clients | Returns all the clients in the database | 27 |
     | GET | /client/{id} | Returns the client informations | 5, 28 |
     | DELETE | /client/{id} | Deletes the client | 25 |
@@ -304,6 +303,8 @@ Manages order placements, including completing orders and arranging pickup dates
 ### USER_STORIES:
 12) As a Client , I want to Complete an order, so that I can choose a date to go and pick up the products
 26) As the Administrator of the site, I want to see all orders, so that I can better analyze how the platform is doing
+40) As a client, i want to see all my orders
+41) As a farmer, i want to see all my orders
 
 ### PORTS: 
 9704:9704

@@ -38,7 +38,7 @@ function getBenchmarkProjects(name) {
             projData = cdcProjData
             projData.metrics = cdcDataMetrics
             return projData
-        case 'EventTricket':
+        case 'EventTicket':
             projData = eventticketProjData
             projData.metrics = eventticketDataMetrics
             return projData

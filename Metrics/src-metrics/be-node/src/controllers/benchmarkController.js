@@ -1,6 +1,7 @@
 const { metrics, getMetricResult } = require("../metrics/_metrics")
 const { BenchmarkResult, ProjectResult } = require("../model/response")
 const { getBenchmarkProjects } = require("../data/benchmarkProjects/projects")
+const { calculateFinalResults } = require("./utils")
 
 
 const benchmark = ( async (req, res) => {
@@ -23,9 +24,10 @@ const benchmark = ( async (req, res) => {
       projResult[metric] = metricResult
       console.log('Metric : ', metric, ' Result : ', metricResult)
     }
-
     benchmark.projectsResults.push(projResult)
   }
+
+  benchmark.finalResults = calculateFinalResults(benchmark.projectsResults)  
 
   res.json(benchmark)
 

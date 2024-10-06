@@ -4,6 +4,7 @@
 
 function cicMetrics(projectData, benchmarkData) {
 
+    if(!benchmarkData.metrics) console.log('BENCHMARK DATA MISSING: ', benchmarkData)
     const num_set = benchmarkData.metrics.length
     let num_set_us = 0
 

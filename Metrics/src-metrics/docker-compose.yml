@@ -18,7 +18,7 @@ services:
     container_name: frontend-metrics
     build: ./frontend
     ports:
-      - "3001:3000"
+      - "4200:4200"
     volumes:
       - ./frontend:/frontend
     environment:

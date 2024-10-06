@@ -1,0 +1,77 @@
+<mat-toolbar>
+  <span>Archi Metrics</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<div class="container">
+  <div class="start-container" 
+  *ngIf="((statusObs | async) === 'notready') || ((statusObs | async) === 'ready')">
+    <input type="file" class="input-button" (change)="onJsonAdded($event)" #fileUpload />
+    <button mat-raised-button class="start-button" (click)="onStart()">Start benchmark</button>
+  </div>
+  <div class="waiting-container" *ngIf="((statusObs | async) === 'waiting')">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="result-container" *ngIf="((statusObs | async) === 'result')">
+    <div class="title-container">
+      <div class="model-name-container">
+        Model: {{result.modelName}}
+      </div>
+      <div class="finalIndex-container">
+        Final index: {{result.finalIndex}}
+      </div>
+    </div>
+    <div class="finalmetrics-title">
+      DATASET RESULTS
+    </div>
+    <div class="finalmetrics-container">
+      <mat-card class="metrics-card" appearance="outlined" *ngFor="let card of finalMetricsCards">
+        <mat-card-header>
+          <mat-card-title class="card-title">{{card.metricName}}</mat-card-title>
+        </mat-card-header>
+        <mat-progress-spinner
+          class="card-spinner"
+          mode="determinate"
+          [value]="card.metricIndex"
+          [style.stroke]="card.color">
+        </mat-progress-spinner>
+        <mat-card-content class="card-content"
+        [style.color]="card.color">
+          {{card.metricIndex}}
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="finalmetrics-title">PROJECTS RESULTS</div>
+    <div class="projects-container">
+      <div class="project-row" *ngFor="let project of projectRows">
+        <mat-accordion class="project-accordion">
+          <mat-expansion-panel class="project-panel">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="projectpanel-title">
+                {{project.name}}
+              </mat-panel-title>
+              <mat-panel-description class="projectpanel-description">
+                Final index: {{project.index}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="project-expansion">
+              <mat-card class="proj-card" appearance="outlined" 
+              *ngFor="let card of project.metricCards">
+                <mat-card-header>
+                  <mat-card-title class="proj-card-title">{{card.metric}}</mat-card-title>
+                </mat-card-header>
+                <mat-progress-spinner
+                  class="proj-card-spinner"
+                  mode="determinate"
+                  [value]="card.index">
+                </mat-progress-spinner>
+                <mat-card-content class="proj-card-content" [style.color]="card.color">
+                  {{card.index}}
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>
