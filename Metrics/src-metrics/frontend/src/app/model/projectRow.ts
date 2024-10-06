@@ -22,10 +22,11 @@ export function getProjectRows(projectsResults: ProjectResult[]): ProjectRow[] {
         for (let i = 0; i < finalMetrics.length; i++) {
             let index = Number((<number>proj[finalMetrics[i] as keyof ProjectResult]).toFixed(2))
             let color = rgbToHex(
-                Math.min(255, Math.max(0, 255 * ((100 - index) / 100))),
-                Math.min(255, Math.max(0, 255 * (index / 100))),
+                Number((Math.min(255, Math.max(0, 255 * ((100 - index) / 100)))).toFixed(0)),
+                Number(Math.min(255, Math.max(0, 255 * (index / 100))).toFixed(0)),
                 0
             )
+            console.log(color)
             cards.push({
                 metric: finalMetricsNames[i],
                 index: index,
