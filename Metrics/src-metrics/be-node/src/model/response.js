@@ -12,7 +12,7 @@ class FinalResults {
     cic = 0
     ge = 0
     sc = 0
-    pc = 0
+    cpc = 0
     scec = 0
 }
 
@@ -25,7 +25,8 @@ class ProjectResult {
     ge = 0
     csc = []
     sc = 0
-    pc = 0
+    cpc = 0
+    cec = []
     scec = 0
 }
 
