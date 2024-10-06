@@ -1,6 +1,4 @@
 from dotenv import load_dotenv
-import urllib.parse
-from pymongo import MongoClient
 
 load_dotenv()
 
