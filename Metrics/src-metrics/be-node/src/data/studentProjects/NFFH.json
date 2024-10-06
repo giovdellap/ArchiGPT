@@ -213,7 +213,8 @@
 			"services": [
 				{
 					"name": "admin-fe",
-					"type": "frontend"
+					"type": "frontend",
+					"pages": []
 				}
 			]
 		},
@@ -223,7 +224,8 @@
 			"services": [
 				{
 					"name": "admin-fe",
-					"type": "frontend"
+					"type": "frontend",
+					"pages": []
 				}
 			]
 		},

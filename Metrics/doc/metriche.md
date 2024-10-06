@@ -45,20 +45,20 @@ metric_result = sommatoria di (for each container, (1/n_c)*metric_result)
 If a container contains a set with db = true, than this container must have at least a database microservice
 (for each container, sommatoria di (1/n_c)*metric_result)
 
-### persistance coverage
+<!-- ### persistance coverage
 n_cdb = numero di container con almeno un set con db = true
-ssc = sommatoria di (Per ogni container con un set con db = true, (1/n_cdb)*scc)
+ssc = sommatoria di (Per ogni container con un set con db = true, (1/n_cdb)*scc) -->
 
 
 ## ENDPOINTS METRICS
 
-### Container Endpoint Coverage (per ogni container)
-n_usc = user stories container
-n_use = numero user stories coperte dagli endpoint
-cec = 100*(n_use/n_usc)
+### Container Endpoint Coverage (for each container)
+num_us_c = numero user stories container c
+num_us_e = numero user stories coperte da un endpoint e
+metric_result = 100*((sommatoria di num_us_e)/num_us_c)
 
 ### System Container Endpoint Coverage 
-scec = sommatoria di (Per ogni container, (1/n_c)*cec)
+metric_result = sommatoria di cec*(1/n_c) (For each container)
 
 
 

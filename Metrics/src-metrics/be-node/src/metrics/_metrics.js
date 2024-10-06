@@ -1,3 +1,5 @@
+const { scecMetrics } = require("./scec");
+const { cecMetrics } = require("./cec");
 const { cpcMetrics } = require("./cpc");
 const { scMetrics } = require("./sc");
 const { cscMetrics } = require("./csc");
@@ -5,8 +7,8 @@ const { geMetrics } = require("./ge");
 const { cicMetrics } = require("./cic");
 const { usscMetrics } = require("./ussc");
 
-const metrics = ['ussc', 'cic', 'ge', 'csc', 'sc', 'cpc', 'pc', 'cec', 'scec']
-const finalMetrics = ['ussc', 'cic', 'ge', 'sc', 'pc', 'scec']
+const metrics = ['ussc', 'cic', 'ge', 'csc', 'sc', 'cpc','cec', 'scec']
+const finalMetrics = ['ussc', 'cic', 'ge', 'sc', 'cpc', 'scec']
 
 function getMetricResult(name, projectData, benchmarkData, projResult) {
     switch (name) {
@@ -23,11 +25,9 @@ function getMetricResult(name, projectData, benchmarkData, projResult) {
         case metrics[5]:
             return cpcMetrics(projectData, benchmarkData)
         case metrics[6]:
-            return 17
+            return cecMetrics(projectData)
         case metrics[7]:
-            return []
-        case metrics[8]:
-            return 17
+            return scecMetrics(projectData, projResult)
         default:
             return {}
     }
