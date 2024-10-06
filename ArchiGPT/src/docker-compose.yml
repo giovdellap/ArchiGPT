@@ -14,6 +14,18 @@ services:
     networks:
       - main-network
 
+  metric-handler:
+    container_name: metric-handler
+    build: ./metric_handler
+    ports:
+      - "5003:5003"
+    volumes:
+      - ./metric_handler:/metric_handler
+    depends_on:
+      - backend
+    networks:
+      - main-network
+
   api-handler:
     container_name: api-handler
     build: ./api_handler
