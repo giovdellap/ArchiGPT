@@ -2,7 +2,7 @@ from flask import Blueprint
 
 from controllers.ServiceController import generateService, regenerateService, getService
 from controllers.ContainerController import generateContainer, regenerateContainer, getContainer
-from controllers.GenerationController import generateSystem, regenerateSystem
+from ArchiGPT.src.backend.controllers.SystemController import generateSystem, regenerateSystem
 
 
 generation_bp = Blueprint('generation_bp', __name__)
