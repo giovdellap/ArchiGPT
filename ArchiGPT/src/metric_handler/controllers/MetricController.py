@@ -91,6 +91,13 @@ def generateProjects():
                                 "type": service['type'],
                                 "pages": []
                             })
+
+                    else :
+
+                        archiProjects[indexProject-1]["containers"][indexContainer]["services"].append({
+                            "name": service['name'],
+                            "type": service['type']
+                        })
                 
                 indexContainer = indexContainer + 1
 
