@@ -2,7 +2,7 @@ from flask import current_app
 import requests
 
 
-def backend_call( api_name, data ):
+def generationRequest( api_name, data ):
 
 	print('API INTERROGATION: ', api_name)
 
@@ -11,12 +11,12 @@ def backend_call( api_name, data ):
 		data = data
 	)
 
-	#result = message.json()['content']
-	print('RECEIVED MESSAGE: ', message)
+	result = message.json()
+	print('RECEIVED MESSAGE: ', result)
 		
-	return message
+	return result
 
-def backend_callwithFile( api_name, data, file ):
+def generationRequestWithFile( api_name, data, file ):
 
 	print('API INTERROGATION: ', api_name)
 
@@ -24,6 +24,20 @@ def backend_callwithFile( api_name, data, file ):
 		current_app.config['BACKEND_HANDLER'] + f'/{api_name}',
 		data = data,
 		files = file
+	)
+
+	result = message.json()
+	print('RECEIVED MESSAGE: ', result)
+		
+	return result
+
+def getDataRequest( api_name, params ):
+
+	print('API INTERROGATION: ', api_name)
+
+	message = requests.get(
+		current_app.config['BACKEND_HANDLER'] + f'/{api_name}',
+		params = params
 	)
 
 	result = message.json()

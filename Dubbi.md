@@ -6,15 +6,19 @@ Ch G: sk-Gh8ay845lCAnUT1jwOoh_htZJJZwtwMN2vfgXWAnoQT3BlbkFJ6BssRUDfseGmeK3_ZNGX4
 
 ## THESIS
 - Farsi mandare programma corso Software Engineering
-- Li teniamo gli altri 2 progetti? Si
-- 
-
+- Differnza tra conclusione e introduzione e quanto devono essere lunghi. 
+- In che consistono gli allegati :
+  - Dataset allegati (Project Dataset?)
+  - ArchiGPT allegati (Prompts Assistant?)
+- List of figures? List of tables? DA mantenere?
+- Necessario fare un abstract?
+- Immagini mancanti di cap Dataset
 
 ## ARCHIGPT
-- Aggiungere Assistant come ArchitecturlPatterns ma che non possiamo farci metriche sopra? - Possiamo comunque aggiungere qualsiasi cosa anche se non possiamo validare
 
 ## METRICHE
-- 
+- Quante run fare (problemi soldi)
+- Dove mettere il bridge di metric_handler
 
 
 

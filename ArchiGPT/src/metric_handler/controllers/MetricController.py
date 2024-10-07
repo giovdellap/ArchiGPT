@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from utils.backend_handler_bridge import backend_call, backend_callwithFile
+from utils.backend_handler_bridge import generationRequest, generationRequestWithFile, getDataRequest
 
 projects_dataset = ["OneSport", "NFFH", "EFarmers", "RentYourExpert", "CDC", "EventTicket", "Teamify", "RecipeCove"]
 
@@ -16,28 +16,85 @@ def generateProjects():
         if num_projects < 1 or num_projects > 10:
             return jsonify({"message": "num_projects is not valid"}), 400
         
+        archiProjects = []
+        
         for indexProject in range(1, num_projects + 1):
             
             # PROJECT APIs INTERROGATION
 
-            data = {"project_name": project_name + str(indexProject)}
-            #backend_call("project/", data)
+            project_id = project_name + str(indexProject)
+            data = {"project_name": project_id}
+            #generationRequest("project/", data)
+            archiProjects.append({ "name": project_id, "containers": [] })
 
             # SYSTEM GENERATION APIs INTERROGATION
 
             file = { 'userstories' : open(f'./utils/{project_name}/userStories.txt', 'rb') }
-            data = {'project_name': project_name + str(indexProject), 'assistant': "Container Design"}
-            #backend_callwithFile("generation/generateSystem", data, file)
+            data = {'project_name': project_id, 'assistant': "Container Design"}
+            #generationRequestWithFile("generation/generateSystem", data, file)
 
-            data = {'project_name': project_name + str(indexProject), 'assistant': "User Interaction Analysis"}
-            backend_call("generation/generateSystem", data)
+            data = {'project_name': project_id, 'assistant': "User Interaction Analysis"}
+            #generationRequest("generation/generateSystem", data)
 
             # CONTAINER GENERATION APIs INTERROGATION
 
-            #data = {"project_name": project_name + str(indexProject)}
-            #backend_call("project/", data)
+            params = {"project_name": project_id}
+            statusData = getDataRequest("project/status", params)
+
+            indexContainer = 0
+            for container in statusData['containers']:
+
+                data = {'project_name': project_id, 'assistant': "ContainerDescriptionGenerator", "container": container['name']}
+                #generationRequest("generation/generateContainer", data)
+
+                data = {'project_name': project_id, 'assistant': "ContainerSpecificationGenerator", "container": container['name']}
+                #generationRequest("generation/generateContainer", data)
+
+                data = {'project_name': project_id, 'assistant': "MicroServices", "container": container['name']}
+                #generationRequest("generation/generateContainer", data)
+
+                params = {"project_name": project_id, "container_name": container['name']}
+                containerData = getDataRequest("generation/getContainer", params)
+
+                archiProjects[indexProject-1]["containers"].append({
+                    "name": containerData['name'],
+                    "userStories": containerData['userstories'],
+                    "services": []
+                })
+
+
+                # SERVICE GENERATION APIs INTERROGATION
+
+                for service in containerData['services']:
+
+                    if service['type'] == "backend" or service['type'] == "frontend":
+                        
+                        data = {'project_name': project_id, 'assistant': "ServiceSpecificationGenerator", "container": container['name'], "service": service['name']}
+                        #generationRequest("generation/generateService", data)
+
+                        if service['type'] == "backend":
+
+                            data = {'project_name': project_id, 'assistant': "ServiceEndpointGenerator", "container": container['name'], "service": service['name']}
+                            #generationRequest("generation/generateService", data)
+
+                            archiProjects[indexProject-1]["containers"][indexContainer]["services"].append({
+                                "name": service['name'],
+                                "type": service['type'],
+                                "endpoints": service['ServiceEndpointGenerator']
+                            })
+                    
+                        if service['type'] == "frontend" :
+
+                            archiProjects[indexProject-1]["containers"][indexContainer]["services"].append({
+                                "name": service['name'],
+                                "type": service['type'],
+                                "pages": []
+                            })
+                
+                indexContainer = indexContainer + 1
+
         
-        return jsonify(), 200
+        return jsonify(archiProjects), 200
     
     except Exception as e:
         print("Exception: %s", e)

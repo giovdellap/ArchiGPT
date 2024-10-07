@@ -73,17 +73,16 @@ Scrittura capitoli (senza bibliografia e immagini):
         - [x] 1) General Overview and Trends
 
 
-## PHASE 2 : 03/10 - 09/10
-- [ ] Call 09/10 col prof
-- [ ] Inviare Capitoli 2-3-4 completi con Biblio e Immagini al prof 06/10
+## PHASE 2 : 03/10 - 07/10
+- [x] Inviare Capitoli 2-3-4 completi con Biblio e Immagini al prof 06/10
 
 ### ARCHIGPT
 
 ### DATASET/METRICS
-- [ ] Script Metriche per Validazione
-- [ ] Algoritmo calcolo punteggio metriche :
-	- [ ] Definire formato input/output
-	- [ ] Backend REST
+- [x] Script Metriche per Validazione
+- [x] Algoritmo calcolo punteggio metriche :
+	- [x] Definire formato input/output
+	- [x] Backend REST
 	- [ ] Scrivere algoritmi calcolo punteggio
 
 ### THESIS PAPER
@@ -109,26 +108,56 @@ Scrittura capitoli :
 
   - [ ] 7) Dataset for validation - Non Comune - Focus Eugenio
      - [ ] 1) General Overview
-     - [ ] 2) Student's projects description
+     - [x] 2) Student's projects description
      - [ ] 3) Projects' selection
-     - [ ] 4) Projects' cleaning
-     - [ ] 5) Projects' documentation generation (code analysis)
+     - [x] 4) Projects' cleaning
+     - [x] 5) Projects' documentation generation (code analysis)
      - [ ] 6) Projects Datametrics
 
 
-## PHASE 3 : 10/10 - 15/10
+## PHASE 3 : 07/10 - 13/10
+- [ ] Call 09/10 col prof
 
 ### ARCHIGPT
+- [ ] Assistant service 3 x aggiungere pages ai frontend (G-E)
+    - assistant API handler
+    - Archi backend
+
+- [ ] Aggiustare userstories e endpoints from string to array (E)
 
 ### DATASET/METRICS
+### Frontend metriche
+- [ ] Aggiungere container
 
 ### THESIS PAPER
 Scrittura capitoli :
-  - [ ] 1) Introduction - Comune
+### INTRODUCTION (1)
+- [ ] 
 
-  - [ ] 5) ArchiGPT Overview - Comune
-     - [ ] 1) Idea Overview
-     - [ ] 2) ArchiGPT Overview
-     - [ ] 3) Dataset Overview
-     - [ ] 4) Evaluation Overview
+### ARCHI OVERVIEW (5)
+- [ ] 1) Idea Overview
+- [ ] 2) ArchiGPT Overview
+- [ ] 3) Dataset Overview
+- [ ] 4) Evaluation Overview
+
+### ARCHI (6)
+- [ ] Prompt Chaining (G)
+- [ ] Technological Choices (E)
+- [ ] API Handler (E)
+- [ ] Assistants 
+
+### DATASET (7)
+- [ ] Overview
+- [ ] System Realization (E)
+
+### VALIDATION (8)
+- [ ] 1) Definition of Metrics (G)
+- [ ] 2) Definition of Algoritms used for Metrics ()
+- [ ] 3) Results on Dataset
+
+### CONCLUSION (9)
+- [ ] 1) Thoughts on Results
+- [ ] 2) Future Challenges
+- [ ] 3) Final Conclusion
+
 
