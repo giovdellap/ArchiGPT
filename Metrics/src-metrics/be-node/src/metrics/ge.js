@@ -2,7 +2,9 @@
 // num_clique = numero not overlapping cliques (found by maxNotOverllapingCliques.py)
 //                      if num_c <= num_clique             | = 100*(num_c/num_clique)
 //  metric_result =     if num_clique < num_c < num_set    | = 100
-//                      if num_c >= num_set                | = 100*(2*num_set-num_c)/num_set
+//                      if 2*num_set > num_c >= num_set    | = 100*(2*num_set-num_c)/num_set
+//                      if num_c >= 2*num_set              | = 0 
+
 
 function geMetrics(projectData, benchmarkData) {
 
@@ -14,7 +16,8 @@ function geMetrics(projectData, benchmarkData) {
 
     if ( num_c <= num_clique ) result = 100 * (num_c/num_clique)
     else if ( num_clique <= num_c && num_c <= num_set ) result = 100
-    else if ( num_c >= num_set ) result = 100 * (2*num_set-num_c)/num_set
+    else if ( num_c >= num_set && num_c < 2*num_set ) result = 100 * (2*num_set-num_c)/num_set
+    else if ( num_c >= 2*num_set ) result = 0
 
     return result
 }

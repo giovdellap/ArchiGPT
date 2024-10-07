@@ -123,11 +123,11 @@ Scrittura capitoli :
     - assistant API handler
     - Archi backend
 
-- [ ] Aggiustare userstories e endpoints from string to array (E)
+- [x] Aggiustare userstories e endpoints from string to array (E)
 
 ### DATASET/METRICS
 ### Frontend metriche
-- [ ] Aggiungere container
+- [ ] Aggiungere container e bottone che chiama metric_handler
 
 ### THESIS PAPER
 Scrittura capitoli :

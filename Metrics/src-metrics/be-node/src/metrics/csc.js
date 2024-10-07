@@ -4,7 +4,9 @@
 // num_set_full = numero di set fullfilled
 //                     if num_serv_be <= num_clique_full                  | = 100*(num_serv_be/num_clique_full)
 // metric_result =     if num_clique_full < num_serv_be < num_set_full    | = 100
-//                     if num_serv_be >= num_set_full                     | = 100*(2*num_set_full-num_serv_be)/num_set_full 
+//                     if 2*num_set_full > num_serv_be >= num_set_full    | = 100*(2*num_set_full-num_serv_be)/num_set_full 
+//                     if num_serv_be >= 2*num_set_full                   | = 0 
+
 
 const { getCliquesUserStories } = require("./ge")
 
@@ -43,7 +45,8 @@ function cscMetrics(projectData, benchmarkData) {
         if ( num_clique_fulfilled === 0 || num_set_fullfilled === 0 ) metric_result = null
         else if ( num_serv_be <= num_clique_fulfilled ) metric_result = 100 * (num_serv_be/num_clique_fulfilled)
         else if ( num_clique_fulfilled <= num_serv_be && num_serv_be <= num_set_fullfilled ) metric_result = 100
-        else if ( num_serv_be >= num_set_fullfilled ) metric_result = 100 * (2*num_set_fullfilled-num_serv_be)/num_set_fullfilled
+        else if ( num_serv_be >= num_set_fullfilled && num_serv_be < 2*num_set_fullfilled) metric_result = 100 * (2*num_set_fullfilled-num_serv_be)/num_set_fullfilled
+        else if ( num_serv_be >= 2*num_set_fullfilled ) metric_result = 0
 
         result.push({ "containerName": container.name, "result": metric_result })
 

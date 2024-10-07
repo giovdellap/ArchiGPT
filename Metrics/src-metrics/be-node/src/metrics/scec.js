@@ -15,7 +15,6 @@ function scecMetrics(projectData, projResult) {
         } else {
             num_container--
         }
-        console.log(sum_cec_result, container.result)
     }
 
     const result = sum_cec_result/num_container

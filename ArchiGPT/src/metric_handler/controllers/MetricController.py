@@ -1,5 +1,6 @@
 from flask import request, jsonify
 from utils.backend_handler_bridge import generationRequest, generationRequestWithFile, getDataRequest
+from utils.projectJsonFormatter import userstoriesFormatter, endpointsFormatter
 
 projects_dataset = ["OneSport", "NFFH", "EFarmers", "RentYourExpert", "CDC", "EventTicket", "Teamify", "RecipeCove"]
 
@@ -58,7 +59,7 @@ def generateProjects():
 
                 archiProjects[indexProject-1]["containers"].append({
                     "name": containerData['name'],
-                    "userStories": containerData['userstories'],
+                    "userStories": userstoriesFormatter(containerData['userstories']),
                     "services": []
                 })
 
@@ -80,7 +81,7 @@ def generateProjects():
                             archiProjects[indexProject-1]["containers"][indexContainer]["services"].append({
                                 "name": service['name'],
                                 "type": service['type'],
-                                "endpoints": service['ServiceEndpointGenerator']
+                                "endpoints": endpointsFormatter(service['ServiceEndpointGenerator'])
                             })
                     
                         if service['type'] == "frontend" :
@@ -93,8 +94,13 @@ def generateProjects():
                 
                 indexContainer = indexContainer + 1
 
+        archiJson = {
+            "modelName": "ArchiGPT",
+            "projectModel": project_name,
+            "projects": archiProjects
+        }
         
-        return jsonify(archiProjects), 200
+        return jsonify(archiJson), 200
     
     except Exception as e:
         print("Exception: %s", e)
