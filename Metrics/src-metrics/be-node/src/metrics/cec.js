@@ -24,7 +24,7 @@ function cecMetrics(projectData) {
                 }
             }
 
-            if(service.type == "frontend"){
+            if(service.type == "frontend" && service.pages){
                 
                 for (const page of service.pages) {
 

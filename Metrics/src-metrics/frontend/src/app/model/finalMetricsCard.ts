@@ -28,7 +28,7 @@ export const metricsNames: string[] = [
     'System Container Endpoint Coverage'
 ]
 
-export const finalMetrics: string[] = ['ussc', 'cic', 'ge', 'sc', 'pc', 'scec']
+export const finalMetrics: string[] = ['ussc', 'cic', 'ge', 'sc', 'cpc', 'scec']
 export const finalMetricsNames: string[] =[
     'User Stories Satisfaction Coverage',
     'Container Integrity Coverage',
@@ -49,7 +49,7 @@ export function getFinalMetricsCards(finalResults: FinalResults): FinalMetricsCa
             Number(Math.min(255, Math.max(0, 255 * (index / 100))).toFixed(0)),
             0
         )
-        console.log(color)
+        //console.log(color)
         let card = new FinalMetricsCard(finalMetrics[i], finalMetricsNames[i], index, color)
         res.push(card)
     }
