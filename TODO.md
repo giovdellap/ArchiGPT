@@ -31,13 +31,13 @@
 - [ ] 4) Evaluation Overview
 
 ### ARCHI (6)
-- [ ] Prompt Chaining (G)
+- [X] Prompt Chaining (G)
 - [ ] Technological Choices (E)
 - [ ] API Handler
 - [ ] Assistants
 
 ### DATASET (7)
-- [ ] Overview
+- [X] Overview
 - [ ] System Realization (E)
 
 ### VALIDATION (8)
