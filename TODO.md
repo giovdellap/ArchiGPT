@@ -8,7 +8,7 @@
 
 ## ARCHI
 - [ ] Assistant service 3 x aggiungere pages ai frontend
-    - assistant API handler
+    - assistant API handler 
     - Archi backend
 - [x] Pulsante per generare tutto insieme
  - ARCHI:
@@ -32,13 +32,13 @@
 
 ### ARCHI (6)
 - [X] Prompt Chaining (G)
-- [ ] Technological Choices (E)
-- [ ] API Handler
-- [ ] Assistants
+- [X] Technological Choices (E)
+- [ ] Architectural Design (E)
+- [ ] Assistants (G)
 
 ### DATASET (7)
 - [X] Overview
-- [ ] System Realization (E)
+- [X] System Realization (E)
 
 ### VALIDATION (8)
 - [ ] 1) Definition of Metrics

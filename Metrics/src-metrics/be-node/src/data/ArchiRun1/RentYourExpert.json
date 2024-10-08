@@ -1,0 +1,493 @@
+{
+    "containers": [
+        {
+            "name": "user_authentication",
+            "services": [],
+            "userStories": []
+        },
+        {
+            "name": "profile_management",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/profile/customer",
+                            "userStoryIndex": [
+                                3
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/profile/worker",
+                            "userStoryIndex": [
+                                27
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/profile/customer",
+                            "userStoryIndex": [
+                                32
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/profile/worker",
+                            "userStoryIndex": [
+                                28
+                            ]
+                        }
+                    ],
+                    "name": "profile_backend",
+                    "type": "backend"
+                },
+                {
+                    "name": "profile_storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                3,
+                27,
+                28,
+                32
+            ]
+        },
+        {
+            "name": "catalogue_browsing",
+            "services": [],
+            "userStories": [
+                4,
+                5
+            ]
+        },
+        {
+            "name": "requests_management",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/requests/create",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/requests/customer/{customerId}/list",
+                            "userStoryIndex": [
+                                7
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/requests/customer/{customerId}/delete/{requestId}",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/requests/worker/{workerId}/list",
+                            "userStoryIndex": [
+                                23
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/requests/worker/{workerId}/manage/{requestId}",
+                            "userStoryIndex": [
+                                24
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/requests/admin/list",
+                            "userStoryIndex": [
+                                21
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/requests/admin/add",
+                            "userStoryIndex": [
+                                22
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/requests/admin/delete/{requestId}",
+                            "userStoryIndex": [
+                                22
+                            ]
+                        }
+                    ],
+                    "name": "request_creation",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/customer/requests",
+                            "userStoryIndex": [
+                                7
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/customer/requests/:requestId",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/worker/requests",
+                            "userStoryIndex": [
+                                23
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/worker/requests/:requestId",
+                            "userStoryIndex": [
+                                24
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/requests",
+                            "userStoryIndex": [
+                                21
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/admin/requests",
+                            "userStoryIndex": [
+                                22
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/admin/requests/:requestId",
+                            "userStoryIndex": [
+                                22
+                            ]
+                        }
+                    ],
+                    "name": "request_list",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/request/create",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/requests/customer",
+                            "userStoryIndex": [
+                                7
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/request/delete/:id",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/requests/worker",
+                            "userStoryIndex": [
+                                23
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/request/manage/:id",
+                            "userStoryIndex": [
+                                24
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/requests/admin",
+                            "userStoryIndex": [
+                                21
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/request/admin/add",
+                            "userStoryIndex": [
+                                22
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/request/admin/delete/:id",
+                            "userStoryIndex": [
+                                22
+                            ]
+                        }
+                    ],
+                    "name": "request_management",
+                    "type": "backend"
+                },
+                {
+                    "name": "user_interface",
+                    "pages": [],
+                    "type": "frontend"
+                },
+                {
+                    "name": "requests_database",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                6,
+                7,
+                8,
+                23,
+                24,
+                21,
+                22
+            ]
+        },
+        {
+            "name": "reviews_and_questions",
+            "services": [],
+            "userStories": [
+                11,
+                12,
+                31,
+                9,
+                10,
+                33,
+                34,
+                35
+            ]
+        },
+        {
+            "name": "admin_management",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/account/customers",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/account/customers",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/account/customers/{customerId}",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/account/customers/{customerId}",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/account/workers",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/account/workers/{workerId}",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/account/workers",
+                            "userStoryIndex": [
+                                29
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/account/workers/{workerId}",
+                            "userStoryIndex": [
+                                30
+                            ]
+                        }
+                    ],
+                    "name": "account_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/account_management/customers",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/account_management/customers",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/account_management/customers/{customerId}",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/account_management/customers/{customerId}",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/account_management/workers",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/account_management/workers/{workerId}",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/account_management/workers",
+                            "userStoryIndex": [
+                                29
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/account_management/workers/{workerId}",
+                            "userStoryIndex": [
+                                30
+                            ]
+                        }
+                    ],
+                    "name": "data_insight",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/admin/customers",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/admin/customers",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/customers/{customer_id}",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/admin/customers/{customer_id}",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/workers",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/workers/{worker_id}",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/admin/workers",
+                            "userStoryIndex": [
+                                29
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/admin/workers/{worker_id}",
+                            "userStoryIndex": [
+                                30
+                            ]
+                        }
+                    ],
+                    "name": "admin_action_logging",
+                    "type": "backend"
+                },
+                {
+                    "name": "api_gateway",
+                    "type": "middleware"
+                }
+            ],
+            "userStories": [
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                29,
+                30
+            ]
+        },
+        {
+            "name": "frontend",
+            "services": [],
+            "userStories": []
+        }
+    ],
+    "name": "RentYourExpert"
+}

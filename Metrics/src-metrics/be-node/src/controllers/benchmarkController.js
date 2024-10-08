@@ -23,12 +23,7 @@ const benchmark = ( async (req, res) => {
 
       let benchmarkProjects = {}
 
-      if(benchmark.modelName == "ArchiGPT")
-        benchmarkProjects = getBenchmarkProjects(req.body.projectModel)
-        console.log('Project Model : ', req.body.projectModel)
-
-      if(benchmark.modelName == "Students")
-        benchmarkProjects = getBenchmarkProjects(proj.name)
+      benchmarkProjects = getBenchmarkProjects(proj.name)
 
       const metricResult = getMetricResult(metric, proj, benchmarkProjects, projResult)
       projResult[metric] = metricResult

@@ -25,17 +25,17 @@ def generateProjects():
 
             project_id = project_name + str(indexProject)
             data = {"project_name": project_id}
-            #generationRequest("project/", data)
+            generationRequest("project/", data)
             archiProjects.append({ "name": project_id, "containers": [] })
 
             # SYSTEM GENERATION APIs INTERROGATION
 
             file = { 'userstories' : open(f'./utils/{project_name}/userStories.txt', 'rb') }
             data = {'project_name': project_id, 'assistant': "Container Design"}
-            #generationRequestWithFile("generation/generateSystem", data, file)
+            generationRequestWithFile("generation/generateSystem", data, file)
 
             data = {'project_name': project_id, 'assistant': "User Interaction Analysis"}
-            #generationRequest("generation/generateSystem", data)
+            generationRequest("generation/generateSystem", data)
 
             # CONTAINER GENERATION APIs INTERROGATION
 
@@ -46,13 +46,13 @@ def generateProjects():
             for container in statusData['containers']:
 
                 data = {'project_name': project_id, 'assistant': "ContainerDescriptionGenerator", "container": container['name']}
-                #generationRequest("generation/generateContainer", data)
+                generationRequest("generation/generateContainer", data)
 
                 data = {'project_name': project_id, 'assistant': "ContainerSpecificationGenerator", "container": container['name']}
-                #generationRequest("generation/generateContainer", data)
+                generationRequest("generation/generateContainer", data)
 
                 data = {'project_name': project_id, 'assistant': "MicroServices", "container": container['name']}
-                #generationRequest("generation/generateContainer", data)
+                generationRequest("generation/generateContainer", data)
 
                 params = {"project_name": project_id, "container_name": container['name']}
                 containerData = getDataRequest("generation/getContainer", params)
@@ -71,17 +71,17 @@ def generateProjects():
                     if service['type'] == "backend" or service['type'] == "frontend":
                         
                         data = {'project_name': project_id, 'assistant': "ServiceSpecificationGenerator", "container": container['name'], "service": service['name']}
-                        #generationRequest("generation/generateService", data)
+                        generationRequest("generation/generateService", data)
 
                         if service['type'] == "backend":
 
                             data = {'project_name': project_id, 'assistant': "ServiceEndpointGenerator", "container": container['name'], "service": service['name']}
-                            #generationRequest("generation/generateService", data)
-
+                            temp_endpoint =generationRequest("generation/generateService", data)
+                            print('DIO MAIALE', temp_endpoint)
                             archiProjects[indexProject-1]["containers"][indexContainer]["services"].append({
                                 "name": service['name'],
                                 "type": service['type'],
-                                "endpoints": endpointsFormatter(service['ServiceEndpointGenerator'])
+                                "endpoints": endpointsFormatter(temp_endpoint['content'])
                             })
                     
                         if service['type'] == "frontend" :
