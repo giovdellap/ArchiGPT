@@ -25,9 +25,9 @@ function cpcMetrics(projectData, benchmarkData) {
 
         summ_result = summ_result + result
     }
-
-    const result = 100 * (summ_result/num_container)
-    return result
+    if (num_container === 0) {
+        return 0
+    } else return (100 * (summ_result/num_container))
 }
 
 module.exports = {

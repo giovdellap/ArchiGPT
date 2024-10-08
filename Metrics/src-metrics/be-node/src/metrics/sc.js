@@ -14,9 +14,10 @@ function scMetrics(projectData, projResult) {
             num_container--
         }
     }
-
-    const result = sum_css_result/num_container
-    return result
+    if (sum_css_result === 0 || num_container === 0) {
+        return 0
+    } else return sum_css_result/num_container
+    
 }
 
 module.exports = {
