@@ -18,11 +18,10 @@ Describe the service's pages in terms of Page name, Description, Related Microse
 Json with 4 fields:
 - PageName
 - Description
-- RelatedMicroservice
 - UserStories
 Json format:
-[{ "PageName" : "", "Description" : "", "RelatedMicroservice" : "", "UserStories" : [] },
-{ "PageName" : "", "Description" : "", "RelatedMicroservice" : "", "UserStories" : [] }]
+[{ "PageName" : "", "Description" : "", "UserStories" : [] },
+{ "PageName" : "", "Description" : "", "UserStories" : [] }]
 
 Include in the output only the json without any additional characters 
 
@@ -35,39 +34,32 @@ SYSTEM DESCRIPTION:
 This blog platform allows users to register, log in, and log out securely. Once logged in, users can read articles, view comments on each article, and contribute their own comments. The platform features a user-friendly interface that makes navigation and interaction straightforward. Articles are displayed in a list format on the homepage, with individual article pages showing the full content and associated comments. The system ensures that all comments are attributed to registered users, promoting accountability and constructive discussions.
 
 CONTAINER DESCRIPTION:
-The Authentication container is responsible for handling registration of the users, login and logout. It also manages credentials storage and retrieval, along with the authentication tokens' management
+The Frontend container is responsible for the user interface of the system.
 
 CONTAINER USER STORIES:
-1) As a new user, I want to register an account so that I can log in and interact with the blog.
-2) As a registered user, I want to log in to my account so that I can access and interact with the platform.
-3) As a logged-in user, I want to log out of my account so that I can securely end my session.
+1) As a user, i want to hide and show the comments section of a blog post
 
 CONTAINER PERSISTANCE EVALUATION
-The container needs to store credentials in order to manage registration and login.
-The credentials are tuples username, passsword.
-The container also needs to store authentication tokens.
+The container down't need to store data.
 
 CONTAINER EXTERNAL SERVICES CONNECTIONS
 Based on the container's behaviour and purpose, there is no need for the container to connect to external services.
 
 CONTAINER MICROSERVICES:
-MICROSERVICE: auth
-- TYPE: backend
-- DESCRIPTION: The microservice handles registration, login and logout operations for the users. It exposes endpoints to access these operations. For the registration operation, the microservice interacts with the database to ensure that the user is not already registered. For the login operation, the microservice interacts with the database to validate credentials, then produces a token, stores it in the DB and returns it to the user. For the logout operation, the microservice removes the token from the database. The microservice also exposes enpoints for other containers/microservices to validate authentication tokens.
-- PORT: 10010
-
-MICROSERVICE: storage
-- TYPE: database
-- DESCRIPTION: The microservice stores credentials in the form username-password. It also stores authentication tokens.
-- PORT: 10020
+MICROSERVICE: frontend
+- TYPE: frontend
+- DESCRIPTION: The microservice handles the user interface of the system.
+- PORT: 10030
 
 MICROSERVICE TECHNOLOGICAL SPECIFICATION
-The auth microservice uses NodeJS as its main programming language, with express as a back end web application framework for building RESTful APIs.
+The frontend microservice uses ReactJS to build a Single-Page Application.
 
 SERVICE ARCHITECTURE
-The auth service implements a clear subdivision of roles, with a file describing routes, a controller to manage HTTP requests and a handler to interact with the database.
+The frontend service implements multiple components and an internal routing mechanism to show the user interface..
 
 # Output: #
-[{ "Method" : "POST", "URL" : "/auth/register", "Description" : "Create a new user using the inserted information, return a message that confirm the action", "UserStories" : [1] },
-{ "Method" : "POST", "URL" : "/auth/login", "Description" : "Handle the login for the current user, generating as response a token", "UserStories" : [2] },
-{ "Method" : "POST", "URL" : "/auth/logout", "Description" : "Remove the token for the logged user, and execute the logout from current session, return a confirmation message", "UserStories" : [3] }]
+[{ "PageName" : "Homepage", "Description" : "Shows the system homepage", "UserStories" : [] },
+{ "PageName" : "Registration", "Description" : "Handles the registration in the user interface", "UserStories" : [] },
+{ "PageName" : "Login", "Description" : "Handles the registration in the user interface", "UserStories" : [] },
+{ "PageName" : "Articles", "Description" : "Shows the articles list", "UserStories" : [] },
+{ "PageName" : "Article/<id>", "Description" : "Shows the articles and comments", "UserStories" : [7] }]
