@@ -13,6 +13,12 @@ function calculateFinalResults(projectResults) {
     return finalResults
 }
 
+function calculateIndex(results) {
+    let sum = results.ussc + results.cic + results.ge + results.sc + results.cpc + results.scec
+    return Number((sum/6).toFixed(2))
+}
+
 module.exports = {
-    calculateFinalResults
+    calculateFinalResults,
+    calculateIndex
 }

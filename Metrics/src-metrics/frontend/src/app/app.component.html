@@ -17,7 +17,8 @@
         Model: {{result.modelName}}
       </div>
       <div class="finalIndex-container">
-        Final index: {{result.finalIndex}}
+        <div>Final index: </div>
+        <div [style.color]="resultColor">{{result.finalIndex}}</div>
       </div>
     </div>
     <div class="finalmetrics-title">
@@ -50,7 +51,9 @@
                 {{project.name}}
               </mat-panel-title>
               <mat-panel-description class="projectpanel-description">
-                Final index: {{project.index}}
+                <div> Final index: </div>
+                <div [style.color]="project.color">{{project.index}}</div>
+               
               </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="project-expansion">

@@ -147,7 +147,7 @@ Scrittura capitoli :
 - [x] Prompt Chaining (G)
 - [x] Technological Choices (E)
 - [ ] API Handler (E)
-- [ ] Assistants 
+- [X] Assistants 
 
 ### DATASET (7)
 - [x] Overview

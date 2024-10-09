@@ -1,76 +1,162 @@
 {
     "containers": [
         {
-            "name": "auth_management",
-            "services": [],
-            "userStories": []
-        },
-        {
-            "name": "user_profile_management",
+            "name": "user_management",
             "services": [
                 {
                     "endpoints": [
                         {
-                            "method": "GET",
-                            "url": "/profile/view",
+                            "method": "POST",
+                            "url": "/user_authentication/register",
                             "userStoryIndex": [
-                                4
+                                1
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/user_authentication/login",
+                            "userStoryIndex": [
+                                2
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/user_authentication/logout",
+                            "userStoryIndex": [
+                                3
                             ]
                         }
                     ],
-                    "name": "profile_view",
+                    "name": "user_authentication",
                     "type": "backend"
                 },
                 {
                     "endpoints": [
                         {
+                            "method": "POST",
+                            "url": "/user/register",
+                            "userStoryIndex": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/user/login",
+                            "userStoryIndex": [
+                                2
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/user/logout",
+                            "userStoryIndex": [
+                                3
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/user/profile",
+                            "userStoryIndex": [
+                                4
+                            ]
+                        },
+                        {
                             "method": "PUT",
-                            "url": "/profile/edit",
+                            "url": "/user/profile",
                             "userStoryIndex": [
                                 5
                             ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/user/password-reset",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/user/delete",
+                            "userStoryIndex": [
+                                7
+                            ]
                         }
                     ],
-                    "name": "profile_edit",
+                    "name": "user_profile_management",
                     "type": "backend"
                 },
                 {
-                    "name": "profile_storage",
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/password-reset/request",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/password-reset/confirm",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        }
+                    ],
+                    "name": "password_reset",
+                    "type": "backend"
+                },
+                {
+                    "name": "user_data_storage",
                     "type": "database"
                 }
             ],
             "userStories": [
+                1,
+                2,
+                3,
                 4,
-                5
+                5,
+                6,
+                7
             ]
         },
         {
             "name": "notifications",
             "services": [
                 {
+                    "name": "notifications_handler",
+                    "type": "middleware"
+                },
+                {
                     "endpoints": [
                         {
+                            "method": "GET",
+                            "url": "/notifications",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        },
+                        {
                             "method": "POST",
-                            "url": "/notifications/create",
+                            "url": "/notifications/send",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/notifications/mark-read",
                             "userStoryIndex": []
                         },
                         {
                             "method": "GET",
-                            "url": "/notifications/user/{userId}",
-                            "userStoryIndex": [
-                                8
-                            ]
+                            "url": "/notifications/unread",
+                            "userStoryIndex": []
                         }
                     ],
-                    "name": "notification_engine",
+                    "name": "notifications_api",
                     "type": "backend"
                 },
                 {
-                    "name": "notification_delivery",
-                    "type": "middleware"
-                },
-                {
-                    "name": "notification_storage",
+                    "name": "notifications_storage",
                     "type": "database"
                 }
             ],
@@ -79,64 +165,51 @@
             ]
         },
         {
-            "name": "personal_task_management",
+            "name": "personal_agenda",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "GET",
-                            "url": "/tasks",
+                            "url": "/agenda_management/tasks",
                             "userStoryIndex": [
                                 9
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/tasks",
+                            "url": "/agenda_management/tasks",
                             "userStoryIndex": [
                                 11
                             ]
                         },
                         {
                             "method": "PUT",
-                            "url": "/tasks/{taskId}",
+                            "url": "/agenda_management/tasks/{task_id}",
                             "userStoryIndex": [
                                 12
                             ]
                         },
                         {
                             "method": "DELETE",
-                            "url": "/tasks/{taskId}",
+                            "url": "/agenda_management/tasks/{task_id}",
                             "userStoryIndex": [
                                 13
                             ]
                         },
                         {
                             "method": "PATCH",
-                            "url": "/tasks/{taskId}/complete",
+                            "url": "/agenda_management/tasks/{task_id}/complete",
                             "userStoryIndex": [
                                 14
                             ]
                         }
                     ],
-                    "name": "task_manager",
+                    "name": "agenda_management",
                     "type": "backend"
                 },
                 {
-                    "endpoints": [
-                        {
-                            "method": "GET",
-                            "url": "/agenda_viewer/personal-agenda",
-                            "userStoryIndex": [
-                                9
-                            ]
-                        }
-                    ],
-                    "name": "agenda_viewer",
-                    "type": "backend"
-                },
-                {
-                    "name": "task_persistence",
+                    "name": "agenda_storage",
                     "type": "database"
                 }
             ],
@@ -155,198 +228,73 @@
                     "endpoints": [
                         {
                             "method": "POST",
-                            "url": "/team_creation/create",
-                            "userStoryIndex": [
-                                15
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/team_creation/view_teams",
-                            "userStoryIndex": [
-                                17
-                            ]
-                        }
-                    ],
-                    "name": "team_creation",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "POST",
-                            "url": "/team_membership/join",
-                            "userStoryIndex": [
-                                16
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/team_membership/leave",
-                            "userStoryIndex": [
-                                18
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/team_membership/my_teams",
-                            "userStoryIndex": [
-                                17
-                            ]
-                        },
-                        {
-                            "method": "PUT",
-                            "url": "/team_membership/invite",
-                            "userStoryIndex": [
-                                15,
-                                16
-                            ]
-                        },
-                        {
-                            "method": "PUT",
-                            "url": "/team_membership/update_role",
-                            "userStoryIndex": [
-                                19,
-                                20
-                            ]
-                        }
-                    ],
-                    "name": "team_membership",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "POST",
-                            "url": "/team_admin/create",
+                            "url": "/team_management/create",
                             "userStoryIndex": [
                                 15
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/team_admin/join",
+                            "url": "/team_management/join",
                             "userStoryIndex": [
                                 16
                             ]
                         },
                         {
                             "method": "GET",
-                            "url": "/team_admin/list",
+                            "url": "/team_management/list",
                             "userStoryIndex": [
                                 17
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/team_admin/leave",
+                            "url": "/team_management/leave",
                             "userStoryIndex": [
                                 18
                             ]
                         },
                         {
-                            "method": "POST",
-                            "url": "/team_admin/promote",
+                            "method": "PUT",
+                            "url": "/team_management/manage/admin/appoint",
                             "userStoryIndex": [
                                 19
                             ]
                         },
                         {
-                            "method": "POST",
-                            "url": "/team_admin/demote",
+                            "method": "PUT",
+                            "url": "/team_management/manage/admin/remove",
                             "userStoryIndex": [
                                 20
                             ]
                         },
                         {
                             "method": "PUT",
-                            "url": "/team_admin/edit",
+                            "url": "/team_management/edit",
                             "userStoryIndex": [
                                 25
                             ]
                         },
                         {
                             "method": "DELETE",
-                            "url": "/team_admin/delete",
+                            "url": "/team_management/delete",
                             "userStoryIndex": [
                                 26
                             ]
-                        }
-                    ],
-                    "name": "team_administration",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
+                        },
                         {
                             "method": "GET",
-                            "url": "/agenda/{team_id}",
+                            "url": "/team_management/agenda/view",
                             "userStoryIndex": [
                                 10
                             ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/team/create",
-                            "userStoryIndex": [
-                                15
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/team/join",
-                            "userStoryIndex": [
-                                16
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/team/list",
-                            "userStoryIndex": [
-                                17
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/team/leave",
-                            "userStoryIndex": [
-                                18
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/team/admin/select",
-                            "userStoryIndex": [
-                                19
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/team/admin/deselect",
-                            "userStoryIndex": [
-                                20
-                            ]
-                        },
-                        {
-                            "method": "PUT",
-                            "url": "/team/edit",
-                            "userStoryIndex": [
-                                25
-                            ]
-                        },
-                        {
-                            "method": "DELETE",
-                            "url": "/team/delete",
-                            "userStoryIndex": [
-                                26
-                            ]
                         }
                     ],
-                    "name": "team_agenda",
+                    "name": "team_management_backend",
                     "type": "backend"
                 },
                 {
-                    "name": "team_storage",
+                    "name": "team_membership_database",
                     "type": "database"
                 }
             ],
@@ -363,14 +311,43 @@
             ]
         },
         {
-            "name": "real_time_chat",
-            "services": [],
+            "name": "chat",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/chat/send",
+                            "userStoryIndex": [
+                                21
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/chat/receive",
+                            "userStoryIndex": [
+                                21
+                            ]
+                        }
+                    ],
+                    "name": "message_delivery",
+                    "type": "backend"
+                },
+                {
+                    "name": "chat_history",
+                    "type": "database"
+                },
+                {
+                    "name": "notification_integration",
+                    "type": "middleware"
+                }
+            ],
             "userStories": [
                 21
             ]
         },
         {
-            "name": "poll_management",
+            "name": "polls",
             "services": [
                 {
                     "endpoints": [
@@ -382,12 +359,25 @@
                             ]
                         },
                         {
+                            "method": "POST",
+                            "url": "/polls/vote",
+                            "userStoryIndex": [
+                                24
+                            ]
+                        },
+                        {
                             "method": "GET",
-                            "url": "/polls/results/:pollId",
+                            "url": "/polls/results",
                             "userStoryIndex": [
                                 23
                             ]
-                        },
+                        }
+                    ],
+                    "name": "poll-creation",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
                         {
                             "method": "POST",
                             "url": "/polls/vote",
@@ -396,44 +386,24 @@
                             ]
                         }
                     ],
-                    "name": "poll_service",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "POST",
-                            "url": "/vote_service/vote",
-                            "userStoryIndex": [
-                                24
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/vote_service/results",
-                            "userStoryIndex": [
-                                23
-                            ]
-                        }
-                    ],
-                    "name": "vote_service",
+                    "name": "vote-processing",
                     "type": "backend"
                 },
                 {
                     "endpoints": [
                         {
                             "method": "GET",
-                            "url": "/results_service/poll/{pollId}/results",
+                            "url": "/polls/{poll_id}/results",
                             "userStoryIndex": [
                                 23
                             ]
                         }
                     ],
-                    "name": "results_service",
+                    "name": "results-viewing",
                     "type": "backend"
                 },
                 {
-                    "name": "poll_storage",
+                    "name": "poll-database",
                     "type": "database"
                 }
             ],
@@ -444,97 +414,52 @@
             ]
         },
         {
-            "name": "event_management",
+            "name": "events",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "POST",
-                            "url": "/events",
+                            "url": "/events/create",
                             "userStoryIndex": [
                                 27
                             ]
                         },
                         {
-                            "method": "PATCH",
-                            "url": "/events/{event_id}",
+                            "method": "PUT",
+                            "url": "/events/modify/{event_id}",
                             "userStoryIndex": [
                                 29
                             ]
                         },
                         {
                             "method": "DELETE",
-                            "url": "/events/{event_id}",
+                            "url": "/events/delete/{event_id}",
                             "userStoryIndex": [
                                 30
                             ]
                         },
                         {
-                            "method": "POST",
-                            "url": "/events/{event_id}/invitations/{user_id}/respond",
-                            "userStoryIndex": [
-                                28
-                            ]
-                        },
-                        {
                             "method": "PATCH",
-                            "url": "/events/{event_id}/complete",
+                            "url": "/events/status/{event_id}",
                             "userStoryIndex": [
                                 31
                             ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/events/respond/{event_id}",
+                            "userStoryIndex": [
+                                28
+                            ]
                         }
                     ],
-                    "name": "event_api",
+                    "name": "event_management",
                     "type": "backend"
                 },
                 {
                     "name": "event_storage",
                     "type": "database"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "POST",
-                            "url": "/notifications/event/created",
-                            "userStoryIndex": [
-                                27
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/notifications/event/modified",
-                            "userStoryIndex": [
-                                29
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/notifications/event/deleted",
-                            "userStoryIndex": [
-                                30
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/notifications/invitation/status",
-                            "userStoryIndex": [
-                                28
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/notifications/event/completed",
-                            "userStoryIndex": [
-                                31
-                            ]
-                        }
-                    ],
-                    "name": "notification_dispatch",
-                    "type": "backend"
-                },
-                {
-                    "name": "calendar_sync",
-                    "type": "middleware"
                 }
             ],
             "userStories": [
@@ -547,7 +472,42 @@
         },
         {
             "name": "frontend",
-            "services": [],
+            "services": [
+                {
+                    "name": "web_ui",
+                    "pages": [
+                        {
+                            "name": "Dashboard",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Task Management",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Team Management",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Real-time Chat",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Notifications",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Polls",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "type": "frontend"
+                }
+            ],
             "userStories": []
         }
     ],

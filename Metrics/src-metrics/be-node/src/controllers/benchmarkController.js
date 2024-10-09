@@ -1,7 +1,7 @@
 const { metrics, getMetricResult } = require("../metrics/_metrics")
 const { BenchmarkResult, ProjectResult } = require("../model/response")
 const { getBenchmarkProjects } = require("../data/benchmarkProjects/projects")
-const { calculateFinalResults } = require("./utils")
+const { calculateFinalResults, calculateIndex } = require("./utils")
 
 
 const benchmark = ( async (req, res) => {
@@ -29,12 +29,15 @@ const benchmark = ( async (req, res) => {
       projResult[metric] = metricResult
       console.log('Metric : ', metric, ' Result : ', metricResult)
     }
+    let index = calculateIndex(projResult)
+    projResult.projectIndex = index
 
     console.log("Benchmark Estimation completed for project : ", proj.name)
     benchmark.projectsResults.push(projResult)
   }
 
   benchmark.finalResults = calculateFinalResults(benchmark.projectsResults)  
+  benchmark.finalIndex = calculateIndex(benchmark.finalResults)
 
   console.log("Benchmark Final Result completed for all the projects")
 

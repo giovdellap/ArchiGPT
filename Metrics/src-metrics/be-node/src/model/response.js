@@ -16,18 +16,12 @@ class FinalResults {
     scec = 0
 }
 
-class ProjectResult {
+class ProjectResult extends FinalResults{
     projectName = ""
     projectIndex = 0
 
-    ussc = 0
-    cic = 0
-    ge = 0
     csc = []
-    sc = 0
-    cpc = 0
     cec = []
-    scec = 0
 }
 
 module.exports = {

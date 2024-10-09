@@ -1,74 +1,206 @@
 {
-    "name": "CDC",
     "containers": [
         {
-            "name": "user_management",
+            "name": "customer_authentication",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "POST",
-                            "url": "/user_auth/register",
+                            "url": "/auth_manager/register",
                             "userStoryIndex": [
                                 1
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/user_auth/login",
+                            "url": "/auth_manager/login",
                             "userStoryIndex": [
-                                2,
-                                14
+                                2
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/profile_manager/profile",
+                            "userStoryIndex": [
+                                3
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/profile_manager/profile",
+                            "userStoryIndex": [
+                                3
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/user_auth/logout",
+                            "url": "/session_manager/logout",
                             "userStoryIndex": [
-                                8,
-                                13
+                                8
                             ]
                         }
                     ],
-                    "name": "user_authentication",
+                    "name": "auth_manager",
                     "type": "backend"
                 },
                 {
                     "endpoints": [
                         {
+                            "method": "POST",
+                            "url": "/auth/register",
+                            "userStoryIndex": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/auth/login",
+                            "userStoryIndex": [
+                                2
+                            ]
+                        },
+                        {
                             "method": "GET",
                             "url": "/profile/view",
                             "userStoryIndex": [
-                                3,
-                                19
+                                3
                             ]
                         },
                         {
                             "method": "PUT",
                             "url": "/profile/update",
                             "userStoryIndex": [
-                                3,
-                                19
+                                3
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/auth/logout",
+                            "userStoryIndex": [
+                                8
                             ]
                         }
                     ],
-                    "name": "profile_management",
+                    "name": "profile_manager",
                     "type": "backend"
                 },
                 {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/auth_manager/register",
+                            "userStoryIndex": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/auth_manager/login",
+                            "userStoryIndex": [
+                                2
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/profile_manager/view",
+                            "userStoryIndex": [
+                                3
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/profile_manager/update",
+                            "userStoryIndex": [
+                                3
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/session_manager/logout",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        }
+                    ],
                     "name": "session_manager",
-                    "type": "middleware"
+                    "type": "backend"
                 },
                 {
-                    "name": "user_data_storage",
+                    "name": "storage",
                     "type": "database"
+                },
+                {
+                    "name": "notification_service",
+                    "type": "middleware"
                 }
             ],
             "userStories": [
                 1,
                 2,
                 3,
-                8,
+                8
+            ]
+        },
+        {
+            "name": "merchant_authentication",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/merchant_auth/login",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/merchant_auth/profile",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/merchant_auth/logout",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        }
+                    ],
+                    "name": "merchant_auth",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/merchant_auth/login",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/merchant_auth/profile",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/merchant_auth/logout",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        }
+                    ],
+                    "name": "session_management",
+                    "type": "backend"
+                }
+            ],
+            "userStories": [
                 13,
                 14,
                 19
@@ -83,16 +215,10 @@
                             "method": "GET",
                             "url": "/products",
                             "userStoryIndex": [
+                                5,
                                 11,
+                                17,
                                 21
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/products/<product_id>",
-                            "userStoryIndex": [
-                                12,
-                                22
                             ]
                         },
                         {
@@ -105,21 +231,43 @@
                         },
                         {
                             "method": "GET",
-                            "url": "/products/sort",
+                            "url": "/products/{product_id}",
                             "userStoryIndex": [
-                                5,
-                                17
+                                12,
+                                22
                             ]
                         }
                     ],
-                    "name": "product_display",
+                    "name": "product_listing",
                     "type": "backend"
                 },
                 {
                     "endpoints": [
                         {
                             "method": "GET",
-                            "url": "/search_and_sort/products",
+                            "url": "/product_search/search",
+                            "userStoryIndex": [
+                                6,
+                                18
+                            ]
+                        }
+                    ],
+                    "name": "product_search",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/product_details/{product_id}",
+                            "userStoryIndex": [
+                                12,
+                                22
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/product_listing",
                             "userStoryIndex": [
                                 11,
                                 21
@@ -127,15 +275,7 @@
                         },
                         {
                             "method": "GET",
-                            "url": "/search_and_sort/product",
-                            "userStoryIndex": [
-                                6,
-                                18
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/search_and_sort/products/sort",
+                            "url": "/product_listing/order",
                             "userStoryIndex": [
                                 5,
                                 17
@@ -143,18 +283,18 @@
                         },
                         {
                             "method": "GET",
-                            "url": "/search_and_sort/product/details",
+                            "url": "/product_search",
                             "userStoryIndex": [
-                                12,
-                                22
+                                6,
+                                18
                             ]
                         }
                     ],
-                    "name": "search_and_sort",
+                    "name": "product_details",
                     "type": "backend"
                 },
                 {
-                    "name": "product_db",
+                    "name": "data_storage",
                     "type": "database"
                 }
             ],
@@ -170,40 +310,13 @@
             ]
         },
         {
-            "name": "cart_management",
+            "name": "shopping_cart",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "GET",
-                            "url": "/cart_view/cart",
-                            "userStoryIndex": [
-                                4
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/cart_management/add",
-                            "userStoryIndex": [
-                                24
-                            ]
-                        },
-                        {
-                            "method": "DELETE",
-                            "url": "/cart_management/clear",
-                            "userStoryIndex": [
-                                25
-                            ]
-                        }
-                    ],
-                    "name": "cart_view",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "GET",
-                            "url": "/cart/view",
+                            "url": "/cart",
                             "userStoryIndex": [
                                 4
                             ]
@@ -217,7 +330,7 @@
                         },
                         {
                             "method": "DELETE",
-                            "url": "/cart/removeAll",
+                            "url": "/cart/clear",
                             "userStoryIndex": [
                                 25
                             ]
@@ -227,7 +340,7 @@
                     "type": "backend"
                 },
                 {
-                    "name": "cart_storage",
+                    "name": "cart_database",
                     "type": "database"
                 }
             ],
@@ -238,72 +351,52 @@
             ]
         },
         {
-            "name": "payment_processing",
+            "name": "payment_gateway",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "POST",
-                            "url": "/payment_gateway_integration/process",
+                            "url": "/payment_processor/process_payment",
                             "userStoryIndex": [
                                 7
                             ]
                         },
                         {
                             "method": "GET",
-                            "url": "/payment_gateway_integration/status/{transactionId}",
+                            "url": "/payment_processor/transaction_status/{transaction_id}",
                             "userStoryIndex": [
                                 7
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/payment_gateway_integration/validate",
-                            "userStoryIndex": [
-                                7
-                            ]
+                            "url": "/payment_processor/refund",
+                            "userStoryIndex": []
                         }
                     ],
-                    "name": "payment_gateway_integration",
+                    "name": "payment_processor",
                     "type": "backend"
                 },
                 {
                     "endpoints": [
                         {
                             "method": "POST",
-                            "url": "/payment/checkout",
+                            "url": "/payment_processor/execute_payment",
                             "userStoryIndex": [
                                 7
                             ]
                         },
                         {
-                            "method": "POST",
-                            "url": "/payment/authorize",
-                            "userStoryIndex": [
-                                7
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/payment/confirm",
-                            "userStoryIndex": [
-                                7
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/payment/validate",
+                            "method": "PUT",
+                            "url": "/transaction_manager/update_transaction_status",
                             "userStoryIndex": [
                                 7
                             ]
                         }
                     ],
-                    "name": "transaction_management",
+                    "name": "transaction_manager",
                     "type": "backend"
-                },
-                {
-                    "name": "fraud_detection",
-                    "type": "middleware"
                 }
             ],
             "userStories": [
@@ -317,38 +410,22 @@
                     "endpoints": [
                         {
                             "method": "GET",
-                            "url": "/order_status/{order_id}",
-                            "userStoryIndex": [
-                                9
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/order_status/{order_id}/history",
+                            "url": "/orders/{order_id}/status",
                             "userStoryIndex": [
                                 9
                             ]
                         }
                     ],
-                    "name": "order_status",
+                    "name": "order_tracking_backend",
                     "type": "backend"
                 },
                 {
-                    "endpoints": [
-                        {
-                            "method": "GET",
-                            "url": "/tracking_info/order/{order_id}",
-                            "userStoryIndex": [
-                                9
-                            ]
-                        }
-                    ],
-                    "name": "tracking_info",
-                    "type": "backend"
-                },
-                {
-                    "name": "order_tracking_db",
+                    "name": "order_tracking_database",
                     "type": "database"
+                },
+                {
+                    "name": "shipping_integration",
+                    "type": "middleware"
                 }
             ],
             "userStories": [
@@ -356,37 +433,37 @@
             ]
         },
         {
-            "name": "merchant_product_management",
+            "name": "merchant_inventory_management",
             "services": [
                 {
                     "endpoints": [
                         {
-                            "method": "PUT",
-                            "url": "/products/{product_id}/price",
-                            "userStoryIndex": [
-                                15
-                            ]
-                        },
-                        {
                             "method": "POST",
-                            "url": "/products",
+                            "url": "/inventory/add",
                             "userStoryIndex": [
                                 16
                             ]
                         },
                         {
                             "method": "DELETE",
-                            "url": "/products/{product_id}",
+                            "url": "/inventory/remove",
                             "userStoryIndex": [
                                 16
                             ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/inventory/update-price",
+                            "userStoryIndex": [
+                                15
+                            ]
                         }
                     ],
-                    "name": "product_management_backend",
+                    "name": "inventory_management_backend",
                     "type": "backend"
                 },
                 {
-                    "name": "product_database",
+                    "name": "inventory_database",
                     "type": "database"
                 }
             ],
@@ -396,8 +473,32 @@
             ]
         },
         {
-            "name": "content_information",
-            "services": [],
+            "name": "information_pages",
+            "services": [
+                {
+                    "name": "about_us_service",
+                    "pages": [
+                        {
+                            "name": "About Us",
+                            "userStoryIndex": [
+                                10,
+                                20
+                            ]
+                        },
+                        {
+                            "name": "Contact",
+                            "userStoryIndex": [
+                                23
+                            ]
+                        }
+                    ],
+                    "type": "frontend"
+                },
+                {
+                    "name": "contact_service",
+                    "type": "middleware"
+                }
+            ],
             "userStories": [
                 10,
                 20,
@@ -408,8 +509,45 @@
             "name": "frontend",
             "services": [
                 {
-                    "name": "ui",
-                    "pages": [],
+                    "name": "web_interface",
+                    "pages": [
+                        {
+                            "name": "HomePage",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "ProductCatalog",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "ProductDetails/<id>",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "ShoppingCart",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Checkout",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Login",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Register",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "UserProfile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "MerchantDashboard",
+                            "userStoryIndex": []
+                        }
+                    ],
                     "type": "frontend"
                 },
                 {
@@ -419,5 +557,6 @@
             ],
             "userStories": []
         }
-    ]
+    ],
+    "name": "CDC"
 }
