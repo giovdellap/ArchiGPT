@@ -7,7 +7,7 @@
 - [x] Metriche mancanti
 
 ## ARCHI
-- [ ] Assistant service 3 x aggiungere pages ai frontend
+- [x] Assistant service 3 x aggiungere pages ai frontend
     - assistant API handler 
     - Archi backend
 - [x] Pulsante per generare tutto insieme
@@ -17,7 +17,8 @@
        - Crea progetto <name_temp> su mongo
        - Fa partire gli assistenti in sequenza e completa il rpogetto
        - Prende il progetto da mongo e lo esporta in JSON
-- [ ] Aggiustare userstories e endpoints from string to array
+- [x] Aggiustare userstories e endpoints from string to array
+- [ ] Aggiustare Util 2 e Util 3
 
 ## SCRITTURA
 

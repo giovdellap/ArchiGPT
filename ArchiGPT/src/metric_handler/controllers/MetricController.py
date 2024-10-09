@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from utils.backend_handler_bridge import generationRequest, generationRequestWithFile, getDataRequest
-from utils.projectJsonFormatter import userstoriesFormatter, endpointsFormatter
+from utils.projectJsonFormatter import userstoriesFormatter, endpointsFormatter, pagesFormatter
 
 projects_dataset = ["OneSport", "NFFH", "EFarmers", "RentYourExpert", "CDC", "EventTicket", "Teamify", "RecipeCove"]
 
@@ -76,20 +76,23 @@ def generateProjects():
                         if service['type'] == "backend":
 
                             data = {'project_name': project_id, 'assistant': "ServiceEndpointGenerator", "container": container['name'], "service": service['name']}
-                            temp_endpoint =generationRequest("generation/generateService", data)
-                            print('DIO MAIALE', temp_endpoint)
-                            archiProjects[indexProject-1]["containers"][indexContainer]["services"].append({
-                                "name": service['name'],
-                                "type": service['type'],
-                                "endpoints": endpointsFormatter(temp_endpoint['content'])
-                            })
-                    
-                        if service['type'] == "frontend" :
+                            temp_endpoints = generationRequest("generation/generateService", data)
 
                             archiProjects[indexProject-1]["containers"][indexContainer]["services"].append({
                                 "name": service['name'],
                                 "type": service['type'],
-                                "pages": []
+                                "endpoints": endpointsFormatter(temp_endpoints['content'])
+                            })
+                    
+                        if service['type'] == "frontend" :
+
+                            data = {'project_name': project_id, 'assistant': "ServicePageGenerator", "container": container['name'], "service": service['name']}
+                            temp_pages = generationRequest("generation/generateService", data)
+
+                            archiProjects[indexProject-1]["containers"][indexContainer]["services"].append({
+                                "name": service['name'],
+                                "type": service['type'],
+                                "pages": pagesFormatter(temp_pages['content'])
                             })
 
                     else :

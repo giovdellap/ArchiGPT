@@ -47,9 +47,10 @@ def generateService():
         dbhandler.updateService(project_name, container_name, service_name, assistant_name, result)
         
         # NEXT ASSISTANT MANAGEMENT
-        nextAssistant = getNextServiceAssistant(assistant_name)
-        if nextAssistant != "":
-            dbhandler.updateServiceStatus(project_name, getNextServiceAssistant(assistant_name), 'NEXT', container_name, service_name)
+        if assistant_name == "ServiceSpecificationGenerator":
+            nextAssistant = getNextServiceAssistant(assistant_name)
+            dbhandler.updateServiceStatus(project_name, nextAssistant, 'NEXT', container_name, service_name)                            #NEXT on ServiceEndpointGenerator
+            dbhandler.updateServiceStatus(project_name, getNextServiceAssistant(nextAssistant), 'NEXT', container_name, service_name)   #NEXT on ServicePageGenerator
         
         return jsonify({'content': result}), 200
     

@@ -13,7 +13,8 @@ container_phases = [
 
 service_phases = [
     'ServiceSpecificationGenerator',
-    'ServiceEndpointGenerator'
+    'ServiceEndpointGenerator',
+    'ServicePageGenerator'
 ]
 
 def getAssistantName(name):
@@ -46,7 +47,7 @@ def getNextContainerAssistant(name):
 def getNextServiceAssistant(name):
     index = service_phases.index(name)
     #if index == len(system_assistants):
-    if name == "ServiceEndpointGenerator":
+    if name == "ServicePageGenerator":
         return ''
     else:
         return service_phases[index+1]

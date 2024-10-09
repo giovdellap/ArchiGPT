@@ -86,7 +86,7 @@ class ContainerHandler:
             if microservice['type'] == "backend":
                 microservice['ServiceEndpointGenerator'] = ""
             if microservice['type'] == "frontend":
-                microservice['pages'] = ""
+                microservice['ServicePageGenerator'] = ""
         
         print('CONTAINER HANDLER UTIL 3 - LIST: ', list)
 
@@ -103,7 +103,7 @@ class ContainerHandler:
             if microservice['type'] == 'backend':
                 service['ServiceEndpointGenerator'] = 'NO'
             if microservice['type'] == 'frontend':
-                service['pages'] = 'NO'
+                service['ServicePageGenerator'] = 'NO'
             status_list.append(service)
         
         print('CONTAINER HANDLER UTILS 3 - STATUS LIST: ', status_list)

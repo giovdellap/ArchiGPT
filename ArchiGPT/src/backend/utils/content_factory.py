@@ -67,6 +67,10 @@ class ContentFactory:
         if assistant == "Service_2":
             content = self.service2(container, service_name)
             self.content = service_prompt + content
+
+        if assistant == "Service_3":
+            content = self.service3(container, service_name)
+            self.content = service_prompt + content
                         
         print('CONTENT FACTORY - CONTENT: ', self.content)
         return self.content
@@ -118,6 +122,19 @@ class ContentFactory:
         return container_content
     
     def service2(self, container, service_name):
+        containerTitle = 'CONTAINER: ' + getContainerDocument('name', container) + '/n'
+        container_description = getContainerDocument('ContainerDescriptionGenerator', container) + '/n'
+        container_specification = getContainerDocument('ContainerSpecificationGenerator', container) + '/n'
+        container_userstories = 'USERSTORIES: ' + getContainerDocument('userstories', container) + '/n'
+        container_microservices = getContainerDocument('MicroServices', container) + '/n'
+
+        service_specification = getServiceDocument('ServiceSpecificationGenerator', container, service_name)
+        
+        container_content = containerTitle + container_description + container_specification + container_userstories + container_microservices + service_specification
+
+        return container_content
+    
+    def service3(self, container, service_name):
         containerTitle = 'CONTAINER: ' + getContainerDocument('name', container) + '/n'
         container_description = getContainerDocument('ContainerDescriptionGenerator', container) + '/n'
         container_specification = getContainerDocument('ContainerSpecificationGenerator', container) + '/n'

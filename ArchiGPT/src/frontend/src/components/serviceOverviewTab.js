@@ -77,15 +77,15 @@ function ServiceOverviewTab({ services, getStatusIcon, servicesInfo, resetItemSe
 										</Card>
 									: <></>}
 									
-									{service.pages ? 
+									{service.ServicePageGenerator ? 
 										<Card>
 											<Button
 												variant="light"
-												onClick={() => {resetItemSelected("Service", {service: service.name, assistant: "ServicePagesGenerator"})}}
-												disabled={service.pages === "NO"} 
+												onClick={() => {resetItemSelected("Service", {service: service.name, assistant: "ServicePageGenerator"})}}
+												disabled={service.ServicePageGenerator === "NO"} 
 											>
 												<Card.Body>
-													Pages {getStatusIcon(service.pages)}
+													Pages {getStatusIcon(service.ServicePageGenerator)}
 												</Card.Body>
 											</Button>
 										</Card>

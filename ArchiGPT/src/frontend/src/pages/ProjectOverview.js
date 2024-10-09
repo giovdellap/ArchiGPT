@@ -100,6 +100,8 @@ function ProjectOverview() {
 				setGenerationMessage(containerInfo.services.find(service => service.name === serviceSelected.service).ServiceSpecificationGenerator)
 			if(serviceSelected.assistant === "ServiceEndpointGenerator")
 				setGenerationMessage(containerInfo.services.find(service => service.name === serviceSelected.service).ServiceEndpointGenerator)
+			if(serviceSelected.assistant === "ServicePageGenerator")
+				setGenerationMessage(containerInfo.services.find(service => service.name === serviceSelected.service).ServicePageGenerator)
 		} 
 
 	}
