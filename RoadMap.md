@@ -116,14 +116,16 @@ Scrittura capitoli :
 
 
 ## PHASE 3 : 07/10 - 13/10
-- [ ] Call 09/10 col prof
+- [ ] Call 10/10 col prof
 
 ### ARCHIGPT
-- [ ] Assistant service 3 x aggiungere pages ai frontend (G-E)
+- [x] Assistant service 3 x aggiungere pages ai frontend (G-E)
     - assistant API handler
     - Archi backend
 
 - [x] Aggiustare userstories e endpoints from string to array (E)
+
+- [ ] Aggiustare Util 2 e Util 3
 
 ### DATASET/METRICS
 ### Frontend metriche
@@ -141,14 +143,14 @@ Scrittura capitoli :
 - [ ] 4) Evaluation Overview
 
 ### ARCHI (6)
-- [ ] Prompt Chaining (G)
-- [ ] Technological Choices (E)
+- [x] Prompt Chaining (G)
+- [x] Technological Choices (E)
 - [ ] API Handler (E)
 - [ ] Assistants 
 
 ### DATASET (7)
-- [ ] Overview
-- [ ] System Realization (E)
+- [x] Overview
+- [x] System Realization (E)
 
 ### VALIDATION (8)
 - [ ] 1) Definition of Metrics (G)
