@@ -5,5 +5,6 @@ def cleanOutput(message, section):
         temp = message.replace("```json", "")
     else:
         temp = message
-    res = temp.replace("`", "")
+    temp2 = temp.replace("`", "")
+    res = temp2.replace("json", "")
     return res
