@@ -77,8 +77,13 @@ class ContainerHandler:
         #ASSISTANT INTERROGATION UTIL 3
         message_content = assistant_call( 'Util_3', content )
         print('CONTAINER HANDLER UTIL 3 - OBJ: ', message_content)
-        
-        list = ast.literal_eval(message_content)
+        toEval = ""
+        if message_content[0] == "`":
+            print('SONO NELL IF', message_content)
+            toEval = message_content.replace("```json", "")
+        else:
+            toEval = message_content
+        list = ast.literal_eval(toEval)
 
         #OBJECT CONSTRUCTION
         for microservice in list:

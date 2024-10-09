@@ -19,7 +19,7 @@ def endpointsFormatter( endpoints_string ):
 	json_string_temp = re.sub(r"ENDPOINTS:\s+", "", endpoints_string)
 
 	# Handle possible generation errors
-	if json_string_temp[0] == "'":
+	if json_string_temp[0] == "`":
 		ts = json_string_temp
 		json_string_temp = ts.replace("```json", "")
 	json_string = json_string_temp.replace("\n", " \n")

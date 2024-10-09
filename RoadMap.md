@@ -83,14 +83,14 @@ Scrittura capitoli (senza bibliografia e immagini):
 - [x] Algoritmo calcolo punteggio metriche :
 	- [x] Definire formato input/output
 	- [x] Backend REST
-	- [ ] Scrivere algoritmi calcolo punteggio
+	- [X] Scrivere algoritmi calcolo punteggio
 
 ### THESIS PAPER
 Scrittura capitoli :
   - [ ] 6) Design ArchiGPT - Non Comune - Focus Giovanni
      - [ ] 1) Overview
-     - [ ] 2) Prompt Chaining
-     - [ ] 3) Technological/Architectural Choices
+     - [X] 2) Prompt Chaining
+     - [X] 3) Technological/Architectural Choices
         - [ ] 1) Docker
         - [ ] 2) Services
         - [ ] 3) Mongo
