@@ -35,9 +35,8 @@ metric_result =     if num_clique < num_c < num_set      | = 100
 num_serv_be = numero di servizi backend
 num_clique_full = numero di clique fullfilled
 num_set_full = numero di set fullfilled
-                    if num_serv_be <= num_clique_full                    | = 100*(num_serv_be/num_clique_full)
-metric_result =     if num_clique_full < num_serv_be < num_set_full      | = 100
-                    if 2*(num_set_full) > num_serv_be >= num_set_full    | = 100*(2*num_set_full-num_serv_be)/num_set_full 
+                    if num_serv_be <= num_clique_full           | = 100*(num_serv_be/num_clique_full)
+metric_result =     if num_clique_full < num_serv_be            | = 100
 
 ### Service Coverage
 metric_result = sommatoria di (for each container, (1/n_c)*metric_result)
