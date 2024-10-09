@@ -1,70 +1,15 @@
 {
     "containers": [
         {
-            "name": "user_auth",
+            "name": "authentication_management",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "POST",
-                            "url": "/registration/email",
+                            "url": "/auth/register",
                             "userStoryIndex": [
                                 1
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/registration/oauth",
-                            "userStoryIndex": [
-                                29
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/login",
-                            "userStoryIndex": [
-                                3
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/logout",
-                            "userStoryIndex": [
-                                2
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/roles/farmer",
-                            "userStoryIndex": [
-                                12
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/roles/rider",
-                            "userStoryIndex": [
-                                24
-                            ]
-                        }
-                    ],
-                    "name": "registration",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "POST",
-                            "url": "/auth/register/email",
-                            "userStoryIndex": [
-                                1
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/auth/register/oauth",
-                            "userStoryIndex": [
-                                29
                             ]
                         },
                         {
@@ -82,73 +27,73 @@
                             ]
                         },
                         {
-                            "method": "PUT",
-                            "url": "/user/role/farmer",
-                            "userStoryIndex": [
-                                12
-                            ]
-                        },
-                        {
-                            "method": "PUT",
-                            "url": "/user/role/rider",
-                            "userStoryIndex": [
-                                24
-                            ]
-                        }
-                    ],
-                    "name": "authentication",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "POST",
-                            "url": "/register/email",
-                            "userStoryIndex": [
-                                1
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/register/oauth",
-                            "userStoryIndex": [
-                                29
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/login",
+                            "method": "GET",
+                            "url": "/auth/loginpage",
                             "userStoryIndex": [
                                 3
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/logout",
+                            "url": "/oauth/register",
+                            "userStoryIndex": [
+                                29
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/oauth/login",
+                            "userStoryIndex": [
+                                29
+                            ]
+                        }
+                    ],
+                    "name": "user_authentication",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/oauth/register/google",
+                            "userStoryIndex": [
+                                29
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/oauth/register/facebook",
+                            "userStoryIndex": [
+                                29
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/auth/login",
+                            "userStoryIndex": [
+                                3
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/auth/logout",
                             "userStoryIndex": [
                                 2
                             ]
                         },
                         {
-                            "method": "PATCH",
-                            "url": "/update/status/farmer",
+                            "method": "POST",
+                            "url": "/auth/register/email",
                             "userStoryIndex": [
-                                12
-                            ]
-                        },
-                        {
-                            "method": "PATCH",
-                            "url": "/update/status/rider",
-                            "userStoryIndex": [
-                                24
+                                1
                             ]
                         }
                     ],
-                    "name": "role_management",
+                    "name": "oauth_integration",
                     "type": "backend"
                 },
                 {
-                    "name": "token_storage",
+                    "name": "auth_database",
                     "type": "database"
                 }
             ],
@@ -156,9 +101,60 @@
                 1,
                 2,
                 3,
-                12,
-                24,
                 29
+            ]
+        },
+        {
+            "name": "user_profile",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/profile/view",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/profile/edit",
+                            "userStoryIndex": [
+                                30
+                            ]
+                        }
+                    ],
+                    "name": "profile_view",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/profile/view",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/profile/edit",
+                            "userStoryIndex": [
+                                30
+                            ]
+                        }
+                    ],
+                    "name": "profile_edit",
+                    "type": "backend"
+                },
+                {
+                    "name": "profile_storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                6,
+                30
             ]
         },
         {
@@ -168,161 +164,106 @@
                     "endpoints": [
                         {
                             "method": "POST",
-                            "url": "/insertions",
+                            "url": "/api/insertions",
                             "userStoryIndex": [
                                 4
                             ]
                         },
                         {
                             "method": "PUT",
-                            "url": "/insertions/{insertionId}",
+                            "url": "/api/insertions/{insertionId}",
                             "userStoryIndex": [
                                 10
                             ]
                         },
                         {
                             "method": "DELETE",
-                            "url": "/insertions/{insertionId}",
+                            "url": "/api/insertions/{insertionId}",
                             "userStoryIndex": [
                                 9
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/requests/{requestId}/accept",
-                            "userStoryIndex": [
-                                21
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/requests/{requestId}/decline",
-                            "userStoryIndex": [
-                                21
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/achievements/badges",
-                            "userStoryIndex": [
-                                28
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/inventory/{insertionId}/boxes",
+                            "url": "/api/insertions/{insertionId}/boxes",
                             "userStoryIndex": [
                                 31
                             ]
-                        }
-                    ],
-                    "name": "insertion_management",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
+                        },
                         {
                             "method": "POST",
-                            "url": "/request/book",
+                            "url": "/api/requests/{requestId}/accept",
                             "userStoryIndex": [
                                 21
                             ]
                         },
                         {
-                            "method": "PUT",
-                            "url": "/request/:id/accept",
-                            "userStoryIndex": [
-                                21
-                            ]
-                        },
-                        {
-                            "method": "PUT",
-                            "url": "/request/:id/decline",
+                            "method": "POST",
+                            "url": "/api/requests/{requestId}/decline",
                             "userStoryIndex": [
                                 21
                             ]
                         },
                         {
                             "method": "GET",
-                            "url": "/request/:id/status",
+                            "url": "/api/badges",
                             "userStoryIndex": [
-                                21
+                                28
                             ]
                         }
                     ],
-                    "name": "request_management",
+                    "name": "insertions_manager",
                     "type": "backend"
                 },
                 {
                     "endpoints": [
                         {
                             "method": "POST",
-                            "url": "/achievement_system/awardBadge",
+                            "url": "/requests/accept",
                             "userStoryIndex": [
-                                28
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/achievement_system/farmerBadges",
-                            "userStoryIndex": [
-                                28
-                            ]
-                        }
-                    ],
-                    "name": "achievement_system",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "POST",
-                            "url": "/insertion_management/publish",
-                            "userStoryIndex": [
-                                4
-                            ]
-                        },
-                        {
-                            "method": "DELETE",
-                            "url": "/insertion_management/delete/{insertionId}",
-                            "userStoryIndex": [
-                                9
-                            ]
-                        },
-                        {
-                            "method": "PUT",
-                            "url": "/insertion_management/modify/{insertionId}",
-                            "userStoryIndex": [
-                                10
+                                21
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/request_management/manage/{requestId}/{action}",
+                            "url": "/requests/decline",
                             "userStoryIndex": [
                                 21
                             ]
                         },
                         {
                             "method": "GET",
-                            "url": "/achievement_system/badges/{farmerId}",
+                            "url": "/requests",
+                            "userStoryIndex": [
+                                21
+                            ]
+                        }
+                    ],
+                    "name": "requests_handler",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/badges/earn",
                             "userStoryIndex": [
                                 28
                             ]
                         },
                         {
-                            "method": "POST",
-                            "url": "/inventory_management/add_boxes/{insertionId}",
+                            "method": "GET",
+                            "url": "/badges/{farmerId}",
                             "userStoryIndex": [
-                                31
+                                28
                             ]
                         }
                     ],
-                    "name": "inventory_management",
+                    "name": "badges_service",
                     "type": "backend"
                 },
                 {
-                    "name": "data_persistence",
+                    "name": "storage",
                     "type": "database"
                 }
             ],
@@ -336,81 +277,131 @@
             ]
         },
         {
-            "name": "product_catalog",
+            "name": "shopping_cart",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/cart/add",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/cart/remove",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/cart/view",
+                            "userStoryIndex": [
+                                33
+                            ]
+                        }
+                    ],
+                    "name": "cart_management",
+                    "type": "backend"
+                },
+                {
+                    "name": "cart_storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                14,
+                15,
+                33
+            ]
+        },
+        {
+            "name": "order_payment",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/order_management/create-order",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/payment_processing/checkout",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        }
+                    ],
+                    "name": "order_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/order_payment/orders",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/order_payment/checkout",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        }
+                    ],
+                    "name": "payment_processing",
+                    "type": "backend"
+                },
+                {
+                    "name": "transaction_storage",
+                    "type": "database"
+                },
+                {
+                    "name": "payment_gateway_integration",
+                    "type": "middleware"
+                }
+            ],
+            "userStories": [
+                16,
+                17
+            ]
+        },
+        {
+            "name": "calendar_management",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "GET",
-                            "url": "/homepage",
-                            "userStoryIndex": [
-                                5
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/user/:userId",
-                            "userStoryIndex": [
-                                6
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/calendar",
+                            "url": "/seasonal_calendar/availability",
                             "userStoryIndex": [
                                 7
                             ]
                         },
                         {
-                            "method": "GET",
-                            "url": "/search",
-                            "userStoryIndex": [
-                                8
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/farmer/:farmerId",
-                            "userStoryIndex": [
-                                13
-                            ]
-                        },
-                        {
                             "method": "POST",
-                            "url": "/calendar/book",
+                            "url": "/booking_management/book_product",
                             "userStoryIndex": [
                                 18
                             ]
                         }
                     ],
-                    "name": "display_service",
+                    "name": "seasonal_calendar",
                     "type": "backend"
                 },
                 {
                     "endpoints": [
                         {
                             "method": "GET",
-                            "url": "/search",
-                            "userStoryIndex": [
-                                8
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/search/:farmerId",
-                            "userStoryIndex": [
-                                13
-                            ]
-                        }
-                    ],
-                    "name": "search_service",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "GET",
-                            "url": "/calendar/seasonal-products",
+                            "url": "/calendar/seasonal-foodstuff",
                             "userStoryIndex": [
                                 7
                             ]
@@ -423,96 +414,464 @@
                             ]
                         }
                     ],
-                    "name": "calendar_service",
+                    "name": "booking_management",
                     "type": "backend"
                 },
                 {
-                    "name": "user_interaction_storage",
-                    "type": "database"
-                },
-                {
-                    "name": "product_data_storage",
+                    "name": "calendar_storage",
                     "type": "database"
                 }
             ],
             "userStories": [
-                5,
-                6,
                 7,
-                8,
-                13,
                 18
             ]
         },
         {
-            "name": "shopping_cart",
-            "services": [],
-            "userStories": []
-        },
-        {
-            "name": "order_management",
-            "services": [],
-            "userStories": []
+            "name": "subscription_notification",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/subscription_management/subscribe",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/subscription_management/subscriptions",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/subscription_management/unsubscribe",
+                            "userStoryIndex": [
+                                35
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/notification_center/notifications",
+                            "userStoryIndex": [
+                                36
+                            ]
+                        }
+                    ],
+                    "name": "subscription_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/subscription_management/subscribe",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/subscription_management/subscriptions",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/subscription_management/unsubscribe",
+                            "userStoryIndex": [
+                                35
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/notification_center/notifications",
+                            "userStoryIndex": [
+                                36
+                            ]
+                        }
+                    ],
+                    "name": "notification_center",
+                    "type": "backend"
+                },
+                {
+                    "name": "notification_delivery",
+                    "type": "middleware"
+                },
+                {
+                    "name": "notification_storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                19,
+                20,
+                35,
+                36
+            ]
         },
         {
             "name": "delivery_management",
-            "services": [],
-            "userStories": []
-        },
-        {
-            "name": "notification_center",
-            "services": [],
-            "userStories": []
-        },
-        {
-            "name": "user_profile_management",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "PUT",
-                            "url": "/profile/update",
+                            "url": "/rider_management/status",
                             "userStoryIndex": [
-                                30
+                                24
                             ]
                         },
                         {
                             "method": "GET",
-                            "url": "/profile/expiring-boxes",
+                            "url": "/rider_management/personal_delivery_page",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/rider_management/availability",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/delivery_options/options",
+                            "userStoryIndex": [
+                                27
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/order_tracking/update_status",
+                            "userStoryIndex": [
+                                34
+                            ]
+                        }
+                    ],
+                    "name": "rider_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/delivery_options/select",
+                            "userStoryIndex": [
+                                27
+                            ]
+                        }
+                    ],
+                    "name": "delivery_options",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/order_tracking/update_status",
+                            "userStoryIndex": [
+                                34
+                            ]
+                        }
+                    ],
+                    "name": "order_tracking",
+                    "type": "backend"
+                },
+                {
+                    "name": "rider_status_persistence",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                24,
+                25,
+                26,
+                27,
+                34
+            ]
+        },
+        {
+            "name": "marketplace",
+            "services": [
+                {
+                    "name": "homepage_access",
+                    "pages": [
+                        {
+                            "name": "Homepage",
+                            "userStoryIndex": [
+                                5
+                            ]
+                        },
+                        {
+                            "name": "Search",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        },
+                        {
+                            "name": "Farmer Page",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        }
+                    ],
+                    "type": "frontend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/search/homepage",
+                            "userStoryIndex": [
+                                5
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/search/farmers",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/search/farmer/{farmerId}",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        }
+                    ],
+                    "name": "search_service",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/farmer_page",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        }
+                    ],
+                    "name": "farmer_page_service",
+                    "type": "backend"
+                },
+                {
+                    "name": "preference_storage",
+                    "type": "middleware"
+                }
+            ],
+            "userStories": [
+                5,
+                8,
+                13
+            ]
+        },
+        {
+            "name": "customer_relationship",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "PATCH",
+                            "url": "/status_management/updateStatus",
+                            "userStoryIndex": [
+                                12,
+                                24
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/order_history_service/orders",
+                            "userStoryIndex": [
+                                22
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/comments_service/addComment",
+                            "userStoryIndex": [
+                                23
+                            ]
+                        }
+                    ],
+                    "name": "status_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/order_history",
+                            "userStoryIndex": [
+                                22
+                            ]
+                        }
+                    ],
+                    "name": "order_history_service",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/comments/add",
+                            "userStoryIndex": [
+                                23
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/comments/history",
+                            "userStoryIndex": [
+                                23
+                            ]
+                        }
+                    ],
+                    "name": "comments_service",
+                    "type": "backend"
+                },
+                {
+                    "name": "status_database",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                12,
+                22,
+                23,
+                24
+            ]
+        },
+        {
+            "name": "inventory_management",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/inventory_tracking/expiring_boxes",
                             "userStoryIndex": [
                                 11
                             ]
                         },
                         {
                             "method": "GET",
-                            "url": "/profile/booked-boxes/status",
+                            "url": "/request_status/booked_boxes",
                             "userStoryIndex": [
                                 32
                             ]
                         }
                     ],
-                    "name": "profile_management",
+                    "name": "inventory_tracking",
                     "type": "backend"
                 },
                 {
-                    "name": "profile_database",
-                    "type": "database"
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/request_status/booked_boxes",
+                            "userStoryIndex": [
+                                32
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/request_status/update",
+                            "userStoryIndex": [
+                                32
+                            ]
+                        }
+                    ],
+                    "name": "request_status",
+                    "type": "backend"
                 },
                 {
-                    "name": "profile_interface",
-                    "pages": [],
-                    "type": "frontend"
+                    "name": "storage",
+                    "type": "database"
                 }
             ],
             "userStories": [
-                30,
                 11,
                 32
             ]
         },
         {
-            "name": "Frontend",
-            "services": [],
+            "name": "web_frontend",
+            "services": [
+                {
+                    "name": "user_interface",
+                    "pages": [
+                        {
+                            "name": "Home",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "ProductDetail",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Account",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "FarmersMarket",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "ShoppingCart",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "type": "frontend"
+                },
+                {
+                    "name": "static_content_manager",
+                    "pages": [
+                        {
+                            "name": "Homepage",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Product Page",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Account Page",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Browse Farmer Insertions",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Shopping Cart",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "User Profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Static Content Delivery",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "type": "frontend"
+                },
+                {
+                    "name": "asset_cache",
+                    "type": "middleware"
+                }
+            ],
             "userStories": []
         }
     ],

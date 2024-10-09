@@ -2,6 +2,7 @@ import ast
 
 from utils.api_handler_bridge import assistant_call
 from utils.content_factory import ContentFactory
+from utils.output_cleaner import cleanOutput
 
 class ContainerHandler:
     
@@ -61,8 +62,8 @@ class ContainerHandler:
 
         #ASSISTANT INTERROGATION UTIL 2
         message_content = assistant_call( 'Util_2', content )
-       
-        obj = ast.literal_eval(message_content)
+        message = cleanOutput(message_content, "UTIL2")
+        obj = ast.literal_eval(message)
         print('CONTAINER HANDLER UTIL 2 - OBJ: ', obj)
         
         #SAVE ON DB
@@ -77,13 +78,8 @@ class ContainerHandler:
         #ASSISTANT INTERROGATION UTIL 3
         message_content = assistant_call( 'Util_3', content )
         print('CONTAINER HANDLER UTIL 3 - OBJ: ', message_content)
-        toEval = ""
-        if message_content[0] == "`":
-            print('SONO NELL IF', message_content)
-            toEval = message_content.replace("```json", "")
-        else:
-            toEval = message_content
-        list = ast.literal_eval(toEval)
+        message = cleanOutput(message_content, "UTIL3")
+        list = ast.literal_eval(message)
 
         #OBJECT CONSTRUCTION
         for microservice in list:

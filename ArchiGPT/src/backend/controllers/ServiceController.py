@@ -6,6 +6,8 @@ from handlers.post_processing_handler import buildPreMessage
 from utils.content_factory import ContentFactory
 from utils.assistant_name_matcher import getAssistantName, getNextServiceAssistant
 from handlers.db_handler import DBHandler
+from utils.output_cleaner import cleanOutput
+
 
 
 def generateService():
@@ -36,9 +38,15 @@ def generateService():
         #ASSISTANT INTERROGATION
         message_content = assistant_call( getAssistantName(assistant_name), content )
 
-        result = buildPreMessage(getAssistantName(assistant_name), message_content)
+        temp_result = buildPreMessage(getAssistantName(assistant_name), message_content)
+        result = ""
+        if assistant_name == "ServiceEndpointGenerator" or assistant_name == "ServicePageGenerator":
+            result = cleanOutput(temp_result, 'SERVICE')
+        else:
+            result = temp_result
         
         print('AFTER PROCESSING: ', result)
+        
         
         #UPDATE DB STATUS
         dbhandler.updateServiceStatus(project_name, assistant_name, 'OK', container_name, service_name)
