@@ -125,7 +125,7 @@ Scrittura capitoli :
 
 - [x] Aggiustare userstories e endpoints from string to array (E)
 
-- [ ] Aggiustare Util 2 e Util 3
+- [X] Aggiustare Util 2 e Util 3
 
 ### DATASET/METRICS
 ### Frontend metriche
@@ -143,6 +143,7 @@ Scrittura capitoli :
 - [ ] 4) Evaluation Overview
 
 ### ARCHI (6)
+- [ ] General Overview (G)
 - [x] Prompt Chaining (G)
 - [x] Technological Choices (E)
 - [ ] API Handler (E)
@@ -161,5 +162,9 @@ Scrittura capitoli :
 - [ ] 1) Thoughts on Results
 - [ ] 2) Future Challenges
 - [ ] 3) Final Conclusion
+
+### IMMAGINI
+- [ ] Dataset
+- [ ] Archi (da vedere se ne manca qualcuna)
 
 
