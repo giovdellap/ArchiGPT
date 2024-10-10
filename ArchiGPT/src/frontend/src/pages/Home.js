@@ -67,8 +67,9 @@ function Home() {
 
     return (
 			<div>
-				<div style={{ margin: '10px' }} />
-				<CreateProjectTab fetchprojects={fetchprojects}/>
+				<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '10px' }}>
+					<CreateProjectTab fetchprojects={fetchprojects}/>
+				</div>
 				{listProjects && listProjects.length > 0 ? (
 						<>
 							<CardProject listProjects={listProjects} goToProjectPage={GoToProjectPage} handleDeleteProject={handleDeleteProject}/>

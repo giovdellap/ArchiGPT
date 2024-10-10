@@ -3,7 +3,7 @@ import React from 'react';
 function UploadFileButton({ handleFileUpload, handleFileSend, file, showFileInput }) {
 
     return (
-        <div>
+        <div style={{ margin: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {showFileInput ?
                 <>
                     <input type="file" onChange={handleFileUpload}/>

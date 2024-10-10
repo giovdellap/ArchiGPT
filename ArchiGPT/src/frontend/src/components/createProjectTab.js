@@ -37,7 +37,7 @@ function CreateProjectTab({ fetchprojects }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit} style={{ border: '1px solid grey', padding: '20px' }}>
+    <Form onSubmit={handleSubmit} style={{ border: '1px solid grey', padding: '20px', maxWidth: '400px'}}>
       <Form.Group controlId="projectName">
         <Form.Label>Project Name</Form.Label>
         <Form.Control 

@@ -58,6 +58,8 @@
 .chat-input {
   padding: 10px;
   border-top: 1px solid #ccc;
+  display: 'flex'; 
+  position: 'center';
 }
 
 /* Style for GenerationView component */

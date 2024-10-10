@@ -11,8 +11,8 @@ function CardProject({ listProjects, goToProjectPage, handleDeleteProject}) {
             <Row>
                 {listProjects.map((item, index) => {
                     return (
-                        <Col xs={12} sm={12} md={12} lg={12} key={index}>
-                            <Card className="mb-4 card-projects">
+                        <Col xs={12} sm={6} md={4} lg={3} key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Card className="mb-4 card-projects" style={{ width: '200rem' }}>
                                 <Card.Body>
                                     <Card.Title>{item.name}</Card.Title>
                                     <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
@@ -28,11 +28,10 @@ function CardProject({ listProjects, goToProjectPage, handleDeleteProject}) {
                             </Card>
                         </Col>
                     );
-                }
-                )}
+                })}
             </Row>
         </Container>
-    );
+    );    
 }
 
 export default CardProject;

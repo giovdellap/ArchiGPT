@@ -14,15 +14,15 @@ function GenerationHandler({ generationMessage, handleGenerate, handleRegenerate
     if(systemSelected !== "" || serviceSelected.assistant === "ServiceDescriptionGenerator" ) generationHandler = false
 
     return (
-        <div className="chat-container">
+        <div className="chat-container"> 
             {itemSelected && itemSelected !== "" && itemSelected !== " - " ?   
-                <div className="chat-messages"  style={{ width: '150%', height: '500px' }}>       
+                <div className="chat-messages"  style={{ width: '135%', height: '500px' }}>       
                     {generationMessage === "" ?
                             <>
-                            <div className="balloon" style={{ whiteSpace: 'pre-line', margin: '50px'}}>
+                            <div className="balloon" style={{ whiteSpace: 'pre-line', margin: '50px' }}>
                                 {`No document generated in \n ${itemSelected}`}
                             </div>
-                            <div className="chat-input">
+                            <div className="chat-input" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                 <UploadFileButton 
                                     handleFileUpload={handleFileUpload} 
                                     handleFileSend={handleGenerate}
