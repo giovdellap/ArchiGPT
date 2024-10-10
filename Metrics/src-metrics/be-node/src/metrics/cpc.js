@@ -1,5 +1,9 @@
 // Metric Name : Container Persistance Coverage
 // If a container contains a set with db = true, than this container must have at least a database microservice
+// num_c_true = number of containers that contains a set with db = true
+// num_c_true_db = number of containers that contains a set with db = true and have at least a database microservice
+// (for each container, metric_result = num_c_true_db/num_c_true)
+
 
 function cpcMetrics(projectData, benchmarkData) {
 

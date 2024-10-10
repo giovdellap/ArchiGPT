@@ -34,16 +34,17 @@ metric_result =     if num_clique < num_c < num_set      | = 100
 ### Container Service Coverage (for each container)
 num_serv_be = numero di servizi backend
 num_clique_full = numero di clique fullfilled
-num_set_full = numero di set fullfilled
                     if num_serv_be <= num_clique_full           | = 100*(num_serv_be/num_clique_full)
 metric_result =     if num_clique_full < num_serv_be            | = 100
 
 ### Service Coverage
-metric_result = sommatoria di (for each container, (1/n_c)*metric_result)
+metric_result = sommatoria di (for each container, (1/n_c)*csc_result)
 
 ### Container Persistance Coverage
 If a container contains a set with db = true, than this container must have at least a database microservice
-(for each container, sommatoria di (1/n_c)*metric_result)
+num_c_true = number of containers that contains a set with db = true
+num_c_true_db = number of containers that contains a set with db = true and have at least a database microservice
+(for each container, metric_result = num_c_true_db/num_c_true)
 
 <!-- ### persistance coverage
 n_cdb = numero di container con almeno un set con db = true
@@ -58,7 +59,7 @@ num_us_e = numero user stories coperte da un endpoint e
 metric_result = 100*((sommatoria di num_us_e)/num_us_c)
 
 ### System Container Endpoint Coverage 
-metric_result = sommatoria di cec*(1/n_c) (For each container)
+metric_result = sommatoria di cec*(1/n_c)
 
 
 

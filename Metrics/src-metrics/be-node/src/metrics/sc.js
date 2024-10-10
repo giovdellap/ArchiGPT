@@ -1,5 +1,5 @@
 // Metric Name : Service Coverage
-// metric_result = sommatoria di (for each container, (1/n_c)*sc)
+// metric_result = sommatoria di (for each container, (1/n_c)*csc_result)
 
 function scMetrics(projectData, projResult) {
 

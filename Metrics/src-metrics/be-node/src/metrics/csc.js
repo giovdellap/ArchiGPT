@@ -1,7 +1,6 @@
 // Metric Name : Container Service Coverage (for each container)
 // num_serv_be = numero di servizi backend
 // num_clique_full = numero di clique fullfilled
-// num_set_full = numero di set fullfilled
 //                     if num_serv_be <= num_clique_full        | = 100*(num_serv_be/num_clique_full)
 // metric_result =     if num_clique_full < num_serv_be         | = 100
 
