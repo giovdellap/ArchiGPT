@@ -1,38 +1,42 @@
 {
     "containers": [
         {
-            "name": "user_auth",
+            "name": "user_authentication",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "POST",
-                            "url": "/auth_service/register",
+                            "url": "/auth/register/google",
                             "userStoryIndex": [
                                 1
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/auth_service/login",
+                            "url": "/auth/login",
                             "userStoryIndex": [
                                 6
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/auth_service/logout",
+                            "url": "/auth/logout",
                             "userStoryIndex": [
                                 7
                             ]
                         }
                     ],
-                    "name": "auth_service",
+                    "name": "auth_backend",
                     "type": "backend"
                 },
                 {
-                    "name": "session_storage",
+                    "name": "auth_storage",
                     "type": "database"
+                },
+                {
+                    "name": "oauth_integration",
+                    "type": "middleware"
                 }
             ],
             "userStories": [
@@ -42,38 +46,88 @@
             ]
         },
         {
-            "name": "recipe_search",
+            "name": "recipe_discovery",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "GET",
-                            "url": "/recipes/search",
+                            "url": "/search",
                             "userStoryIndex": [
                                 2
                             ]
                         },
                         {
                             "method": "GET",
-                            "url": "/recipes/{id}/details",
+                            "url": "/recipe/{recipeId}",
                             "userStoryIndex": [
                                 3
                             ]
                         },
                         {
                             "method": "GET",
-                            "url": "/ingredients/{name}/info",
+                            "url": "/ingredient/{ingredientId}",
                             "userStoryIndex": [
                                 4
                             ]
                         }
                     ],
-                    "name": "recipe_search_backend",
+                    "name": "search_engine",
                     "type": "backend"
                 },
                 {
-                    "name": "cache_storage",
-                    "type": "middleware"
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/recipes",
+                            "userStoryIndex": [
+                                2
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/recipes/{recipe_id}",
+                            "userStoryIndex": [
+                                3
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/ingredients/{ingredient_id}",
+                            "userStoryIndex": [
+                                4
+                            ]
+                        }
+                    ],
+                    "name": "recipe_info",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/ingredient_info/search",
+                            "userStoryIndex": [
+                                2
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/ingredient_info/detail",
+                            "userStoryIndex": [
+                                4
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/ingredient_info/recipe_detail",
+                            "userStoryIndex": [
+                                3
+                            ]
+                        }
+                    ],
+                    "name": "ingredient_info",
+                    "type": "backend"
                 }
             ],
             "userStories": [
@@ -83,23 +137,54 @@
             ]
         },
         {
-            "name": "recipe_suggestions",
+            "name": "chatbot_recommendation",
             "services": [
                 {
-                    "endpoints": [
+                    "name": "chat_interface",
+                    "pages": [
                         {
-                            "method": "GET",
-                            "url": "/suggestions",
+                            "name": "Chat Interface",
+                            "userStoryIndex": [
+                                5
+                            ]
+                        },
+                        {
+                            "name": "Recommendation Engine",
+                            "userStoryIndex": [
+                                5
+                            ]
+                        },
+                        {
+                            "name": "NLP Processor",
                             "userStoryIndex": [
                                 5
                             ]
                         }
                     ],
-                    "name": "suggestion_engine",
+                    "type": "frontend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/recommendation_engine/analyze_query",
+                            "userStoryIndex": [
+                                5
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/recommendation_engine/get_recommendations",
+                            "userStoryIndex": [
+                                5
+                            ]
+                        }
+                    ],
+                    "name": "recommendation_engine",
                     "type": "backend"
                 },
                 {
-                    "name": "api_connector",
+                    "name": "nlp_processor",
                     "type": "middleware"
                 }
             ],
@@ -114,84 +199,33 @@
                     "endpoints": [
                         {
                             "method": "GET",
-                            "url": "/profile_manager/user/profile",
+                            "url": "/profile_backend/profile",
                             "userStoryIndex": [
                                 8
                             ]
                         },
                         {
                             "method": "PUT",
-                            "url": "/profile_manager/user/profile",
+                            "url": "/profile_backend/profile",
                             "userStoryIndex": [
                                 8
                             ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/favorites_manager/user/favorites",
-                            "userStoryIndex": [
-                                12
-                            ]
-                        },
-                        {
-                            "method": "DELETE",
-                            "url": "/favorites_manager/user/favorites/:recipeId",
-                            "userStoryIndex": [
-                                13
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/favorites_manager/user/favorites",
-                            "userStoryIndex": [
-                                14
-                            ]
                         }
                     ],
-                    "name": "profile_manager",
+                    "name": "profile_backend",
                     "type": "backend"
                 },
                 {
-                    "endpoints": [
-                        {
-                            "method": "GET",
-                            "url": "/favorites_manager/favorites",
-                            "userStoryIndex": [
-                                14
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/favorites_manager/favorites",
-                            "userStoryIndex": [
-                                12
-                            ]
-                        },
-                        {
-                            "method": "DELETE",
-                            "url": "/favorites_manager/favorites/<recipe_id>",
-                            "userStoryIndex": [
-                                13
-                            ]
-                        }
-                    ],
-                    "name": "favorites_manager",
-                    "type": "backend"
-                },
-                {
-                    "name": "user_data_storage",
+                    "name": "profile_database",
                     "type": "database"
                 }
             ],
             "userStories": [
-                8,
-                12,
-                13,
-                14
+                8
             ]
         },
         {
-            "name": "user_calendar",
+            "name": "calendar_management",
             "services": [
                 {
                     "endpoints": [
@@ -204,20 +238,20 @@
                         },
                         {
                             "method": "DELETE",
-                            "url": "/calendar/delete",
+                            "url": "/calendar/delete/{calendarId}",
                             "userStoryIndex": [
                                 10
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/calendar/event/add",
+                            "url": "/calendar/{calendarId}/events/add",
                             "userStoryIndex": [
                                 11
                             ]
                         }
                     ],
-                    "name": "calendar_backend",
+                    "name": "calendar_service",
                     "type": "backend"
                 },
                 {
@@ -232,16 +266,78 @@
             ]
         },
         {
+            "name": "favorites_management",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/favorites/add",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/favorites/remove",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/favorites/list",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        }
+                    ],
+                    "name": "favorites_backend",
+                    "type": "backend"
+                },
+                {
+                    "name": "favorites_storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                12,
+                13,
+                14
+            ]
+        },
+        {
             "name": "frontend",
             "services": [
                 {
-                    "name": "ui_renderer",
-                    "pages": [],
+                    "name": "frontend_service",
+                    "pages": [
+                        {
+                            "name": "Homepage",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "RecipeDiscovery",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "ChatBotRecommendation",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "UserProfile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "CalendarManagement",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "FavoritesList",
+                            "userStoryIndex": []
+                        }
+                    ],
                     "type": "frontend"
-                },
-                {
-                    "name": "user_interaction_handler",
-                    "type": "middleware"
                 }
             ],
             "userStories": []

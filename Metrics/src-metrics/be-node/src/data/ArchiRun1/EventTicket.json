@@ -1,163 +1,120 @@
 {
     "containers": [
         {
-            "name": "web_application",
+            "name": "web_interface",
             "services": [
                 {
-                    "name": "web_ui",
-                    "pages": [],
-                    "type": "frontend"
-                },
-                {
-                    "endpoints": [
+                    "name": "web_interface_frontend",
+                    "pages": [
                         {
-                            "method": "GET",
-                            "url": "/events/list",
+                            "name": "Homepage",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Event Discovery",
                             "userStoryIndex": [
-                                4
+                                1
                             ]
+                        },
+                        {
+                            "name": "Ticket Information",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Navigation",
+                            "userStoryIndex": []
                         }
                     ],
-                    "name": "event_browsing",
-                    "type": "backend"
+                    "type": "frontend"
                 }
             ],
             "userStories": [
-                1,
-                4
+                1
             ]
         },
         {
             "name": "user_management",
-            "services": [],
-            "userStories": []
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/user_auth/register",
+                            "userStoryIndex": [
+                                2
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/user_auth/login",
+                            "userStoryIndex": [
+                                3
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/user_auth/logout",
+                            "userStoryIndex": [
+                                12,
+                                16,
+                                18
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/password_recovery/initiate",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        }
+                    ],
+                    "name": "user_auth",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/password_recovery/initiate",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/password_recovery/complete",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        }
+                    ],
+                    "name": "password_recovery",
+                    "type": "backend"
+                },
+                {
+                    "name": "storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                2,
+                3,
+                12,
+                16,
+                18,
+                20
+            ]
         },
         {
-            "name": "event_management",
+            "name": "events_catalog",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "GET",
                             "url": "/events",
-                            "userStoryIndex": []
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/events/:eventId",
-                            "userStoryIndex": []
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/user/booked-presales",
                             "userStoryIndex": [
-                                7
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/user/booked-presales/:presaleId",
-                            "userStoryIndex": [
-                                9
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/user/tickets/:eventId",
-                            "userStoryIndex": [
-                                10
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/manager/proposed-events",
-                            "userStoryIndex": [
-                                13
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/manager/new-event",
-                            "userStoryIndex": [
-                                14
-                            ]
-                        }
-                    ],
-                    "name": "event_display",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "GET",
-                            "url": "/events/display",
-                            "userStoryIndex": []
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/presales",
-                            "userStoryIndex": [
-                                7
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/presales/book",
-                            "userStoryIndex": [
-                                9
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/tickets/purchase",
-                            "userStoryIndex": [
-                                10
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/events/proposed",
-                            "userStoryIndex": [
-                                13
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/events/new",
-                            "userStoryIndex": [
-                                14
-                            ]
-                        }
-                    ],
-                    "name": "presale_management",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "GET",
-                            "url": "/events",
-                            "userStoryIndex": []
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/user/presales",
-                            "userStoryIndex": [
-                                7
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/presale/book",
-                            "userStoryIndex": [
-                                9
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/ticket/purchase",
-                            "userStoryIndex": [
-                                10
+                                4
                             ]
                         },
                         {
@@ -169,9 +126,260 @@
                         },
                         {
                             "method": "POST",
-                            "url": "/manager/event/create",
+                            "url": "/manager/events",
                             "userStoryIndex": [
                                 14
+                            ]
+                        }
+                    ],
+                    "name": "events_listing",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/api/events",
+                            "userStoryIndex": [
+                                4
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/manager/events",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/manager/events",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        }
+                    ],
+                    "name": "events_management",
+                    "type": "backend"
+                },
+                {
+                    "name": "events_database",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                4,
+                13,
+                14
+            ]
+        },
+        {
+            "name": "user_dashboard",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/users/{userId}/personal-page",
+                            "userStoryIndex": [
+                                5
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/managers/{managerId}/personal-page",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admins/{adminId}/personal-page",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/users/{userId}/favorites",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/users/{userId}/presales",
+                            "userStoryIndex": [
+                                7
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/users/{userId}/tickets",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        }
+                    ],
+                    "name": "personal_page_access",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/personal_page/user",
+                            "userStoryIndex": [
+                                5
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/personal_page/manager",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/personal_page/admin",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/favorites",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/favorites",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/bookings",
+                            "userStoryIndex": [
+                                7
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/tickets",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        }
+                    ],
+                    "name": "favorites_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/personal_page",
+                            "userStoryIndex": [
+                                5,
+                                15,
+                                19
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/favorites",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/bookings/pre-sales",
+                            "userStoryIndex": [
+                                7
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/tickets",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        }
+                    ],
+                    "name": "bookings_and_tickets_viewer",
+                    "type": "backend"
+                },
+                {
+                    "name": "database",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                5,
+                6,
+                7,
+                8,
+                15,
+                19
+            ]
+        },
+        {
+            "name": "ticket_management",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/ticket_booking/pre_sale",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/ticket_sales/purchase",
+                            "userStoryIndex": [
+                                10
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/payment_processing/pay",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        }
+                    ],
+                    "name": "ticket_booking",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/ticket_booking/book_presale",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/ticket_sales/purchase_ticket",
+                            "userStoryIndex": [
+                                10
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/payment_processing/pay_for_ticket",
+                            "userStoryIndex": [
+                                11
                             ]
                         }
                     ],
@@ -179,46 +387,28 @@
                     "type": "backend"
                 },
                 {
-                    "endpoints": [
-                        {
-                            "method": "GET",
-                            "url": "/event_proposal/events",
-                            "userStoryIndex": [
-                                13
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/event_proposal/events",
-                            "userStoryIndex": [
-                                14
-                            ]
-                        }
-                    ],
-                    "name": "event_proposal",
-                    "type": "backend"
+                    "name": "payment_processing",
+                    "type": "middleware"
                 },
                 {
-                    "name": "event_storage",
+                    "name": "transaction_storage",
                     "type": "database"
                 }
             ],
             "userStories": [
-                7,
                 9,
                 10,
-                13,
-                14
+                11
             ]
         },
         {
-            "name": "admin_management",
+            "name": "admin_operations",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "POST",
-                            "url": "/admin_backend/add-manager",
+                            "url": "/admin_backend/managers",
                             "userStoryIndex": [
                                 17
                             ]
@@ -228,7 +418,7 @@
                     "type": "backend"
                 },
                 {
-                    "name": "admin_database",
+                    "name": "admin_storage",
                     "type": "database"
                 }
             ],

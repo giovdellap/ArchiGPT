@@ -11,6 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 import { BenchmarkResult } from './model/benchmarkresult';
 import { finalMetrics, FinalMetricsCard, getFinalMetricsCards } from './model/finalMetricsCard';
 import { getProjectRows, ProjectRow } from './model/projectRow';
+import { rgbToHex } from './model/utils';
 import { ApiService } from './services/api.service';
 
 
@@ -40,6 +41,7 @@ export class AppComponent {
 
   currentRequest: Request = {} as Request
   result: BenchmarkResult = {} as BenchmarkResult
+  resultColor: string = ""
   finalMetricsCards: FinalMetricsCard[] = []
   projectRows: ProjectRow[] = []
 
@@ -59,11 +61,20 @@ export class AppComponent {
     this.api.benchmark(this.currentRequest).subscribe((res: BenchmarkResult) => {
       this.result = res
       this.finalMetricsCards = getFinalMetricsCards(this.result.finalResults)
+      this.calculatefinalIndexColor(this.result.finalIndex)
       this.projectRows = getProjectRows(this.result.projectsResults)
       this.status = "result"
       this.statusBS.next(this.status)
       console.log(this.result)
     })
+  }
+
+  calculatefinalIndexColor(index: number) {
+    this.resultColor = rgbToHex(
+      Number((Math.min(255, Math.max(0, 255 * ((100 - index) / 100)))).toFixed(0)),
+      Number(Math.min(255, Math.max(0, 255 * (index / 100))).toFixed(0)),
+      0
+  )
   }
 
 

@@ -1,218 +1,481 @@
 {
     "containers": [
         {
-            "name": "user_authentication",
+            "name": "authentication_management",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "POST",
-                            "url": "/auth_service/signup",
+                            "url": "/auth_backend/signup",
                             "userStoryIndex": [
                                 1
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/auth_service/login",
+                            "url": "/auth_backend/login",
                             "userStoryIndex": [
                                 2
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/auth_service/logout",
+                            "url": "/auth_backend/logout",
                             "userStoryIndex": [
                                 3
                             ]
                         },
                         {
+                            "method": "GET",
+                            "url": "/auth_backend/profile",
+                            "userStoryIndex": [
+                                4
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/auth_backend/delete_account",
+                            "userStoryIndex": [
+                                5
+                            ]
+                        },
+                        {
                             "method": "PUT",
-                            "url": "/auth_service/modify_credentials",
+                            "url": "/auth_backend/update_credentials",
                             "userStoryIndex": [
                                 6
                             ]
                         }
                     ],
-                    "name": "auth_service",
+                    "name": "auth_backend",
                     "type": "backend"
                 },
                 {
-                    "name": "user_db",
+                    "name": "auth_storage",
                     "type": "database"
+                },
+                {
+                    "name": "account_management",
+                    "type": "middleware"
+                },
+                {
+                    "name": "email_service",
+                    "type": "middleware"
+                },
+                {
+                    "name": "two_factor_auth",
+                    "type": "middleware"
                 }
             ],
             "userStories": [
                 1,
                 2,
                 3,
+                4,
+                5,
                 6
             ]
         },
         {
-            "name": "profile_management",
+            "name": "news_management",
             "services": [
                 {
                     "endpoints": [
                         {
                             "method": "GET",
-                            "url": "/profile/settings",
+                            "url": "/news_fetcher/recent_news",
                             "userStoryIndex": [
-                                4
-                            ]
-                        },
-                        {
-                            "method": "PUT",
-                            "url": "/profile/settings/update",
-                            "userStoryIndex": [
-                                4
-                            ]
-                        },
-                        {
-                            "method": "DELETE",
-                            "url": "/profile/delete",
-                            "userStoryIndex": [
-                                5
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/friends/request",
-                            "userStoryIndex": [
-                                16
+                                7
                             ]
                         },
                         {
                             "method": "GET",
-                            "url": "/friends/requests",
+                            "url": "/news_filter/country/italy",
                             "userStoryIndex": [
-                                17,
-                                24
+                                8
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/friends/request/accept",
+                            "url": "/favorite_manager/add",
                             "userStoryIndex": [
-                                23
+                                9
                             ]
                         },
                         {
                             "method": "DELETE",
-                            "url": "/friends/request/delete",
+                            "url": "/favorite_manager/delete",
                             "userStoryIndex": [
-                                24
+                                10
                             ]
                         },
                         {
                             "method": "DELETE",
-                            "url": "/friends/delete",
+                            "url": "/favorite_manager/delete_all",
                             "userStoryIndex": [
-                                18
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/friends/search",
-                            "userStoryIndex": [
-                                19
+                                15
                             ]
                         },
                         {
                             "method": "GET",
-                            "url": "/friends",
+                            "url": "/collection_manager/user_collection",
                             "userStoryIndex": [
-                                22
+                                20
                             ]
                         }
                     ],
-                    "name": "profile_settings",
+                    "name": "news_fetcher",
+                    "type": "backend"
+                },
+                {
+                    "name": "news_storage",
+                    "type": "database"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/news_filter/recent",
+                            "userStoryIndex": [
+                                7
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/news_filter/country/{country_code}",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        }
+                    ],
+                    "name": "news_filter",
                     "type": "backend"
                 },
                 {
                     "endpoints": [
                         {
                             "method": "GET",
-                            "url": "/profile/settings",
+                            "url": "/favorite_manager/favorites",
                             "userStoryIndex": [
-                                4
-                            ]
-                        },
-                        {
-                            "method": "PUT",
-                            "url": "/profile/settings/update",
-                            "userStoryIndex": [
-                                4
-                            ]
-                        },
-                        {
-                            "method": "DELETE",
-                            "url": "/profile/delete",
-                            "userStoryIndex": [
-                                5
+                                20
                             ]
                         },
                         {
                             "method": "POST",
-                            "url": "/social/friends/request",
+                            "url": "/favorite_manager/favorites",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/favorite_manager/favorites/{articleId}",
+                            "userStoryIndex": [
+                                10
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/favorite_manager/favorites",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        }
+                    ],
+                    "name": "favorite_manager",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/collection_manager/recent-news",
+                            "userStoryIndex": [
+                                7
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/collection_manager/news?country=Italy",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/collection_manager/favorites",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/collection_manager/favorites/{article_id}",
+                            "userStoryIndex": [
+                                10
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/collection_manager/favorites/all",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/collection_manager/collection",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        }
+                    ],
+                    "name": "collection_manager",
+                    "type": "backend"
+                }
+            ],
+            "userStories": [
+                7,
+                8,
+                9,
+                10,
+                15,
+                20
+            ]
+        },
+        {
+            "name": "ticket_management",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/tickets",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/tickets/filter?country=Italy",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        }
+                    ],
+                    "name": "ticket_viewer",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/tickets",
+                            "userStoryIndex": [
+                                11,
+                                12
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/collection/tickets",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/collection/tickets",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/favorites/clear",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/collection",
+                            "userStoryIndex": [
+                                21
+                            ]
+                        }
+                    ],
+                    "name": "ticket_manager",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/collection_viewer/tickets",
+                            "userStoryIndex": [
+                                21
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/ticket_viewer/available-tickets",
+                            "userStoryIndex": [
+                                11,
+                                12
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/ticket_manager/collection/add",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/ticket_manager/collection/remove",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/ticket_manager/collection/clear-favorites",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        }
+                    ],
+                    "name": "collection_viewer",
+                    "type": "backend"
+                },
+                {
+                    "name": "ticket_database",
+                    "type": "database"
+                },
+                {
+                    "name": "ticket_api_connector",
+                    "type": "middleware"
+                }
+            ],
+            "userStories": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                21
+            ]
+        },
+        {
+            "name": "social_management",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/friend-request/send",
                             "userStoryIndex": [
                                 16
                             ]
                         },
                         {
                             "method": "GET",
-                            "url": "/social/friends/requests",
+                            "url": "/friend-request/received",
                             "userStoryIndex": [
                                 17
                             ]
                         },
                         {
+                            "method": "POST",
+                            "url": "/friend-request/accept",
+                            "userStoryIndex": [
+                                23
+                            ]
+                        },
+                        {
                             "method": "DELETE",
-                            "url": "/social/friends/remove",
+                            "url": "/friend-request/decline",
+                            "userStoryIndex": [
+                                24
+                            ]
+                        }
+                    ],
+                    "name": "friend_request_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/friends/add",
+                            "userStoryIndex": [
+                                16,
+                                23
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/friends/remove/{friendId}",
                             "userStoryIndex": [
                                 18
                             ]
                         },
+                        {
+                            "method": "GET",
+                            "url": "/friends/list",
+                            "userStoryIndex": [
+                                22
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/friends/request/send",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/friends/request/inbox",
+                            "userStoryIndex": [
+                                17,
+                                23,
+                                24
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/friends/search",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        }
+                    ],
+                    "name": "friend_list_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
                         {
                             "method": "GET",
                             "url": "/users/search",
                             "userStoryIndex": [
                                 19
                             ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/social/friends/list",
-                            "userStoryIndex": [
-                                22
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/social/friends/accept",
-                            "userStoryIndex": [
-                                23
-                            ]
-                        },
-                        {
-                            "method": "DELETE",
-                            "url": "/social/friends/request/delete",
-                            "userStoryIndex": [
-                                24
-                            ]
                         }
                     ],
-                    "name": "social_management",
+                    "name": "user_search",
                     "type": "backend"
                 },
                 {
-                    "name": "profile_database",
+                    "name": "social_data_storage",
                     "type": "database"
                 }
             ],
             "userStories": [
-                4,
-                5,
                 16,
                 17,
                 18,
@@ -223,99 +486,47 @@
             ]
         },
         {
-            "name": "news_feed",
-            "services": [],
-            "userStories": []
-        },
-        {
-            "name": "ticket_management",
+            "name": "frontend",
             "services": [
                 {
-                    "endpoints": [
+                    "name": "web_app",
+                    "pages": [
                         {
-                            "method": "GET",
-                            "url": "/ticket_display/available",
-                            "userStoryIndex": [
-                                11
-                            ]
+                            "name": "Homepage",
+                            "userStoryIndex": []
                         },
                         {
-                            "method": "GET",
-                            "url": "/ticket_display/filter/country/:country",
-                            "userStoryIndex": [
-                                12
-                            ]
+                            "name": "EventDetails",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "News",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Article/<id>",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Login",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Register",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Tickets",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "SocialFeed",
+                            "userStoryIndex": []
                         }
                     ],
-                    "name": "ticket_display",
-                    "type": "backend"
-                },
-                {
-                    "endpoints": [
-                        {
-                            "method": "GET",
-                            "url": "/collection_manager/tickets",
-                            "userStoryIndex": [
-                                11
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/collection_manager/tickets/filter",
-                            "userStoryIndex": [
-                                12
-                            ]
-                        },
-                        {
-                            "method": "POST",
-                            "url": "/collection_manager/collections",
-                            "userStoryIndex": [
-                                13
-                            ]
-                        },
-                        {
-                            "method": "DELETE",
-                            "url": "/collection_manager/collections/{ticketId}",
-                            "userStoryIndex": [
-                                14
-                            ]
-                        },
-                        {
-                            "method": "GET",
-                            "url": "/collection_manager/collections",
-                            "userStoryIndex": [
-                                21
-                            ]
-                        }
-                    ],
-                    "name": "collection_manager",
-                    "type": "backend"
-                },
-                {
-                    "name": "ticket_database",
-                    "type": "database"
-                },
-                {
-                    "name": "external_service_connector",
-                    "type": "middleware"
+                    "type": "frontend"
                 }
             ],
-            "userStories": [
-                11,
-                12,
-                13,
-                14,
-                21
-            ]
-        },
-        {
-            "name": "collection_cleanup",
-            "services": [],
-            "userStories": []
-        },
-        {
-            "name": "frontend",
-            "services": [],
             "userStories": []
         }
     ],

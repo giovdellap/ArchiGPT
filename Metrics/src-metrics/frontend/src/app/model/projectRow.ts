@@ -5,6 +5,7 @@ import { rgbToHex } from "./utils"
 export class ProjectRow {
     name: string = ""
     index: number = 0
+    color: string = ""
     metricCards: ProjectMetricCard[] = []
 }
 
@@ -33,9 +34,15 @@ export function getProjectRows(projectsResults: ProjectResult[]): ProjectRow[] {
                 color: color
             })
         }
+        let indexColor = rgbToHex(
+            Number((Math.min(255, Math.max(0, 255 * ((100 - proj.projectIndex) / 100)))).toFixed(0)),
+            Number(Math.min(255, Math.max(0, 255 * (proj.projectIndex / 100))).toFixed(0)),
+            0
+        )
         res.push({
             name: proj.projectName,
             index: proj.projectIndex,
+            color: indexColor,
             metricCards: cards
         })
     }
