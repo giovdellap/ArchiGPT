@@ -13,7 +13,7 @@ const projectOptions = [
   { name: 'RecipeCove', description: 'The RecipeCove project consists of a web application about recipes, food and cooking.' },
 ];
 
-const ProjectForm = ({ handleGenerationProject, generationResult }) => {
+const ProjectForm = ({ handleGenerationProject }) => {
   const [selectedProject, setSelectedProject] = useState('');
   const [generateAll, setGenerateAll] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -29,19 +29,8 @@ const ProjectForm = ({ handleGenerationProject, generationResult }) => {
 
   const handleConfirm = () => {
     setShowModal(false);
-    handleGenerationProject(selectedProject)
-    console.log(selectedProject, generationResult)
-    saveFile(generateAll ? 'all_projects.json' : `${selectedProject}.json`, JSON.stringify(generationResult));
-  };
-
-  const saveFile = (fileName, fileContent) => {
-    const blob = new Blob([fileContent], { type: 'application/json' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    handleGenerationProject(selectedProject, generateAll)
+    //console.log(selectedProject, generationResult)
   };
 
   const renderTooltip = (description) => (

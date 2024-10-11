@@ -12,7 +12,6 @@ function Home() {
 	const navigate = useNavigate();
     const [listProjects, setListProjects] = useState([]);
 	const [showLoadingScreen, setShowLoadingScreen] = useState(false);
-	const [generationResult, setGenerationResult] = useState({});
 
     function fetchprojects() {
 		const projectsApiUrl = 'http://localhost:5001/project' ;
@@ -61,13 +60,14 @@ function Home() {
 
     };
 
-	function handleGenerationProject (projectName) {
+	function handleGenerationProject (projectName, generateAll) {
 		setShowLoadingScreen(true)
+		let generationApiUrl = ''
 
-        const generationApiUrl = 'http://localhost:5003/metrics/generateProjects';
+        if (generateAll) generationApiUrl = 'http://localhost:5003/metrics/generateAllProjects';
+		else generationApiUrl = 'http://localhost:5003/metrics/generateProject';
 		const formData = new FormData();
 		formData.append('project_name', projectName);
-		formData.append('num_projects', 1);
 
         fetch(generationApiUrl, {
             method: 'POST',
@@ -87,8 +87,7 @@ function Home() {
 			.then((generationResult) => {
 				fetchprojects()
 				setShowLoadingScreen(false)
-				//console.log(generationResult)
-				setGenerationResult(generationResult)
+				saveFile(generateAll ? 'all_projects.json' : `${projectName}.json`, JSON.stringify(generationResult));
 			})
 			.catch((error) => {
 				setShowLoadingScreen(false);
@@ -96,6 +95,16 @@ function Home() {
 				console.error('Failed to generate project:', error);
 			});
     };
+
+	function saveFile(fileName, fileContent){
+		const blob = new Blob([fileContent], { type: 'application/json' });
+		const link = document.createElement('a');
+		link.href = URL.createObjectURL(blob);
+		link.download = fileName;
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	};
 
 	function GoToProjectPage(projectName) {
 		navigate(`/project/${projectName}`);
@@ -110,7 +119,7 @@ function Home() {
 		<div style={{ display: 'flex', padding: '300px' }}>
 
 		  <div style={{ flex: '1', position: 'sticky', top: '20px', height: 'fit-content', width: '300px' }}>
-			<ProjectForm handleGenerationProject={handleGenerationProject} generationResult={generationResult}/>
+			<ProjectForm handleGenerationProject={handleGenerationProject}/>
 		  </div>
 
 		  <div style={{ flex: '1', paddingLeft: '200px' }}>

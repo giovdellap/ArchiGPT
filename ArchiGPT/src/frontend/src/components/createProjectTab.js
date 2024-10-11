@@ -26,13 +26,14 @@ function CreateProjectTab({ fetchprojects }) {
             fetchprojects()
             setProjectName("")
           } else {
-            window.alert('Failed to create project');
-            throw new Error('Failed to create project');
+            return response.json().then((errorData) => {
+              window.alert('Failed to generate document: ' + errorData.message);
+            });
           }
       })
       .catch((error) => {
-        window.alert('Failed to create project');
-        console.error('Failed to create project:', error);
+				window.alert('Failed to generate project: ' + error.message);
+				console.error('Failed to generate project:', error);
       });
   };
 

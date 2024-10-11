@@ -27,8 +27,12 @@ def createProject():
         # Collection creation
         handler = DBHandler()
         handler.database_setup()
-        handler.create_collection(name)
+        error = handler.create_collection(name)
    
+        if error : 
+            handler.delete_collection(name)
+            handler.create_collection(name)
+
         system = getBlankProjectSystem()
         status = getBlankProjectStatus()
         
