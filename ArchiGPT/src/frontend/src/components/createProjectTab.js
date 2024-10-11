@@ -50,7 +50,7 @@ function CreateProjectTab({ fetchprojects }) {
 
 	  <div style={{ margin: '10px' }} />
       <Button variant="success" type="submit">
-        <FontAwesomeIcon icon={faPlus} /> Add Project
+        <FontAwesomeIcon icon={faPlus} /> Create New Project
       </Button>
     </Form>
   );
