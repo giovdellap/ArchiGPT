@@ -31,5 +31,6 @@ module.exports = {
     InputProject,
     InputContainer,
     InputService,
-    InputEndPoint
+    InputEndPoint,
+    InputPage
 }

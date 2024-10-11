@@ -1,5 +1,10 @@
-export class Request {
+export class MetricRequest {
     modelName: string = ""
+    
+    runs: InputRun[] = []
+}
+
+export class InputRun {
     projects: InputProject[] = []
 }
 

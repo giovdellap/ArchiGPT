@@ -2,7 +2,8 @@ export class BenchmarkResult {
     modelName: string = ""
     finalIndex: number = 0 //risultato totale modello
     finalResults: FinalResults = new FinalResults()
-    projectsResults: ProjectResult[] = [] // risultati progetti
+
+    runsResults: RunResult[] = []
 }
 
 export class FinalResults {
@@ -12,6 +13,15 @@ export class FinalResults {
     sc: number = 0
     pc: number = 0
     scec: number = 0
+}
+
+export class RunResult{
+    runIndex: number = 0
+    runFinalIndex: number = 0
+
+    runFinalResults: FinalResults = {} as FinalResults
+
+    projects: ProjectResult[] = []
 }
 
 export class ProjectResult {

@@ -5,7 +5,18 @@
 <div class="container">
   <div class="start-container" 
   *ngIf="((statusObs | async) === 'notready') || ((statusObs | async) === 'ready')">
-    <input type="file" class="input-button" (change)="onJsonAdded($event)" #fileUpload />
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Model name</mat-label>
+        <input matInput [formControl]="nameFC">
+      </mat-form-field>
+    </form>
+    <div class="input-container">
+      <div class="input-row" *ngFor="let ir of inputRows">
+        <input type="file" class="input-button" (change)="onJsonAdded($event)" #fileUpload />
+      </div>
+    </div>
+
     <button mat-raised-button class="start-button" (click)="onStart()">Start benchmark</button>
   </div>
   <div class="waiting-container" *ngIf="((statusObs | async) === 'waiting')">
@@ -22,7 +33,7 @@
       </div>
     </div>
     <div class="finalmetrics-title">
-      DATASET RESULTS
+      TOTAL RESULTS
     </div>
     <div class="finalmetrics-container">
       <mat-card class="metrics-card" appearance="outlined" *ngFor="let card of finalMetricsCards">
@@ -41,36 +52,82 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div class="finalmetrics-title">PROJECTS RESULTS</div>
-    <div class="projects-container">
-      <div class="project-row" *ngFor="let project of projectRows">
-        <mat-accordion class="project-accordion">
-          <mat-expansion-panel class="project-panel">
+    <div class="finalmetrics-title">RUNS RESULTS</div>
+    <div class="runs-container">
+      <div class="run-row" *ngFor="let run of runRows">
+        <mat-accordion class="run-accordion proj-accordion">
+          <mat-expansion-panel class="run-panel">
             <mat-expansion-panel-header>
-              <mat-panel-title class="projectpanel-title">
-                {{project.name}}
+              <mat-panel-title class="runpanel-title">
+                {{run.name}}
               </mat-panel-title>
-              <mat-panel-description class="projectpanel-description">
+              <mat-panel-description class="runpanel-description">
                 <div> Final index: </div>
-                <div [style.color]="project.color">{{project.index}}</div>
+                <div [style.color]="run.color">{{run.index}}</div>
                
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <div class="project-expansion">
-              <mat-card class="proj-card" appearance="outlined" 
-              *ngFor="let card of project.metricCards">
-                <mat-card-header>
-                  <mat-card-title class="proj-card-title">{{card.metric}}</mat-card-title>
-                </mat-card-header>
-                <mat-progress-spinner
-                  class="proj-card-spinner"
-                  mode="determinate"
-                  [value]="card.index">
-                </mat-progress-spinner>
-                <mat-card-content class="proj-card-content" [style.color]="card.color">
-                  {{card.index}}
-                </mat-card-content>
-              </mat-card>
+            <div class="run-expansion">
+              <div class="run-metrics">
+                <mat-card class="run-card" appearance="outlined" 
+                *ngFor="let card of run.metricCards">
+                  <mat-card-header>
+                    <mat-card-title class="run-card-title">{{card.metric}}</mat-card-title>
+                  </mat-card-header>
+                  <mat-progress-spinner
+                    class="run-card-spinner"
+                    mode="determinate"
+                    [value]="card.index">
+                  </mat-progress-spinner>
+                  <mat-card-content class="run-card-content" [style.color]="card.color">
+                    {{card.index}}
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="projectmetrics-title">PROJECTS RESULTS</div>
+              <div class="run-projects" *ngFor="let proj of run.projectRows">
+                <div class="project-row">
+                  <mat-accordion class="run-accordion">
+                    <mat-expansion-panel class="run-panel">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title class="runpanel-title">
+                          {{proj.name}}
+                        </mat-panel-title>
+                        <mat-panel-description class="runpanel-description">
+                          <div> Final index: </div>
+                          <div [style.color]="run.color">{{proj.index}}</div>
+                         
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="run-expansion">
+                        <div class="run-metrics">
+                          <mat-card class="run-card" appearance="outlined" 
+                          *ngFor="let card of proj.metricCards">
+                            <mat-card-header>
+                              <mat-card-title class="run-card-title">{{card.metric}}</mat-card-title>
+                            </mat-card-header>
+                            <mat-progress-spinner
+                              class="run-card-spinner"
+                              mode="determinate"
+                              [value]="card.index">
+                            </mat-progress-spinner>
+                            <mat-card-content class="run-card-content" [style.color]="card.color">
+                              {{card.index}}
+                            </mat-card-content>
+                          </mat-card>
+                        </div>
+                        <div class="run-projects">
+                          <div class="project-row">
+                            
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                </div>
+              </div>
+              
             </div>
           </mat-expansion-panel>
         </mat-accordion>

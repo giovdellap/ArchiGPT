@@ -4,7 +4,7 @@ class BenchmarkResult {
     finalIndex = 0 //risultato totale modello
     finalResults = new FinalResults() //medie metriche
 
-    projectsResults = [] // risultati progetti
+    runsResults = [] // risultati progetti
 }
 
 class FinalResults {
@@ -14,6 +14,15 @@ class FinalResults {
     sc = 0
     cpc = 0
     scec = 0
+}
+
+class RunResult{
+    runIndex = 0
+    runFinalIndex = 0
+
+    runFinalResults = {}
+
+    projects = []
 }
 
 class ProjectResult extends FinalResults{
@@ -27,5 +36,6 @@ class ProjectResult extends FinalResults{
 module.exports = {
 BenchmarkResult,
 ProjectResult,
-FinalResults
+FinalResults,
+RunResult
 }

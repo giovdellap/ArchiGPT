@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { BenchmarkResult } from '../model/benchmarkresult';
+import { MetricRequest } from '../model/request';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ApiService {
     }))
   }
 
-  benchmark(request: Request) {
+  benchmark(request: MetricRequest) {
     return this.getLogObservable(
       this.http.post<BenchmarkResult>(this.url + "/metrics/benchmark", request)
     )

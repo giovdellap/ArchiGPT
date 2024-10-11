@@ -1,5 +1,6 @@
 $bg_container:#343134;
 $bg_card: #544f54;
+$bg_project: #6e686e;
 $text: #ccc2cc;
 
 .container {
@@ -13,7 +14,19 @@ $text: #ccc2cc;
     justify-content: space-evenly;
     align-items: flex-start;
     padding-top: 50px;
-    height: 100vh;
+    height: 90vh;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.input-row {
+    padding-top: 20px;
+    color: $text;
 }
 
 .example-spacer {
@@ -33,7 +46,7 @@ $text: #ccc2cc;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100%;
+    min-height: 90vh;
 }
 
 .title-container {
@@ -101,34 +114,45 @@ $text: #ccc2cc;
     height: 8vh;
 }
 
-.projects-container {
+.runs-container {
     width: 90%;
 }
 
-.project-row {
+.run-row {
     margin: 10px 0px;
 }
 
-.project-accordion {
+.runpanel-title {
+    font-size: 1.5em;
 }
-.projectpanel-description {
+.runpanel-description {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    font-size: 1.5em;
+
 }
 
-.project-expansion {
+.run-expansion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.run-metrics {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    width: 100%;
 }
 
-.proj-card {
+.run-card {
     width: 15%;
 }
 
-.proj-card-title {
+.run-card-title {
     color: $text;
     height: 8vh;
     font-size: 1em;
@@ -136,11 +160,11 @@ $text: #ccc2cc;
     font-weight: bold;
 }
 
-.proj-card-spinner {
+.run-card-spinner {
     margin: 0px auto;
 }
 
-.proj-card-content {
+.run-card-content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,4 +173,23 @@ $text: #ccc2cc;
     height: 4vh;
 }
 
+.run-projects {
+    width: 100%;
+}
 
+.project-row {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.proj-accordion {
+    background-color: $bg_project;
+}
+
+.projectmetrics-title {
+    color: $text;
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}

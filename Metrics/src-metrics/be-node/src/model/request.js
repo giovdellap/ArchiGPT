@@ -1,8 +1,13 @@
 class Request {
     modelName = ""
+    runs = []
+}
+
+class Run {
     projects = []
 }
 
 module.exports = {
-    Request
+    Request,
+    Run
 }

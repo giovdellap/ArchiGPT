@@ -7,6 +7,7 @@ export class ProjectRow {
     index: number = 0
     color: string = ""
     metricCards: ProjectMetricCard[] = []
+    
 }
 
 export class ProjectMetricCard {
@@ -15,10 +16,10 @@ export class ProjectMetricCard {
     color: string = ""
 }
 
-export function getProjectRows(projectsResults: ProjectResult[]): ProjectRow[] {
+export function getProjectRows(projects: ProjectResult[]): ProjectRow[] {
     let res: ProjectRow[] = []
 
-    for (const proj of projectsResults) {
+    for (const proj of projects) {
         let cards: ProjectMetricCard[] = []
         for (let i = 0; i < finalMetrics.length; i++) {
             let index = Number((<number>proj[finalMetrics[i] as keyof ProjectResult]).toFixed(2))

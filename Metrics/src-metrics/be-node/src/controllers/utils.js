@@ -1,5 +1,6 @@
-const { finalMetrics } = require("../metrics/_metrics");
-const { FinalResults } = require("../model/response");
+const { finalMetrics, metrics, getMetricResult } = require("../metrics/_metrics");
+const { FinalResults, ProjectResult } = require("../model/response");
+const { getBenchmarkProjects } = require("../data/benchmarkProjects/projects")
 
 function calculateFinalResults(projectResults) {
     let finalResults = new FinalResults()
@@ -18,7 +19,50 @@ function calculateIndex(results) {
     return Number((sum/6).toFixed(2))
 }
 
+function calculateProjectsResults(runProjects) {
+    let results = []
+
+    for (const proj of runProjects) {
+        let projResult = new ProjectResult()
+        projResult.projectName = proj.name
+        console.log('Project Name : ', proj.name)
+    
+        for (const metric of metrics) {
+    
+          let benchmarkProjects = {}
+    
+          benchmarkProjects = getBenchmarkProjects(proj.name)
+    
+          const metricResult = getMetricResult(metric, proj, benchmarkProjects, projResult)
+          projResult[metric] = metricResult
+          console.log('Metric : ', metric, ' Result : ', metricResult)
+        }
+        let index = calculateIndex(projResult)
+        projResult.projectIndex = index
+    
+        console.log("Benchmark Estimation completed for project : ", proj.name)
+        results.push(projResult)
+    }
+
+    return results
+}
+
+function calculateTotalResults(runResults) {
+    let totalResults = new FinalResults()
+    for (const key of Object.keys(totalResults)) {
+        console.log('KEY', key)
+        let sum = 0
+        for (const run of runResults) {
+            sum = sum + run.runFinalResults[key]
+        }
+        totalResults[key] = sum/runResults.length
+    }
+    return totalResults
+}
+
 module.exports = {
     calculateFinalResults,
-    calculateIndex
+    calculateIndex,
+    calculateProjectsResults,
+    calculateTotalResults
 }
