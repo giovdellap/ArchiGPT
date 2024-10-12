@@ -96,6 +96,38 @@ function Home() {
 			});
     };
 
+	function handleDownloadJSON (projectName) {
+
+		const generationApiUrl = 'http://localhost:5003/metrics/getProjectJson';
+
+		const formData = new FormData();
+		formData.append('project_name', projectName);
+
+        fetch(generationApiUrl, {
+            method: 'POST',
+            mode: 'cors',
+            body: formData
+        })
+            .then((response) => {
+              if (response.status === 200) {
+				return response.json();
+              } else {
+				return response.json().then((errorData) => {
+					window.alert('Failed to retrieve json file: ' + errorData.message);
+					throw new Error('Failed to retrieve json file: ' + errorData.message);
+				});
+              }
+          	})
+			.then((generationResult) => {
+				saveFile(`${projectName}.json`, JSON.stringify(generationResult));
+			})
+			.catch((error) => {
+				setShowLoadingScreen(false);
+				window.alert('Failed to retrieve json file: ' + error.message);
+				console.error('Failed to retrieve json file:', error);
+			});
+    };
+
 	function saveFile(fileName, fileContent){
 		const blob = new Blob([fileContent], { type: 'application/json' });
 		const link = document.createElement('a');
@@ -124,7 +156,7 @@ function Home() {
 
 		  <div style={{ flex: '1', paddingLeft: '200px' }}>
 		  	<div style={{ flex: '1', position: 'sticky', top: '20px', height: 'fit-content', paddingLeft:'460px' }}>
-				<CreateProjectTab fetchprojects={fetchprojects} />
+				<CreateProjectTab fetchprojects={fetchprojects}/>
 			</div>
 			
 			<div style={{ marginTop: '20px' }}>
@@ -133,6 +165,7 @@ function Home() {
 				  listProjects={listProjects} 
 				  goToProjectPage={GoToProjectPage} 
 				  handleDeleteProject={handleDeleteProject}
+				  handleDownloadJSON={handleDownloadJSON}
 				/>
 			  ) : (
 				<Col xs={12} sm={6} md={4} lg={12} style={{ display: 'flex', justifyContent: 'right', alignItems: 'right' }}>

@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolderOpen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faFolderOpen, faTrash, faDownload } from '@fortawesome/free-solid-svg-icons';
 
-function CardProject({ listProjects, goToProjectPage, handleDeleteProject}) {
+function CardProject({ listProjects, goToProjectPage, handleDeleteProject, handleDownloadJSON}) {
 
     return (
         <Container className="mt-4">
@@ -25,6 +25,27 @@ function CardProject({ listProjects, goToProjectPage, handleDeleteProject}) {
                                     </div>
                                 </Card.Body>
                                 <Card.Footer className="text-white text-center bg-dark">Documents: {item.num_documents}</Card.Footer>
+
+                                <Button 
+                                    className="download-button" 
+                                    onClick={() => handleDownloadJSON(item.name)} 
+                                    style={{ 
+                                        position: 'absolute', 
+                                        bottom: '10px', 
+                                        right: '10px', 
+                                        borderRadius: '50%', 
+                                        width: '40px', 
+                                        height: '40px', 
+                                        borderColor: 'green', 
+                                        backgroundColor: 'green', 
+                                        color: 'white', 
+                                        display: 'flex', 
+                                        justifyContent: 'center', 
+                                        alignItems: 'center'
+                                    }}
+                                >
+                                    <FontAwesomeIcon icon={faDownload} />
+                                </Button>
                             </Card>
                         </Col>
                     );

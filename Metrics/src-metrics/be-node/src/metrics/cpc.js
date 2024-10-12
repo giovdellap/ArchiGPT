@@ -8,7 +8,7 @@
 function cpcMetrics(projectData, benchmarkData) {
 
     let summ_result = 0
-    num_container = 0
+    let num_container = 0
 
     for (const container of projectData.containers) {
 
@@ -29,6 +29,9 @@ function cpcMetrics(projectData, benchmarkData) {
 
         summ_result = summ_result + result
     }
+
+    console.log("Number of container that fullfill a set and have db = true : ", num_container)
+
     if (num_container === 0) {
         return 0
     } else return (100 * (summ_result/num_container))

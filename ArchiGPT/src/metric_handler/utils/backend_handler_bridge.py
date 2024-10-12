@@ -4,7 +4,7 @@ import requests
 
 def generationRequest( api_name, data ):
 
-	print('API INTERROGATION: ', api_name)
+	print('API INTERROGATION: ', api_name, data['project_name'])
 
 	message = requests.post(
 		current_app.config['BACKEND_HANDLER'] + f'/{api_name}',
