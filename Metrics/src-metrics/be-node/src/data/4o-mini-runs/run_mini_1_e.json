@@ -1,0 +1,1772 @@
+{"modelName":"ArchiGPT","projects":[{"containers":[{"name":"Authentication","services":[{"endpoints":[{"method":"POST","url":"/auth/signup","userStoryIndex":[1]},{"method":"POST","url":"/auth/login","userStoryIndex":[2]},{"method":"POST","url":"/auth/logout","userStoryIndex":[3]}],"name":"auth","type":"backend"},{"name":"storage","type":"database"}],"userStories":[1,2,3]},{"name":"Profile_Management","services":[{"endpoints":[{"method":"GET","url":"/profile/settings","userStoryIndex":[4]},{"method":"PUT","url":"/profile/settings/email","userStoryIndex":[6]},{"method":"PUT","url":"/profile/settings/password","userStoryIndex":[6]},{"method":"DELETE","url":"/profile/account","userStoryIndex":[5]}],"name":"profile","type":"backend"},{"name":"storage","type":"database"},{"name":"auth","type":"middleware"}],"userStories":[4,5,6]},{"name":"News","services":[{"endpoints":[{"method":"GET","url":"/news/recent","userStoryIndex":[7]},{"method":"GET","url":"/news/filter","userStoryIndex":[8]},{"method":"POST","url":"/news/favorites/add","userStoryIndex":[9]},{"method":"DELETE","url":"/news/favorites/delete","userStoryIndex":[10]},{"method":"DELETE","url":"/news/favorites/delete_all","userStoryIndex":[15]},{"method":"GET","url":"/news/favorites","userStoryIndex":[20]}],"name":"news_manager","type":"backend"},{"endpoints":[{"method":"GET","url":"/news/recent","userStoryIndex":[7]},{"method":"GET","url":"/news/filter","userStoryIndex":[8]},{"method":"POST","url":"/favorites/add","userStoryIndex":[9]},{"method":"DELETE","url":"/favorites/remove","userStoryIndex":[10]},{"method":"DELETE","url":"/favorites/clear","userStoryIndex":[15]},{"method":"GET","url":"/favorites","userStoryIndex":[20]}],"name":"favorites_manager","type":"backend"},{"name":"news_database","type":"database"},{"name":"external_news_api","type":"middleware"}],"userStories":[7,8,9,10,15,20]},{"name":"Tickets","services":[{"endpoints":[{"method":"GET","url":"/tickets/available","userStoryIndex":[11]},{"method":"GET","url":"/tickets/filter","userStoryIndex":[12]},{"method":"POST","url":"/tickets/collection/add","userStoryIndex":[13]},{"method":"DELETE","url":"/tickets/collection/remove","userStoryIndex":[14]},{"method":"GET","url":"/tickets/collection","userStoryIndex":[21]}],"name":"ticket_manager","type":"backend"},{"name":"ticket_storage","type":"database"},{"name":"ticket_filter","type":"middleware"}],"userStories":[11,12,13,14,21]},{"name":"Friends","services":[{"endpoints":[{"method":"POST","url":"/friends/request","userStoryIndex":[16]},{"method":"GET","url":"/friends/requests/incoming","userStoryIndex":[17]},{"method":"DELETE","url":"/friends/{userId}","userStoryIndex":[18]},{"method":"GET","url":"/friends/search","userStoryIndex":[19]},{"method":"GET","url":"/friends/list","userStoryIndex":[22]},{"method":"POST","url":"/friends/request/{requestId}/accept","userStoryIndex":[23]},{"method":"DELETE","url":"/friends/request/{requestId}","userStoryIndex":[24]}],"name":"friend_management","type":"backend"},{"endpoints":[{"method":"POST","url":"/friends/send-request","userStoryIndex":[16]},{"method":"GET","url":"/friends/incoming-requests","userStoryIndex":[17]},{"method":"DELETE","url":"/friends/remove-friend","userStoryIndex":[18]},{"method":"GET","url":"/users/find-by-email","userStoryIndex":[19]},{"method":"GET","url":"/friends/list","userStoryIndex":[22]},{"method":"POST","url":"/friends/accept-request","userStoryIndex":[23]},{"method":"DELETE","url":"/friends/delete-request","userStoryIndex":[24]}],"name":"user_discovery","type":"backend"},{"name":"friend_notifications","type":"middleware"}],"userStories":[16,17,18,19,22,23,24]},{"name":"Frontend","services":[],"userStories":[]}],"name":"OneSport"},{"containers":[{"name":"Authentication_Manager","services":[{"endpoints":[{"method":"POST","url":"/auth/register","userStoryIndex":[1,17]},{"method":"POST","url":"/auth/login","userStoryIndex":[2,18,22]},{"method":"GET","url":"/auth/session","userStoryIndex":[3,19,23]},{"method":"POST","url":"/auth/logout","userStoryIndex":[4,20,24]}],"name":"auth","type":"backend"},{"name":"storage","type":"database"},{"name":"session_manager","type":"middleware"},{"endpoints":[{"method":"POST","url":"/auth/register","userStoryIndex":[1,17]},{"method":"POST","url":"/auth/login","userStoryIndex":[2,18,22]},{"method":"GET","url":"/auth/session","userStoryIndex":[3,19,23]},{"method":"POST","url":"/auth/logout","userStoryIndex":[4,20,24]}],"name":"admin_access","type":"backend"}],"userStories":[1,2,3,4,17,18,19,20,22,23,24]},{"name":"Product_Manager","services":[{"endpoints":[{"method":"GET","url":"/products/hot","userStoryIndex":[6]},{"method":"GET","url":"/products/company/{companyId}","userStoryIndex":[8]},{"method":"POST","url":"/cart/add","userStoryIndex":[9]},{"method":"POST","url":"/cart/remove","userStoryIndex":[10]},{"method":"POST","url":"/orders/complete","userStoryIndex":[12]},{"method":"POST","url":"/products","userStoryIndex":[14]},{"method":"DELETE","url":"/products/{productId}","userStoryIndex":[15]},{"method":"PUT","url":"/products/{productId}","userStoryIndex":[16]},{"method":"POST","url":"/admin/products","userStoryIndex":[36]},{"method":"PUT","url":"/admin/products/{productId}","userStoryIndex":[37]},{"method":"DELETE","url":"/admin/products/{productId}","userStoryIndex":[38]}],"name":"product_service","type":"backend"},{"name":"inventory_service","type":"database"},{"endpoints":[{"method":"GET","url":"/products/hot","userStoryIndex":[6]},{"method":"GET","url":"/products/company/{companyId}","userStoryIndex":[8]},{"method":"POST","url":"/cart/add","userStoryIndex":[9]},{"method":"DELETE","url":"/cart/remove","userStoryIndex":[10]},{"method":"POST","url":"/orders/complete","userStoryIndex":[12]},{"method":"POST","url":"/admin/products/add","userStoryIndex":[36]},{"method":"PUT","url":"/admin/products/modify","userStoryIndex":[37]},{"method":"DELETE","url":"/admin/products/delete","userStoryIndex":[38]},{"method":"POST","url":"/products/add","userStoryIndex":[14]},{"method":"DELETE","url":"/products/remove/{productId}","userStoryIndex":[15]},{"method":"PUT","url":"/products/modify/{productId}","userStoryIndex":[16]}],"name":"hot_products_service","type":"backend"},{"endpoints":[{"method":"GET","url":"/products/hot","userStoryIndex":[6]},{"method":"GET","url":"/products/company/{companyId}","userStoryIndex":[8]},{"method":"POST","url":"/cart/add","userStoryIndex":[9]},{"method":"POST","url":"/cart/remove","userStoryIndex":[10]},{"method":"POST","url":"/orders/complete","userStoryIndex":[12]},{"method":"POST","url":"/products/add","userStoryIndex":[14]},{"method":"PUT","url":"/products/{productId}","userStoryIndex":[16]},{"method":"DELETE","url":"/products/{productId}","userStoryIndex":[15]},{"method":"POST","url":"/admin/products/add","userStoryIndex":[36]},{"method":"PUT","url":"/admin/products/{productId}","userStoryIndex":[37]},{"method":"DELETE","url":"/admin/products/{productId}","userStoryIndex":[38]}],"name":"admin_service","type":"backend"},{"name":"cart_service","type":"middleware"}],"userStories":[6,8,9,10,12,14,15,16,36,37,38]},{"name":"Cart_Manager","services":[{"endpoints":[{"method":"GET","url":"/cart/view","userStoryIndex":[11]},{"method":"GET","url":"/cart/orders","userStoryIndex":[40]},{"method":"GET","url":"/farmer/orders","userStoryIndex":[41]}],"name":"cart","type":"backend"},{"name":"storage","type":"database"},{"name":"product_service","type":"middleware"},{"name":"user_service","type":"middleware"}],"userStories":[11,40,41]},{"name":"Company_Locator","services":[{"endpoints":[{"method":"POST","url":"/auth/register","userStoryIndex":[1,17]},{"method":"POST","url":"/auth/login","userStoryIndex":[2,18,22]},{"method":"POST","url":"/auth/logout","userStoryIndex":[4,20,24]},{"method":"GET","url":"/company_locator/nearby","userStoryIndex":[]},{"method":"GET","url":"/company_locator/{id}","userStoryIndex":[]},{"method":"GET","url":"/company_locator/open_in_maps/{id}","userStoryIndex":[]},{"method":"POST","url":"/auth/keep_session","userStoryIndex":[3,19,23]}],"name":"auth_manager","type":"backend"},{"endpoints":[{"method":"GET","url":"/company_locator/nearby","userStoryIndex":[]},{"method":"GET","url":"/company_locator/details/:id","userStoryIndex":[]},{"method":"GET","url":"/company_locator/navigate/:id","userStoryIndex":[]},{"method":"POST","url":"/company_locator/register","userStoryIndex":[17]},{"method":"POST","url":"/company_locator/login","userStoryIndex":[18]},{"method":"POST","url":"/company_locator/logout","userStoryIndex":[20]},{"method":"POST","url":"/company_locator/admin/login","userStoryIndex":[22]},{"method":"POST","url":"/company_locator/admin/logout","userStoryIndex":[24]}],"name":"product_manager","type":"backend"},{"endpoints":[{"method":"GET","url":"/company_locator/companies","userStoryIndex":[]},{"method":"GET","url":"/company_locator/companies/:id","userStoryIndex":[]},{"method":"POST","url":"/company_locator/companies","userStoryIndex":[17]},{"method":"POST","url":"/company_locator/companies/login","userStoryIndex":[18]},{"method":"GET","url":"/company_locator/companies/:id/open_in_maps","userStoryIndex":[]}],"name":"cart_manager","type":"backend"},{"endpoints":[{"method":"GET","url":"/company_locator/nearby","userStoryIndex":[1,2,17,18]},{"method":"GET","url":"/company_locator/open-in-map","userStoryIndex":[1,2,17,18]},{"method":"POST","url":"/company_locator/register","userStoryIndex":[17]},{"method":"POST","url":"/company_locator/login","userStoryIndex":[18]},{"method":"PUT","url":"/company_locator/manage","userStoryIndex":[22]}],"name":"company_locator","type":"backend"},{"endpoints":[{"method":"GET","url":"/company_locator/nearby","userStoryIndex":[1,2,17,18]},{"method":"GET","url":"/company_locator/{companyId}","userStoryIndex":[1,2,17,18]},{"method":"GET","url":"/company_locator/openInMaps/{companyId}","userStoryIndex":[1,2,17,18]},{"method":"POST","url":"/company_locator/register","userStoryIndex":[17]}],"name":"user_management","type":"backend"},{"endpoints":[{"method":"GET","url":"/company_locator/agricultural_companies","userStoryIndex":[1,2,17,18]},{"method":"POST","url":"/company_locator/open_in_maps","userStoryIndex":[1,2,17,18]}],"name":"area_management","type":"backend"},{"name":"frontend","pages":[{"name":"Homepage","userStoryIndex":[]},{"name":"Company List","userStoryIndex":[1,2,3,4,17,18,19,20]},{"name":"Company Details","userStoryIndex":[1,2,3,4,17,18,19,20]},{"name":"Map Integration","userStoryIndex":[1,2,3,4,17,18,19,20]}],"type":"frontend"}],"userStories":[1,2,3,4,17,18,19,20,22,23,24]},{"name":"User_Management","services":[{"endpoints":[{"method":"POST","url":"/user_admin/register","userStoryIndex":[1,17]},{"method":"POST","url":"/user_admin/login","userStoryIndex":[2,18,22]},{"method":"POST","url":"/user_admin/logout","userStoryIndex":[4,20,24]},{"method":"GET","url":"/user_admin/users","userStoryIndex":[]},{"method":"GET","url":"/user_admin/user/{id}","userStoryIndex":[]},{"method":"PUT","url":"/user_admin/user/{id}/role","userStoryIndex":[]},{"method":"DELETE","url":"/user_admin/user/{id}","userStoryIndex":[]},{"method":"POST","url":"/user_admin/audit","userStoryIndex":[]}],"name":"user_admin","type":"backend"},{"name":"user_storage","type":"database"},{"name":"activity_logger","type":"middleware"}],"userStories":[1,2,3,4,17,18,19,20,22,23,24]},{"name":"Area_Management","services":[{"endpoints":[{"method":"GET","url":"/areas","userStoryIndex":[30]},{"method":"GET","url":"/areas/{areaId}/companies","userStoryIndex":[31]},{"method":"POST","url":"/areas","userStoryIndex":[35]},{"method":"DELETE","url":"/areas/{areaId}","userStoryIndex":[39]}],"name":"area_management","type":"backend"},{"name":"area_database","type":"database"},{"name":"area_api","type":"middleware"}],"userStories":[30,31,35,39]},{"name":"Frontend","services":[{"name":"frontend","pages":[{"name":"Homepage","userStoryIndex":[]},{"name":"Registration","userStoryIndex":[]},{"name":"Login","userStoryIndex":[]},{"name":"Product Search","userStoryIndex":[]},{"name":"Product Details","userStoryIndex":[]},{"name":"Shopping Cart","userStoryIndex":[]},{"name":"Order History","userStoryIndex":[]},{"name":"Company Locator","userStoryIndex":[]},{"name":"User Management","userStoryIndex":[]},{"name":"Area Management","userStoryIndex":[]}],"type":"frontend"},{"endpoints":[{"method":"POST","url":"/frontend/register","userStoryIndex":[]},{"method":"POST","url":"/frontend/login","userStoryIndex":[]},{"method":"GET","url":"/frontend/products","userStoryIndex":[]},{"method":"GET","url":"/frontend/cart","userStoryIndex":[]},{"method":"POST","url":"/frontend/cart/add","userStoryIndex":[]},{"method":"GET","url":"/frontend/company-locator","userStoryIndex":[]},{"method":"GET","url":"/frontend/orders","userStoryIndex":[]}],"name":"auth","type":"backend"},{"endpoints":[{"method":"POST","url":"/frontend/register","userStoryIndex":[]},{"method":"POST","url":"/frontend/login","userStoryIndex":[]},{"method":"GET","url":"/frontend/products","userStoryIndex":[]},{"method":"GET","url":"/frontend/cart","userStoryIndex":[]},{"method":"POST","url":"/frontend/cart/add","userStoryIndex":[]},{"method":"POST","url":"/frontend/cart/remove","userStoryIndex":[]},{"method":"GET","url":"/frontend/company-locator","userStoryIndex":[]},{"method":"GET","url":"/frontend/search-products","userStoryIndex":[]}],"name":"product","type":"backend"},{"endpoints":[{"method":"POST","url":"/auth/register","userStoryIndex":[]},{"method":"POST","url":"/auth/login","userStoryIndex":[]},{"method":"GET","url":"/products","userStoryIndex":[]},{"method":"GET","url":"/cart","userStoryIndex":[]},{"method":"POST","url":"/cart/add","userStoryIndex":[]},{"method":"POST","url":"/cart/remove","userStoryIndex":[]},{"method":"GET","url":"/companies","userStoryIndex":[]},{"method":"GET","url":"/companies/map","userStoryIndex":[]},{"method":"PUT","url":"/users/update","userStoryIndex":[]},{"method":"DELETE","url":"/users/delete","userStoryIndex":[]}],"name":"cart","type":"backend"},{"endpoints":[{"method":"POST","url":"/frontend/register","userStoryIndex":[]},{"method":"POST","url":"/frontend/login","userStoryIndex":[]},{"method":"GET","url":"/frontend/products","userStoryIndex":[]},{"method":"GET","url":"/frontend/cart","userStoryIndex":[]},{"method":"POST","url":"/frontend/add-to-cart","userStoryIndex":[]},{"method":"GET","url":"/frontend/companies","userStoryIndex":[]}],"name":"company_locator","type":"backend"},{"endpoints":[{"method":"POST","url":"/frontend/register","userStoryIndex":[]},{"method":"POST","url":"/frontend/login","userStoryIndex":[]},{"method":"GET","url":"/frontend/products","userStoryIndex":[]},{"method":"GET","url":"/frontend/cart","userStoryIndex":[]},{"method":"POST","url":"/frontend/cart/add","userStoryIndex":[]},{"method":"POST","url":"/frontend/cart/remove","userStoryIndex":[]},{"method":"GET","url":"/frontend/companies","userStoryIndex":[]},{"method":"GET","url":"/frontend/areas","userStoryIndex":[]}],"name":"user_management","type":"backend"},{"endpoints":[{"method":"POST","url":"/api/auth/register","userStoryIndex":[]},{"method":"POST","url":"/api/auth/login","userStoryIndex":[]},{"method":"GET","url":"/api/products","userStoryIndex":[]},{"method":"GET","url":"/api/cart","userStoryIndex":[]},{"method":"POST","url":"/api/cart/add","userStoryIndex":[]},{"method":"POST","url":"/api/cart/remove","userStoryIndex":[]},{"method":"GET","url":"/api/companies","userStoryIndex":[]},{"method":"GET","url":"/api/companies/:id","userStoryIndex":[]}],"name":"area_management","type":"backend"}],"userStories":[]}],"name":"NFFH"},{"containers":[{"name":"User_Authentication","services":[{"endpoints":[{"method":"POST","url":"/auth/register","userStoryIndex":[1]},{"method":"POST","url":"/auth/login","userStoryIndex":[3]},{"method":"POST","url":"/auth/logout","userStoryIndex":[2]},{"method":"PUT","url":"/auth/user_info","userStoryIndex":[4]}],"name":"auth_manager","type":"backend"},{"name":"user_storage","type":"database"},{"name":"oauth_integration","type":"middleware"}],"userStories":[1,2,3,30]},{"name":"Insertions_Management","services":[{"endpoints":[{"method":"POST","url":"/insertions","userStoryIndex":[4]},{"method":"DELETE","url":"/insertions/{id}","userStoryIndex":[9]},{"method":"PUT","url":"/insertions/{id}","userStoryIndex":[10]},{"method":"POST","url":"/insertions/{id}/boxes","userStoryIndex":[31]}],"name":"insertion_manager","type":"backend"},{"name":"insertion_storage","type":"database"}],"userStories":[4,9,10,31]},{"name":"Home_Page","services":[{"name":"frontend","pages":[{"name":"Home Page","userStoryIndex":[5]},{"name":"Farmer Page","userStoryIndex":[13]}],"type":"frontend"},{"name":"farmer_info","type":"middleware"},{"name":"user_auth","type":"middleware"},{"name":"insertion_access","type":"middleware"}],"userStories":[5,13]},{"name":"Calendar_and_Seasonal_Food","services":[{"endpoints":[{"method":"GET","url":"/seasonal_food_calendar","userStoryIndex":[7]},{"method":"POST","url":"/seasonal_food_calendar/booking","userStoryIndex":[18]}],"name":"seasonal_food_calendar","type":"backend"},{"endpoints":[{"method":"GET","url":"/seasonal_food_calendar","userStoryIndex":[7]},{"method":"POST","url":"/product_booking","userStoryIndex":[18]}],"name":"product_booking","type":"backend"},{"name":"external_data_integration","type":"middleware"}],"userStories":[7,18]},{"name":"Cart_Management","services":[{"endpoints":[{"method":"POST","url":"/cart/add","userStoryIndex":[14]},{"method":"DELETE","url":"/cart/remove","userStoryIndex":[15]},{"method":"POST","url":"/cart/generateOrder","userStoryIndex":[16]},{"method":"GET","url":"/cart/view","userStoryIndex":[33]}],"name":"cart","type":"backend"},{"endpoints":[{"method":"POST","url":"/cart/add","userStoryIndex":[14]},{"method":"DELETE","url":"/cart/remove","userStoryIndex":[15]},{"method":"POST","url":"/cart/generateOrder","userStoryIndex":[16]},{"method":"GET","url":"/cart/view","userStoryIndex":[33]}],"name":"order_processing","type":"backend"},{"endpoints":[{"method":"POST","url":"/cart/add","userStoryIndex":[14]},{"method":"DELETE","url":"/cart/remove","userStoryIndex":[15]},{"method":"POST","url":"/cart/checkout","userStoryIndex":[16]},{"method":"GET","url":"/cart/view","userStoryIndex":[33]}],"name":"session_management","type":"backend"},{"name":"inventory_check","type":"middleware"},{"name":"payment_integration","type":"middleware"}],"userStories":[14,15,16,33]},{"name":"Payment_Gateway","services":[{"endpoints":[{"method":"POST","url":"/payment/checkout","userStoryIndex":[17]},{"method":"GET","url":"/payment/status/{transaction_id}","userStoryIndex":[17]},{"method":"POST","url":"/payment/refund/{transaction_id}","userStoryIndex":[17]}],"name":"payment_processor","type":"backend"},{"name":"transaction_storage","type":"database"},{"name":"fraud_detection_connector","type":"middleware"}],"userStories":[17]},{"name":"Delivery","services":[{"endpoints":[{"method":"GET","url":"/delivery_management/rider/{riderId}/page","userStoryIndex":[25]},{"method":"POST","url":"/delivery_management/rider/{riderId}/availability","userStoryIndex":[26]},{"method":"PUT","url":"/delivery_management/order/{orderId}/status","userStoryIndex":[34]}],"name":"delivery_management","type":"backend"},{"endpoints":[{"method":"GET","url":"/delivery/rider-page","userStoryIndex":[25]},{"method":"POST","url":"/delivery/availability","userStoryIndex":[26]},{"method":"PUT","url":"/delivery/order-status","userStoryIndex":[34]}],"name":"rider_availability","type":"backend"},{"endpoints":[{"method":"GET","url":"/delivery","userStoryIndex":[25]},{"method":"POST","url":"/delivery/availability","userStoryIndex":[26]},{"method":"PUT","url":"/delivery/order/{orderId}/status","userStoryIndex":[34]}],"name":"order_status","type":"backend"},{"name":"delivery_history","type":"database"},{"name":"routing_service","type":"middleware"}],"userStories":[25,26,34]},{"name":"Subscription_Management","services":[{"endpoints":[{"method":"POST","url":"/subscription/subscribe","userStoryIndex":[19]},{"method":"GET","url":"/subscription/farmers","userStoryIndex":[20]},{"method":"POST","url":"/subscription/unsubscribe","userStoryIndex":[35]},{"method":"GET","url":"/subscription/notifications","userStoryIndex":[36]}],"name":"subscription_management","type":"backend"},{"name":"notification_service","type":"middleware"},{"endpoints":[{"method":"POST","url":"/subscriptions/subscribe","userStoryIndex":[19]},{"method":"GET","url":"/subscriptions","userStoryIndex":[20]},{"method":"POST","url":"/subscriptions/unsubscribe","userStoryIndex":[35]},{"method":"GET","url":"/notifications","userStoryIndex":[36]}],"name":"preferences_management","type":"backend"}],"userStories":[19,20,35,36]},{"name":"Order_History","services":[{"endpoints":[{"method":"GET","url":"/order_history/{customer_id}","userStoryIndex":[22]},{"method":"POST","url":"/order_history/{order_id}/comments","userStoryIndex":[23]}],"name":"order_management","type":"backend"},{"endpoints":[{"method":"GET","url":"/order_history/{customer_id}","userStoryIndex":[22]},{"method":"POST","url":"/order_history/comments","userStoryIndex":[23]}],"name":"comment_management","type":"backend"},{"name":"storage","type":"database"}],"userStories":[22,23]},{"name":"Frontend","services":[],"userStories":[]}],"name":"EFarmers"},{"containers":[{"name":"Authentication","services":[{"endpoints":[{"method":"POST","url":"/auth/register","userStoryIndex":[1,25]},{"method":"POST","url":"/auth/login","userStoryIndex":[2,26,14]},{"method":"POST","url":"/auth/logout","userStoryIndex":[]}],"name":"auth","type":"backend"},{"name":"storage","type":"database"}],"userStories":[1,2,25,26,14]},{"name":"UserProfile","services":[{"endpoints":[{"method":"GET","url":"/userProfile","userStoryIndex":[3,27]},{"method":"PUT","url":"/userProfile","userStoryIndex":[32,28]}],"name":"userProfileService","type":"backend"},{"name":"profileStorage","type":"database"},{"name":"externalAuthIntegration","type":"middleware"},{"name":"imageStorage","type":"hybrid"}],"userStories":[3,27,32,28]},{"name":"WorkerCatalogue","services":[{"endpoints":[{"method":"GET","url":"/workers","userStoryIndex":[4]},{"method":"GET","url":"/workers/:workerId","userStoryIndex":[5]},{"method":"GET","url":"/workers/:workerId/reviews","userStoryIndex":[35]}],"name":"workerCatalogue","type":"backend"},{"endpoints":[{"method":"GET","url":"/workers","userStoryIndex":[4]},{"method":"GET","url":"/workers/{worker_id}","userStoryIndex":[5]},{"method":"GET","url":"/workers/{worker_id}/reviews","userStoryIndex":[35]}],"name":"reviews","type":"backend"},{"endpoints":[{"method":"GET","url":"/workers","userStoryIndex":[4]},{"method":"GET","url":"/workers/{workerId}","userStoryIndex":[5]},{"method":"GET","url":"/workers/{workerId}/reviews","userStoryIndex":[35]}],"name":"profileManagement","type":"backend"},{"name":"communication","type":"middleware"},{"endpoints":[{"method":"GET","url":"/workers","userStoryIndex":[4]},{"method":"GET","url":"/workers/:workerId","userStoryIndex":[5]},{"method":"GET","url":"/workers/:workerId/reviews","userStoryIndex":[35]}],"name":"requestManagement","type":"backend"},{"endpoints":[{"method":"GET","url":"/workers","userStoryIndex":[4]},{"method":"GET","url":"/workers/{workerId}","userStoryIndex":[5]},{"method":"GET","url":"/workers/{workerId}/reviews","userStoryIndex":[35]}],"name":"authentication","type":"backend"},{"endpoints":[{"method":"GET","url":"/workerCatalogue","userStoryIndex":[4]},{"method":"GET","url":"/workerCatalogue/{workerId}","userStoryIndex":[5]},{"method":"GET","url":"/workerCatalogue/{workerId}/reviews","userStoryIndex":[35]}],"name":"adminManagement","type":"backend"},{"name":"externalAPIConnector","type":"middleware"},{"name":"frontend","pages":[{"name":"Worker Catalogue","userStoryIndex":[4]},{"name":"Worker Profile","userStoryIndex":[5]},{"name":"Worker Reviews","userStoryIndex":[35]}],"type":"frontend"}],"userStories":[4,5,35]},{"name":"RequestManagement","services":[{"endpoints":[{"method":"POST","url":"/requests/send","userStoryIndex":[6]},{"method":"GET","url":"/requests/my-requests","userStoryIndex":[7]},{"method":"DELETE","url":"/requests/{requestId}","userStoryIndex":[8]},{"method":"GET","url":"/requests/incoming","userStoryIndex":[23]},{"method":"PUT","url":"/requests/{requestId}/manage","userStoryIndex":[24]},{"method":"GET","url":"/admin/requests","userStoryIndex":[21]},{"method":"POST","url":"/admin/requests","userStoryIndex":[22]},{"method":"DELETE","url":"/admin/requests/{requestId}","userStoryIndex":[22]}],"name":"request_handler","type":"backend"},{"name":"request_storage","type":"database"},{"name":"request_notifications","type":"middleware"},{"endpoints":[{"method":"POST","url":"/requests/send","userStoryIndex":[6]},{"method":"GET","url":"/requests","userStoryIndex":[7]},{"method":"DELETE","url":"/requests/{requestId}","userStoryIndex":[8]},{"method":"GET","url":"/requests/incoming","userStoryIndex":[23]},{"method":"POST","url":"/requests/{requestId}/action","userStoryIndex":[24]},{"method":"GET","url":"/admin/requests","userStoryIndex":[21]},{"method":"POST","url":"/admin/requests","userStoryIndex":[22]},{"method":"DELETE","url":"/admin/requests/{requestId}","userStoryIndex":[22]}],"name":"request_admin","type":"backend"}],"userStories":[6,7,8,23,24,21,22]},{"name":"Communication","services":[{"endpoints":[{"method":"GET","url":"/communication/questions/:workerId","userStoryIndex":[9]},{"method":"POST","url":"/communication/questions","userStoryIndex":[10]},{"method":"POST","url":"/communication/answers","userStoryIndex":[33]}],"name":"message_service","type":"backend"},{"name":"notification_service","type":"middleware"},{"endpoints":[{"method":"GET","url":"/communication/questions/{workerId}","userStoryIndex":[9]},{"method":"POST","url":"/communication/questions","userStoryIndex":[10]},{"method":"POST","url":"/communication/answers","userStoryIndex":[33]}],"name":"analytics_service","type":"backend"}],"userStories":[9,10,33]},{"name":"Reviews","services":[{"endpoints":[{"method":"POST","url":"/reviews","userStoryIndex":[11]},{"method":"PUT","url":"/reviews/{reviewId}","userStoryIndex":[12]},{"method":"DELETE","url":"/reviews/{reviewId}","userStoryIndex":[12]},{"method":"DELETE","url":"/admin/reviews/{reviewId}","userStoryIndex":[31]}],"name":"reviews","type":"backend"},{"name":"storage","type":"database"}],"userStories":[11,12,31]},{"name":"AdminManagement","services":[{"endpoints":[{"method":"GET","url":"/admin/customers","userStoryIndex":[15]},{"method":"POST","url":"/admin/customers","userStoryIndex":[16]},{"method":"GET","url":"/admin/customers/{customerId}","userStoryIndex":[17]},{"method":"DELETE","url":"/admin/customers/{customerId}","userStoryIndex":[18]},{"method":"GET","url":"/admin/workers","userStoryIndex":[19]},{"method":"GET","url":"/admin/workers/{workerId}","userStoryIndex":[20]},{"method":"POST","url":"/admin/workers","userStoryIndex":[29]},{"method":"DELETE","url":"/admin/workers/{workerId}","userStoryIndex":[30]},{"method":"DELETE","url":"/admin/questions/{questionId}","userStoryIndex":[34]}],"name":"admin","type":"backend"},{"name":"storage","type":"database"},{"name":"emailNotification","type":"middleware"}],"userStories":[15,16,17,18,19,20,29,30,34]},{"name":"Frontend","services":[{"name":"frontend","pages":[{"name":"Homepage","userStoryIndex":[]},{"name":"Registration","userStoryIndex":[]},{"name":"Login","userStoryIndex":[]},{"name":"User Profile","userStoryIndex":[]},{"name":"Worker Catalogue","userStoryIndex":[]},{"name":"Request Management","userStoryIndex":[]},{"name":"Communication","userStoryIndex":[]},{"name":"Reviews","userStoryIndex":[]},{"name":"Admin Dashboard","userStoryIndex":[]}],"type":"frontend"},{"name":"auth","type":"middleware"},{"endpoints":[{"method":"GET","url":"/frontend/login","userStoryIndex":[]},{"method":"POST","url":"/frontend/api/auth/register","userStoryIndex":[]},{"method":"POST","url":"/frontend/api/auth/login","userStoryIndex":[]},{"method":"GET","url":"/frontend/api/userProfile","userStoryIndex":[]},{"method":"PUT","url":"/frontend/api/userProfile","userStoryIndex":[]},{"method":"GET","url":"/frontend/api/workerCatalogue","userStoryIndex":[]},{"method":"GET","url":"/frontend/api/requestManagement","userStoryIndex":[]},{"method":"POST","url":"/frontend/api/requestManagement","userStoryIndex":[]},{"method":"GET","url":"/frontend/api/communication","userStoryIndex":[]},{"method":"POST","url":"/frontend/api/reviews","userStoryIndex":[]},{"method":"PUT","url":"/frontend/api/reviews","userStoryIndex":[]},{"method":"DELETE","url":"/frontend/api/reviews","userStoryIndex":[]},{"method":"GET","url":"/frontend/admin","userStoryIndex":[]}],"name":"userProfile","type":"backend"},{"endpoints":[{"method":"GET","url":"/auth/login","userStoryIndex":[]},{"method":"POST","url":"/auth/register","userStoryIndex":[]},{"method":"GET","url":"/userProfile","userStoryIndex":[]},{"method":"PUT","url":"/userProfile","userStoryIndex":[]},{"method":"GET","url":"/workerCatalogue","userStoryIndex":[]},{"method":"GET","url":"/workerCatalogue/:id","userStoryIndex":[]},{"method":"POST","url":"/requestManagement","userStoryIndex":[]},{"method":"GET","url":"/communication","userStoryIndex":[]},{"method":"POST","url":"/communication","userStoryIndex":[]},{"method":"GET","url":"/reviews","userStoryIndex":[]},{"method":"POST","url":"/reviews","userStoryIndex":[]},{"method":"PUT","url":"/reviews/:id","userStoryIndex":[]},{"method":"DELETE","url":"/reviews/:id","userStoryIndex":[]}],"name":"workerCatalogue","type":"backend"},{"endpoints":[{"method":"GET","url":"/","userStoryIndex":[]},{"method":"POST","url":"/auth/register","userStoryIndex":[]},{"method":"POST","url":"/auth/login","userStoryIndex":[]},{"method":"GET","url":"/userProfile","userStoryIndex":[]},{"method":"PUT","url":"/userProfile","userStoryIndex":[]},{"method":"GET","url":"/workerCatalogue","userStoryIndex":[]},{"method":"GET","url":"/requestManagement","userStoryIndex":[]},{"method":"POST","url":"/requestManagement","userStoryIndex":[]},{"method":"DELETE","url":"/requestManagement/{requestId}","userStoryIndex":[]},{"method":"GET","url":"/communication","userStoryIndex":[]},{"method":"POST","url":"/communication","userStoryIndex":[]},{"method":"GET","url":"/reviews","userStoryIndex":[]},{"method":"POST","url":"/reviews","userStoryIndex":[]},{"method":"PUT","url":"/reviews/{reviewId}","userStoryIndex":[]},{"method":"DELETE","url":"/reviews/{reviewId}","userStoryIndex":[]},{"method":"GET","url":"/adminManagement","userStoryIndex":[]}],"name":"requestManagement","type":"backend"},{"endpoints":[{"method":"GET","url":"/","userStoryIndex":[]},{"method":"POST","url":"/auth/register","userStoryIndex":[]},{"method":"POST","url":"/auth/login","userStoryIndex":[]},{"method":"GET","url":"/userProfile","userStoryIndex":[]},{"method":"PUT","url":"/userProfile","userStoryIndex":[]},{"method":"GET","url":"/workerCatalogue","userStoryIndex":[]},{"method":"POST","url":"/requestManagement","userStoryIndex":[]},{"method":"GET","url":"/communication","userStoryIndex":[]},{"method":"POST","url":"/reviews","userStoryIndex":[]},{"method":"GET","url":"/reviews","userStoryIndex":[]},{"method":"DELETE","url":"/reviews/{id}","userStoryIndex":[]}],"name":"communication","type":"backend"},{"endpoints":[{"method":"GET","url":"/auth/login","userStoryIndex":[]},{"method":"POST","url":"/auth/register","userStoryIndex":[]},{"method":"GET","url":"/userProfile","userStoryIndex":[]},{"method":"PUT","url":"/userProfile","userStoryIndex":[]},{"method":"GET","url":"/workerCatalogue","userStoryIndex":[]},{"method":"GET","url":"/requestManagement","userStoryIndex":[]},{"method":"POST","url":"/requestManagement","userStoryIndex":[]},{"method":"DELETE","url":"/requestManagement/{requestId}","userStoryIndex":[]},{"method":"GET","url":"/communication","userStoryIndex":[]},{"method":"POST","url":"/communication","userStoryIndex":[]},{"method":"GET","url":"/reviews","userStoryIndex":[]},{"method":"POST","url":"/reviews","userStoryIndex":[]},{"method":"PUT","url":"/reviews/{reviewId}","userStoryIndex":[]},{"method":"DELETE","url":"/reviews/{reviewId}","userStoryIndex":[]}],"name":"reviews","type":"backend"},{"endpoints":[{"method":"GET","url":"/","userStoryIndex":[]},{"method":"POST","url":"/auth/register","userStoryIndex":[]},{"method":"POST","url":"/auth/login","userStoryIndex":[]},{"method":"GET","url":"/userProfile","userStoryIndex":[]},{"method":"PUT","url":"/userProfile","userStoryIndex":[]},{"method":"GET","url":"/workerCatalogue","userStoryIndex":[]},{"method":"GET","url":"/requestManagement","userStoryIndex":[]},{"method":"POST","url":"/requestManagement","userStoryIndex":[]},{"method":"DELETE","url":"/requestManagement/{requestId}","userStoryIndex":[]},{"method":"GET","url":"/communication","userStoryIndex":[]},{"method":"POST","url":"/communication","userStoryIndex":[]},{"method":"GET","url":"/reviews","userStoryIndex":[]},{"method":"POST","url":"/reviews","userStoryIndex":[]},{"method":"PUT","url":"/reviews/{reviewId}","userStoryIndex":[]},{"method":"DELETE","url":"/reviews/{reviewId}","userStoryIndex":[]},{"method":"GET","url":"/adminManagement/users","userStoryIndex":[]},{"method":"POST","url":"/adminManagement/users","userStoryIndex":[]},{"method":"DELETE","url":"/adminManagement/users/{userId}","userStoryIndex":[]}],"name":"adminManagement","type":"backend"}],"userStories":[]}],"name":"RentYourExpert"},{"containers":[{"name":"User_Authentication","services":[{"endpoints":[{"method":"POST","url":"/auth/register","userStoryIndex":[1]},{"method":"POST","url":"/auth/login","userStoryIndex":[2,14]},{"method":"GET","url":"/auth/profile","userStoryIndex":[3,19]},{"method":"POST","url":"/auth/logout","userStoryIndex":[8,13]}],"name":"auth","type":"backend"},{"name":"session_manager","type":"middleware"},{"endpoints":[{"method":"POST","url":"/auth/register","userStoryIndex":[1]},{"method":"POST","url":"/auth/login","userStoryIndex":[2,14]},{"method":"GET","url":"/auth/profile","userStoryIndex":[3,19]},{"method":"POST","url":"/auth/logout","userStoryIndex":[8,13]}],"name":"user_profile","type":"backend"}],"userStories":[1,2,3,8,13,14,19]},{"name":"Shopping_Cart","services":[{"endpoints":[{"method":"GET","url":"/cart","userStoryIndex":[4]},{"method":"POST","url":"/cart/add","userStoryIndex":[24]},{"method":"DELETE","url":"/cart/clear","userStoryIndex":[25]}],"name":"cart_manager","type":"backend"},{"name":"cart_storage","type":"database"}],"userStories":[4,24,25]},{"name":"Product_Catalog","services":[{"endpoints":[{"method":"GET","url":"/products","userStoryIndex":[11,21]},{"method":"GET","url":"/products/{id}","userStoryIndex":[12,22]},{"method":"GET","url":"/products/search","userStoryIndex":[6,18]},{"method":"GET","url":"/products/sort","userStoryIndex":[5,17]}],"name":"product_management","type":"backend"},{"name":"search_service","type":"middleware"},{"endpoints":[{"method":"GET","url":"/products","userStoryIndex":[11,21]},{"method":"GET","url":"/products/search","userStoryIndex":[6,18]},{"method":"GET","url":"/products/{id}","userStoryIndex":[12,22]},{"method":"GET","url":"/products/sort","userStoryIndex":[5,17]}],"name":"sorting_service","type":"backend"},{"endpoints":[{"method":"GET","url":"/products","userStoryIndex":[11,21]},{"method":"GET","url":"/products/{productId}","userStoryIndex":[12,22]},{"method":"GET","url":"/products/search","userStoryIndex":[6,18]},{"method":"GET","url":"/products/sort","userStoryIndex":[5,17]}],"name":"product_details","type":"backend"},{"endpoints":[{"method":"GET","url":"/products","userStoryIndex":[11,21]},{"method":"GET","url":"/products/{productId}","userStoryIndex":[12,22]},{"method":"GET","url":"/products/search","userStoryIndex":[6,18]},{"method":"GET","url":"/products/sort","userStoryIndex":[5,17]}],"name":"inventory_service","type":"backend"},{"endpoints":[{"method":"GET","url":"/products","userStoryIndex":[11,21]},{"method":"GET","url":"/products/search","userStoryIndex":[6,18]},{"method":"GET","url":"/products/{id}","userStoryIndex":[12,22]},{"method":"GET","url":"/products/sort","userStoryIndex":[5,17]}],"name":"feedback_service","type":"backend"}],"userStories":[5,6,11,12,17,18,21,22]},{"name":"Payment_Processing","services":[{"endpoints":[{"method":"POST","url":"/payment/checkout","userStoryIndex":[7]}],"name":"payment","type":"backend"},{"name":"transaction_storage","type":"database"},{"name":"payment_gateway_integration","type":"middleware"}],"userStories":[7]},{"name":"Order_Tracking","services":[{"endpoints":[{"method":"GET","url":"/order_tracker/orders/{order_id}","userStoryIndex":[9]}],"name":"order_tracker","type":"backend"},{"name":"order_storage","type":"database"},{"name":"shipment_tracking","type":"middleware"}],"userStories":[9]},{"name":"About_Us","services":[{"name":"about_us","pages":[{"name":"About Us","userStoryIndex":[10,20]}],"type":"frontend"}],"userStories":[10,20]},{"name":"Contact_Support","services":[{"endpoints":[{"method":"POST","url":"/inquiry_management/contact","userStoryIndex":[23]},{"method":"GET","url":"/inquiry_management/inquiries/{customerId}","userStoryIndex":[23]},{"method":"GET","url":"/inquiry_management/inquiry/{inquiryId}","userStoryIndex":[23]}],"name":"inquiry_management","type":"backend"},{"name":"notification_service","type":"middleware"},{"name":"inquiry_storage","type":"database"}],"userStories":[23]},{"name":"Frontend","services":[{"name":"frontend_service","pages":[{"name":"Homepage","userStoryIndex":[]},{"name":"Registration","userStoryIndex":["As a Customer, I want to be able to register in order to have an account."]},{"name":"Login","userStoryIndex":["As a Customer, I want to be able to login.","As a Merchant, I want to be able to login to the Merchant page."]},{"name":"Profile","userStoryIndex":["As a Customer, I want to be able to have access to my profile.","As a Merchant, I want to access to my profile."]},{"name":"Logout","userStoryIndex":["As a Customer, I want to logout from the profile by clicking on a button."]},{"name":"Shopping Cart","userStoryIndex":[]},{"name":"About Us","userStoryIndex":[]},{"name":"Contact Support","userStoryIndex":[]},{"name":"Checkout","userStoryIndex":[]},{"name":"Order Tracking","userStoryIndex":[]}],"type":"frontend"},{"name":"user_auth","type":"middleware"},{"name":"shopping_cart_service","type":"middleware"},{"name":"product_catalog_service","type":"middleware"},{"name":"payment_service","type":"middleware"},{"name":"order_tracking_service","type":"middleware"},{"name":"contact_support_service","type":"middleware"},{"name":"about_us_service","type":"middleware"}],"userStories":[]}],"name":"CDC"},{
+    "containers": [
+        {
+            "name": "User_Authentication",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/auth/register",
+                            "userStoryIndex": [
+                                1
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/auth/login",
+                            "userStoryIndex": [
+                                2
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/auth/logout",
+                            "userStoryIndex": [
+                                3
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/auth/reset-password",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/auth/delete-account",
+                            "userStoryIndex": [
+                                7
+                            ]
+                        }
+                    ],
+                    "name": "auth",
+                    "type": "backend"
+                },
+                {
+                    "name": "storage",
+                    "type": "database"
+                },
+                {
+                    "name": "email_service",
+                    "type": "middleware"
+                }
+            ],
+            "userStories": [
+                1,
+                2,
+                3,
+                6,
+                7
+            ]
+        },
+        {
+            "name": "User_Profile",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/profile/view",
+                            "userStoryIndex": [
+                                4
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/profile/update",
+                            "userStoryIndex": [
+                                5
+                            ]
+                        }
+                    ],
+                    "name": "profile_handler",
+                    "type": "backend"
+                },
+                {
+                    "name": "storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                4,
+                5
+            ]
+        },
+        {
+            "name": "Notifications",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/notifications",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/notifications",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/notifications/{id}",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/notifications/{id}",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "name": "notification_manager",
+                    "type": "backend"
+                },
+                {
+                    "name": "notification_storage",
+                    "type": "database"
+                },
+                {
+                    "name": "notification_broker",
+                    "type": "middleware"
+                }
+            ],
+            "userStories": [
+                8
+            ]
+        },
+        {
+            "name": "Personal_Tasks",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/personal_tasks/{task_id}",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/personal_tasks/{task_id}",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/personal_tasks/{task_id}/complete",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        }
+                    ],
+                    "name": "auth",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/personal_tasks/:taskId",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/personal_tasks/:taskId",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/personal_tasks/:taskId/complete",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        }
+                    ],
+                    "name": "user_profile",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/personal_tasks/{id}",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/personal_tasks/{id}",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/personal_tasks/{id}/complete",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        }
+                    ],
+                    "name": "notifications",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/personal_tasks/{task_id}",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/personal_tasks/{task_id}",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/personal_tasks/{task_id}/complete",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        }
+                    ],
+                    "name": "personal_tasks",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/personal_tasks/{taskId}",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/personal_tasks/{taskId}",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/personal_tasks/{taskId}/complete",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        }
+                    ],
+                    "name": "team_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/personal_tasks/:taskId",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/personal_tasks/:taskId",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/personal_tasks/:taskId/complete",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        }
+                    ],
+                    "name": "group_chat",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/personal_tasks/:taskId",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/personal_tasks/:taskId",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/personal_tasks/:taskId/complete",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        }
+                    ],
+                    "name": "events",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/personal_tasks/{taskId}",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/personal_tasks/{taskId}",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "method": "PATCH",
+                            "url": "/personal_tasks/{taskId}/complete",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        }
+                    ],
+                    "name": "polls",
+                    "type": "backend"
+                },
+                {
+                    "name": "frontend",
+                    "pages": [
+                        {
+                            "name": "Task Overview",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "name": "Create Task",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        },
+                        {
+                            "name": "Modify Task",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "name": "Delete Task",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        },
+                        {
+                            "name": "Task Completion",
+                            "userStoryIndex": [
+                                14
+                            ]
+                        }
+                    ],
+                    "type": "frontend"
+                }
+            ],
+            "userStories": [
+                9,
+                11,
+                12,
+                13,
+                14
+            ]
+        },
+        {
+            "name": "Team_Management",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/teams/create",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/join",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/teams",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/leave",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/{teamId}/admin",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/teams/{teamId}/admin/{memberId}",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/teams/{teamId}",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/teams/{teamId}",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        }
+                    ],
+                    "name": "user_authentication",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/team/create",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team/join",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/team/list",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team/leave",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team/admin/add",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team/admin/remove",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/team/edit",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/team/delete",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        }
+                    ],
+                    "name": "user_profile",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/teams/create",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/join",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/teams",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/leave",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/{teamId}/admins",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/teams/{teamId}/admins/{userId}",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/teams/{teamId}",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/teams/{teamId}",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        }
+                    ],
+                    "name": "notifications",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/team/create",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team/join",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/teams",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team/leave",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team/admin/add",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team/admin/remove",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/team/edit",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/team/delete",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        }
+                    ],
+                    "name": "personal_tasks",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/teams/create",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/join",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/teams/list",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/leave",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/admin/add",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/admin/remove",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/teams/edit",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/teams/delete",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        }
+                    ],
+                    "name": "team_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/team/create",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team/join",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/team/list",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/team/leave",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team/admin/appoint",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team/admin/remove",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/team/edit",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/team/delete",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        }
+                    ],
+                    "name": "group_chat",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/teams",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/join",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/teams",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/leave",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/{teamId}/admins",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/teams/{teamId}/admins/{userId}",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/teams/{teamId}",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/teams/{teamId}",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        }
+                    ],
+                    "name": "events",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/teams",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/join",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/teams",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/teams/{teamId}/leave",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams/{teamId}/admins",
+                            "userStoryIndex": [
+                                19
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/teams/{teamId}/admins/{userId}",
+                            "userStoryIndex": [
+                                20
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/teams/{teamId}",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/teams/{teamId}",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        }
+                    ],
+                    "name": "polls",
+                    "type": "backend"
+                },
+                {
+                    "name": "frontend",
+                    "pages": [
+                        {
+                            "name": "Create Team",
+                            "userStoryIndex": [
+                                15
+                            ]
+                        },
+                        {
+                            "name": "Join Team",
+                            "userStoryIndex": [
+                                16
+                            ]
+                        },
+                        {
+                            "name": "My Teams",
+                            "userStoryIndex": [
+                                17
+                            ]
+                        },
+                        {
+                            "name": "Leave Team",
+                            "userStoryIndex": [
+                                18
+                            ]
+                        },
+                        {
+                            "name": "Manage Team Administrators",
+                            "userStoryIndex": [
+                                19,
+                                20
+                            ]
+                        },
+                        {
+                            "name": "Edit Team",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "name": "Delete Team",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        }
+                    ],
+                    "type": "frontend"
+                }
+            ],
+            "userStories": [
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                25,
+                26
+            ]
+        },
+        {
+            "name": "Group_Chat",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/chat/sendMessage",
+                            "userStoryIndex": [
+                                21
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/chat/getMessages",
+                            "userStoryIndex": [
+                                21
+                            ]
+                        }
+                    ],
+                    "name": "chat_service",
+                    "type": "backend"
+                },
+                {
+                    "name": "message_storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                21
+            ]
+        },
+        {
+            "name": "Events",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/events/create",
+                            "userStoryIndex": [
+                                27
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/events/response",
+                            "userStoryIndex": [
+                                28
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/events/update",
+                            "userStoryIndex": [
+                                29
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/events/delete",
+                            "userStoryIndex": [
+                                30
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/events/completion-status",
+                            "userStoryIndex": [
+                                31
+                            ]
+                        }
+                    ],
+                    "name": "event_manager",
+                    "type": "backend"
+                },
+                {
+                    "name": "event_storage",
+                    "type": "database"
+                },
+                {
+                    "name": "notification_service",
+                    "type": "middleware"
+                }
+            ],
+            "userStories": [
+                27,
+                28,
+                29,
+                30,
+                31
+            ]
+        },
+        {
+            "name": "Polls",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/polls/create",
+                            "userStoryIndex": [
+                                22
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/polls/results/{poll_id}",
+                            "userStoryIndex": [
+                                23
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/polls/vote",
+                            "userStoryIndex": [
+                                24
+                            ]
+                        }
+                    ],
+                    "name": "poll_manager",
+                    "type": "backend"
+                },
+                {
+                    "name": "poll_storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                22,
+                23,
+                24
+            ]
+        },
+        {
+            "name": "Frontend",
+            "services": [
+                {
+                    "name": "frontend",
+                    "pages": [
+                        {
+                            "name": "Dashboard",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Login",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Registration",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "User Profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Notifications",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Personal Tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Team Management",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Group Chat",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Polls",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Task Details",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "type": "frontend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/api/auth/login",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/auth/register",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/user/profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/api/user/profile/update",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/notifications",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/tasks/add",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/api/tasks/delete",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/teams/create",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/teams",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/chat/messages",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/chat/send",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/events/create",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/polls",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/polls/vote",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "name": "user_authentication",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/user_profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/user_profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/notifications",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/personal_tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/personal_tasks/{taskId}",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/personal_tasks/{taskId}",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/team_management",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/group_chat",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/polls",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/polls",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "name": "user_profile",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/api/notifications",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/user/auth/login",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/user/profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/personal/tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/team",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/chat",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/polls",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "name": "notifications",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/api/login",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/register",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/user/profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/notifications",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/personal_tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/personal_tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/api/personal_tasks/{taskId}",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/api/personal_tasks/{taskId}",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/team",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/team",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/polls",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/polls",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/chat",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "name": "personal_tasks",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/api/auth/login",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/auth/register",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/user/profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/notifications",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/personal_tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/team/create",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/chat",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/polls",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "name": "team_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/frontend/login",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/frontend/register",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/frontend/user-profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/frontend/notifications",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/frontend/personal-tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/frontend/team-management",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/frontend/group-chat",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/frontend/events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/frontend/polls",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "name": "group_chat",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/api/user/authentication/login",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/user/authentication/register",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/user/profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/api/user/profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/notifications",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/personal_tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/personal_tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/team_management",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/api/events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/group_chat",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/api/polls",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "name": "events",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/auth/login",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/auth/register",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/notifications",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/tasks",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/teams",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/chat",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/events",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/polls",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/polls/results",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "name": "polls",
+                    "type": "backend"
+                }
+            ],
+            "userStories": []
+        }
+    ],
+    "name": "Teamify"
+},{"containers":[{"name":"User_Authentication","services":[{"endpoints":[{"method":"POST","url":"/auth/register","userStoryIndex":[1]},{"method":"POST","url":"/auth/login","userStoryIndex":[6]},{"method":"POST","url":"/auth/logout","userStoryIndex":[7]}],"name":"auth","type":"backend"},{"name":"storage","type":"database"},{"name":"session_manager","type":"middleware"}],"userStories":[1,6,7]},{"name":"Recipe_Search","services":[{"endpoints":[{"method":"GET","url":"/recipe_search/search","userStoryIndex":[2]},{"method":"GET","url":"/recipe_search/recipe/{id}","userStoryIndex":[3]}],"name":"recipe_search","type":"backend"},{"name":"recipe_database","type":"database"},{"name":"external_recipe_api","type":"middleware"}],"userStories":[2,3]},{"name":"Ingredient_Info","services":[{"endpoints":[{"method":"GET","url":"/ingredients/{ingredient_name}","userStoryIndex":[4]}],"name":"ingredient_service","type":"backend"},{"name":"ingredient_storage","type":"database"},{"name":"ingredient_api","type":"middleware"}],"userStories":[4]},{"name":"Recipe_Suggestions","services":[{"endpoints":[{"method":"GET","url":"/suggestions/recipes","userStoryIndex":[5]},{"method":"POST","url":"/suggestions/preferences","userStoryIndex":[5]}],"name":"suggestion_engine","type":"backend"},{"name":"recipe_storage","type":"database"},{"name":"external_recipe_api","type":"middleware"}],"userStories":[5]},{"name":"User_Profile","services":[{"endpoints":[{"method":"GET","url":"/user_profile/me","userStoryIndex":[8]}],"name":"user_management","type":"backend"},{"name":"storage","type":"database"}],"userStories":[8,12,13,14]},{"name":"Calendar_Management","services":[{"endpoints":[{"method":"POST","url":"/calendar_events/create","userStoryIndex":[9,11]},{"method":"DELETE","url":"/calendar_events/delete/:eventId","userStoryIndex":[10]},{"method":"PUT","url":"/calendar_events/update/:eventId","userStoryIndex":[11]},{"method":"GET","url":"/calendar_events/user/:userId","userStoryIndex":[9,10,11]}],"name":"calendar_events","type":"backend"},{"name":"calendar_storage","type":"database"},{"name":"notification_service","type":"middleware"}],"userStories":[9,10,11]},{"name":"Frontend","services":[{"name":"frontend","pages":[{"name":"Homepage","userStoryIndex":[]},{"name":"Recipe Search","userStoryIndex":[]},{"name":"Recipe Favorites","userStoryIndex":[]},{"name":"User Registration","userStoryIndex":[]},{"name":"User Login","userStoryIndex":[]},{"name":"User Profile","userStoryIndex":[]},{"name":"Recipe Suggestions","userStoryIndex":[]},{"name":"Calendar Events","userStoryIndex":[]},{"name":"Recipe Detail","userStoryIndex":[]},{"name":"Feedback Section","userStoryIndex":[]}],"type":"frontend"},{"name":"auth_service","type":"middleware"},{"name":"recipe_search_service","type":"middleware"},{"name":"recipe_suggestions_service","type":"middleware"},{"name":"user_profile_service","type":"middleware"},{"name":"calendar_management_service","type":"middleware"}],"userStories":[]}],"name":"RecipeCove"},{"containers":[{"name":"Web_Application","services":[{"name":"frontend","pages":[{"name":"Homepage","userStoryIndex":[1]},{"name":"Event List","userStoryIndex":[4]},{"name":"Event Details","userStoryIndex":[]},{"name":"User Login","userStoryIndex":[]},{"name":"User Profile","userStoryIndex":[]},{"name":"Admin Dashboard","userStoryIndex":[]}],"type":"frontend"},{"endpoints":[{"method":"GET","url":"/","userStoryIndex":[1]},{"method":"GET","url":"/events","userStoryIndex":[4]}],"name":"auth","type":"backend"},{"endpoints":[{"method":"GET","url":"/","userStoryIndex":[1]},{"method":"GET","url":"/events","userStoryIndex":[4]}],"name":"user_management","type":"backend"},{"endpoints":[{"method":"GET","url":"/","userStoryIndex":[1]},{"method":"GET","url":"/events","userStoryIndex":[4]}],"name":"event_management","type":"backend"},{"endpoints":[{"method":"GET","url":"/webapp","userStoryIndex":[1]},{"method":"GET","url":"/webapp/events","userStoryIndex":[4]}],"name":"admin_management","type":"backend"}],"userStories":[1,4]},{"name":"Authentication","services":[{"endpoints":[{"method":"POST","url":"/auth/register","userStoryIndex":[2]},{"method":"POST","url":"/auth/login","userStoryIndex":[3]},{"method":"POST","url":"/auth/logout","userStoryIndex":[12,16,18]},{"method":"POST","url":"/auth/recover-password","userStoryIndex":[20]}],"name":"auth","type":"backend"},{"name":"storage","type":"database"}],"userStories":[2,3,12,16,18,20]},{"name":"User_Management","services":[{"endpoints":[{"method":"GET","url":"/user_profile","userStoryIndex":[5]},{"method":"POST","url":"/favorites","userStoryIndex":[6]},{"method":"GET","url":"/booked_presales","userStoryIndex":[7]},{"method":"GET","url":"/purchased_tickets","userStoryIndex":[8]},{"method":"POST","url":"/ticket_booking/presale","userStoryIndex":[9]},{"method":"POST","url":"/ticket_booking/purchase","userStoryIndex":[10]},{"method":"POST","url":"/payment","userStoryIndex":[11]}],"name":"user_profile","type":"backend"},{"endpoints":[{"method":"GET","url":"/user/profile","userStoryIndex":[5]},{"method":"POST","url":"/user/favorites","userStoryIndex":[6]},{"method":"GET","url":"/user/booked-presales","userStoryIndex":[7]},{"method":"GET","url":"/user/purchased-tickets","userStoryIndex":[8]},{"method":"POST","url":"/user/book-pre-sale","userStoryIndex":[9]},{"method":"POST","url":"/user/buy-ticket","userStoryIndex":[10]},{"method":"POST","url":"/user/payment","userStoryIndex":[11]}],"name":"favorites","type":"backend"},{"endpoints":[{"method":"GET","url":"/user_management/profile","userStoryIndex":[5]},{"method":"POST","url":"/user_management/favorites","userStoryIndex":[6]},{"method":"GET","url":"/user_management/booked_presales","userStoryIndex":[7]},{"method":"GET","url":"/user_management/purchased_tickets","userStoryIndex":[8]},{"method":"POST","url":"/user_management/booked_presales","userStoryIndex":[9]},{"method":"POST","url":"/user_management/purchase_ticket","userStoryIndex":[10]},{"method":"POST","url":"/user_management/payment","userStoryIndex":[11]}],"name":"booked_presales","type":"backend"},{"endpoints":[{"method":"GET","url":"/user/profile","userStoryIndex":[5]},{"method":"POST","url":"/user/favorites","userStoryIndex":[6]},{"method":"GET","url":"/user/booked-presales","userStoryIndex":[7]},{"method":"GET","url":"/user/purchased-tickets","userStoryIndex":[8]},{"method":"POST","url":"/user/book-presale","userStoryIndex":[9]},{"method":"POST","url":"/user/buy-ticket","userStoryIndex":[10]},{"method":"POST","url":"/user/pay-ticket","userStoryIndex":[11]}],"name":"purchased_tickets","type":"backend"},{"endpoints":[{"method":"GET","url":"/user/profile","userStoryIndex":[5]},{"method":"POST","url":"/user/favorites","userStoryIndex":[6]},{"method":"GET","url":"/user/booked-presales","userStoryIndex":[7]},{"method":"GET","url":"/user/purchased-tickets","userStoryIndex":[8]},{"method":"POST","url":"/user/booked-presales","userStoryIndex":[9]},{"method":"POST","url":"/user/purchased-tickets","userStoryIndex":[10]},{"method":"POST","url":"/user/payments","userStoryIndex":[11]}],"name":"ticket_booking","type":"backend"},{"name":"payment","type":"middleware"},{"name":"notification","type":"middleware"}],"userStories":[5,6,7,8,9,10,11]},{"name":"Event_Management","services":[{"endpoints":[{"method":"GET","url":"/events/my-events","userStoryIndex":[13]},{"method":"POST","url":"/events/new","userStoryIndex":[14]},{"method":"GET","url":"/events/my-page","userStoryIndex":[15]}],"name":"event_manager","type":"backend"},{"name":"event_storage","type":"database"},{"name":"notification_service","type":"middleware"},{"name":"payment_gateway","type":"middleware"}],"userStories":[13,14,15]},{"name":"Admin_Management","services":[{"endpoints":[{"method":"POST","url":"/admin/add_manager","userStoryIndex":[17]},{"method":"GET","url":"/admin/me","userStoryIndex":[19]}],"name":"admin_service","type":"backend"},{"name":"storage_service","type":"database"},{"name":"notification_service","type":"middleware"}],"userStories":[17,19]},{"name":"Frontend","services":[{"name":"web_app","pages":[{"name":"Homepage","userStoryIndex":[]},{"name":"Event Listings","userStoryIndex":[]},{"name":"Event Details","userStoryIndex":[]},{"name":"Login","userStoryIndex":[]},{"name":"Registration","userStoryIndex":[]},{"name":"User Profile","userStoryIndex":[]},{"name":"Ticket Purchase","userStoryIndex":[]},{"name":"Admin Dashboard","userStoryIndex":[]},{"name":"Event Proposal","userStoryIndex":[]}],"type":"frontend"},{"name":"user_auth","type":"middleware"},{"endpoints":[{"method":"GET","url":"/events","userStoryIndex":[]},{"method":"GET","url":"/events/:id","userStoryIndex":[]},{"method":"POST","url":"/tickets/purchase","userStoryIndex":[]},{"method":"GET","url":"/user/profile","userStoryIndex":[]},{"method":"GET","url":"/user/tickets","userStoryIndex":[]},{"method":"POST","url":"/event/propose","userStoryIndex":[]},{"method":"GET","url":"/user/authenticate","userStoryIndex":[]}],"name":"user_mgmt","type":"backend"},{"endpoints":[{"method":"GET","url":"/events","userStoryIndex":[]},{"method":"GET","url":"/events/:id","userStoryIndex":[]},{"method":"POST","url":"/purchase/ticket","userStoryIndex":[]},{"method":"POST","url":"/events/propose","userStoryIndex":[]},{"method":"GET","url":"/auth/login","userStoryIndex":[]},{"method":"GET","url":"/auth/logout","userStoryIndex":[]},{"method":"GET","url":"/user/profile","userStoryIndex":[]}],"name":"event_mgmt","type":"backend"},{"endpoints":[{"method":"GET","url":"/events","userStoryIndex":[]},{"method":"GET","url":"/events/:id","userStoryIndex":[]},{"method":"POST","url":"/tickets/purchase","userStoryIndex":[]},{"method":"POST","url":"/events/propose","userStoryIndex":[]},{"method":"GET","url":"/user/profile","userStoryIndex":[]},{"method":"GET","url":"/auth/check","userStoryIndex":[]}],"name":"admin_mgmt","type":"backend"}],"userStories":[]}],"name":"EventTicket"}]}
