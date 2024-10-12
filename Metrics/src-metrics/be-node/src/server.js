@@ -5,7 +5,7 @@ const benchmarkRoutes = require('./routes/benchmarkRoutes.js');
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json({ limit: '100Mb' }))
 const PORT = 5002;
 
 app.use(cors())
