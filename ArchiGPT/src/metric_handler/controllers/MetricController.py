@@ -113,7 +113,9 @@ def generationProcess(archiProject):
 
                         data = {'project_name': project_name, 'assistant': "ServiceEndpointGenerator", "container": container['name'], "service": service['name']}
                         temp_endpoints = []
-                        temp_endpoints = generationRequest("generation/generateService", data)
+                        # Keep generating the endpoints content while temp_endpoints is not correctly formatted
+                        while not temp_endpoints:
+                            temp_endpoints = generationRequest("generation/generateService", data)
 
                         archiProject["containers"][indexContainer]["services"].append({
                             "name": service['name'],
@@ -125,7 +127,9 @@ def generationProcess(archiProject):
 
                         data = {'project_name': project_name, 'assistant': "ServicePageGenerator", "container": container['name'], "service": service['name']}
                         temp_pages = []
-                        temp_pages = generationRequest("generation/generateService", data)
+                        # Keep generating the pages content while temp_pages is not correctly formatted
+                        while not temp_pages:
+                            temp_pages = generationRequest("generation/generateService", data)
 
                         archiProject["containers"][indexContainer]["services"].append({
                             "name": service['name'],
