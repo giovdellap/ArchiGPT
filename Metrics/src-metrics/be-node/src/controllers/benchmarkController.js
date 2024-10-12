@@ -19,6 +19,7 @@ const benchmark = ( async (req, res) => {
     runresult.runFinalIndex = calculateIndex(runresult.runFinalResults)
     benchmark.runsResults.push(runresult)
   }
+  
 
   benchmark.finalResults = calculateTotalResults(benchmark.runsResults)  
   benchmark.finalIndex = calculateIndex(benchmark.finalResults)

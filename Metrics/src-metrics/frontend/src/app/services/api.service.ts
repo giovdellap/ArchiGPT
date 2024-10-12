@@ -20,6 +20,10 @@ export class ApiService {
   }
 
   benchmark(request: MetricRequest) {
+    //const blob = new Blob([JSON.stringify(request)], { type : 'application/json' })
+    //const myFile = new File([blob], 'all.json', {
+      //type: blob.type,
+  //});
     return this.getLogObservable(
       this.http.post<BenchmarkResult>(this.url + "/metrics/benchmark", request)
     )
