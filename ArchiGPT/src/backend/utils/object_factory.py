@@ -17,15 +17,7 @@ def getBlankProjectSystem():
             {
                 'name': "User Interaction Analysis",
                 'message': "",
-            },
-            {
-                'name': "Match Missing User Stories",
-                'message': "",
-            },
-            {
-                'name': "Architectural Patterns",
-                'message': "",
-            },
+            }
         ],
     }
     
