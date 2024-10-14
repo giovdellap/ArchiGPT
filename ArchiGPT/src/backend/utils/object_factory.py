@@ -34,14 +34,6 @@ def getBlankProjectStatus():
                     'name': "User Interaction Analysis",
                     'status': "NO",
                 },
-                {
-                    'name': "Match Missing User Stories",
-                    'status': "NO",
-                },
-                {
-                    'name': "Architectural Patterns ",
-                    'status': "NO",
-                },
             ],
             'containers': [],
         },
