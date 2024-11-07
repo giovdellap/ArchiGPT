@@ -8,7 +8,7 @@ Sapienza University of Rome - 22/10/2024
 Della Pelle Giovanni  
 Facciolo Eugenio
 
-[Slides](https://docs.google.com/presentation/d/134gENh1FfvlDaoLxu25FJEi20qYff-HAR5uWL7yS630/edit?usp=sharing)
+[Slides](https://docs.google.com/presentation/d/134gENh1FfvlDaoLxu25FJEi20qYff-HAR5uWL7yS630/edit?usp=sharing)  
 The Thesis PDF is located in the main folder
 
 ### Repo Structure:
