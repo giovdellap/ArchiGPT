@@ -1,7 +1,8 @@
 # MASTER THESIS REPO
 
-## Sapienza  University of Rome - 22/10/2024
 ## ArchiGPT: An LLM-base Software for the generation of Software Architecture
+
+Sapienza University of Rome - 22/10/2024
 
 ## Students: 
 Della Pelle Giovanni  
