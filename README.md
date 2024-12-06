@@ -49,12 +49,15 @@ OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
 ![](utils/archigpt.mp4)
 
 
-## ArchiGPT architecture
+## Architecture
+![](utils/architecture.png)
 
-
-
-## Assistants prompt
+### Assistants prompt
 Prompts of the employed assistants are available [here](ArchiGPT/src/api_handler/resources) (the prompts are divided by their employed phase, i.e., `System`, `Container` and `Service`).
+
+
+## Infrastructure
+![](utils/infrastructure.png)
 
 
 ## Evaluation
