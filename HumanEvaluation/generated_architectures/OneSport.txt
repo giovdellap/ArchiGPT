@@ -1,0 +1,405 @@
+OneSport Project proposed by ArchiGPT-4o :
+
+# CONTAINERS:
+
+## CONTAINER NAME: user_authentication
+
+### USER STORIES:
+1) As a User, I want to be able to signup in order to have an account.
+2) As a User, I want to be able to login.
+3) As a User, I want to logout from the account by clicking on the Navbar.
+4) As a User, I want to be able to have access to my profile settings.
+5) As a User, I want to be able to delete my account by clicking on a button from the profile settings page.
+6) As a User, I want to be able to modify my email and password in order to change my credentials.
+
+### PORTS: 8000:8050
+     
+
+### DESCRIPTION: 
+The user_authentication container is responsible for managing the core functionalities related to user identity and access within the OneSport platform. Its primary purposes include handling the registration and creation of new user accounts, allowing existing users to log in and authenticate their sessions, and facilitating the secure logout process. Additionally, it manages user account settings, providing users with the capability to access and modify their personal profile information, including updating email and password credentials. The container also supports the deletion of user accounts, empowering users to remove their data from the platform if desired. These responsibilities ensure a seamless and secure user experience by controlling access and maintaining account integrity across the system, thereby playing a critical role in OneSport’s objective of providing a centralized and secure hub for sports news and events.
+
+### PERSISTANCE EVALUATION
+The user_authentication container needs to store data to manage users' registration, login sessions, and account settings effectively. Specifically, it needs to persist:
+- User credentials, including email and password, securely using encryption.
+- Profile settings data, allowing users to update their personal information like email and password.
+- Authentication session data to handle user login states.
+- Account deletion requests to facilitate removing user data from the system.
+
+### EXTERNAL SERVICES CONNECTIONS
+Based on the container's purpose, there is no explicit requirement to connect to external services, assuming that all necessary authentication and storage functionalities are implemented within the OneSport platform. However, if advanced authentication features are desired, such as social login options (Google, Facebook, etc.), connection to such external authentication providers would be necessary. Additionally, integrating an external service for email verification or password recovery processes could enhance security and user experience.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: user_auth
+- TYPE: backend
+- DESCRIPTION: This microservice manages user registration, login, and logout operations. It exposes endpoints for these functionalities. During registration, it securely stores encrypted user credentials. Upon login, it validates credentials and creates a session. The logout operation involves terminating the session. The microservice also facilitates account creation, authentication session management, and interaction with user profile settings.
+- PORTS: 8000
+
+- ENDPOINTS:
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/user_auth/register	Register a new user account with the provided information, securely store encrypted user credentials	1
+POST	/user_auth/login	Authenticate an existing user and initiate a login session, returning a session token	2
+POST	/user_auth/logout	Terminate the current user's session, logging them out and deleting session data	3
+GET	/user_auth/profile	Retrieve the current user's profile settings	4
+PUT	/user_auth/profile	Update user's profile settings, including email and password, after verifying security standards	6
+DELETE	/user_auth/account	Delete the user account and all associated data from the system, providing confirmation	5
+
+#### MICROSERVICE: profile_management
+- TYPE: backend
+- DESCRIPTION: This microservice handles user profile settings, allowing users to view and modify their personal information, such as email and password. It ensures that changes adhere to security standards such as password strength and email format, and provides endpoints for updating and retrieving profile information.
+- PORTS: 8010
+- TECHNOLOGICAL SPECIFICATION
+The user_authentication container will utilize NodeJS as the primary programming language for its backend microservices, including user_auth, profile_management, account_management, and session_management. The Express framework will be employed to build RESTful APIs efficiently for handling HTTP requests and responses. For user authentication and session management, libraries such as Passport.js for authentication and bcrypt for secure password hashing will be essential. The auth_storage microservice will employ a relational database like PostgreSQL due to its robustness and support for complex queries, ensuring data integrity with secure storage of encrypted user credentials. The Sequelize ORM will be used for database interaction within the NodeJS environmen.
+- SERVICE ARCHITECTURE
+The service architecture adopts a microservices architecture pattern, ensuring a modular structure with clear separation of concerns. Each microservice within the user_authentication container handles a specific functionality:
+1. **User Auth (Backend Service):** Implements RESTful endpoints using the Model-View-Controller (MVC) pattern to handle user registration, login, and logout operations. It includes route definitions, controllers for business logic, and models for database interactions via the auth_storage microservice.
+2. **Profile Management (Backend Service):** Utilizes a similar MVC structure for managing user profile settings. It includes input validation for security, ensuring data conforms to required standards before interacting with the auth_storage microservice.
+3. **Account Management (Backend Service):** Follows the MVC pattern to manage account deletion requests, ensuring secure and permanent user data removal in compliance with privacy standards.
+4. **Auth Storage (Database Service):** Acts as the persistent storage unit, responsible for securely storing and retrieving data. It maintains the data schema and supports complex query execution for other microservices using a database management layer.
+5. **Session Management (Backend Service):** Manages user sessions with a token-based or session-based authentication mechanism. Implements strategies to secure session data, enforce timeouts, and handle session validations.
+This microservices approach ensures scalability, easy maintenance, and the capability to deploy or update individual services independently without impacting others. Additionally, each service can be independently scaled according to the load, providing robust performance and reliability.
+- ENDPOINTS:
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/auth/register	Create a new user account by securely storing encrypted credentials and returning a confirmation message.	1
+POST	/auth/login	Authenticate user login by validating credentials, initiating a session, and returning session information.	2
+POST	/auth/logout	Terminate the user's session and return a confirmation of logout action.	3
+GET	/profile/settings	Provide access to the user's profile settings where personal information can be viewed or modified.	4
+PUT	/profile/settings/update	Allow users to update their email and password, ensuring security standards are enforced.	6
+DELETE	/account/delete	Facilitate the deletion of user accounts and confirmation of the action, ensuring all user data is securely removed.
+
+#### MICROSERVICE: account_management
+- TYPE: backend
+- DESCRIPTION: This microservice enables users to delete their accounts. It handles requests to remove user data from the system, ensuring that data is permanently deleted and that users receive confirmation of account deletion actions.
+- PORTS: 8020
+- TECHNOLOGICAL SPECIFICATION:
+The user_auth microservice is implemented using NodeJS due to its efficiency in handling asynchronous operations and its robust ecosystem for developing RESTful services. The Express framework is utilized for building the API endpoints related to user registration, login, logout, account settings, and authentication management. To ensure secure storage and handling of user credentials and sensitive data, the library bcrypt is used for hashing passwords, and JSON Web Tokens (JWT) are used for session management and authentication. Additionally, any connection with external services like social login providers would leverage libraries such as Passport for authentication strategies.
+- SERVICE ARCHITECTURE
+The user_auth microservice adopts a layered architecture pattern, which provides a clear separation of concerns between different parts of the application. The architecture comprises:
+1. **Presentation Layer**: The presentation layer handles the API requests and responses. Express routes define the endpoints and middleware for preliminary request handling.
+2. **Service Layer**: This layer contains business logic related to user registration, login, profile access, and updates. It ensures validation, data transformation, and calls to lower layers are appropriately managed.
+3. **Persistence Layer**: It interacts with the auth_storage database microservice to store and retrieve user credentials, session data, and profile information. This interaction is facilitated through a secured database connection library like Sequelize or Mongoose, ensuring data consistency and security.
+4. **Security Layer**: Focuses on implementing authentication and authorization functionality. It manages JWT for session tokens, ensuring secure and stateless user sessions, and uses bcrypt for password operations.
+This microservice additionally employs the Command Query Responsibility Segregation (CQRS) pattern to separate read and write operations, allowing for optimized operations and scalability. Dependency injection is also a key aspect of the architecture, promoting modularity and testability of individual components and services, while adhering to the Single Responsibility Principle.
+- ENDPOINTS:
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/auth/register	Handle user registration by securely storing encrypted credentials. Return a confirmation message upon successful account creation.	1
+POST	/auth/login	Authenticate user login by validating credentials and creating a session. Return a session token upon successful login.	2
+POST	/auth/logout	Terminate the user's authentication session and return a confirmation message upon successful logout.	3
+GET	/auth/profile	Provide access to the user's profile settings, allowing viewing of personal information in a secure manner.	4
+PUT	/auth/profile	Allow users to update their email and password, ensuring changes meet security standards and return a confirmation message.	6
+DELETE	/auth/profile	Enable users to delete their account, removing all associated data from the system and providing a confirmation of deletion.	5
+
+#### MICROSERVICE: auth_storage
+- TYPE: database
+- DESCRIPTION: This microservice securely stores user credentials (email and encrypted password), profile settings data, authentication session data, and account deletion requests. It ensures data integrity and security, providing necessary data retrieval and storage operations in compliance with privacy standards.
+- PORTS: 8030
+
+#### MICROSERVICE: session_management
+- TYPE: backend
+- DESCRIPTION: This microservice manages user authentication sessions. It creates, validates, and terminates sessions based on user login and logout actions. It ensures session data integrity and prevents unauthorized access, maintaining active sessions while effectively managing timeout scenarios.
+- PORTS: 8040
+- TECHNOLOGICAL SPECIFICATION
+The session_management microservice is implemented using Python as the programming language. Django, a Python-based web framework known for its robustness and security features, is chosen to structure the application's RESTful APIs. For managing user authentication sessions, Django REST framework with supplemental libraries such as Django OAuth Toolkit and JWT (JSON Web Tokens) for session management is utilized to enhance security and token-based authentication. For data encryption and security, the cryptography library is employed. These technologies are selected to ensure a secure, resilient, and scalable session management system.
+- SERVICE ARCHITECTURE
+The service architecture adopts the Model-View-Controller (MVC) pattern, with the following components:
+- **Model**: Responsible for defining the session data models and interacting with the auth_storage microservice to persist and retrieve session-related data.
+- **View**: Manages the API endpoints responsible for session creation, validation, and termination. It listens to requests and responds with appropriate session management operations.
+- **Controller**: Acts as intermediaries, handling the logic for authentication, session validation, timeout management, and access control. It utilizes middleware to intercept requests for authorization verification.
+- **Middleware**: Integrates session handling logic — logging, session timeout, and session data management — across requests, ensuring consistent session management.
+The service emphasizes security with token-based authentication patterns, ensuring authorization through stateless tokens and maintaining session integrity. The Pattern ensures that error handling and session lifecycle management are efficiently incorporated, providing a robust session management infrastructure.
+- ENDPOINTS:
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/session/create	Initiates a new user session upon successful login, issuing a session token.	2
+DELETE	/session/logout	Ends the current user session, invalidating the session token to log out the user.	3
+GET	/session/validate	Validates the user's current session token, ensuring session is active and authorized.	2, 4
+POST	/session/refresh	Refreshes an existing session token, extending its validity period.	N/A
+
+## CONTAINER NAME: news_management
+### DESCRIPTION: Manages all operations related to sports news; includes retrieving, filtering, and managing user's favorite news.
+### USER STORIES:
+7) As a User, I want to see all recent news.
+8) As a User, I want to filter Italian news by selecting from the menu of available countries.
+9) As a User, I want to add to my favorite news all the news I'm interested in, in order to read them later.
+10) As a User, I want to delete from my favorite news all the news that I'm no longer interested.
+20) As a User, I want to see my collection of saved news.
+### PORTS: 8100:8150
+
+### DESCRIPTION: 
+The `news_management` container is designed to handle all functionalities related to sports news within the OneSport platform. Its primary purpose is to manage the retrieval, filtering, and organization of sports news for users. Within this container:
+1. Users can view all recent sports news articles, ensuring they stay updated with the latest events and stories.
+2. It provides filtering capabilities, for example, allowing users to select news from specific countries, such as Italy, to tailor the content they see according to their interests.
+3. Users can manage their personalized news collection, adding articles to their favorites for easy access and future reference. This includes operations to save news items and later view their collection of saved news.
+4. It also facilitates the maintenance of this collection by allowing users to remove news that they are no longer interested in from their favorites.
+Through this functionality, the `news_management` container contributes to OneSport's aim of being a comprehensive and user-friendly source for sports news, ensuring that content is not only plentiful but also customizable and easy to navigate for users.
+
+### PERSISTANCE EVALUATION
+The `news_management` container needs to store data to fulfill its purpose and the associated user stories. This includes:
+- Recent news articles: The container will need to manage a cache of recent sports news articles to display to users efficiently without frequent external calls.
+- User-specific preferences: This includes the filtered preferences for news, such as the desired country (e.g., Italy).
+- User's favorite news: A list of news articles that a user has marked as favorites for later reference. This requires the storage of article identifiers associated with user profiles.
+- User's collection of saved news: This involves storing the identifiers of news articles that users have chosen to save in their personal collection for persistent access and review.
+
+### EXTERNAL SERVICES CONNECTIONS
+The `news_management` container is likely to require connectivity to external services for several reasons:
+- News API: The container will need to connect to a reliable external news API to retrieve up-to-date sports news and information.
+- Geolocation or regional services: To filter news based on specific countries (such as Italian news), the container might need to utilize geolocation services or country-based news filtering APIs.
+These services ensure that the news content is fresh and appropriately targeted according to user preferences.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: news_retrieval
+- TYPE: backend
+- DESCRIPTION: This microservice is responsible for fetching and updating recent sports news articles. It connects to an external news API to retrieve the latest news and manages a cache to improve efficiency and reduce external calls.
+- PORTS: 8100
+- TECHNOLOGICAL SPECIFICATION
+The `news_retrieval` microservice will use Python as the main programming language, leveraging the Flask framework to build RESTful APIs. The chosen stack supports quick prototyping and easy integration with external APIs. For external news API consumption, the `requests` library will be used to handle HTTP requests efficiently. Additionally, to manage caching within the microservice, Redis will be integrated as an in-memory data structure store, improving the response time when fetching news articles.
+- SERVICE ARCHITECTURE
+The service architecture for `news_retrieval` adopts a microservices pattern with a clear separation of concerns. The microservice itself is responsible for the retrieval and caching of news, ensuring separation from filtering and user preference handling. Internally, a modular structure is applied:
+- Controller: Handles all incoming HTTP requests, coordinates with other microservices, and communicates results back to the client.
+- Service Layer: Implements business logic related to fetching and caching sports news, handling interactions with external APIs.
+- Caching Layer: Utilizes Redis to store recently retrieved news, reducing API calls and enhancing performance.
+This separation allows for scalability, maintainability, and clean code management, aligning with best practices for microservices architecture.
+-ENDPOINTS:
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/news_retrieval/recent	Retrieve all recent sports news articles from the cache or external News API if not cached.	7
+GET	/news_retrieval/filter	Apply country-based filters, such as Italy, to the recent sports news articles to tailor content for the user.	8
+
+#### MICROSERVICE: news_filtering
+- TYPE: backend
+- DESCRIPTION: This microservice provides filtering functionalities for sports news, allowing users to tailor their news feed according to specific countries, such as filtering for Italian news.
+- PORTS: 8110
+- TECHNOLOGICAL SPECIFICATION
+The `news_filtering` microservice will utilize Python as the primary programming language, given its strong support for text processing and data management. The Flask framework will be employed to build a lightweight, highly scalable RESTful API. Flask's simplicity and flexibility make it particularly suited for microservices architecture. Libraries such as Pandas will be utilized for handling and manipulating the data related to news articles efficiently, while libraries like Requests will be used for making HTTP requests to the external news APIs for fetching updated content. SQLAlchemy will aid in ORM (Object-Relational Mapping) to interact with the news_persistence database microservice efficiently.
+
+- SERVICE ARCHITECTURE
+The `news_filtering` service will adopt a layered architecture pattern, segregating responsibilities across different components. It will consist of the following layers:
+1. **Presentation Layer**: Manages incoming API requests, processes them, and returns the necessary filtered data. Responsibilities will include authentication (if needed) and API endpoint routing.
+2. **Business Logic Layer**: Encapsulates the core functional logic for filtering news based on user preferences, such as country filter. This layer will manage applying these filters to the list of news articles retrieved by the `news_retrieval` microservice.
+3. **Data Access Layer**: Responsible for handling interactions with the `news_persistence` database. It will use SQLAlchemy ORM to access and manipulate the necessary data while ensuring separation from the business logic.
+This layered approach ensures the separation of concerns, which enhances maintainability and scalability while allowing individual components to be developed and tested independently. It provides a clear decomposition of tasks, improving overall readability and supporting easier integration with other microservices within the `news_management` container ecosystem.
+- ENDPOINTS:
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/news/filter	Retrieve and filter sports news based on the user's preferred country selection, such as Italy.	8
+POST	/news/favorites/add	Add a specific news article to the user's collection of favorite news for later reference.	9
+DELETE	/news/favorites/delete	Remove a specific news article from the user's collection of favorite news.	10
+GET	/news/favorites	Retrieve all news articles from the user's collection of saved favorites.	20
+
+#### MICROSERVICE: user_favorites
+- TYPE: backend
+- DESCRIPTION: This microservice manages users' collections of favorite news, enabling users to add news articles to their favorites, view their saved news, and remove any unwanted ones.
+- PORTS: 8120
+- TECHNOLOGICAL SPECIFICATION
+The `user_favorites` microservice within the `news_management` container will be developed using Python as the primary programming language due to its readability and extensive library support for handling backend operations. The FastAPI framework will be used for building RESTful APIs due to its modern features such as automatic interactive API documentation and asynchronous request handling that improves performance. For database interactions, SQLAlchemy will be used as an ORM (Object-Relational Mapping) tool to facilitate smooth integration with various databases. The microservice will make HTTP requests to interact with other microservices and external services, so the `httpx` library, known for its ease of use and asynchronous capabilities, will be used.
+- SERVICE ARCHITECTURE
+The `user_favorites` microservice will adopt a layered architecture pattern for clear separation of concerns and maintainability. At the top, a REST API layer will handle incoming HTTP requests and return responses to users, employing FastAPI’s routing system. Beneath that, a service layer will encapsulate the business logic for managing operations related to a user's favorite news articles, acting as an intermediary between the API and the data access layer. Lastly, the data access layer will abstract database operations using SQLAlchemy for ORM to interact with the `news_persistence` microservice. This modular structure ensures that each layer has a distinct responsibility, promoting easier development, testing, and evolution of the microservice. Additionally, any inter-microservice communication will be handled via RESTful HTTP requests, ensuring a standard protocol for interaction among services within the container.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/favorites/news	Retrieve the user's entire collection of favorite news articles	20
+POST	/favorites/news/add	Add a news article to the user's list of favorites to read later	9
+DELETE	/favorites/news/remove	Remove a specific news article from the user's list of favorites	10
+
+#### MICROSERVICE: filtering_preferences
+- TYPE: backend
+- DESCRIPTION: This microservice deals with storing and managing user-specific preferences for news filtering, such as country or topic selections.
+- PORTS: 8130
+- TECHNOLOGICAL SPECIFICATION
+The `filtering_preferences` microservice, responsible for managing and storing user-specific filtering preferences, is implemented using Python. This choice leverages Python's extensive library support for handling data and integration capabilities with various APIs. The Flask framework is used to build RESTful APIs due to its lightweight nature and ease of deployment in microservice environments. The microservice connects to the `news_persistence` database using SQLAlchemy for efficient data handling and ORM capabilities. For caching and quick retrieval of user preferences, Redis can be utilized as an in-memory datastore to optimize performance.
+- SERVICE ARCHITECTURE
+The `filtering_preferences` microservice adopts the Repository and Strategy design patterns. The Repository pattern abstracts the database interactions, providing a clean separation between the application logic and data access logic, which is facilitated by SQLAlchemy. The Strategy pattern is employed to manage various filtering strategies, enabling flexibility in adding or modifying user preferences like country or topic selection. The microservice exposes a well-defined API for querying and updating user preferences, and it uses an external Redis cache to improve response times for frequent queries, in line with the CQRS (Command Query Responsibility Segregation) pattern to separate read and write operations effectively.
+- ENDPOINTS:
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/preferences	Retrieve the current user's filtering preferences, such as the selected country or topics.	8
+POST	/preferences	Update the current user's filtering preferences with new selections for countries or topics.	8
+DELETE	/preferences	Remove specific filtering preferences set by the user.	8
+
+#### MICROSERVICE: news_persistence
+- TYPE: database
+- DESCRIPTION: This database microservice is used for storing recent news articles, user-specific filtering preferences, and identifiers of users' favorite news articles.
+- PORTS: 8140
+
+## CONTAINER NAME: ticket_management
+### DESCRIPTION: Handles event ticket availability, filtering, and user's collection of interest.
+### USER STORIES:
+11) As a User, I want to see available tickets for upcoming sporting events.
+12) As a User, I want to filter Italian tickets by selecting from the menu of available countries.
+13) As a User, I want to add to my collection all the tickets I'm interested in, in order to purchase them later.
+14) As a User, I want to delete from my collection all the tickets that I'm no longer interested.
+21) As a User, I want to see my collection of saved tickets.
+### PORTS: 8200:8250
+
+### DESCRIPTION: 
+The ticket_management container is responsible for handling operations related to event tickets within the OneSport platform. Its primary focus is to manage ticket availability for upcoming sporting events and enable users to explore and select tickets based on their interests. Key functionalities include displaying available tickets, providing filtering options to narrow down ticket searches by country, and allowing users to manage their own collection of tickets. Users can add tickets of interest to a personal collection for future purchase consideration and remove any tickets they are no longer interested in. Additionally, the container provides users the ability to view their saved ticket collection, facilitating easy organization and tracking of potential purchases. This container plays a crucial role in offering a streamlined and user-friendly experience for sports enthusiasts looking to attend their favorite events.
+
+### PERSISTANCE EVALUATION
+The `ticket_management` container needs to store data to fulfill its purpose and user stories. It should store information about the available tickets for upcoming sporting events, which likely includes event names, dates, locations, prices, and availability status. Additionally, it needs to maintain user-specific data such as their collected tickets of interest, which involves tracking which tickets a user has added to or removed from their collection for future purchase consideration. This stored information ensures that users can effectively manage and organize their ticket considerations.
+
+### EXTERNAL SERVICES CONNECTIONS
+The `ticket_management` container may require connections to external services to fulfill its functionalities. Possible external service connections could include:
+1. External Ticket Provider API: To fetch real-time data about ticket availability, event details, and pricing from various ticket vendors or event organizers.
+2. Payment Gateway API: If this container handles the purchasing process, it might need to connect to a third-party payment service to facilitate ticket transactions.
+These connections are essential for ensuring that users have access to up-to-date ticket information and can potentially conduct purchases securely within the platform.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: ticket_display
+- TYPE: backend
+- DESCRIPTION: Handles displaying available tickets for upcoming sporting events. It manages the retrieval of ticket data from the database and presents it to users, including event names, dates, locations, prices, and availability status. Offers filtering options to narrow down ticket searches by country.
+- PORTS: 8200
+- TECHNOLOGICAL SPECIFICATION
+The `ticket_display` microservice is implemented using Node.js as its main programming language, leveraging the Express framework for building RESTful APIs to handle HTTP requests efficiently. Given the need for data presentation and various filtering mechanisms, additional libraries such as Mongoose are utilized for interaction with the ticket data stored within a MongoDB database. Axios is employed for any necessary communication with other microservices or external services through the `external_services_connector`.
+- SERVICE ARCHITECTURE
+The `ticket_display` microservice follows the Model-View-Controller (MVC) architectural pattern. The model layer represents the structure and schema of ticket data, utilizing libraries like Mongoose for database interactions. The view layer is responsible for responding to user queries about available tickets, routing through express, and filtering. The controller layer handles the business logic of processing ticket display requests, including managing filtering criteria and interacting with the storage microservice for ticket data retrieval. The integration with the `external_services_connector` middleware service ensures that the `ticket_display` microservice maintains up-to-date data and can react to changes in ticket availability in real time. This modular design enhances maintainability and scalability of the service.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/tickets	Retrieve and display available tickets for upcoming sporting events, including event details like names, dates, locations, prices, and availability status	11
+GET	/tickets?country=italy	Filter available tickets by country, specifically for Italy, to help users narrow down their search
+
+#### MICROSERVICE: ticket_collection_manager
+- TYPE: backend
+- DESCRIPTION: Allows users to manage their collection of tickets of interest, including adding tickets to the collection for future purchase consideration and removing tickets they are no longer interested in. It handles the CRUD operations for user-specific ticket data in the database.
+- PORTS: 8210
+- TECHNOLOGICAL SPECIFICATION
+The `ticket_collection_manager` microservice will use Python as its main programming language due to its versatility and robust set of libraries for handling backend tasks. The Flask framework will be employed to build lightweight, efficient RESTful APIs. For database interaction, SQLAlchemy will be used as an ORM (Object-Relational Mapping) library to facilitate smooth integration with relational databases, enabling easy CRUD operations for user-specific ticket data. Additionally, the Requests library will handle any HTTP requests to interact seamlessly with other microservices or external APIs.
+- SERVICE ARCHITECTURE
+The service architecture for `ticket_collection_manager` adopts the Model-View-Controller (MVC) pattern. It clearly separates concerns into three interconnected components. The Model component uses SQLAlchemy to define and manage the database schema for user-specific ticket data. The Controller component, built with Flask, manages HTTP requests and corresponds to CRUD operations on the user's ticket collection. Views are minimal, serving primarily JSON data back to frontend interfaces or other services. The architecture emphasizes a decoupled design, with Controllers acting as intermediaries between user interactions, external services, and the persistence layer. This layout ensures scalability and maintainability as the platform grows and evolves.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/ticket_collection	Retrieve the user's collection of saved tickets, displaying all tickets that the user has added for future purchase consideration.	21
+POST	/ticket_collection/add	Add a ticket to the user's collection for future purchase consideration, allowing them to manage their interests effectively.	13
+DELETE	/ticket_collection/remove	Remove a ticket from the user's collection, reflecting changes in their interests by updating the saved collection.	14
+
+#### MICROSERVICE: storage
+- TYPE: database
+- DESCRIPTION: Stores data related to available tickets, including event details, prices, and availability. Also maintains user-specific data for collected tickets of interest, facilitating efficient storage and retrieval operations.
+- PORTS: 8220
+
+#### MICROSERVICE: external_services_connector
+- TYPE: middleware
+- DESCRIPTION: Handles connections to external services such as external ticket provider APIs and payment gateway APIs. Ensures real-time data fetching for ticket availability and securely facilitates transactions if purchasing processes are handled.
+- PORTS: 8230
+
+
+## CONTAINER NAME: favorites_management
+### DESCRIPTION: Manages the user's collections of favorite news and ticket interests, including operations of addition and cleaning.
+### USER STORIES:
+15) As a User, I want to be able to delete all the news and tickets in my favorite list.
+### PORTS: 8300:8350
+
+### DESCRIPTION: 
+The "favorites_management" container is designed to manage the user's collections of favorite news articles and ticket interests. It provides functionality for users to efficiently manage these collections by allowing operations such as the addition and removal of favorites. Specifically, it facilitates the ability to delete all news articles and tickets from a user's favorite list. This container helps in organizing and keeping track of users' preferred content, ensuring that users can easily access or clear their curated favorites. The focus on handling both news and ticket interests in one place simplifies user interaction with their selected content, providing a streamlined experience in maintaining their favorites.
+
+### PERSISTANCE EVALUATION
+The "favorites_management" container requires data storage to track and manage users' collections of favorite news articles and ticket interests. It needs to store records linking users to their saved favorite news and tickets. This data supports functionalities such as retrieving a user's favorites list and allowing users to delete all items from their list, as specified in the user stories.
+
+### EXTERNAL SERVICES CONNECTIONS
+Based on the container’s described purpose and user stories, the "favorites_management" container does not require connections to external services. It primarily interacts with internal components, such as the "news_management" and "ticket_management" containers, to manage and update users' favorite content collections.
+
+### MICROSERVICES: 
+
+#### MICROSERVICE: favorites_handler
+- TYPE: backend
+- DESCRIPTION: The microservice handles operations related to managing the user's favorite collections of news and ticket interests. It supports the functionality for users to add or remove items from their favorites and can delete all items from a user's favorite list. It interacts with the internal storage to keep track of each user's favorites and ensures data consistency across operations.
+- PORTS: 8300
+- TECHNOLOGICAL SPECIFICATION
+The `favorites_handler` microservice will be developed using Python due to its extensive libraries and frameworks that are well-suited for rapid development of backend services. Flask will be used as the main web application framework for building RESTful APIs because of its minimalist design and ease of use for creating microservices. Additionally, libraries such as SQLAlchemy will be utilized for ORM (Object-Relational Mapping) to facilitate database interactions, providing a simple interface for managing user favorite records. For data validation and serialization, Marshmallow can be integrated to ensure data integrity and proper JSON processing.
+- SERVICE ARCHITECTURE
+The service will adopt the Model-View-Controller (MVC) architectural pattern to ensure a separation of concerns, thereby enhancing maintainability and scalability. The `favorites_handler` microservice will contain the following components:
+- **Models**: Defined using SQLAlchemy to represent and interact with database records related to users' favorite news articles and tickets.
+- **Controllers**: Handlers or services responsible for processing incoming requests, invoking the appropriate operations on the models, and returning the appropriate responses. These will ensure that the business logic related to adding, removing, and deleting favorites is encapsulated and manageable.
+- **Routes**: Define the RESTful endpoints, routing incoming HTTP requests to the corresponding controller functions.
+- **Middleware**: May include request logging, error handling, and security checks such as authentication, to ensure robust operation and data protection. This could also involve validating user requests before they reach the core business logic.
+This structured approach will help maintain a clean separation between the API logic, business rules, and data access, ensuring that each component can evolve as required without tightly coupling different parts of the application.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+DELETE	/favorites/clear	Remove all news articles and tickets from the user's favorite list, effectively clearing their entire collection of favorites	15
+
+#### MICROSERVICE: favorites_storage
+- TYPE: database
+- DESCRIPTION: This microservice is responsible for storing and retrieving records of users' favorite news articles and ticket interests. It maintains records linking users to their selected favorites, supporting efficient operations for retrieving and clearing the user's favorites list.
+- PORTS: 8310
+
+## CONTAINER NAME: social_interaction
+
+### DESCRIPTION: Facilitates friend connections between users, including sending, accepting, and deleting friend requests and viewing friend details.
+### USER STORIES:
+16) As a User, I want to send a friend request to another user, in order to add him to my friend list.
+17) As a User, I want to check if someone has sent me a friend request, in order to accept or delete it.
+18) As a User, I want to delete a friend from my friend list.
+19) As a User, I want to find another user by email, in order to see his details.
+22) As a User, I want to see my friend list, in order to see their details.
+23) As a User, I want to be able to accept a friend request, in order to add the sender as a friend.
+24) As a User, I want to be able to delete a friend request, in order to refuse the friend request.
+### PORTS: 8400:8450
+
+### DESCRIPTION: 
+The social_interaction container is designed to enhance the user experience by facilitating connections and interactions between users within the OneSport platform. It manages functionalities related to building and maintaining a user's social network by allowing them to send, accept, and reject friend requests. Users can check incoming friend requests, choose to add or remove friends from their list, and explore the details of other users by searching them through email. Additionally, the container supports viewing the user's friend list, ensuring users can easily keep track of and manage their social connections. This social aspect encourages user engagement and creates a community atmosphere around the shared interest in sports.
+
+### PERSISTANCE EVALUATION
+The social_interaction container needs to store data to fulfill its purpose and user stories. This includes information about friend requests, such as the sender, receiver, and the status of each request. The container also needs to maintain a list of friends for each user, recording both active friendships and deleted ones for potential auditing purposes. Additionally, the container should store data related to user searches and interactions, such as search queries by email, to potentially enhance user experience through analytics.
+
+### EXTERNAL SERVICES CONNECTIONS
+Based on the container's purpose and user stories, there is no immediate need for it to connect to external services. All functionalities related to managing social interactions among users can be internally handled within the OneSport platform. However, potential future enhancements might include integrations with social media platforms for friend suggestions or event sharing, but these are not currently required to meet the outlined user stories.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: social_network
+- TYPE: backend
+- DESCRIPTION: This microservice manages the core functionalities of social interactions among users. It oversees sending, accepting, and deleting friend requests, checking incoming requests, removing friends from the list, and searching for other users by email. Additionally, it handles viewing and maintaining the user's friend list while ensuring the smooth operation of these social features.
+- PORTS: 8400
+- TECHNOLOGICAL SPECIFICATION
+The microservice "social_network" uses Python as its main programming language, leveraging the Flask framework to efficiently build and deploy RESTful APIs allowing scalable and organized management of social interactions. For the database interactions, SQLAlchemy is chosen as an ORM (Object-Relational Mapping) library to handle database operations and to ensure a seamless interaction with the microservice "social_db". The persistance layer, "social_db", operates on PostgreSQL due to its robust support for complex queries and its ability to efficiently handle large datasets, which is crucial for tracking friend relations and searches.
+- SERVICE ARCHITECTURE
+The "social_network" service adopts a modular pattern where different features, such as friend request management and user searching, are encapsulated within dedicated service modules. This design is complemented by the use of repositories and services patterns for database interactions, ensuring a clear separation of concerns. The repository layer abstracts how data is fetched and persisted, while the service layer manages business logic. This architecture allows for easy scalability and maintainability, as well as facilitating testing by mocking the repository layer. The microservice also employs the use of background tasks queue, using Celery, to manage non-blocking operations for tasks such as sending notifications upon friend request updates or processing analytics data on user interactions, enhancing the overall performance and user experience of the social interaction features.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/social_network/friend_request/send	Allows a user to send a friend request to another user, initiating the process of forming a connection.	16
+GET	/social_network/friend_request/check	Enables users to check if they have received any new friend requests, allowing them to decide further actions.	17
+DELETE	/social_network/friend_list/remove	Allows a user to remove an existing friend from their friend list, effectively ending the connection.	18
+GET	/social_network/user/search	Facilitates searching for another user using their email to view user details and potentially initiate interactions.	19
+GET	/social_network/friend_list/view	Provides the user with a view of their current list of friends, displaying respective details.	22
+POST	/social_network/friend_request/accept	Allows a user to accept a friend request from another user, adding them to their friend list.	23
+DELETE	/social_network/friend_request/delete	Allows a user to delete or refuse a friend request, preventing the establishment of a connection.	24
+
+#### MICROSERVICE: social_db
+- TYPE: database
+- DESCRIPTION: This microservice is responsible for storing and managing data related to friend requests, including details such as sender, receiver, and request status. It also maintains friend lists, logs information about active and deleted friendships, and tracks user searches and interactions for auditing and analytics purposes.
+- PORTS: 8410
+
+## CONTAINER NAME: frontend
+
+### DESCRIPTION: Manages the user interface and serves the frontend for user interaction, presenting sports news, events, and ticket operations accessible via a web platform.
+### PORTS: 8500:8550
+
+### DESCRIPTION: 
+The "frontend" container is responsible for managing the user interface of the OneSport system. Its primary purpose is to deliver the web experience for users by providing a seamless and interactive platform that encompasses sports news, event updates, and ticket operations. The container serves as the gateway for user interaction with the system, ensuring that all back-end services related to user authentication, news management, ticket management, favorites management, and social interaction are appropriately integrated and accessible to users through a unified and engaging web interface. It ensures that users can easily navigate and utilize the various features and functionalities offered by the system, all while maintaining a visually appealing and user-friendly design. The "frontend" container is crucial in ensuring user engagement and satisfaction by presenting content and actions in an organized and intuitive manner.
+
+### PERSISTANCE EVALUATION
+The "frontend" container does not need to store persistent data as its primary role is to manage the presentation layer and interface for user interaction. It acts as an intermediary between the user and the backend services, rendering the data it receives from other containers and services. As such, any persistence required, such as saving user preferences or states, would be managed by local storage or session storage techniques in the user's browser, rather than by the container itself.
+
+### EXTERNAL SERVICES CONNECTIONS
+The "frontend" container itself does not need to directly connect to external services. However, it will interact with backend containers to fetch data and perform operations. These backend services, like news_management and ticket_management, might have connections to external providers for retrieving news content or ticket availability, but these interactions are handled at the service level, not by the frontend. The frontend would utilize APIs exposed by these backend services to gather necessary data and facilitate user interactions.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: ui_service
+- TYPE: frontend
+- DESCRIPTION: The microservice is responsible for delivering the web interface for user interactions. It encompasses the presentation of sports news, event updates, and ticket operations in a seamless and interactive manner. The service integrates with various backend services to ensure a coherent user experience and serves as the primary gateway for user engagement, maintaining a visually appealing and user-friendly design.
+- PORTS: 8500
+- TECHNOLOGICAL SPECIFICATION
+The "ui_service" microservice will leverage modern frontend technologies to deliver a seamless user experience. The primary language to be used will be JavaScript, with React.js as the chosen framework due to its component-based architecture and ability to efficiently manage dynamic content updates. React.js also provides a rich ecosystem of libraries for handling state management, such as Redux, which could be employed if necessary to manage complex user interactions. Additionally, for styling and design consistency, libraries such as Styled Components or CSS-in-JS solutions can be utilized to provide responsive and visually appealing presentations. For development enhancement and module bundling, tools like Webpack or Vite may be included. Since this frontend microservice interfaces with various backend services through APIs, Axios or Fetch API will be essential for handling HTTP requests.
+- SERVICE ARCHITECTURE
+The "ui_service" adopts a Single Page Application (SPA) architecture pattern using React.js, enabling smooth transitions and interactions without needing to reload pages. It will use a component-based architecture, which promotes reusability, maintainability, and scalability by breaking down the UI into discrete units or components, each responsible for a specific piece of the user interface. One core component will handle interactions with the "api_gateway" microservice, which routes requests to various backend services. Components will be organized hierarchically, with a centralized routing system possibly implemented using React Router to manage navigation. State management can be achieved through React Context API or Redux if more complex state interactions are needed, ensuring the data flow is predictable. Hooks provided by React will be used for managing component lifecycle and side effects. The architecture also supports client-side caching through the browser's local storage or session storage to improve performance by reducing redundant network requests. Overall, the frontend microservice leverages modern web development practices to deliver a fast, intuitive, and engaging user experience.
+- PAGES
+Page Name	Description	User Stories
+Homepage	Displays sports news, event updates, and an overview of ticket operations.	N/A
+News	Presents updated sports news articles.	N/A
+Event Detail	Shows detailed information on sports events, including schedules and updates.	N/A
+Ticketing	Handles ticket operations, including purchasing and managing tickets.	N/A
+Favorites	Allows users to mark and view their favorite sports or events.	N/A
+Social interactions	Enables user interactions, such as comments and sharing on social platforms.	N/A
+
+#### MICROSERVICE: api_gateway
+- TYPE: middleware
+- DESCRIPTION: This microservice acts as an intermediary to route requests from the frontend to the appropriate backend services, such as user authentication, news management, ticket management, favorites management, and social interaction. It ensures that all interactions are seamless and securely managed, providing a unified API layer for the frontend to communicate with different back-end systems.
+- PORTS: 8510
+

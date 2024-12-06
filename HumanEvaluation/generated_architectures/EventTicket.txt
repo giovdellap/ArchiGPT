@@ -1,0 +1,352 @@
+EventTicket Project proposed by ArchiGPT-4o :
+
+# CONTAINERS:
+
+### CONTAINER NAME: Web_Interface
+
+### USER STORIES:
+1) As a client, I want to visit the web application, so that I can explore the functionalities.
+4) As a client, I want to explore the list of events, so that I can see any event.
+### PORTS: 8000:8100
+
+### DESCRIPTION: 
+The Web_Interface container serves as the primary access point for clients to interact with the web application. Its main purpose is to provide a user-friendly and engaging interface that allows clients to explore the various functionalities offered by the platform. This container handles the presentation layer of the application, facilitating the display of information such as the list of events available on the platform. By enabling clients to visit the web application, explore functionalities, and view event details, the Web_Interface container acts as a bridge between users and the underlying services of the application, ensuring a seamless user experience.
+
+### PERSISTANCE EVALUATION
+The Web_Interface container does not require its own persistent storage, as its primary function is to serve as a presentation layer for displaying information to clients. It acts as an interface to access and utilize the services provided by other containers, such as the Event_Management and Ticket_Management containers. Any required data, such as event details and user interactions, should be fetched dynamically from these backend containers when needed, hence no data storage is necessary for this container.
+
+### EXTERNAL SERVICES CONNECTIONS
+The Web_Interface container does not need to connect to any external services directly. Its role is to interface with other containers within the system, such as fetching event lists from the Event_Management container or user session data from the Authentication_Management container. Any external service integrations, such as payment gateways, should be handled by the relevant backend service containers like Ticket_Management, instead of by the Web_Interface itself.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: web_app
+- TYPE: frontend
+- DESCRIPTION: This microservice serves as the primary interface for clients to interact with the web application, providing a user-friendly interface to explore functionalities and view the list of events. It dynamically fetches data such as event details from backend services like the Event_Management and renders them for the user.
+- PORTS: 8000
+- TECHNOLOGICAL SPECIFICATION
+The web_app microservice will utilize React as its main framework, taking advantage of its component-based architecture to create a dynamic and responsive user interface. JavaScript, along with JSX, will be used for programming. The styling of the interface will be handled via CSS modules or Styled-components for scoped and maintainable styles. For state management, a library such as Redux or Context API will be applied to handle application-wide states and ensure efficient data flow. Since the Web_Interface is primarily fetching data from backend services, Axios or Fetch API will be used for making HTTP requests and handling asynchronous operations smoothly.
+- SERVICE ARCHITECTURE
+The web_app microservice will follow a component-based architecture pattern, which is pivotal for frontend development. It includes differentiating UI elements into reusable components varying in scope and function, such as presentational components for UI rendering and container components for managing state and handling interactions. The application will adopt a unidirectional data flow pattern, facilitating predictability in state management. Additionally, the microservice will utilize a facade pattern to interact with the middleware service, specifically the gateway microservice, ensuring clean and manageable API interactions. React Router can be integrated to provide seamless navigation between different views and enhance the user experience while interacting with various features of the web application.
+- PAGES
+Page Name	Description	User Stories
+Home	Main landing page for clients to access and explore the web application.	1
+Events	Displays a list of all available events on the platform.	4
+Event Details	Shows detailed information about a selected event.	N/A
+User Profile	Enables clients to manage their profiles and view their activities.	N/A
+Navigation	Provides navigation options to different sections of the application, such as Home, Events, and User Profile.	N/A
+
+#### MICROSERVICE: gateway
+- TYPE: middleware
+- DESCRIPTION: Acts as a middleware service to route client requests to the appropriate backend containers, such as fetching event lists from Event_Management or user sessions from Authentication_Management. It ensures smooth communication between the interface and the backend services, providing a seamless user experience.
+- PORTS: 8010
+
+
+## CONTAINER NAME: Authentication_Management
+
+### USER STORIES:
+2) As a client, I want to register to the service, so that I can be able to use the user's features.
+3) As a client, I want to login to the service, so that I become a user, a manager or an admin.
+12) As a user, I want to logout, so that I become a client.
+16) As a manager, I want to logout, so that I become a client.
+18) As an admin, I want to logout, so that I become a client.
+20) As a user, I want to be able to regenerate my password in case I forgot it.
+### PORTS: 8200:8300
+
+### DESCRIPTION: 
+The Authentication_Management container is responsible for handling all elements related to user identity across different roles, including clients, users, managers, and admins. Its primary functions include managing user registration, enabling login and logout processes, password regeneration, and overseeing session management for these roles.
+
+This container ensures the secure handling of user credentials and supports the creation of user accounts so that clients can transition to either user, manager, or admin roles, depending on their activities and permissions within the application. It provides the functionality for users to logout, effectively reverting them to a client status while maintaining session integrity. Additionally, it offers a mechanism for users to regenerate their passwords in case they forget them, enhancing both user experience and security. By maintaining distinct session states and roles, the Authentication_Management container facilitates the diverse needs of various user types within the application, ensuring smooth transitions among roles as necessary.
+
+### PERSISTANCE EVALUATION
+The Authentication_Management container needs to store data to achieve its purpose and fulfill the related user stories. It requires storing user credentials such as usernames and passwords for registration and login processes. Additionally, it needs to manage session tokens for different roles (clients, users, managers, and admins) to handle secure sessions. For password regeneration, the container may need to store password reset tokens or codes temporarily to facilitate the password change process. Overall, the focus on handling user identity and roles necessitates reliable storage of sensitive authentication-related data.
+
+### EXTERNAL SERVICES CONNECTIONS
+Based on the container's purpose and user stories, it may require connections to external services for secure password management and authentication. For instance, it might use an external provider for two-factor authentication (2FA) to enhance security during login processes or rely on an email or SMS service provider for sending password reset tokens or links to users. Additionally, the container could connect to a service providing secure hashing and encryption algorithms for storing and verifying user passwords, thereby ensuring secure handling and storage of credentials.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: user_auth
+- TYPE: backend
+- DESCRIPTION: This microservice manages user registration, login, and logout operations for clients, users, managers, and admins. It handles session management by generating and storing session tokens for different roles. The microservice exposes endpoints for these operations, ensuring secure handling of user credentials. It facilitates transitions between roles by enabling login and logout functionalities and uses session tokens to maintain login states.
+- PORTS: 8200
+- TECHNOLOGICAL SPECIFICATION
+The technological stack for the `user_auth` microservice includes the use of Python as the main programming language, leveraging the Flask framework for building the RESTful API endpoints. Flask is chosen for its lightweight and modular design, which suits the microservice architecture well. For secure password handling and session management, libraries such as `bcrypt` for hashing passwords and `pyjwt` for working with JSON Web Tokens (JWT) to manage session tokens will be utilized. The `SQLAlchemy` library is employed for ORM (Object Relational Mapping) to interact with the `credential_storage` database microservice.
+The `password_reset` microservice uses NodeJS for the backend logic, along with the `Express` framework for building the API. For secure communication with external email or SMS services (such as SendGrid or Twilio), libraries like `nodemailer` or `twilio` are used. Temporary password reset tokens are securely managed using `jsonwebtoken` to issue, validate, and process these tokens.
+The `session_management` microservice similarly uses Python and Flask for the backend, focusing on session state management across roles, using `pyjwt` for token management. This microservice ensures efficient handling of token lifecycle events, such as generation, validation, and invalidation.
+The `credential_storage` microservice makes use of PostgreSQL for the database solution, ensuring reliable and secure storage of user data. It implements encryption and hashing mechanisms using built-in PostgreSQL functions for password storage security and leverages SQLAlchemy ORM in Python for CRUD operations.
+- SERVICE ARCHITECTURE
+The architecture for the `user_auth` microservice follows the Microservice Architecture Pattern, enabling functionality isolation and service modularity. Each operation, such as registration, login, and role transition, is encapsulated within distinct service endpoints. These endpoints are handled by controllers managing specific business logic, ensuring separation of layers and clean code organization. The repository pattern is adopted for database interactions through ORM, allowing controlled access and management of user-related data.
+For `password_reset`, it adopts the Event-Driven Architecture Pattern, especially for issuing and processing reset tokens, which involve asynchronous operations sending email or SMS notifications. The microservice listens and emits events related to password reset requests and completions, significantly improving system responsiveness and user experience.
+The `session_management` employs the Stateless Service pattern. Session state management is handled via tokens without storing session information on the server. This approach ensures scalability and horizontal scaling capabilities, facilitating rapid role-based session transitions and management without server dependency.
+The `credential_storage` microservice implements the Data Mapper Pattern, using ORM for mapping between database tables and application objects. This pattern enhances data handling efficiency and provides a robust abstraction layer for interacting with stored credentials, contributing to the system's security and integrity.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/user_auth/register	Register a new client user, enabling access to user features by storing user credentials securely.	2
+POST	/user_auth/login	Authenticate a client user, assigning them a role of user, manager, or admin and initiating their session.	3
+POST	/user_auth/logout	Terminate the session for the current user, manager, or admin, reverting their status back to a client.	12, 16, 18
+POST	/password_reset/request	Initiate the password reset process by issuing a secure reset token sent via email or SMS.	20
+POST	/password_reset/confirm	Complete the password regeneration by verifying the reset token and updating the user's password.	20
+
+#### MICROSERVICE: session_management
+- TYPE: backend
+- DESCRIPTION: This microservice oversees session management, handling session tokens generation, validation, and invalidation. It manages secure sessions for clients, users, managers, and admins. The microservice also includes logic for transitioning users among roles by resetting session states upon logout and role changes.
+- PORTS: 8201
+- TECHNOLOGICAL SPECIFICATION
+The technological stack for the Authentication_Management container revolves around secure and scalable backend development. For the `user_auth`, `session_management`, and `password_reset` microservices, Node.js is chosen for its simplicity in handling asynchronous operations and scalability in backend services. Express.js, a web framework for Node.js, will be used to build efficient RESTful APIs for handling various authentication processes.
+For secure password and credential handling, bcrypt.js is integrated for hashing passwords, ensuring data security and integrity. Additionally, JWT (JSON Web Tokens) will be used for generating and validating session tokens with encryption libraries such as `jsonwebtoken`. Given the importance of secure communication for password resets, the `password_reset` microservice will implement Nodemailer for secure email transmission, possibly enhanced with Twilio for SMS verification processes if needed.
+The `credential_storage` microservice will employ MongoDB, a NoSQL database known for its flexibility and scalability in managing dynamic data such as session information. Mongoose, an object data modeling library for MongoDB, will manage schemas and simplify interactions with stored data.
+- SERVICE ARCHITECTURE
+The architecture of the Authentication_Management container is based on the microservices pattern, ensuring separated and specific responsibilities for each microservice. This approach improves maintainability and scalability, allowing each microservice to be developed, deployed, and scaled independently.
+The `user_auth` microservice operates as the primary interface for user-related authentication operations, adopting the Model-View-Controller (MVC) pattern to handle requests and user data logic effectively. It acts as the orchestrator between the frontend client requests and backend operations for authentication and role transition.
+The `session_management` microservice employs the Stateless Sessions pattern using JWT for maintaining user roles and sessions securely without server-side session storage, ensuring easy scaling across distributed systems. This microservice focuses on token lifecycle management, embodying the SRP (Single Responsibility Principle) to handle only session states and transitions.
+The `password_reset` microservice is designed with the Domain-Driven Design (DDD) pattern, where it focuses solely on the domain of password regeneration. It maintains boundaries through events for password reset requests and uses secure communication channels through well-defined APIs for sending reset tokens.
+For data persistence, the `credential_storage` microservice uses the Repository pattern to abstract data access with secure credential storage, ensuring sensitive data protection through encryption and hashing mechanisms.
+In summary, the service architecture leverages microservices with clear domain responsibilities, supported by robust security measures and a scalable, distributed system design. This ensures secure handling of authentication processes, session management, and credential storage while maintaining user convenience and role flexibility.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/auth/register	Register a new user in the system, allowing clients to use user features.	2
+POST	/auth/login	Authenticate a user, manager, or admin, facilitating role transition and generating a session token.	3
+POST	/auth/logout	Invalidate the current session token and revert the user to client status.	12, 16, 18
+POST	/password/reset	Initiate the password regeneration process by sending a password reset token to the user.	20
+POST	/password/reset/confirm	Verify the provided password reset token and allow the user to set a new password.	20
+
+#### MICROSERVICE: password_reset
+- TYPE: backend
+- DESCRIPTION: This microservice provides password regeneration functionality for users who forget their passwords. It issues password reset tokens and verifies them during the password reset process. The microservice interacts with secure email or SMS services to send reset links or codes to users. It also ensures secure storage and verification of temporary password reset tokens.
+- PORTS: 8202
+- TECHNOLOGICAL SPECIFICATION
+The `password_reset` microservice utilizes Python as its primary programming language due to its efficiency and security advantages, particularly in handling encryption and hashing operations. The Flask framework is chosen for building RESTful API endpoints that facilitate password reset functionalities. Additionally, the service employs Python libraries such as `itsdangerous` for generating secure password reset tokens and `smtplib` for sending emails through SMTP for password reset purposes. The `bcrypt` library is used for hashing password data, ensuring the security of user credentials. External libraries like `Twilio` may also be integrated to handle SMS notifications for password reset tokens.
+- SERVICE ARCHITECTURE
+The `password_reset` microservice adopts the microservices architectural pattern to maximize scalability and isolation of responsibilities. It implements the following patterns:
+1. **Single Responsibility Principle**: The architecture ensures that the microservice focuses solely on password reset functionalities, handling tasks from generating and verifying reset tokens to interaction with external notification services.
+2. **RESTful API Pattern**: It exposes well-defined RESTful endpoints for password reset requests, including generation and redemption of reset tokens. The endpoints adhere to standard HTTP methods, ensuring consistency and clarity.
+3. **Event-Driven Pattern**: Internally, the microservice may use an event-driven architecture for triggering notifications (via email/SMS) when a password reset is requested. This decouples notification handling from the main password reset logic.
+4. **Security Patterns**: The microservice employs security patterns such as Token-based Authentication for secure token handling and OAuth integration, if necessary, to support external authentication services like 2FA.
+5. **Service Isolation**: By separating the password reset functionality from other authentication concerns, the architecture ensures disaster recovery and independent scaling, maintenance, and deployment of the `password_reset` service without impacting other authentication microservices.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/password_reset/request	Initiate a password reset request for a user by generating a reset token and sending a notification via email or SMS.	20
+POST	/password_reset/verify	Verify the provided password reset token to confirm the legitimacy of the password reset request.	20
+POST	/password_reset/complete	Complete the password reset process by allowing the user to set a new password if the reset token is valid.	20
+
+#### MICROSERVICE: credential_storage
+- TYPE: database
+- DESCRIPTION: This microservice securely stores user credentials, including usernames and passwords. It provides mechanisms for secure storage and retrieval of user credentials, using encryption and hashing algorithms to ensure data integrity and security. It supports user authentication by facilitating credential validation during login processes.
+- PORTS: 8203
+
+
+## CONTAINER NAME: User_Profile
+
+### USER STORIES:
+5) As an user, I want to access my personal page, so that I can see my data.
+6) As an user, I want to be able to add a favourite category, so that I can have email notifications about related events.
+### PORTS: 8301:8400
+
+### DESCRIPTION: 
+The User_Profile container is designed to cater to the personalized needs of individual users within the web application. Its primary function is to manage and provide user-specific services, ensuring a tailored experience for each user. This container facilitates access to personal user pages, where users can view and manage their personal data. It also offers features for users to manage their preferences by allowing them to add favorite categories. This functionality is pivotal in personalizing the user's experience, as it ensures that users receive notifications about events that align with their interests. Essentially, the User_Profile container plays a critical role in enhancing user engagement by maintaining user data and preferences, thereby enabling notifications that keep users informed about events of interest.
+
+### PERSISTANCE EVALUATION
+The User_Profile container needs to store data to fulfill its purpose and user stories. Specifically, it must maintain data associated with each user's personal page, including their personal information and data related to their favorite categories. This also includes storing and managing the preferences concerning the types of events users are interested in, which will be used to send notifications about such events. This stored data ensures personalized user experiences and facilitates notification services for related events.
+
+### EXTERNAL SERVICES CONNECTIONS
+The User_Profile container may need to connect to an external email service to send notifications to users about events related to their favorite categories. These email notifications are crucial for keeping users informed and engaged with events that match their interests. Hence, integration with an email delivery service will be beneficial to fulfill this functionality efficiently.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: user_data
+- TYPE: backend
+- DESCRIPTION: This microservice manages user information and personal pages. It provides endpoints for users to view and update their personal data, ensuring personalized user experiences.
+- PORTS: 8301
+- TECHNOLOGICAL SPECIFICATION
+For the user_data microservice, we will use Python as the main programming language, leveraging the Django framework for building robust web applications. Django provides a solid foundation for creating RESTful APIs through its powerful features and built-in ORM for seamless database interactions. For database access, PostgreSQL will be utilized to store user information and manage data related to personal pages. The django-rest-framework library will be used to facilitate the creation of REST endpoints efficiently.
+For the preferences_manager microservice, also implemented in Python using the Django framework, it will benefit from the same stack, ensuring consistency and ease of integration across services. This microservice will heavily rely on Django's Model layer to handle and manage user preferences data, leveraging PostgreSQL again for persistence.
+The notifications_sender microservice will be built using Node.js to efficiently handle asynchronous operations, with the popular nodemailer library for orchestrating email deliveries. This microservice will connect to external email services, such as SendGrid or Amazon SES, for sending notifications.
+The preferences_storage microservice will be powered by PostgreSQL as a database to store user data, ensuring scalability and reliable data management. It will function as a database-focused microservice, maintained through typical database management tools and strategies.
+- SERVICE ARCHITECTURE
+The user_data microservice adopts a layered architecture pattern, with well-defined responsibilities across different layers. The presentation layer will handle HTTP requests and responses through Django views and serializers, the business logic layer will manage the core application logic, and the data access layer will handle interactions with the PostgreSQL database through Django's ORM. This separation helps maintain clear boundaries and scalability.
+Similarly, the preferences_manager microservice will follow the same layered architecture approach, using Django's standard practices to keep the application scalable and maintainable. Its routes, controller interactions, and data management will be clearly defined to support the management of user preferences.
+The notifications_sender microservice employs a mediator pattern, acting as an intermediary between the user preferences stored in the database and the external email service. It focuses mainly on connecting backend processes to the external email system, ensuring event-related notifications are appropriately constructed and delivered. This service will handle tasks asynchronously to ensure timely and efficient email dispatching.
+Lastly, the preferences_storage microservice embodies a repository pattern, focusing mainly on data storage and persistence. The database is designed to efficiently handle large volumes of user data and preferences, facilitating easy access and updates through the ORM capabilities of Django. This microservice is primarily data-centric, handling CRUD operations and ensuring data integrity.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/user_data/profile	Retrieve the personal page data of the user, including personal information and preferences	5
+POST	/preferences_manager/favorite_category	Add a new favorite category for the user, enabling email notifications for related events	6
+GET	/preferences_manager/favorite_categories	Fetch the list of favorite categories for the user	6
+
+#### MICROSERVICE: preferences_manager
+- TYPE: backend
+- DESCRIPTION: This microservice handles the addition and management of favorite categories for users. It stores user preferences, enabling personalized notifications according to user interests.
+- PORTS: 8302
+- TECHNOLOGICAL SPECIFICATION
+For the "preferences_manager" microservice, the technology stack prescribed is Python with the Flask framework. Flask is chosen due to its lightweight nature and flexibility, particularly in managing RESTful APIs, which are essential for handling user preferences. Additionally, this microservice can leverage libraries such as SQLAlchemy for ORM (Object Relational Mapping) to interact with the "preferences_storage" microservice's database, and marshmallow for object serialization and validation. Given the emphasis on user experience and personalization, the integration with email notification service might use libraries like Flask-Mail to ensure smooth email dispatch.
+- SERVICE ARCHITECTURE
+The service architecture for the "preferences_manager" microservice follows a modular design pattern organized around RESTful service principles. It consists of distinct layers:
+- **API Layer**: This exposes endpoints for operations related to managing favorite categories. Each endpoint corresponds to specific tasks like creating, updating, or retrieving user preferences.
+- **Service Layer**: Encapsulates the business logic for processing and validating user data. It interacts with the data abstraction layer to perform CRUD operations and manages the addition, retrieval, and updating of favorite categories.
+- **Data Abstraction Layer**: Operates as an intermediary between the service layer and the database microservice "preferences_storage," using SQLAlchemy to transform business objects into database records and vice versa.
+- **Integration Layer**: This connects to the middleware "notifications_sender" microservice, responsible for sending notifications. It ensures seamless data flow for events related to user preferences.
+This architecture effectively separates concerns, making the system more maintainable and scalable while ensuring robustness in handling user preferences and interactions.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/preferences/categories	Retrieve the list of favorite categories for the user, allowing them to view their current preferences	6
+POST	/preferences/categories	Add a new favorite category for the user, enabling personalized notifications for related events	6
+PUT	/preferences/categories/{categoryId}	Update an existing favorite category to reflect current user interests, ensuring notifications are relevant	6
+DELETE	/preferences/categories/{categoryId}	Remove an existing favorite category, stopping notifications related to that category	6
+
+#### MICROSERVICE: notifications_sender
+- TYPE: middleware
+- DESCRIPTION: This microservice connects to external email services to send event notifications to users based on their favorite categories. It manages email templates and ensures timely delivery of notifications to enhance user engagement.
+- PORTS: 8303
+
+#### MICROSERVICE: preferences_storage
+- TYPE: database
+- DESCRIPTION: This microservice stores user data related to personal pages and favorite categories. It plays a crucial role in maintaining persisted user information and preferences for future access and updates.
+- PORTS: 8304
+
+
+## CONTAINER NAME: Ticket_Management
+
+### USER STORIES:
+7) As an user, I want to see the booked pre-sales, so that I can see them.
+8) As an user, I want to see the bought tickets, so that I can see them.
+9) As an user, I want to book a pre-sale, so that I obtain the pre-sale to access the event.
+10) As an user, I want to buy a ticket, so that I obtain the ticket to access the event.
+11) As a user, I want to pay for a ticket online so that I can get the ticket code.
+### PORTS: 8401:8500
+
+### DESCRIPTION: 
+The Ticket_Management container is pivotal to the system, serving as the core unit for handling ticket-related functionalities. It manages the entire lifecycle of a ticket, from booking pre-sales to buying tickets and processing payments. Users can view their booked pre-sales to keep track of upcoming events and see their purchased tickets for events they plan to attend. Additionally, this container facilitates online transactions, ensuring users can pay for tickets securely and receive a code to confirm their purchase, which is essential for event access. This functionality supports seamless user interaction and transaction processing, driving the core service offering of the application.
+
+### PERSISTANCE EVALUATION
+The Ticket_Management container needs to store data to fulfill its purpose and user stories. It must persist information related to booked pre-sales and bought tickets, including details such as ticket IDs, event details, purchase dates, and pre-sale status. Furthermore, it needs to retain payment transaction details, ensuring that payment records align with ticket purchases. This persistent data is crucial for presenting users with their booking histories and enabling seamless transaction and ticket processing.
+
+### EXTERNAL SERVICES CONNECTIONS
+Based on its purpose and user stories, the Ticket_Management container needs to connect to external payment services to handle online transactions securely. For example, integration with external payment gateways such as PayPal, Stripe, or other payment service providers is necessary. These connections will facilitate secure payment processing and transaction verification. Additionally, the container may need to connect with email services to send ticket confirmations and receipts to users.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: booking
+- TYPE: backend
+- DESCRIPTION: This microservice manages the booking of pre-sales, allowing users to reserve tickets for events. It handles operations related to viewing and managing booked pre-sales, ensuring user reservations are properly stored and tracked.
+- PORTS: 8401
+- TECHNOLOGICAL SPECIFICATION
+The technological stack for the Ticket_Management container includes a blend of technologies suitable for building a robust, scalable backend. The primary language used is Python, alongside the Flask framework, known for developing lightweight web applications and RESTful APIs. Flask is chosen for its simplicity and flexibility, which suits the varied operations of booking, purchasing, and payments. For the middleware service, which handles interactions with external payment gateways, Node.js is used due to its strength in asynchronous processing, which is advantageous for handling payment operations. For persistent data storage, PostgreSQL is employed in the ticket_storage microservice, ensuring the system benefits from its advanced features suited for handling transactional data securely. Prominent libraries include SQLAlchemy for ORM (Object-Relational Mapping) with Python, facilitating efficient database interactions, and Requests for API calls to external services. The middleware service may utilize the npm package "axios" for HTTP requests to payment gateways.
+- SERVICE ARCHITECTURE
+The service follows a microservices architecture, dividing specific responsibilities into individual services that can scale and evolve independently. This architecture embraces several design patterns to ensure efficiency and reliability:
+1. **API Gateway Pattern**: The payment_gateway middleware employs the API Gateway pattern to route, authenticate, and manage interactions with external payment services, thereby centralizing and simplifying communication.
+2. **Repository Pattern**: The ticket_storage microservice implements the Repository pattern, separating business logic from data access. This ensures a clean data access layer, allowing for easier maintenance and testing.
+3. **Transaction Pattern**: To handle transactions reliably, especially for financial activities, the services implement a Transaction Script pattern to ensure that payment processes are atomic, consistent, isolated, and durable (ACID compliant).
+4. **Observer Pattern**: For handling events such as ticket purchase confirmations or sending receipts, the system uses the Observer pattern, where the booking and purchase services notify email services or other components that have subscribed to these events
+5. **Circuit Breaker Pattern**: The payment_gateway microservice adopts the Circuit Breaker pattern to handle faults that might occur during interaction with unstable external payment services, facilitating graceful degradation.
+By structuring the service with these patterns, it achieves robustness, scalability, and efficiency, ensuring reliable ticket lifecycle management and secure payment processing.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/booking/pre-sales	Retrieve a list of pre-sale tickets that the user has booked, providing details on upcoming events.	7
+GET	/booking/purchased-tickets	Fetch a list of tickets that the user has purchased, helping them keep track of events they plan to attend.	8
+POST	/booking/pre-sales	Book a pre-sale ticket for an event, allowing the user early access to tickets before the general public.	9
+POST	/purchase/ticket	Buy a ticket for an event, processing the user's request and linking the purchased ticket to their account.	10
+POST	/payment/process	Execute an online payment for the purchased ticket, generating and storing a ticket code for event access.	11
+
+#### MICROSERVICE: purchase
+- TYPE: backend
+- DESCRIPTION: This microservice oversees the purchase of tickets, processing complete transactions when users decide to buy tickets. It ensures tickets are purchased correctly and linked to users' accounts, providing a seamless buying experience.
+- PORTS: 8402
+- TECHNOLOGICAL SPECIFICATION
+The microservice would likely benefit from a flexible and scalable backend framework such as Node.js for asynchronous processing, which is advantageous for handling multiple payment and booking requests efficiently. For secure and seamless integration with third-party service providers, using libraries such as `Axios` for HTTP requests and `Express.js` for RESTful API structuring could be beneficial. For the middleware microservice integrating payment gateways, using existing SDKs provided by the payment services (e.g., PayPal SDK, Stripe SDK) would ensure secure transaction handling. The database microservice can rely on a robust relational database management system like PostgreSQL to store ticket and transaction data, leveraging an ORM such as Sequelize to enable smooth data retrieval and manipulation.
+- SERVICE ARCHITECTURE
+The service adopts a microservices architecture, ensuring a clear division of responsibilities across various components. The backend microservices `booking` and `purchase` both implement a Service-Oriented Architecture (SOA) style, interacting with the `ticket_storage` database to manage ticket lifecycles. They expose RESTful APIs for creating, reading, updating, and deleting ticket-related data. The `payment_gateway` acts as a middleware, implementing the Adapter design pattern to integrate seamlessly with external payment services, abstracting payment transactions and notifications from the main business logic. This pattern facilitates easy switching between different payment providers without altering core business processes. The `ticket_storage` microservice implements the Repository design pattern, encapsulating storage, retrieval, and search behavior to decouple business logic from data access layers, ensuring persistent and transactional integrity of ticket-related data.
+- EDNPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/booking/pre-sales	Retrieve a list of user's booked pre-sales, displaying upcoming events they have pre-booked.	7
+GET	/purchase/tickets	Fetch a list of tickets purchased by the user, providing details of events they plan to attend.	8
+POST	/booking/pre-sales	Book a pre-sale for an event, allowing the user to reserve a spot in advance.	9
+POST	/purchase/tickets	Complete the purchase of a ticket for an event, ensuring the ticket is linked to the user's account.	10
+POST	/payment_gateway/pay	Process an online payment for a ticket, returning a ticket code upon successful payment.	11
+
+#### MICROSERVICE: payment_gateway
+- TYPE: middleware
+- DESCRIPTION: This microservice provides integration with external payment services such as PayPal or Stripe, facilitating secure online payment processing. It handles the necessary interactions with payment providers, ensuring secure transactions and successful payment completion.
+- PORTS: 8403
+
+#### MICROSERVICE: ticket_storage
+- TYPE: database
+- DESCRIPTION: The microservice serves as the database for storing ticket-related information, including details of booked pre-sales, bought tickets, transaction records, and event details. It ensures persistent data storage for ticket lifecycle management.
+- PORTS: 8404
+
+
+## CONTAINER NAME: Event_Management
+
+### USER STORIES:
+13) As a manager, I want to see all events I have proposed.
+14) As a manager, I want to insert a new event, so that I can add it into the web application.
+15) As a manager, I want to access my personal page, so that I can see my data.
+17) As an admin, I want to add a new manager, so that he can publish events.
+19) As an admin, I want to access my personal page, so that I can see my data.
+### PORTS: 8501:8600
+
+### DESCRIPTION: 
+The Event_Management container is essential for managing the lifecycle of events within the web application. It provides the necessary functionalities for event managers to propose and manage the events they wish to host, such as viewing all events they have submitted and inserting new ones. This allows managers to actively engage with the platform by contributing content, thereby enhancing the platform's offerings for users. Furthermore, it provides administrators with the capability to manage event managers, including adding new managers, which is critical for maintaining control over who can contribute and ensuring event quality and validity. Additionally, both managers and admins can access their personal pages to review their data, providing a personalized experience. Overall, this container plays a pivotal role in expanding the event offerings on the platform while ensuring proper administration and management of event-related activities.
+
+### PERSISTANCE EVALUATION
+The Event_Management container requires persistance of data to manage the lifecycle and details of the events. The data to be stored includes:
+- Details of events proposed by managers, such as event names, descriptions, dates, and other specifications.
+- Information about managers, including their profiles and the events they are associated with.
+- Records of admins who manage the managers, and their actions regarding event and manager management.
+- Personal pages data for both managers and admins where they can access their details.
+
+### EXTERNAL SERVICES CONNECTIONS
+Based on the container's purpose and user stories, the Event_Management container does not inherently require direct connections to external services. All necessary data and functionality management are likely handled internally within the application. However, potential future integrations might include external services for validation of event details or integration of social media platforms for event promotion, though these are not specified in the current user stories.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: event_proposal
+- TYPE: backend
+- DESCRIPTION: This microservice allows managers to propose new events, view their currently proposed events, and manage them. It handles the creation and retrieval of event data, ensuring managers can effectively contribute event content to the platform.
+- PORTS: 8501
+- TECHNOLOGICAL SPECIFICATION
+The `event_proposal` microservice uses Python as its main programming language, with the Flask framework for building RESTful APIs. Flask provides lightweight and flexible development capabilities suitable for handling event proposal functionalities. For data handling and interactions, SQLAlchemy is used as an Object-Relational Mapping (ORM) library to simplify database operations and ensure smooth data transactions. Additionally, Marshmallow is incorporated for data serialization/deserialization and validation, ensuring data integrity at the API level.
+- SERVICE ARCHITECTURE
+The service architecture implements the Model-View-Controller (MVC) pattern. The "Model" component leverages SQLAlchemy to manage data and database interactions efficiently. The "View" aspect is represented by Flask's routing capabilities, which expose endpoints for managers to propose, view, and manage events. Lastly, the "Controller" tasks are distributed across Flask views and service classes, which handle business logic and request processing. This separation of concerns ensures maintainable and scalable code architecture. Additionally, RESTful architecture principles are adopted for designing API endpoints to ensure standard communication patterns across microservices.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/events	Retrieve a list of all events proposed by the current manager	13
+POST	/events	Insert a new event proposal into the web application	14
+GET	/manager/profile	Access the personal page to view the manager's data	15
+
+#### MICROSERVICE: admin_management
+- TYPE: backend
+- DESCRIPTION: This microservice provides administrators with the functionalities to manage event managers, including the ability to add new managers and modify existing ones. It maintains the admin's personal page and records of their actions.
+- PORTS: 8510
+- TECHNOLOGICAL SPECIFICATION
+The admin_management microservice is developed using Python with the Django REST framework for building and managing the backend RESTful API endpoints. This choice allows for rapid development and a clean architectural structure. Django's built-in ORM simplifies database interactions, which is beneficial given the need for persistent data storage. PostgreSQL is chosen as the database to ensure reliable transactions and scalability for storing event details, manager profiles, admin records, and personal page data. For the front-end interface specifically for the personal page functionality, React is used to build a dynamic and responsive user interface. Libraries such as Redux are employed for state management to efficiently handle data updates across the application.
+- SERVICE ARCHITECTURE
+The admin_management microservice adopts a layered architecture pattern. At the top layer, the presentation layer handles interactions with the client which, in this case, is mostly backend-driven but includes significant API endpoints for manager and admin functionalities. Django's views and serializers are used to format and process requests and responses efficiently. The business logic layer processes these requests and enforces rules on manager and admin operations like adding new managers and accessing personal pages. Finally, the data access layer, facilitated by Django's ORM, securely interacts with the PostgreSQL database, ensuring data integrity and consistency. This microservice also employs the Repository pattern to abstract database operations, allowing for greater flexibility and testing. Additionally, unit tests and integration tests ensure robustness and reliability. The overall design supports modularity, making future expansions and integrations straightforward.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/admin_management/events/managers/{manager_id}/proposed_events	Retrieve all events proposed by the specified manager, providing them with an overview of their contributions.	13
+POST	/admin_management/events/managers/{manager_id}/add_event	Allow a manager to insert a new event into the platform, thus contributing new content to the event offerings.	14
+GET	/admin_management/managers/{manager_id}/personal_page	Enable managers to access and review their personal and professional data on their personal page.	15
+POST	/admin_management/admins/add_manager	Add a new manager to the platform, empowering them to contribute events.	17
+GET	/admin_management/admins/{admin_id}/personal_page	Provide admins with access to their personal page to review and manage their personal data.	19
+
+#### MICROSERVICE: personal_page
+- TYPE: backend
+- DESCRIPTION: This microservice allows managers and admins to access and manage their personal data, ensuring they can review and update their personal information and details related to their activities on the platform.
+- PORTS: 8520
+- TECHNOLOGICAL SPECIFICATION
+For the backend microservices (event_proposal, admin_management, and personal_page), Node.js paired with the Express framework will be used to handle HTTP requests and build RESTful APIs efficiently. It provides a non-blocking, event-driven environment ideal for handling multiple concurrent connections typical in web applications. The MongoDB database will be leveraged for the data_storage microservice as it offers flexibility in handling varying data structures which equip it to manage complex event and user information seamlessly. For schema validation and object modeling in MongoDB, Mongoose will be incorporated. The backends will incorporate libraries such as bcrypt for password hashing and JWT for token management for security measures.
+- SERVICE ARCHITECTURE
+The service architecture follows a microservices pattern where each service is independently deployable and focuses on specific aspects of the event management process. The event_proposal microservice will implement a Controller-Service-Repository pattern which distinguishes between handling HTTP requests (Controller), business logic processing (Service), and data access (Repository). The admin_management microservice will utilize a similar pattern, with additional attention to role management to ensure proper access permissions. Both will make use of middleware for authentication purposes. The personal_page microservice will act as a personalized hub for users (managers and admins) to manage their data; it will follow a REST API pattern allowing easy data updating and retrieval. The data_storage microservice will use a repository pattern to persist and manage data interactions with MongoDB, ensuring a separation of concerns between data handling and business operations. All services will communicate via HTTP requests, coordinating efforts while being deployed in Docker containers, promoting scalability and isolating failures.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/event_proposal/events	Retrieve a list of all events proposed by the manager, providing a comprehensive overview of their submitted events.	13
+POST	/event_proposal/events	Submit a new event proposal from a manager, allowing them to add new event information to the platform.	14
+GET	/personal_page/manager	Access the personal page for a manager, presenting their personal and event-related data in an organized format.	15
+POST	/admin_management/managers	Add a new manager under the admin's authority, enabling them to contribute to the event content.	17
+GET	/personal_page/admin	Display the personal page for an admin, showcasing their profile and management actions in detail.	19
+
+#### MICROSERVICE: data_storage
+- TYPE: database
+- DESCRIPTION: This microservice stores detailed information about proposed events, manager profiles, admin records, and data for personal pages. It ensures persistent storage and retrieval of data necessary for the event lifecycle and management processes.
+- PORTS: 8530

@@ -1,0 +1,414 @@
+NFFH Project proposed by ArchiGPT-4o :
+
+# CONTAINERS:
+
+## CONTAINER NAME: User_Authentication
+
+### USER STORIES:
+1) As a Client, I want to Register in the site so that I can use the site
+2) As a Client, I want to login in the site so that I can use the site
+3) As a Client, I want to not put my Credentials in the site every time a reload the site, so that I can use the site
+4) As a Client, I want to logout, so that no one else uses my account
+17) As an Agricultural Company, I want to Register on the site, so that I can be visible and start doing business on the site
+18) As an Agricultural Company, I want to Login, so that I can work on the site
+19) As an Agricultural Company, I want to not put my Credentials in the site every time a reload the site, so that I can use the site easily
+20) As an Agricultural Company, I want to logout from the site
+22) As the Administrator of the site, I want to login on the site
+23) As the Administrator of the site, I want to not put my Credentials in the site every time a reload the site
+24) As the Administrator of the site, I want to logout from the site
+
+### PORTS: 10000:10100
+
+### DESCRIPTION: 
+The User_Authentication container is a crucial component responsible for managing the user access and security mechanisms for all types of users on the platform, including Clients, Agricultural Companies, and Administrators. Its primary functions include registration, where new users can create accounts to gain access to the platform, and login/logout functionalities, which allow users to authenticate their identity and securely start and end their sessions.
+
+Additionally, the container must ensure persistent sessions to enhance user convenience, preventing the need to repeatedly enter credentials during frequent site reloads. It achieves this by managing authentication tokens or sessions efficiently. The User_Authentication container ensures that only authorized users can access the site, thereby maintaining the security and integrity of the user accounts and protecting sensitive data involved in the buying and selling process. Through the use of well-defined ports (10000:10100), this container handles the secure exchange of credentials and authentication data across the platform.
+
+### PERSISTANCE EVALUATION
+The User_Authentication container needs to store data to fulfill its purpose and user stories. Specifically, it must store user credentials, including usernames and passwords, for clients, agricultural companies, and administrators. It will also need to manage authentication tokens or session identifiers to facilitate persistent sessions, allowing users to remain logged in across site reloads without re-entering credentials. Such storage ensures the secure management of user access, preserving the integrity of user accounts.
+
+### EXTERNAL SERVICES CONNECTIONS
+Based on the container's purpose and user stories, there is no inherent need for the User_Authentication container to connect directly to external services. However, if advanced security features such as multi-factor authentication or third-party social login options are required in the future, it might need to interface with external authentication services like OAuth providers or security token services to enhance security and user experience.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: auth_service
+- TYPE: backend
+- DESCRIPTION: Handles user registration, login, and logout for clients, agricultural companies, and administrators. This service exposes endpoints for managing these operations and ensures secure credential handling. It validates credentials against stored data, generates authentication tokens for session management, and provides functions to maintain persistent login sessions.
+- PORTS: 10010
+- TECHNOLOGICAL SPECIFICATION
+The auth_service microservice will utilize Node.js as its primary programming language because of its asynchronous capabilities, which suit the nature of handling multiple concurrent requests typical in authentication processes. It will employ the Express.js framework to build RESTful APIs for managing user registration, login, and logout functionalities. For secure credential handling, libraries such as bcryptjs will be integrated for password hashing, and jsonwebtoken will be used for managing JSON Web Tokens (JWTs) to facilitate session management and token-based authentication.
+- SERVICE ARCHITECTURE
+The architecture follows a microservices design pattern emphasizing separation of concerns. The auth_service acts as a backend service employing the Model-View-Controller (MVC) architecture pattern with clear modules for routing, controllers handling application logic, and a data access layer for interaction with the user_database microservice. The session management is abstracted into a separate middleware microservice, session_manager, following the Chain of Responsibility pattern. This middleware handles token verification and session persistence to seamlessly maintain user sessions across the platform without frequent credential input. Communication across microservices is accomplished through well-defined RESTful API endpoints, ensuring modularity and ease of maintenance.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/auth/register	Register a new user (Client, Agricultural Company, or Administrator) with the provided credentials and store securely in the user database.	1, 17
+POST	/auth/login	Authenticate user credentials for Clients, Agricultural Companies, or Administrators, and generate a token for session management.	2, 18, 22
+POST	/auth/logout	End the session for the logged-in user by invalidating the token, ensuring account security.	4, 20, 24
+GET	/auth/session	Check if the user session is still active by validating the authentication token, allowing for persistent login across site reloads.	3, 19, 23
+
+MICROSERVICE: session_manager
+- TYPE: middleware
+- DESCRIPTION: Manages user sessions and authentication tokens to allow persistent login across site reloads. It ensures efficient token handling to maintain security, while enhancing user experience by preventing the need for frequent credential input.
+- PORTS: 10020
+
+MICROSERVICE: user_database
+- TYPE: database
+- DESCRIPTION: Stores user credentials, including username and password information for all user types (clients, agricultural companies, and administrators). It also securely stores authentication tokens or session identifiers to manage user session persistence.
+- PORTS: 10030
+
+##  CONTAINER NAME: Personal_Info
+
+### USER STORIES:
+5) As a Client , I want to see my personal information
+21) As an Agricultural Company, I want to see my personal information
+### PORTS: 10101:10200
+   
+### DESCRIPTION: 
+The Personal_Info container is responsible for managing and displaying personal information for different types of users on the Not Far(m) From Home platform. This container serves primarily to allow Clients and Agricultural Companies to view their personal data, facilitating a personalized experience on the platform. It ensures that users have access to their information, which may include details such as contact information, account settings, and preferences. This access allows users to verify and check their details for accuracy and visibility, promoting transparency and user satisfaction. Since it focuses on visibility and updates of personal information, it likely interfaces with other services for data fetching and updating while maintaining user privacy and data security.
+
+### PERSISTANCE EVALUATION
+The Personal_Info container needs to store data to fulfill its purpose of displaying personal information for different types of users. This includes storing user details such as contact information, account settings, and preferences. The data needs persistence to ensure users can view and verify their information for accuracy and visibility. Although the focus is on displaying data, some level of data storage is necessary to manage user updates and changes, promoting transparency and user satisfaction.
+
+### EXTERNAL SERVICES CONNECTIONS
+Based on the container's purpose and user stories, the Personal_Info container does not inherently need to connect to external services. Its primary task is to display and manage personal information, which is stored and managed within the system itself. However, it may need to interface with internal services or databases within the platform to fetch and update personal data while maintaining user privacy and security.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: personal_info_backend
+- TYPE: backend
+- DESCRIPTION: This microservice handles the logic for fetching and updating user personal information. It interfaces with the database to retrieve the necessary data, ensuring that users can see their personal details, such as contact information, account settings, and preferences. It maintains user privacy and security by handling authentication and authorization checks before allowing access to personal data.
+- PORTS: 10101
+- TECHNOLOGICAL SPECIFICATION
+The `personal_info_backend` microservice uses Python as its main programming language, utilizing the Flask framework to build a RESTful API for managing and displaying user personal information. Flask is chosen due to its lightweight nature and scalable capabilities. For database interactions, SQLAlchemy is used as the ORM (Object-Relational Mapping) library, providing efficient database communication and handling complex database queries. Additional libraries include marshmallow for serialization and validation of user input, and Flask-JWT-Extended to handle user authentication and authorization securely, ensuring that only authorized users can access or modify personal data.
+- SERVICE ARCHITECTURE
+The `personal_info_backend` microservice architecture follows the Model-View-Controller (MVC) design pattern. In the MVC architecture:
+- **Model**: SQLAlchemy is used to define models for user data such as contact information, account settings, and preferences. This layer is responsible for communicating with the `personal_info_storage` microservice and performing CRUD operations.
+- **View**: Flask routes are used as the view layer, defining endpoints that users interact with to access and update their personal information.
+- **Controller**: The controllers handle business logic between the view and model. They process incoming HTTP requests, apply rules for accessing data, and coordinate data fetching and updates between the frontend requests and the database.
+The service includes middleware to handle authentication and authorization using Flask-JWT-Extended, ensuring that user data is accessed securely. The architecture ensures a separation of concerns, making the service scalable and maintainable while providing a secure and efficient mechanism for managing user personal information.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/personal_info/client	Retrieve and display the personal information for a Client, including contact information, account settings, and preferences.	5
+GET	/personal_info/agricultural_company	Retrieve and display the personal information for an Agricultural Company, ensuring secure access to contact details, account settings, and preferences.	21
+PUT	/personal_info/update	Update the personal information for the current user, ensuring the application of authorization checks before modifications are made.	5, 21
+
+#### MICROSERVICE: personal_info_storage
+- TYPE: database
+- DESCRIPTION: This microservice is responsible for storing and managing user personal data securely. It maintains records of contact details, account settings, and user preferences, allowing for efficient retrieval and updates as users interact with the platform.
+- PORTS: 10102
+
+## CONTAINER NAME: Product_Discovery
+
+### USER STORIES:
+6) As a Client , I want to See Hot products, so that i can discover the product in the season
+7) As a Client , I want to See Agricultural companies in my area, so that i can choose where to buy products
+8) As a Client , I want to See products for each Agricultural company, so that I can buy From them
+### PORTS: 10201:10300
+  
+
+### DESCRIPTION: 
+The Product_Discovery container serves as a critical component for users seeking to explore and identify available local produce and agricultural companies. Its primary purpose is to present consumers with timely and relevant information about seasonal products and nearby sellers, thereby enhancing their shopping experience and facilitating informed purchasing decisions. The container achieves this by implementing functionalities that allow clients to discover "hot products" of the season, view agricultural companies within their geographical area, and peruse the various offerings from each company. By doing so, the Product_Discovery container not only aids in promoting the visibility and accessibility of local produce, but also supports the platform’s overarching objective of fostering direct connections between consumers and local farmers.
+
+### PERSISTANCE EVALUATION
+The Product_Discovery container does not need to store long-term data to fulfill its purpose. It primarily operates as a read-oriented service, fetching and displaying information about hot products, agricultural companies, and seasonal offerings. However, it might temporarily store lists or cache data for performance optimization, such as frequently queried products or company information. This is not persistent storage but rather for caching purposes to enhance user experience through faster data retrieval.
+
+### EXTERNAL SERVICES CONNECTIONS
+The Product_Discovery container may require connections to external services for accessing real-time data related to agricultural products or market trends for accurately identifying "hot products." However, based on the provided user stories and purpose, it mainly relies on internal databases or interfaces with other internal services, such as Inventory_Management, to gather relevant data and present it to users.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: product_display
+- TYPE: backend
+- DESCRIPTION: This microservice is responsible for fetching and displaying information about seasonal hot products and agricultural companies within the user's locality. It interfaces with the Inventory_Management service to retrieve the necessary data. It provides endpoints for clients to view seasonal offerings and companies in their area.
+- PORTS: 10210
+- TECHNOLOGICAL SPECIFICATION
+For the `product_display` microservice, a suitable technology stack would include Python with the Flask framework for developing lightweight, RESTful APIs efficiently. Flask is chosen due to its simplicity and flexibility, which aligns with the microservice's need to handle data retrieval and display tasks. For data operations and optimizing API performance, integrating SQLAlchemy as an ORM can provide streamlined database interactions if needed. Additionally, utilizing libraries such as Requests for calling external APIs or services and Flask-Caching for caching purposes would enhance the service's performance. For the `cache_management` microservice, using Redis as an in-memory data structure store would be optimal due to its capability to handle caching, ensuring fast access to frequently requested data.
+- SERVICE ARCHITECTURE
+The `product_display` microservice adopts a layered architecture pattern comprising the following layers:
+- **Presentation Layer:** Manages the incoming HTTP requests, routes them to the appropriate handlers, and formats the returned responses. This includes defining API endpoints for clients.
+- **Business Logic Layer:** Contains the logic required to process requests, including fetching and filtering data about hot products and agricultural companies from the inventory system.
+- **Data Access Layer:** Interfaces with the `Inventory_Management` service to fetch real-time data and apply any necessary transformations before supplying it to the business logic layer.
+The `cache_management` microservice implements a proxy pattern to act as an intermediary between the `product_display` service and data sources. It includes mechanisms for:
+- **Data Retrieval and Storage:** Caching frequently accessed data such as hot product lists using Redis to avoid redundant data fetching operations.
+- **Cache Invalidation:** Implementing strategies to ensure cached data is up-to-date, perhaps through TTL (time-to-live) settings or event-based invalidation to reflect real-time inventory changes.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/product_display/hot_products	Retrieve and display a list of hot seasonal products to help clients discover seasonal offerings.	6
+GET	/product_display/agricultural_companies	Fetch and display a list of agricultural companies within the client's area to assist in choosing where to buy products.	7
+GET	/product_display/company_products/{company_id}	Retrieve and display a list of products offered by a specific agricultural company, enabling clients to know what products they can buy from them.
+
+MICROSERVICE: cache_management
+- TYPE: middleware
+- DESCRIPTION: The cache management microservice temporarily stores frequently accessed data such as hot products and agricultural company listings to optimize performance and reduce latency in data retrieval. It ensures the quick rendering of the Product_Discovery page by reducing the need to repeatedly fetch unchanged data from the backend.
+- PORTS: 10220
+
+## CONTAINER NAME: Cart_Management
+
+### USER STORIES:
+9) As a Client , I want to Add products to my cart, so that i can buy them
+10) As a Client, I want to Remove products from my cart, so that i can decide what to buy
+11) As a Client , I want to see the products in my cart, so that i can see want I am going to buy
+### PORTS: 10301:10400
+   
+### DESCRIPTION: 
+The Cart_Management container serves a crucial role in enhancing the shopping experience for clients on the Not Far(m) From Home platform. Its primary purpose is to manage the consumer's shopping cart operations efficiently. The container focuses on three core functionalities: adding products to the cart, removing products from the cart, and providing a view of the products currently held in the cart.
+1. **Adding Products to the Cart**: The container allows clients to seamlessly add products they wish to purchase into their shopping cart. This functionality ensures that clients can easily compile a selection of products they are interested in, streamlining their shopping process.
+2. **Removing Products from the Cart**: The container provides the ability to remove unwanted items from the cart. This feature is essential for clients who may change their mind regarding their purchase or wish to adjust their order based on availability or preference changes.
+3. **Viewing Products in the Cart**: The container enables clients to view the items they have added to their cart at any point in time. This feature empowers clients to review and edit their selections before proceeding to order completion, ensuring that they are fully informed about their intended purchases.
+Overall, the Cart_Management container is dedicated to facilitating and optimizing the client’s ability to manage, organize, and review their intended purchases in an intuitive and efficient manner, enhancing the overall user experience on the platform.
+
+### PERSISTANCE EVALUATION
+The Cart_Management container requires data storage to manage the contents of each client's shopping cart efficiently. It needs to store information such as product identifiers, quantities, timestamps of addition, and possibly user identifiers to associate a specific cart with a user session. This data will ensure that users can add, remove, and view products in their carts persistently across sessions, enabling a seamless shopping experience. The storage mechanism should allow for temporary data persistence, often using a database suitable for managing session-specific data, which is easily accessible and updateable in real-time.
+
+### EXTERNAL SERVICES CONNECTIONS
+Based on the container's purpose and user stories, the Cart_Management container does not inherently require connections to external services. Its functionalities of adding, removing, and viewing products in a cart rely on internally managed data or possibly local communication with other system containers like Inventory_Management for inventory validation purposes. The primary focus is on managing user interactions with their shopping cart, without needing external data or service integrations.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: cart-operations
+- TYPE: backend
+- DESCRIPTION: This microservice manages product operations within the user's shopping cart. It handles adding products to the cart, removing them, and providing a list of current cart items. It communicates with the database to keep track of products associated with a user session and updates as needed across different interactions.
+- PORTS: 10310
+- TECHNOLOGICAL SPECIFICATION
+The cart-operations microservice utilizes Python as its primary programming language, leveraging the Flask framework to build a lightweight yet powerful RESTful API. Flask's minimalistic design allows for modular coding and provides the capability to handle the HTTP requests sent by the clients. For persistent storage and management of cart details, a relational database like PostgreSQL is used, which efficiently handles session-based data. Additionally, SQLAlchemy is employed as the ORM (Object Relational Mapper) to facilitate database interactions, enabling ease of data manipulation and retrieval.
+- SERVICE ARCHITECTURE
+The architecture of the cart-operations microservice embraces the Model-View-Controller (MVC) pattern, which organizes the code into clear, manageable sections. The Model encompasses the database interaction layer, where SQLAlchemy models define the schema for cart data. The View layer comprises the route handlers exposed via Flask endpoints, which clients use to interact with their carts. The Controller is responsible for managing business logic, directing HTTP requests from the View to the appropriate Model actions, and processing results. This pattern enhances maintainability and scalability by separating concerns and allowing independent development of each component. Additionally, the microservice may implement caching mechanisms, such as Redis, to temporarily store cart data for quick retrieval, optimizing performance for high-traffic users.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/cart/add	Add a specified product to the user's cart, ensuring it is linked with their session for future purchase decisions.	9
+DELETE	/cart/remove	Remove a specified product from the user's cart based on their preference or decision changes.	10
+GET	/cart/view	Retrieve and display the list of products currently in the user's cart, allowing for review and confirmation of intended purchases.	11
+
+#### MICROSERVICE: cart-storage
+- TYPE: database
+- DESCRIPTION: This microservice is responsible for storing the contents of each client's shopping cart. It manages data such as product identifiers, quantities, and timestamps, linking these to user sessions for persistence and retrieval during the user's interactions with their cart.
+- PORTS: 10320
+
+## CONTAINER NAME: Order_Processing
+
+### USER STORIES:
+12) As a Client , I want to Complete an order, so that I can choose a date to go and pick up the products
+40) As a client, i want to see all my orders
+41) As a farmer, i want to see all my orders
+### PORTS: 10401:10500
+     
+### DESCRIPTION: 
+The Order_Processing container is crucial for managing the lifecycle of orders within the Not Far(m) From Home platform. It is responsible for facilitating the completion of client orders, allowing users to finalize their selections and make arrangements for pickup. Clients have the ability to choose a convenient date to collect their items directly from the Agricultural Company. The container also provides functionality for clients to view all their past and current orders, offering a comprehensive order history for easy management and reference. Additionally, it accommodates farmers by allowing them to access and review all their incoming orders. This ensures that both clients and farmers have a clear overview of order details, improving coordination and fulfillment efficiency. With its functionalities housed under ports 10401:10500, the Order_Processing container plays a central role in ensuring smooth transactions between local farmers and consumers on the platform.
+
+### PERSISTANCE EVALUATION
+The Order_Processing container needs to store order-related data to fulfill its purpose and handle user stories effectively. The data it needs to persist includes order details such as the order ID, client ID, farmer ID, list of products ordered, order status, and the selected pickup date. It also needs to maintain a history of orders for both clients and farmers to enable them to view all current and past orders. This data could be stored in a database to ensure it's easily accessible and manageable, supporting the platform's requirement for efficient order lifecycle management.
+
+### EXTERNAL SERVICES CONNECTIONS
+Based on the container's responsibilities, it does not inherently need to connect to external services. However, depending on additional features or enhancements, such as integrating a third-party calendar service for pickup date reminders, external connections could be considered. As it stands, the container's primary interactions are expected to be internal, with other containers within the system, such as Cart_Management for order completion and Inventory_Management for product availability checking.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: order-completion
+- TYPE: backend
+- DESCRIPTION: This microservice handles the process of finalizing client orders. It enables clients to select a pickup date and confirms the completion of the order. It also updates order statuses and communicates with the Cart_Management and Inventory_Management containers to ensure product availability before order finalization.
+- PORTS: 10410
+- TECHNOLOGICAL SPECIFICATION
+The microservices within the Order_Processing container primarily utilize modern web development technologies to ensure seamless order management and processing. The backend microservices, including order-completion, client-order-history, and farmer-order-management, are developed using Node.js due to its non-blocking, event-driven nature, which is ideal for handling numerous simultaneous operations like order processing. Express.js serves as the framework for building RESTful APIs to expose endpoints efficiently. Mongoose is incorporated to manage data interactions with the MongoDB database used by the order-storage microservice. MongoDB is chosen due to its flexibility in handling semi-structured data, such as JSON documents, which suits the diverse order details and statuses entailed in order processing.
+- SERVICE ARCHITECTURE
+The Order_Processing container's service architecture follows a microservices-based pattern, focusing on a clear separation of concerns and responsibility assignment. Each microservice functions independently, handling specific business logic related to orders, thus promoting scalability and maintainability. The order-completion microservice routes HTTP requests related to order finalization, using controllers to manage operations such as validating product availability via Inventory_Management and coordinating with Cart_Management before finalizing orders. Client-order-history and farmer-order-management microservices operate as read-heavy modules, implementing repository patterns to ensure efficient data retrieval and encapsulation from the order-storage microservice. This approach ensures a clean, modular system where each component can be updated or scaled independently, enhancing the system's overall flexibility and adaptability to evolving needs or increased load.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/order-completion/finalize	Finalize a client order, allowing the client to select a pickup date and confirming the order completion	12
+GET	/client-order-history/orders	Retrieve all past and current orders for a client, providing a complete order history	40
+GET	/farmer-order-management/orders	Retrieve all orders for a farmer, detailing the orders awaiting fulfillment	41
+
+#### MICROSERVICE: client-order-history
+- TYPE: backend
+- DESCRIPTION: This microservice allows clients to view all their past and current orders. It fetches order history data from the storage, providing a comprehensive overview for clients to manage and reference their orders.
+- PORTS: 10420
+- TECHNOLOGICAL SPECIFICATION
+The "client-order-history" microservice, being a backend service, can be effectively developed using Python with the Django REST framework due to its robustness and ease of building RESTful APIs. The Django ORM will facilitate interaction with the underlying database. For data storage, PostgreSQL can be used as it provides strong support for handling complex queries and is well-suited for managing relational data structures. Additionally, the service can leverage Celery for asynchronous task management if needed, particularly for handling any background tasks related to fetching large datasets or automated archiving of older records. The service should also include Django libraries such as Django Pagination for efficiently managing large sets of order data.
+- SERVICE ARCHITECTURE
+The client-order-history microservice will implement a layered architecture pattern, separating concerns into different layers for more maintainable and scalable code organization. The presentation layer will manage HTTP requests and responses, essentially serving as an API gateway for clients to retrieve their order data. The business logic layer will handle operations such as fetching data from the database and applying any business rules necessary for processing this data. The data access layer will interact with the order-storage microservice to retrieve or persist data through Django ORM. This structured separation of components not only improves modularity but also makes the system easier to test and maintain.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/orders	Retrieve a list of all past and current orders for the authenticated client, providing a comprehensive overview for management and reference.	40
+
+#### MICROSERVICE: farmer-order-management
+- TYPE: backend
+- DESCRIPTION: This microservice enables farmers to see and review all orders they need to fulfill. It provides detailed information about each order, helping farmers to organize and prepare for order pickups.
+- PORTS: 10430
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/orders/complete	Finalize a client order, allowing the user to select a pickup date and confirm completion after checking product availability	12
+GET	/orders/client/history	Retrieve and display all past and current orders for a client, providing a comprehensive order history	40
+GET	/orders/farmer/view	Allow farmers to access and review all orders they need to fulfill, detailing each order for better preparation and organization	41
+
+#### MICROSERVICE: order-storage
+- TYPE: database
+- DESCRIPTION: This microservice is responsible for storing order-related data. It retains details such as order ID, client ID, farmer ID, list of products ordered, order status, and the selected pickup date, facilitating retrieval and management of order information.
+- PORTS: 10440
+
+## CONTAINER NAME: Location_Services
+### USER STORIES:
+13) As a Client , I want to Open in google Maps the Location of the Agricultural company, so that i can find directions to it easly
+### PORTS: 10501:10600
+
+### DESCRIPTION: 
+The Location_Services container serves a key role in enhancing the user's experience by integrating with Google Maps. Its main purpose is to assist clients in finding directions to the Agricultural companies. By providing a seamless link between the platform and Google Maps, it allows clients to easily access navigation to their preferred agricultural companies, ensuring they can reach the locations with minimal hassle. This container simplifies the logistical aspect for users, making the journey to collect reserved produce more straightforward and convenient.
+
+### PERSISTANCE EVALUATION
+The Location_Services container does not require any data persistence to fulfill its purpose and user stories. Its main function is to integrate with Google Maps to provide directional support, which does not necessitate storing user data or any other persistent data within this container.
+
+### EXTERNAL SERVICES CONNECTIONS
+The Location_Services container must connect to an external service, specifically Google Maps, to provide users with the ability to find directions to Agricultural companies. This integration is essential to fulfill its primary user story, which involves opening Google Maps to show the location of the Agricultural companies and facilitating navigation for the client.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: google_maps_integration
+- TYPE: middleware
+- DESCRIPTION: The microservice handles the integration with Google Maps to provide navigation capabilities. It processes requests from clients to fetch directions to Agricultural Companies and redirects them to Google Maps with the necessary parameters. This microservice does not store any data persistently, as its main focus is to serve as a bridge between the platform and Google Maps.
+- PORTS: 10510
+
+## CONTAINER NAME: Inventory_Management
+
+### USER STORIES:
+14) As an Agricultural Company, I want to Add products in inventory, so that I can show my clients the new produce
+15) As an Agricultural Company, I want to Remove products in inventory, so that My clients don't try to buy an item that I don't have anymore
+16) As an Agricultural Company, I want to Modify products in inventory, so that I can change price and quantities on an item
+### PORTS: 10601:10700
+
+### DESCRIPTION: 
+The Inventory_Management container plays a crucial role for Agricultural Companies on the Not Far(m) From Home platform by providing them with the capabilities to effectively oversee their product inventory. This container enables agricultural businesses to add new products, ensuring they can regularly update their offerings to their clients. Furthermore, it allows companies to remove products that are no longer available, preventing the sale of non-existent stock. Additionally, the container facilitates the modification of existing products, allowing companies to adjust prices and quantities as necessary. This ensures real-time updates and accuracy for clients viewing and selecting products. Overall, the Inventory_Management container is key in maintaining accurate and up-to-date product information, directly impacting client satisfaction and business operations.
+
+### PERSISTANCE EVALUATION
+The Inventory_Management container needs to store data to effectively manage the product inventory for Agricultural Companies. The type of data includes details about each product, such as product name, description, price, quantity, and any associated images or categories. This data is crucial for adding new products, removing products that are no longer available, and modifying existing products to adjust prices or quantities. Additionally, historical data on inventory changes might be useful for auditing and analysis purposes to track trends and understand customer preferences over time.
+
+### EXTERNAL SERVICES CONNECTIONS
+Based on the container's purpose and user stories, there is no need for Inventory_Management to connect to external services. The functionality primarily focuses on CRUD (Create, Read, Update, Delete) operations related to inventory, which is handled internally within the platform's architecture. All necessary interactions are likely to be with other internal containers or databases rather than with third-party services.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: inventory-backend
+- TYPE: backend
+- DESCRIPTION: This microservice is responsible for executing CRUD operations (Create, Read, Update, Delete) on the agricultural products managed by the companies. It enables adding new products, removing unavailable ones, and modifying existing items' details, such as price and quantity, thereby ensuring accurate and updated inventory data.
+- PORTS: 10610
+- TECHNOLOGICAL SPECIFICATION
+The inventory-backend microservice uses Python as its main programming language, leveraging the Flask framework to develop RESTful APIs that manage CRUD operations. For data serialization and validation, it employs Marshmallow, a popular library. The Flask-SQLAlchemy extension is used for ORM (Object-Relational Mapping) capabilities to interact seamlessly with the PostgreSQL database used in inventory-db. Additionally, the service uses Gunicorn as the WSGI HTTP server for running the application in a production environment to ensure robust connection handling and concurrency.
+- SERVICE ARCHITECTURE
+The inventory-backend service follows a layered architecture pattern to ensure effective separation of concerns. The pattern includes a RESTful API Layer responsible for exposing endpoints that handle HTTP requests and appropriately route them to the service layer. The Service Layer contains business logic for processing requests and managing product information. Finally, the Data Access Layer interacts directly with the inventory-db through the ORM to execute database operations. This separation enables scalability and maintainability, allowing each layer to evolve independently while ensuring cohesiveness.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/inventory/products	Add a new product to the inventory with the specified details, ensuring it is available for clients to view and purchase	14
+DELETE	/inventory/products/{product_id}	Remove an existing product from the inventory using its unique identifier, preventing clients from attempting to buy unavailable items	15
+PUT	/inventory/products/{product_id}	Modify the details of an existing product, including price and quantities, to keep inventory information accurate and up to date	16
+GET	/inventory/products	Retrieve a list of all products currently available in the inventory, including their details such as name, price, and quantity	N/A
+GET	/inventory/products/{product_id}	Retrieve the details of a specific product using its unique identifier, providing comprehensive information to the clients	N/A
+
+#### MICROSERVICE: inventory-db
+- TYPE: database
+- DESCRIPTION: This microservice stores all inventory-related data, including product details such as name, description, price, quantity, and associated images or categories. It supports the persistence needs of the Inventory_Management container by maintaining accurate records of currently available products and historical data pertaining to inventory changes.
+- PORTS: 10620
+
+## CONTAINER NAME: Admin_Management
+
+### USER STORIES:
+25) As the Administrator of the site, I want to delete malevolus user
+26) As the Administrator of the site, I want to see all orders, so that I can better analyze how the platform is doing
+27) As the Administrator of the site, I want to see all users, so that I can better analyze how the platform is doing
+28) As the Administrator of the site, I want to get user details, so that I can have some clear view over the user
+29) As the Administrator of the site, I want to modify users, so that I can do site maintenance
+30) As the Administrator of the site, I want to see all areas, so that I can do site maintenance
+31) As the Administrator of the site, I want to get all Agricultural company by areas, so that I can analyze how they are distributed
+32) As the Administrator of the site, I want to get all Agricultural company details, so that I can do platform maintenance
+33) As the Administrator of the site, I want to get product by seller, so that I can do site maintenance
+34) As the Administrator of the site, I want to get product by id, so that I can do site maintenance
+35) As the Administrator of the site, I want to add an area, so that if there is some request for that area to be added, I can
+36) As the Administrator of the site, I want to add product, so that I can do site maintenance
+37) As the Administrator of the site, I want to modify product, so that I can do site maintenance
+38) As the Administrator of the site, I want to delete product, so that I can do site maintenance
+39) As the Administrator of the site, I want to delete an area, so that I can do site maintenance
+### PORTS: 10701:10800
+     
+### DESCRIPTION: 
+The Admin_Management container is a crucial component of the Not Far(m) From Home platform, designed specifically for the administrative oversight and maintenance of the system. It empowers administrators with a comprehensive suite of tools for managing users, orders, areas, and products. The functionalities cover a broad range of administrative needs, including viewing and deleting malevolent users to ensure platform security and discipline. Administrators can access and analyze orders and user activities to evaluate platform performance effectively.
+Moreover, the container facilitates the modification and management of users' information, allowing for necessary updates and interventions. It enables administrators to view areas and organize Agricultural Companies by regions for distribution analysis. They also have the capability to manage product listings, gain detailed product insights, and perform addition, modification, or deletion of products and areas on the platform. This extensive control allows for seamless site maintenance and reflects the dynamic needs of the platform, ensuring it remains efficient, secure, and responsive to user demands. The Admin_Management container serves as the backbone of the platform's maintenance operations, providing administrators with a powerful interface to oversee and optimize the entire ecosystem effectively.
+
+### PERSISTANCE EVALUATION
+The Admin_Management container requires the storage of various types of data to perform its functions effectively. It needs to store user information, including details about users' personal information for viewing, modification, or deletion to maintain platform security and user privacy. Furthermore, the container must maintain records of all orders to enable administrators to analyze platform performance and manage order history efficiently. Details about different geographic areas and Agricultural Companies must also be stored to organize these by regions and assess distribution. Additionally, product data, such as product listings, supplier details, and inventory status, must be persisted to facilitate management tasks like addition, modification, and deletion. This extensive data storage ensures that the administrators have all the necessary information to maintain and optimize the platform.
+
+### EXTERNAL SERVICES CONNECTIONS
+The Admin_Management container does not require direct connection to external services as part of its primary functionalities described here. The tasks it performs, such as viewing and managing users, orders, areas, and products, are internal operations that rely on the system's databases and other internal containers, like the User_Authentication or Inventory_Management, for data communication. However, if any aspect of platform analysis involves third-party data services, like analytics platforms, connecting to such services could be beneficial for more advanced insights and reports.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: admin-backend
+- TYPE: backend
+- DESCRIPTION: This microservice facilitates administrative functionalities such as managing users, orders, areas, and products. It provides endpoints for viewing, deleting, modifying user information, analyzing order details, organizing Agricultural Companies by regions, and maintaining product listings. This ensures effective platform security, performance evaluation, and site maintenance.
+- PORTS: 10701
+- TECHNOLOGICAL SPECIFICATION
+The admin-backend microservice will utilize Java with the Spring Boot framework for developing the RESTful API. Java is chosen for its robustness and the extensive ecosystem of libraries that can support complex business logic required for administrative functionalities. The Spring Boot framework will facilitate rapid development through its convention-over-configuration approach and built-in features such as security, data access, and dependency injection. Key libraries to be included are Spring Data JPA for database interaction, Spring Security for authentication and authorization, and Spring Web for building the web layer. These technologies provide a robust and scalable platform for developing the comprehensive administrative functionalities described.
+- SERVICE ARCHITECTURE
+The service architecture for the admin-backend microservice is designed with a layered pattern, a common architecture pattern that promotes separation of concerns and modularity. The architecture consists of the following layers:
+1. **Controller Layer:** This layer serves as the entry point for handling incoming HTTP requests. It uses REST controllers to process requests related to administrative functionalities such as user management, order overview, area organization, and product maintenance.
+2. **Service Layer:** The core business logic is implemented in this layer. It processes incoming requests, performs necessary business operations, and communicates with the repository layer. This separation ensures that business rules and logic are centralized and maintainable.
+3. **Repository Layer:** Utilizing Spring Data JPA, this layer interacts with the admin-database microservice to perform CRUD (Create, Read, Update, Delete) operations. It deals with all database-related operations abstracting the underlying complexities of data persistence.
+4. **Security Layer**: Spring Security is leveraged to secure the endpoints and ensure that only authorized administrators can perform specific actions such as modifying or deleting user data. Authentication is handled via REST tokens generated in conjunction with the User_Authentication microservice.
+5. **Middleware Communication:** The admin-middleware microservice acts as an intermediary for data exchange between the Admin_Management backend and other services, ensuring communication is seamless. This middleware is responsible for handling message transformations, routing, and service orchestration, enabling cleaner and more manageable integration logic.
+This architecture creates a well-structured and maintainable system that effectively supports the platform's administration capabilities.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+DELETE	/admin/users/{userId}	Delete a malevolent user by their ID to maintain platform security and discipline.	25
+GET	/admin/orders	Retrieve a list of all orders for analysis of platform performance.	26
+GET	/admin/users	List all users to analyze platform performance and user activities.	27
+GET	/admin/users/{userId}	Fetch detailed information about a specific user to gain insights.	28
+PUT	/admin/users/{userId}	Modify user details for site maintenance purposes.	29
+GET	/admin/areas	Retrieve a list of all geographical areas for site maintenance.	30
+GET	/admin/areas/companies	Get details of all Agricultural Companies organized by areas to analyze distribution.	31, 32
+GET	/admin/products/seller/{sellerId}	Fetch products offered by a specific seller for site maintenance.	33
+GET	/admin/products/{productId}	Retrieve detailed information about a product by its ID.	34
+POST	/admin/areas	Add a new area to the platform for organizational needs.	35
+POST	/admin/products	Add a new product listing to the platform for site updates.	36
+PUT	/admin/products/{productId}	Modify existing product details to keep information up-to-date.	37
+DELETE	/admin/products/{productId}	Remove a product from the platform to maintain relevant listings.	38
+DELETE	/admin/areas/{areaId}	Delete an area from the platform for maintenance purposes.	39
+
+#### MICROSERVICE: admin-database
+- TYPE: database
+- DESCRIPTION: This microservice is responsible for storing a variety of data such as user information, order records, geographic areas, Agricultural Company details, and product data. It ensures data persistence for administrative actions, allowing for efficient retrieval, modification, and deletion tasks.
+- PORTS: 10710
+
+#### MICROSERVICE: admin-middleware
+- TYPE: middleware
+- DESCRIPTION: This microservice manages data communication between the Admin_Management backend and other internal containers like User_Authentication and Inventory_Management. It handles messaging and data exchange to streamline administrative operations and ensure smooth inter-service communication.
+- PORTS: 10720
+
+## CONTAINER NAME: Frontend
+
+### PORTS: 10801:10900
+
+### DESCRIPTION: 
+The Frontend container is responsible for the web-based user interface of the Not Far(m) From Home platform. This container provides the essential means for users, including consumers, farmers, and administrators, to interact with the various functionalities of the system. It handles the presentation layer where users can register, log in, view and manage products, browse agricultural companies, manage their cart, and complete orders. Furthermore, through the frontend interface, users can access integrated services like user personal information, product discovery, order processing, and navigation via Google Maps for directions to agricultural companies. This container plays a crucial role in ensuring a seamless and user-friendly experience for all platform users as they utilize the available services and perform their respective roles.
+
+### PERSISTANCE EVALUATION
+The Frontend container does not inherently require data storage to fulfill its purpose and user stories, as it primarily functions as the presentation layer for users to interact with the system. It acts as a bridge between users and backend services, rendering data provided by other containers, such as user information, product listings, and cart contents. Any temporary storage or caching requirements would be minimal and pertain to session data or UI state management, typically handled through memory or client-side storage mechanisms such as local storage in the browser.
+
+### EXTERNAL SERVICES CONNECTIONS
+The Frontend container itself does not need to connect to external services directly. However, it communicates with the Location_Services container for integration with Google Maps, which requires external connectivity to Google Maps APIs. This integration enables features like displaying directions and insights for users. All other interactions with external services are managed by backend containers, which the Frontend container interfaces with to aggregate and display the resulting data to users.
+
+### MICROSERVICES:
+
+#### MICROSERVICE: frontend_ui
+- TYPE: frontend
+- DESCRIPTION: This microservice is responsible for the presentation layer of the platform. It provides the user interface that allows consumers, farmers, and administrators to interact with the system. It handles rendering of pages for user registration, login, product management, cart handling, and order processing. It communicates with backend services to fetch data and display it to the users in a coherent and user-friendly manner.
+- PORTS: 10810
+- TECHNOLOGICAL SPECIFICATION
+The frontend_ui microservice utilizes React.js as the primary JavaScript library for building the user interface. React.js is chosen for its efficiency in managing the UI state and its component-based architecture, which allows for a modular approach to building complex user interfaces. Additional libraries such as React Router are employed to manage navigation within the application. The frontend will also use Axios for handling HTTP requests to backend services, ensuring asynchronous data fetching and effective integration with APIs. For styling, the use of a CSS-in-JS library such as Styled Components is recommended for organizing styles alongside components, promoting style encapsulation and scalability of the UI design. The integration with Google Maps APIs will use libraries like react-google-maps or PSY for streamlined map rendering and interaction.
+- SERVICE ARCHITECTURE
+The service architecture follows a Single-Page Application (SPA) pattern, where the entire user interface is loaded once, and views are dynamically updated based on user interactions and backend responses without requiring full page reloads. The architecture employs a component-based design, wherein individual UI pieces are encapsulated as reusable components. This promotes maintainability and reuse across the application. State management is handled locally within components or shared using React's Context API for cross-component state sharing. The frontend communicates with backend microservices through RESTful APIs, using Axios to perform HTTP requests asynchronously. The integration with Google Maps APIs follows a service-oriented approach, where map features are encapsulated within dedicated components to ensure maintainability and separation of concerns.
+- PAGES
+Page Name	Description	User Stories
+Homepage	Provides an overview and introduction to the Not Far(m) From Home platform.	N/A
+Registration	Allows users to register and create an account on the platform.	N/A
+Login	Enables users to log into the platform with their account credentials.	N/A
+Product Management	Allows users to view and manage product listings available on the platform.	N/A
+Cart	Provides functionality for users to manage their shopping cart.	N/A
+Checkout	Facilitates order processing and completion for users ready to make purchases.	N/A
+Agricultural Companies	Displays a list of agricultural companies and provides browsing capabilities.	N/A
+Map Navigation	Integrates with Google Maps to allow users to view directions to agricultural companies.	N/A

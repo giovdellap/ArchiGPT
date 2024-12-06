@@ -1,0 +1,56 @@
+CONTAINER NAME: Authentication_Management
+  MICROSERVICE: user_auth
+    TYPE: backend
+    DESCRIPTION: This microservice manages user registration, login, and logout operations for clients, users, managers, and admins. It handles session management by generating and storing session tokens for different roles. The microservice exposes endpoints for these operations, ensuring secure handling of user credentials. It facilitates transitions between roles by enabling login and logout functionalities and uses session tokens to maintain login states.
+  MICROSERVICE: session_management
+    TYPE: backend
+    DESCRIPTION: This microservice oversees session management, handling session tokens generation, validation, and invalidation. It manages secure sessions for clients, users, managers, and admins. The microservice also includes logic for transitioning users among roles by resetting session states upon logout and role changes.
+  MICROSERVICE: password_reset
+    TYPE: backend
+    DESCRIPTION: This microservice provides password regeneration functionality for users who forget their passwords. It issues password reset tokens and verifies them during the password reset process. The microservice interacts with secure email or SMS services to send reset links or codes to users. It also ensures secure storage and verification of temporary password reset tokens.
+  MICROSERVICE: credential_storage
+    TYPE: database
+    DESCRIPTION: This microservice securely stores user credentials, including usernames and passwords. It provides mechanisms for secure storage and retrieval of user credentials, using encryption and hashing algorithms to ensure data integrity and security. It supports user authentication by facilitating credential validation during login processes.
+
+CONTAINER NAME: User_Profile
+  MICROSERVICE: user_data
+    TYPE: backend
+    DESCRIPTION: This microservice manages user information and personal pages. It provides endpoints for users to view and update their personal data, ensuring personalized user experiences.
+  MICROSERVICE: preferences_manager
+    TYPE: backend
+    DESCRIPTION: This microservice handles the addition and management of favorite categories for users. It stores user preferences, enabling personalized notifications according to user interests.
+  MICROSERVICE: notifications_sender
+    TYPE: middleware
+    DESCRIPTION: This microservice connects to external email services to send event notifications to users based on their favorite categories. It manages email templates and ensures timely delivery of notifications to enhance user engagement.
+  MICROSERVICE: preferences_storage
+    TYPE: database
+    DESCRIPTION: This microservice stores user data related to personal pages and favorite categories. It plays a crucial role in maintaining persisted user information and preferences for future access and updates.
+
+CONTAINER NAME: Ticket_Management
+  MICROSERVICE: booking
+    TYPE: backend
+    DESCRIPTION: This microservice manages the booking of pre-sales, allowing users to reserve tickets for events. It handles operations related to viewing and managing booked pre-sales, ensuring user reservations are properly stored and tracked.
+  MICROSERVICE: purchase
+    TYPE: backend
+    DESCRIPTION: This microservice oversees the purchase of tickets, processing complete transactions when users decide to buy tickets. It ensures tickets are purchased correctly and linked to users' accounts, providing a seamless buying experience.
+  MICROSERVICE: payment_gateway
+    TYPE: middleware
+    DESCRIPTION: This microservice provides integration with external payment services such as PayPal or Stripe, facilitating secure online payment processing. It handles the necessary interactions with payment providers, ensuring secure transactions and successful payment completion.
+  MICROSERVICE: ticket_storage
+    TYPE: database
+    DESCRIPTION: The microservice serves as the database for storing ticket-related information, including details of booked pre-sales, bought tickets, transaction records, and event details. It ensures persistent data storage for ticket lifecycle management.
+
+CONTAINER NAME: Event_Management
+  MICROSERVICE: event_proposal
+    TYPE: backend
+    DESCRIPTION: This microservice allows managers to propose new events, view their currently proposed events, and manage them. It handles the creation and retrieval of event data, ensuring managers can effectively contribute event content to the platform.
+  MICROSERVICE: admin_management
+    TYPE: backend
+    DESCRIPTION: This microservice provides administrators with the functionalities to manage event managers, including the ability to add new managers and modify existing ones. It maintains the admin's personal page and records of their actions.
+  MICROSERVICE: personal_page
+    TYPE: backend
+    DESCRIPTION: This microservice allows managers and admins to access and manage their personal data, ensuring they can review and update their personal information and details related to their activities on the platform.
+  MICROSERVICE: data_storage
+    TYPE: database
+    DESCRIPTION: This microservice stores detailed information about proposed events, manager profiles, admin records, and data for personal pages. It ensures persistent storage and retrieval of data necessary for the event lifecycle and management processes.
+

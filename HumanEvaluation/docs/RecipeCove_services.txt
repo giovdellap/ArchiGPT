@@ -1,0 +1,59 @@
+CONTAINER NAME: authentication
+  MICROSERVICE: auth
+    TYPE: backend
+    DESCRIPTION: The auth microservice handles registration, login, and logout functionalities. It enables registration via Google account integration, utilizing Google's authentication services to streamline user onboarding and ensure secure access. For login, it verifies user credentials and manages sessions by storing and validating authentication tokens. Logout functionality is implemented to safeguard user data by terminating sessions securely.
+  MICROSERVICE: token_storage
+    TYPE: database
+    DESCRIPTION: This microservice stores and manages session data and authentication tokens. It safely stores tokens that confirm a user's authentication status and handles data related to user sessions. This allows for secure management of user access, ensuring that users remain authenticated throughout their interactions while preventing unauthorized access.
+
+CONTAINER NAME: recipe_search_and_info
+  MICROSERVICE: recipe_search
+    TYPE: backend
+    DESCRIPTION: Handles the searching of recipes by name. It processes user search queries and interacts with external APIs to retrieve relevant recipes. It may temporarily cache search results for performance optimization.
+  MICROSERVICE: recipe_info
+    TYPE: backend
+    DESCRIPTION: Provides detailed information about selected recipes, including preparation methods and required ingredients. This service receives the recipe ID from the user and fetches comprehensive details from external sources.
+  MICROSERVICE: ingredient_info
+    TYPE: backend
+    DESCRIPTION: Retrieves detailed information about individual ingredients, such as uses, nutritional values, and other attributes. It connects with external ingredient information providers to deliver up-to-date information.
+  MICROSERVICE: cache
+    TYPE: middleware
+    DESCRIPTION: Implements caching mechanisms to store frequently accessed data temporarily to enhance performance. It may use technologies like Redis for in-memory data storage, improving retrieval speeds for search results and ingredient details.
+
+CONTAINER NAME: diet_recommendation_bot
+  MICROSERVICE: diet_chat_bot
+    TYPE: hybrid
+    DESCRIPTION: This microservice implements the chat-BOT functionality to suggest recipes based on specific dietary preferences. It interacts with users, processes their dietary inputs, and queries existing data or external sources to provide tailored recipe recommendations. It enhances user interaction by adapting to various dietary requirements and guiding users in discovering suitable recipes.
+  MICROSERVICE: external_data_connector
+    TYPE: middleware
+    DESCRIPTION: This microservice manages connections to external services or datasets required by the diet recommendation bot, such as recipe databases, dietary guidelines APIs, and NLP services. It ensures the chat-BOT has access to accurate and up-to-date information to offer diversified recipes.
+
+CONTAINER NAME: user_profile
+  MICROSERVICE: user_profile_manager
+    TYPE: backend
+    DESCRIPTION: Handles the management of user profiles, enabling users to view and update their personal information. The microservice interacts with internal storage to retrieve and persist user data securely. It exposes endpoints for accessing profile information, ensuring only authorized access is permitted.
+  MICROSERVICE: user_data_storage
+    TYPE: database
+    DESCRIPTION: A dedicated microservice for storing and retrieving basic user information, such as usernames and email addresses. It provides a secure data storage solution within the container.
+
+CONTAINER NAME: calendar_management
+  MICROSERVICE: calendar_service
+    TYPE: backend
+    DESCRIPTION: This microservice is responsible for the core functionalities of calendar management, including creating, deleting, and managing calendar events related to recipes. It provides endpoints to perform these operations and interacts with the database to persist user calendar data and event information.
+  MICROSERVICE: calendar_storage
+    TYPE: database
+    DESCRIPTION: This microservice handles the persistence of user calendar data. It stores information about calendar instances, events, and associated recipes, allowing for efficient retrieval and modification by the calendar_service microservice.
+
+CONTAINER NAME: favorites_management
+  MICROSERVICE: favorites_backend
+    TYPE: backend
+    DESCRIPTION: This microservice is responsible for managing the backend logic related to user favorite recipes. It provides endpoints for users to add, remove, and view recipes from their favorite list. The service ensures each user's favorite recipes are stored and retrieved correctly.
+  MICROSERVICE: favorites_storage
+    TYPE: database
+    DESCRIPTION: This microservice stores data related to users' favorite recipes. It maintains a persistent record of each user's favorite list, associating user identifiers with recipe identifiers to ensure accurate storage and retrieval of favorite recipes.
+
+CONTAINER NAME: frontend
+  MICROSERVICE: user_interface
+    TYPE: frontend
+    DESCRIPTION: This microservice serves as the user interface for the RecipeCove web application. It is responsible for rendering the website layout, handling user inputs, and facilitating interactions with other backend services to display dynamic content such as recipes, user profiles, and dietary recommendations. It ensures the application is intuitive and user-friendly.
+

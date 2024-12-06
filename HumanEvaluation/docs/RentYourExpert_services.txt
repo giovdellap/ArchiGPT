@@ -1,0 +1,73 @@
+CONTAINER NAME: authentication_container
+  MICROSERVICE: auth-service
+    TYPE: backend
+    DESCRIPTION: This microservice handles user registration, login, and logout processes. It also manages user roles and ensures secure access for different roles (customers, workers, admins). It exposes endpoints for these operations, checks credentials against stored data during login, creates and manages authentication tokens, and assigns roles based on user type.
+  MICROSERVICE: auth-db
+    TYPE: database
+    DESCRIPTION: This microservice stores user credentials, authentication tokens, and user roles. It securely manages data like usernames, passwords, and possibly security questions. It plays a crucial role in supporting registration and login processes by maintaining user data and roles.
+
+CONTAINER NAME: user_profile_management
+  MICROSERVICE: profile_access
+    TYPE: backend
+    DESCRIPTION: This microservice allows users to access and view their profiles, including pertinent information such as names, contact details, and potentially other user-specific settings.
+  MICROSERVICE: profile_modification
+    TYPE: backend
+    DESCRIPTION: This microservice enables users to update and modify their profile information, ensuring their details are current and accurate.
+  MICROSERVICE: profile_storage
+    TYPE: database
+    DESCRIPTION: This microservice stores profile information for customers, workers, and potentially admins, ensuring all profile data is persisted for both access and modification.
+
+CONTAINER NAME: catalogue_and_worker_management
+  MICROSERVICE: worker_catalogue
+    TYPE: backend
+    DESCRIPTION: This microservice manages the catalog of workers, enabling customers to browse through the list of available professionals. It handles requests for fetching workers' details and enables users to view individual worker profiles, showcasing their skills and expertise.
+  MICROSERVICE: worker_management
+    TYPE: backend
+    DESCRIPTION: This microservice manages the administrative functionalities for worker profiles. It provides features for admins to add, update, and delete worker profiles, ensuring only the most relevant and qualified professionals are listed on the platform.
+  MICROSERVICE: worker_storage
+    TYPE: database
+    DESCRIPTION: This microservice hosts and manages the persistence of data related to workers, including their profiles, skills, expertise, and personal details. It ensures the accuracy and integrity of this information for seamless browsing and administrative functions.
+
+CONTAINER NAME: communication_qna
+  MICROSERVICE: qna_backend
+    TYPE: backend
+    DESCRIPTION: This microservice manages the core logic for the Q&A system. It handles the creation, retrieval, and deletion of questions and answers, ensuring smooth communication between customers and workers. It allows customers to post questions and workers to respond while providing administrative options to delete content.
+  MICROSERVICE: qna_storage
+    TYPE: database
+    DESCRIPTION: This microservice is responsible for storing data related to the Q&A interactions. It holds questions and answers along with metadata, such as timestamps and user IDs, ensuring a reliable repository for communication history and moderation tasks
+  MICROSERVICE: qna_admin
+    TYPE: middleware
+    DESCRIPTION: This microservice provides administrative capabilities for the Q&A system. It handles operations related to content moderation, including the deletion of inappropriate or irrelevant questions and answers, thus maintaining the quality of communication on the platform.
+
+CONTAINER NAME: review_management
+  MICROSERVICE: review_management_service
+    TYPE: backend
+    DESCRIPTION: This microservice handles the creation, reading, updating, and deletion of reviews by customers about workers. It exposes endpoints for customers to leave feedback, view existing reviews, update their reviews, and delete them if necessary. It provides functionality for admins to moderate reviews by allowing them to delete inappropriate or biased content.
+  MICROSERVICE: review_store
+    TYPE: database
+    DESCRIPTION: This microservice is responsible for storing all review-related data including review content, reviewer's ID, worker's ID, timestamps for creation and updates, and a flag status for deleted or modified reviews. It ensures the persistence of reviews within the platform.
+
+CONTAINER NAME: request_management
+  MICROSERVICE: request_handler
+    TYPE: backend
+    DESCRIPTION: Handles the creation, listing, modification, and deletion of service requests on the platform. This microservice manages customer requests and allows both customers and workers to manage their respective requests. It also provides admins with access to view, add, or remove requests as needed.
+  MICROSERVICE: request_storage
+    TYPE: database
+    DESCRIPTION: Stores data related to customer requests, including request details, related customer and worker information, and the status and history of requests. This microservice serves as the data persistence layer for the "request_management" functionalities.
+
+CONTAINER NAME: admin_customer_management
+  MICROSERVICE: admin_management
+    TYPE: backend
+    DESCRIPTION: This microservice handles administrative functions for customer management. It provides capabilities to admins for accessing and managing customer lists and their profiles. Admins can add new customers, access details of individual customer profiles, and securely delete customer accounts. The microservice ensures traceability by logging any actions performed on customer data.
+  MICROSERVICE: customer_storage
+    TYPE: database
+    DESCRIPTION: This microservice manages the storage of customer data, including names, contact details, and profile information. It maintains a record of all admins' actions on customer accounts to facilitate auditing and compliance.
+
+CONTAINER NAME: frontend
+  MICROSERVICE: user_interface
+    TYPE: frontend
+    DESCRIPTION: This microservice provides the core user interface components for the RentYourExpert platform. It is responsible for rendering the platform's various pages and UI elements, allowing users to navigate the application, search for experts, view profiles, read reviews, and interact with the Q&A system. It relies on backend services to fetch and display necessary data while ensuring a responsive and accessible front end.
+  MICROSERVICE: api_gateway
+    TYPE: middleware
+    DESCRIPTION: The API gateway microservice serves as the primary point of contact between the frontend UI and backend microservices. It routes incoming requests from users to the appropriate backend services, ensuring efficient load balancing and handling responses that are then delivered to users. This service facilitates communication and integration of various functionalities such as authentication, profile management, and data retrieval.
+

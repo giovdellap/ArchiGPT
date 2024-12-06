@@ -1,0 +1,87 @@
+CONTAINER NAME: user_authentication
+  MICROSERVICE: account_management
+    TYPE: backend
+    DESCRIPTION: This microservice handles account creation, login, and logout operations. It manages user credentials, generates sessions, and ensures secure login/out. It interfaces with the database for validating login credentials, creating new user accounts, and managing session tokens. This microservice communicates with external services to verify user identity during account creation and sends notifications for password resets.
+  MICROSERVICE: password_recovery
+    TYPE: backend
+    DESCRIPTION: This microservice supports password reset functionality. It generates secure tokens for password reset requests and verifies these tokens before allowing password changes. It also sends password reset emails via an integrated email service. Ensures secure recovery of user access.
+  MICROSERVICE: account_deletion
+    TYPE: backend
+    DESCRIPTION: Responsible for handling user account deletion requests. It validates user identity and securely deletes user data from the system. Ensures compliance with data protection regulations by purging account-related information.
+  MICROSERVICE: authentication_database
+    TYPE: database
+    DESCRIPTION: This microservice stores user credentials, including usernames, hashed passwords, and session data. It stores tokens required for password resets and other authentication-related data, providing persistent storage needed by the user_authentication container's backend services.
+
+CONTAINER NAME: user_profile
+  MICROSERVICE: profile_view
+    TYPE: backend
+    DESCRIPTION: The microservice allows users to visualize their personal information stored within the system. It provides endpoints for retrieving user profile data such as names, email addresses, and other personal details. This allows the user to verify their stored information's accuracy.
+  MICROSERVICE: profile_update
+    TYPE: backend
+    DESCRIPTION: The microservice facilitates the modification of user's personal information. It provides endpoints for updating the user's details, such as email, password, and other profile attributes. It ensures that updates are correctly managed and stored, maintaining data integrity and audit logs as necessary.
+  MICROSERVICE: profile_storage
+    TYPE: database
+    DESCRIPTION: The microservice ensures data persistence for user profiles, storing details like names, email addresses, and other modifiable information. It also manages audit logs and potentially the history of updates for traceability and security purposes.
+
+CONTAINER NAME: notifications
+  MICROSERVICE: notification_manager
+    TYPE: backend
+    DESCRIPTION: This microservice handles the generation and delivery of real-time notifications to the users within the Teamify application. It processes events from various components within the system to create appropriate notifications and ensure users receive timely updates. It also manages notification statuses, like read or unread, and stores notification history for users to view at any time.
+  MICROSERVICE: notification_storage
+    TYPE: database
+    DESCRIPTION: This microservice is responsible for storing all notification-related data, including notification ID, type, content, timestamp, recipient user ID, and status. It ensures the persistent storage and retrieval of notification history so users can access their notifications even after periods of inactivity.
+
+CONTAINER NAME: personal_tasks
+  MICROSERVICE: task_management
+    TYPE: backend
+    DESCRIPTION: Handles all backend processes related to personal task management, including creating, modifying, deleting, and marking tasks as completed. It manages user interactions and data processing for personal task agenda, ensuring users can efficiently organize and oversee their personal tasks.
+  MICROSERVICE: task_storage
+    TYPE: database
+    DESCRIPTION: Responsible for storing data related to individual tasks, such as task descriptions, deadlines, statuses, priority levels, and categories. It ensures persistence of all task-related information to support personal task management functionalities
+
+CONTAINER NAME: team_management
+  MICROSERVICE: team_manager
+    TYPE: backend
+    DESCRIPTION: This microservice manages all core functionalities related to teams, such as creating and deleting teams, inviting and managing team members, and assigning or revoking administrator privileges. It also allows team members to leave teams and facilitates editing of team information.
+  MICROSERVICE: team_storage
+    TYPE: database
+    DESCRIPTION: This microservice is responsible for storing and managing data related to teams, including team details, member details, roles, invitations, and audit logs of team activities.
+
+CONTAINER NAME: team_events
+  MICROSERVICE: event_manager
+    TYPE: backend
+    DESCRIPTION: This microservice is responsible for handling the creation, modification, deletion, and completion tracking of team events. It manages user requests to create new events, modify existing ones, and mark them as complete. Additionally, it allows users to accept or decline invitations to events, and it communicates these decisions to the team administrators.
+  MICROSERVICE: event_storage
+    TYPE: database
+    DESCRIPTION: This microservice manages the persistent storage of team events data. It stores detailed information about each event, including the title, description, date, time, location, team association, participant list, invitation statuses, and completion status. It also maintains historical data for auditing and reference purposes.
+  MICROSERVICE: agenda_visualizer
+    TYPE: frontend
+    DESCRIPTION: This microservice provides a user interface for displaying the shared agenda of team events. It allows team members to visualize events specific to their team and offers interfaces for users to interact with their event invitations and statuses.
+
+CONTAINER NAME: messaging
+  MICROSERVICE: chat_service
+    TYPE: backend
+    DESCRIPTION: This microservice handles real-time chat functionalities within teams. It facilitates sending and receiving messages in a group chat through a web-socket connection. The microservice ensures instant message delivery and manages user connections, session details, and transient presence information to maintain the state of ongoing chat sessions.
+  MICROSERVICE: message_router
+    TYPE: middleware
+    DESCRIPTION: This microservice manages the routing of messages among team members. It ensures messages are correctly directed to intended recipients in a distributed system topology, supporting the chat service. It may use external advanced message routing services to ensure availability and reliability.
+
+CONTAINER NAME: polls
+  MICROSERVICE: poll_creation
+    TYPE: backend
+    DESCRIPTION: This microservice handles the creation of polls by team administrators. It facilitates the input of poll questions, options, and associates the poll with the designated team. It ensures that polls are appropriately configured and stored for subsequent interactions.
+  MICROSERVICE: voting
+    TYPE: backend
+    DESCRIPTION: This microservice manages the voting process for team members. It allows users to cast their votes on active polls, ensures that a user can vote only once per poll, and records each vote in the database for accurate result computation.
+  MICROSERVICE: result_visualization
+    TYPE: backend
+    DESCRIPTION: This microservice is responsible for compiling and displaying poll results to users. It retrieves the recorded votes, calculates the results, and presents the outcomes to team members, facilitating transparency and informed decision-making.
+  MICROSERVICE: poll_storage
+    TYPE: database
+    DESCRIPTION: This microservice is dedicated to storing poll-related data, including poll questions, options, votes cast by users, and final poll results. It ensures data persistence and integrity throughout the lifecycle of a poll.
+
+CONTAINER NAME: frontend
+  MICROSERVICE: api-gateway
+    TYPE: middleware
+    DESCRIPTION: Acts as a middleware microservice facilitating communication between the frontend and backend services. It routes user requests from the frontend to appropriate backend microservices handling tasks such as authentication, task management, and notifications, ensuring secure and efficient data exchange.
+

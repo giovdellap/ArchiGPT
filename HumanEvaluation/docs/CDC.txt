@@ -1,0 +1,393 @@
+CDC Project proposed by ArchiGPT-4o :
+
+# CONTAINERS
+
+## CONTAINER NAME: User_Authentication
+
+### USER STORIES:
+1) As a Customer, I want to be able to register in order to have an account
+2) As a Customer, I want to be able to login
+3) As a Customer, I want to be able to have access to my profile
+14) As a Merchant, I want to be able to login to the Merchant page
+19) As a Merchant, I want to access to my profile
+### PORTS: 10000:10100
+### DESCRIPTION: 
+The User_Authentication container plays a crucial role in the CDC shop as it manages user registration, login, and profile access for both customers and merchants. This container ensures that all users, whether they are customers or merchants, can create accounts and securely access their profiles within the system. It handles the complexities of validating user credentials during the login process and provides access controls by verifying and authenticating users based on their roles. The container is responsible for securing user data during these processes and maintaining the integrity and confidentiality of user accounts. Additionally, it facilitates seamless integration with other components of the system, such as shopping and order management, by ensuring that only authenticated and authorized users can perform certain actions. Overall, the User_Authentication container establishes the foundation for secure and personalized user interactions within the CDC shop, supporting reliable and efficient account and access management.
+### PERSISTANCE EVALUATION
+The User_Authentication container requires data storage to fulfill its functionalities of registration, login, and profile access management for both customers and merchants. Specifically, it needs to store users' registration data, including usernames, encrypted passwords, email addresses, and other relevant profile information. Additionally, it may need to store authentication tokens or sessions for secure access control and seamless user experience. The container must also safeguard data related to user credentials to ensure data integrity and confidentiality.
+### EXTERNAL SERVICES CONNECTIONS
+Based on the container's purpose and user stories, there is no immediate need for the User_Authentication container to connect to external services for its core functionalities such as user registration, login, and authentication. However, if there are additional security requirements, the container might benefit from integration with external identity verification or multi-factor authentication services to enhance security. Nevertheless, these are optional and depend on the overall security policies and needs of the CDC shop.
+### MICROSERVICES:
+#### MICROSERVICE: user_registration
+- TYPE: backend
+- DESCRIPTION: This microservice handles the registration process for both customers and merchants. It validates input data, ensures that the username is unique, hashes passwords before storing them, and may send verification emails.
+- PORTS: 10000
+- TECHNOLOGICAL SPECIFICATION
+The microservice uses Java as its main programming language, utilizing the Spring Boot framework for rapid development of backend services. For password hashing, the Bcrypt library is employed to ensure secure storage of user credentials. Database interactions are managed using JPA (Java Persistence API) to interface with the database microservice for persistence. For sending verification emails, the JavaMail API can be used. Additionally, the use of JWT (JSON Web Tokens) library is recommended for generating and managing authentication tokens.
+- SERVICE ARCHITECTURE
+The service architecture adopts a layered pattern. The presentation layer handles RESTful API requests, utilizing controllers that process incoming HTTP requests and send responses. The service layer contains business logic, including user registration, validation, and the generation of authentication tokens. A data access layer interacts with the auth_storage microservice using repository interfaces. Moreover, there is an integration layer managing communication with optional external services such as email verification. To enhance security, a security configuration module integrates Spring Security to enforce authentication and authorization policies, protecting sensitive endpoints.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/auth/register	Register a new account for a customer or merchant, validate input data, ensure unique username, hash password, and optionally send verification email.	1
+POST	/auth/login	Validate login credentials, generate authentication token for customers and merchants, and provide role-based access control.	2, 14
+GET	/auth/profile	Retrieve and provide access to user's profile details for customers and merchants, allowing updates and secure data retrieval.	3, 19
+
+#### MICROSERVICE: login_access
+- TYPE: backend
+- DESCRIPTION: This microservice manages user login for customers and merchants, validating credentials against stored data, generating authentication tokens, and providing access control.
+- PORTS: 10010
+- TECHNOLOGICAL SPECIFICATION
+The "login_access" microservice will utilize Node.js as the main programming language due to its efficiency in handling asynchronous operations and high concurrency, which is crucial for handling multiple login requests simultaneously. For the backend web application framework, Express.js will be used to create RESTful APIs for handling login requests and credential validation. The service will make use of JSON Web Tokens (JWT) for generating and managing authentication tokens. Additionally, the bcrypt library will be employed for hashing passwords to ensure secure storage. The communication with the user credentials database will be facilitated through a library such as Sequelize for ORM (Object-Relational Mapping) or directly through database-specific query libraries if necessary.
+- SERVICE ARCHITECTURE
+The architecture of the "login_access" microservice follows a Model-View-Controller (MVC) pattern. The 'Model' aspect will involve interactions with the auth_storage database microservice to validate credentials and manage authentication tokens. This separation enhances maintainability and enables easy updates to the data interaction layer without affecting other components of the service. The 'Controller' component will manage HTTP requests, ensuring that login attempts are processed securely by invoking validation logic and token generation. The 'View' component is not emphasized since it is a backend service, but response structures are predefined for consistency in data returned to clients. Additionally, the service will implement middleware for error handling and logging to support debugging and monitoring. Security measures, such as rate limiting and account lockout for multiple failed login attempts, will be considered to enhance the system's resilience to potential attacks.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/login	Authenticate user login by validating submitted credentials and generating a JWT upon successful validation	2, 14
+GET	/profile	Retrieve authenticated user's profile information, ensuring access is restricted to their own data	3, 19
+
+#### MICROSERVICE: profile_management
+- TYPE: backend
+- DESCRIPTION: This microservice offers access to user profile details for both customers and merchants. It allows users to update their information and manages data retrieval securely.
+- PORTS: 10020
+- TECHNOLOGICAL SPECIFICATION
+The User_Authentication container will be based on a technologically robust and secure stack using Node.js with the Express framework to handle the backend logic and build RESTful APIs for registration, login, and profile access operations. Node.js is a suitable choice for handling many simultaneous connections, beneficial for an e-commerce platform like CDC shop. Express provides a lightweight and flexible structure conducive to building microservices. For database operations, MongoDB will be used as it allows for scalable and flexible data storage suitable for user profile information and authentication credentials. To ensure secure handling of passwords, bcrypt will be used for hashing. Additionally, JSON Web Tokens (JWT) will be employed for creating and managing authentication tokens, ensuring stateless and secure sessions.
+- SERVICE ARCHITECTURE
+The service architecture will adopt various microservice design patterns to ensure scalability, security, and efficiency:
+1. **API Gateway Pattern**: The container will have an API gateway that acts as a single entry point towards accessing the core functionalities such as user registration, login, and profile management, providing routing, security, and potentially rate limiting across the services.
+2. **Authentication and Authorization Patterns**: The microservices will implement token-based authentication using JWT. Login sessions will be stateless, reducing the load on the server and improving scalability. Bcrypt will be used for password encryption to ensure data security and confidentiality.
+3. **Database per Service Pattern**: Each microservice will interact with the `auth_storage` database service to look up and save user credentials and profile information, maintaining a separation of concerns and improving system modularity.
+4. **Circuit Breaker Pattern**: To handle failure gracefully, particularly at login access, this pattern will be used to manage potential failures and fallback mechanisms, ensuring the system remains responsive even in an overload situation.
+5. **Idempotency Pattern**: Operations such as user registrations and profile updates will implement idempotency checks to avoid duplicate processes, particularly important in scenarios involving network interruptions.
+By utilizing these patterns and technological specifications, the User_Authentication container will efficiently manage user registration, login, and profile access while ensuring persistent data integrity and secure communication.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/user/register	Register a new user account for either customers or merchants by validating user input and storing hashed passwords.	1
+POST	/user/login	Allow users to log in by validating their credentials against stored data, creating and returning an authentication token.	2, 14
+GET	/user/profile	Retrieve user profile details securely, allowing either customers or merchants to view their profile information.	3, 19
+PUT	/user/profile	Update user profile information securely in the system.	3, 19
+
+#### MICROSERVICE: auth_storage
+- TYPE: database
+- DESCRIPTION: This microservice is responsible for securely storing user credentials, encrypted passwords, authentication tokens, and profile details such as email addresses.
+- PORTS: 10030
+
+
+## CONTAINER NAME: Shopping_Cart
+
+### USER STORIES:
+4) As a Customer, I want to see my current shopping cart
+24) As a Customer, I want to be able to add a product on my cart
+25) As a Customer, I want to be able to remove all the items in my cart
+### PORTS: 11000:11100
+### DESCRIPTION: 
+The Shopping_Cart container is designed to manage the core interactions related to a customer's shopping cart within the CDC shop system. Its primary function is to enable customers to view, add, and remove items from their shopping cart. This involves providing users with the ability to see the current state of their cart, including what items they have selected and the quantities. The container also supports the functionality for customers to add new products to the cart as they browse the store and to remove all items if they choose to start over or clear their selections. Given the critical role of the shopping cart in the e-commerce workflow, this container ensures seamless modifications and maintenance of cart contents, paving the way for a smooth transition to checkout and subsequent payment processing.
+### PERSISTANCE EVALUATION
+The Shopping_Cart container needs to store data to fulfill its purpose and user stories. The crucial data it needs to persist include:
+- The list of items currently in the shopping cart for each customer, including product IDs and quantities.
+- Any temporary identifiers that help associate items with a customer session, especially when users are not logged in.
+This persistence ensures that customers can consistently view and modify their shopping carts as they navigate the store.
+### EXTERNAL SERVICES CONNECTIONS
+Based on the Shopping_Cart container's purpose and user stories, there is no requirement to connect to an external service provided by third parties. Instead, it will rely on internal communication with other containers such as Product_Management to get product details and the Payment_Processing container for transitioning from cart to checkout.
+### MICROSERVICES:
+
+#### MICROSERVICE: cart_management
+- TYPE: backend
+- DESCRIPTION: Manages core functionalities related to a customer's shopping cart, including viewing cart contents, adding items, updating quantities, and removing items. It interfaces with Product_Management for product details and prepares data for Payment_Processing during checkout.
+- PORTS: 11010
+- TECHNOLOGICAL SPECIFICATION
+The cart_management microservice will be developed using Python as the main programming language due to its versatility and rich ecosystem. The Flask framework will be adopted to build lightweight and efficient RESTful APIs. To enhance development speed and maintain consistency, libraries such as SQLAlchemy for ORM (Object-Relational Mapping) and Marshmallow for data serialization and validation will be employed. Additionally, integration with Redis will be considered to handle transient data for associative measures between customer sessions and their shopping carts, especially for non-logged-in users.
+- SERVICE ARCHITECTURE
+The service architecture of the cart_management microservice follows the Model-View-Controller (MVC) pattern. This architecture improves the scalability and maintainability of the system. The controller layer handles incoming HTTP requests and directs them to appropriate service functions within the microservice. The model layer, using SQLAlchemy, interacts with the cart_storage database to persist shopping cart data. Marshmallow is used for request payload validation and response serialization. The microservice also constructs internal API calls toward the Product_Management service to retrieve product details when necessary. The entire architecture ensures efficient separation of concerns, allowing individual components to perform their roles effectively.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/cart	Retrieve and display the current contents of the user's shopping cart	4
+POST	/cart/add	Add a specified product to the user's shopping cart, updating quantities as necessary	24
+DELETE	/cart/clear	Remove all items from the user's shopping cart, effectively clearing it	25
+
+#### MICROSERVICE: cart_storage
+- TYPE: database
+- DESCRIPTION: Persists the shopping cart data associated with each customer, including product IDs, quantities, and any session identifiers necessary for tracking non-logged-in users' carts.
+- PORTS: 11020
+
+
+## CONTAINER NAME: Product_Management
+
+### USER STORIES:
+5) As a Customer, I want to order the products for ascending/descending price
+6) As a Customer, I want to retrieve a product by giving its name in a search bar
+11) As a Customer, I want to see the list of products
+12) As a Customer, I want to see the details of a product
+15) As a Merchant, I want to change the price of a product
+16) As a Merchant, I want to insert/remove products
+17) As a Merchant, I want to order the products for ascending/descending price
+18) As a Merchant, I want to retrieve a product by giving its name in a search bar
+21) As a Merchant, I want to see the list of products
+22) As a Merchant, I want to see the details of a product
+### PORTS: 12000:12100
+### DESCRIPTION: 
+The Product_Management container is critical within the CDC shop system, as it handles all interactions related to product offerings, both for customers and merchants. Its main purpose is to manage product listings, allowing users to access comprehensive information about available items. For customers, it facilitates browsing through products, viewing detailed information, searching for specific products by name, and sorting them by price in either ascending or descending order. For merchants, it allows them similar functionality, plus the ability to manage their product offerings by changing prices, and inserting or removing products as needed. Ultimately, this container ensures that both customers and merchants can efficiently engage with product data, making it central to the operational functionality of the shop.
+### PERSISTANCE EVALUATION
+The Product_Management container needs to store data to fulfill its purpose and user stories. It will need to maintain a database of product information, which includes attributes such as product name, description, price, stock quantity, and other relevant details. This data is crucial for providing product listings, details, and search functionality as outlined in the user stories. Additionally, it should track merchant-specific product details to accommodate user stories related to price changes, product insertion, and removal.
+### EXTERNAL SERVICES CONNECTIONS
+Based on the Product_Management container's purpose and user stories, there is no explicit need to connect to services by external providers. The functions described can be achieved with internal data management and interactions within the CDC shop system.
+### MICROSERVICES:
+#### MICROSERVICE: product_listing
+- TYPE: backend
+- DESCRIPTION: Handles product listing and order management for both customers and merchants. Includes functionalities for viewing and ordering products by price and retrieving product details.
+- PORTS: 12010
+- TECHNOLOGICAL SPECIFICATION
+The microservices will utilize a Node.js-based stack for the backend development, due to its scalability and efficiency with I/O operations, which is essential for handling numerous product queries and management tasks. Express.js will be employed as the web application framework to facilitate the development of RESTful APIs. For the database, MongoDB is selected due to its flexibility in handling varying product details and its ability to scale horizontally, which is crucial for the product_database microservice. Additionally, Mongoose will be used as an ODM library for MongoDB to provide a schema-based solution for application data. For product search functionalities, Elasticsearch will be used alongside Node.js to provide fast and efficient indexing and searching capabilities.
+- SERVICE ARCHITECTURE
+The architecture adopts a microservices pattern, with each service having a clearly defined responsibility. The product_listing microservice exposes endpoints for customers and merchants to view and order products. It relies on the product_database for retrieving product information and interacts with the product_search microservice for search operations.
+The product_management microservice handles CRUD operations specific to merchant interactions, such as updating product prices and managing product availability. It directly communicates with the product_database to perform these tasks.
+The product_search microservice optimizes search operations through Elasticsearch, enhancing search capabilities with features like autocomplete and relevance ranking, which is crucial for improving user experience.
+All microservices are containerized using Docker, ensuring isolation and ease of deployment. They communicate through RESTful endpoints and are orchestrated using a tool like Kubernetes to manage scaling and ensure high availability.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/products	Retrieve a list of all available products for customers and merchants to view.	11, 21
+GET	/products/{id}	Retrieve detailed information about a specific product using the product ID.	12, 22
+GET	/products/search	Search for products by name entered in the search bar.	6, 18
+POST	/products	Insert a new product into the product listing, available only to merchants.	16
+PUT	/products/{id}	Update the price or details of a specific product, available only to merchants.	15
+DELETE	/products/{id}	Remove a product from the listing, available only to merchants.	16
+GET	/products/order/price	Order products by ascending or descending price for customers or merchants.	5, 17
+
+#### MICROSERVICE: product_search
+- TYPE: backend
+- DESCRIPTION: Manages search functionalities, allowing customers and merchants to retrieve products based on names entered in the search bar.
+- PORTS: 12020
+- TECHNOLOGICAL SPECIFICATION
+The **product_search** microservice will utilize Python as its primary programming language, given its extensive library support for search algorithms and data processing. The Flask framework will be leveraged to build the RESTful API, ensuring quick development and scalability. To enhance search capabilities, we will employ the Whoosh search library, which specializes in full-text search and allows for efficient queries and indexing of product-related data. Additionally, ElasticSearch can be considered if future scalability and complex querying needs increase.
+- SERVICE ARCHITECTURE
+The **product_search** service will follow a microservices-based design with a layered pattern to separate concerns effectively. The architecture will be structured with the following layers:
+- **API Layer**: Handles incoming HTTP requests from clients (customers and merchants) and routes them to the appropriate services. It uses Flask's routing and view functions to expose endpoints for searching products.
+- **Service Layer**: Contains the business logic for processing search requests, including invoking Whoosh (or ElasticSearch if implemented) to perform full-text search operations based on product names.
+- **Data Access Layer**: Manages interactions with the **product_database** microservice to retrieve and cache product information necessary for search operations. This layer will be implemented using Python's requests or another HTTP client library to call database service endpoints.
+The architecture emphasizes modularity and decouples the core searching functionality from others, such as product listing or management, thus maintaining single responsibility and enabling independent scaling if necessary.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/search	Retrieve products by name using the provided search query, allowing both customers and merchants to find specific products	6, 18
+
+#### MICROSERVICE: product_management
+- TYPE: backend
+- DESCRIPTION: Facilitates product management for merchants, including changing prices, inserting, and removing products.
+- PORTS: 12030
+- TECHNOLOGICAL SPECIFICATION
+The "product_listing," "product_search," and "product_management" microservices will be developed using Node.js, which allows for efficient handling of asynchronous operations typical in web servers. Express.js will be employed as the web application framework to facilitate the creation of RESTful APIs for interaction between services. Given that the functionalities involve data-heavy operations, a caching strategy using Redis could be adopted to improve performance, especially for frequently accessed data like product listings. For the database, PostgreSQL will serve as the relational database to store complex product data structures, supporting advanced search capabilities and transactions. Sequelize, an ORM for Node.js, will be used for handling database operations in an abstract, promise-based manner.
+- SERVICE ARCHITECTURE
+The service architecture utilizes a microservices pattern with a clear separation of concerns across different services:
+- **Product Listing Microservice**: This service uses a Controller-Service-Repository pattern. The controller handles incoming HTTP requests, invoking appropriate service layer functions which include business logic for ordering and filtering products. The repository layer is responsible for database access, leveraging Sequelize for ORM.
+- **Product Search Microservice**: Similar to the product listing, this service employs a Controller-Service-Repository pattern. Search functionalities are enhanced with indexing capabilities in PostgreSQL using extensions like pg_trgm for fuzzy search and full-text search.
+- **Product Management Microservice**: Also structured with the Controller-Service-Repository pattern, it provides endpoints for merchant-specific operations, i.e., inserting/removing products or changing prices. Authentication and authorization middleware can be employed here for secure merchant operations.
+- **Product Database**: This service acts purely as a database service with no business logic, exposing data endpoints via Sequelize for CRUD operations to the other microservices.
+Overall, this architecture ensures modularity and scalability, allowing for individual microservice adjustment without impacting the entire system, supporting agile development and deployment processes.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/product/listings	Retrieve a list of all products available, including options for customers and merchants to order by ascending or descending price.	5, 11, 17, 21
+GET	/product/details/{productId}	Fetch detailed information about a specific product using its product ID for customers and merchants.	12, 22
+GET	/product/search	Search for products by name using a search bar for both customers and merchants.	6, 18
+PUT	/product/manage/{productId}/price	Update the price of a specific product as requested by a merchant.	15
+POST	/product/manage	Insert a new product into the product listings by a merchant.	16
+DELETE	/product/manage/{productId}	Remove a product from the product listings as requested by a merchant.	16
+
+#### MICROSERVICE: product_database
+- TYPE: database
+- DESCRIPTION: Stores product information including product name, description, price, stock quantity, and other relevant details for use by other microservices.
+- PORTS: 12040
+
+## CONTAINER NAME: Payment_Processing
+
+### USER STORIES:
+7) As a Customer, I want to pay for the current shopping cart
+### PORTS: 13000:13100
+### DESCRIPTION: 
+The Payment_Processing container is responsible for handling all payment-related transactions for customer purchases in the CDC shop. It manages the process of collecting payment information, ensuring the security and integrity of the payment data, and processing the payments efficiently. This container acts as the intermediary between the customer's shopping cart and the completion of their purchase, executing the final step required to finalize transactions. The Payment_Processing container ensures that the payment operations are conducted smoothly, providing the necessary validation and communication with payment gateways or processors. This functionality is critical for enabling customers to complete purchases effectively, thus supporting the shop's sales operations. It listens on ports 13000:13100 and is crucial for providing a seamless checkout experience within the hardware store's distributed system.
+### PERSISTANCE EVALUATION
+The Payment_Processing container needs to store transaction data temporarily to ensure the smooth execution of payment operations. This includes collecting payment information such as credit card details, payment amounts, and transaction IDs. Additionally, it may need to temporarily store validation responses received from payment gateways until the transaction is confirmed or rejected. Given the importance of security, sensitive payment data should not be stored persistently within this container, but rather should be handled securely, possibly integrating with secure, compliant payment storage solutions if data storage is required.
+### EXTERNAL SERVICES CONNECTIONS
+The Payment_Processing container must connect to external payment gateway services to validate and execute customer payment transactions. These services may include APIs provided by financial institutions or third-party payment processors like Stripe, PayPal, etc. This connection is essential to verify the customer's payment information, authorize transactions, and ensure funds are transferred securely. Additionally, the container may need to interface with external fraud detection services to enhance the security of the transactions processed.
+### MICROSERVICES:
+#### MICROSERVICE: payment_gateway_integration
+- TYPE: backend
+- DESCRIPTION: This microservice manages connections with external payment processing services such as Stripe or PayPal. It handles payment validation, authorization, and transaction execution, ensuring that payments are securely processed and funds are accurately transferred. Additionally, it connects with fraud detection services to bolster transaction security.
+- PORTS: 13010
+- TECHNOLOGICAL SPECIFICATION
+The "payment_gateway_integration" microservice is implemented using Java with the Spring Boot framework. This choice ensures robust handling of backend processes, including secure transaction API integrations with external payment gateways like Stripe and PayPal. The Spring Security module is utilized for implementing essential security features, like encryption of sensitive data and secure connection configurations. For thread management and asynchronous processing, the microservice leverages the Java Concurrency API, ensuring efficient and reliable operations during high-load payment processing. For communication with external services, the microservice utilizes Spring Cloud and RestTemplate for building resilient API client connections. Additional libraries such as Apache Kafka may be integrated for handling message-driven interactions or event-based processing if needed.
+- SERVICE ARCHITECTURE
+The service architecture is divided into several core patterns to ensure scalability, maintainability, and security:
+1. **Microservices Pattern**: The microservice itself follows the Microservices architecture pattern, ensuring a clear separation of concerns and independent scalability.
+2. **Circuit Breaker Pattern**: Using tools like Spring Cloud Circuit Breaker or Hystrix, the service is protected against cascading failures when connecting to external payment gateways, ensuring that failures in external dependencies do not compromise the entire transaction process.
+3. **API Gateway Pattern**: A dedicated API Gateway (such as Spring Cloud Gateway) handles incoming requests from the client side, providing a unified interface for service interactions and authentication checks.
+4. **Security Layer Pattern**: Implements a security layer through Spring Security, ensuring data encryption and secure storage practices are enforced while using TLS/SSL for all external API communications.
+5. **Saga Pattern**: To ensure transaction completeness and consistency across distributed systems, a Saga pattern coordinates transactions involving multiple microservices, managing compensation flows and ensuring system-wide integrity.
+6. **Temporary Persistence Layer**: Utilizes an in-memory data store, like Redis, to manage temporary transaction data. This persistence layer ensures efficient data access with minimized latency while ensuring secure handling and disposal practices.
+These patterns collectively address the primary operational challenges of payment processing, ensuring reliable and secure transaction finalization for the CDC shop.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/payment/charge	Process a payment request by charging the customer's provided payment method, validate and execute a transaction through an external payment gateway.	7
+POST	/payment/validate	Validate the customer's payment information before processing the transaction, ensuring all data is accurate and complete.	7
+POST	/payment/confirm	Confirm a payment transaction after validation and authorization by an external payment gateway, updating the transaction status accordingly.	7
+POST	/payment/cancel	Cancel a pending payment transaction if necessary, executing compensation flows to reverse any preliminary steps taken.	7
+GET	/payment/status	Retrieve the current status of a transaction using the transaction ID, providing insight into whether it is pending, confirmed, or cancelled.	7
+
+#### MICROSERVICE: transaction_manager
+- TYPE: backend
+- DESCRIPTION: This microservice is responsible for managing transaction data within the payment process, handling temporary storage of payment information such as credit card details, payment amounts, and transaction IDs. It coordinates with the payment_gateway_integration service to finalize transaction status, either confirming or rejecting payments, and ensures secure data handling and disposal.
+- PORTS: 13020
+- TECHNOLOGICAL SPECIFICATION
+For the transaction_manager microservice, we will utilize Node.js as the primary programming language, given its strength in handling asynchronous operations and real-time processing, which are crucial for payment transactions. Express.js will be used as the framework for building RESTful APIs, facilitating seamless communication between microservices and external services. To ensure secure handling of payment data, libraries such as `jsonwebtoken` for tokenization and `bcrypt.js` for data hashing will be included. For connecting to payment gateways, the `axios` library will be employed for making HTTP requests, and secure connection protocols like TLS will be ensured.
+- SERVICE ARCHITECTURE
+The transaction_manager microservice will adopt a microservices-based architecture pattern focusing on scalability and separation of concerns. It will employ a modular structure with a controller-service-repository architecture pattern. The controller will handle incoming HTTP requests, while the service layer will coordinate business logic, interaction with the payment_gateway_integration microservice, and external API calls. The repository layer will manage temporary storage of transaction data using an in-memory data store like Redis, which supports fast read/write operations and is suitable for ephemeral data handling. The microservice will also implement a publisher-subscriber pattern to facilitate real-time notifications and event-driven communication between microservices, particularly for transaction status updates. Security will be heightened using middleware for request validation and encryption techniques to ensure secure processing of sensitive payment data.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/transaction/create	Initiates the transaction process for a customer's shopping cart, collecting payment information and preparing it for validation and processing.	7
+POST	/transaction/validate	Validates the payment information provided by the customer, interacting with external payment gateway services to authorize the transaction.	7
+POST	/transaction/execute	Executes the payment by communicating with the payment gateway to complete the transaction and transfer funds securely.	7
+DELETE	/transaction/{transactionId}	Cancels a pending transaction identified by the transaction ID, ensuring temporary payment data is securely disposed of.	N/A
+
+## CONTAINER NAME: Order_Tracking
+
+### USER STORIES:
+9) As a Customer, I want to check my order to see informations about my package
+### PORTS: 14000:14100
+### DESCRIPTION: 
+The Order_Tracking container is responsible for managing the tracking and shipment information of customer orders within the CDC shop system. Its main purpose is to provide customers with updates and insights into the status of their packages once an order has been placed and confirmed. This container ensures that customers have access to critical information such as shipping status, estimated delivery dates, and other relevant tracking details, enabling them to monitor the progress and location of their purchase from dispatch to delivery. By handling order tracking functionality, this container plays a significant role in enhancing the post-purchase customer experience, ensuring transparency and reducing customer inquiries related to shipment status.
+### PERSISTANCE EVALUATION
+The Order_Tracking container needs to persistently store data related to order tracking and shipment details to fulfill its purpose and user stories. This includes, but is not limited to, order IDs, tracking numbers, shipping statuses (such as dispatched, in transit, or delivered), estimated delivery dates, and any updates or changes to the shipment status. As this container must provide real-time updates to the customers, it is essential to store this information reliably and ensure it is readily accessible for queries by customers.
+### EXTERNAL SERVICES CONNECTIONS
+The Order_Tracking container may need to connect to external services such as shipping carrier APIs to retrieve real-time tracking information and updates for customer orders. These service providers typically offer APIs that allow systems to access tracking data and shipping status in real time, which would be critical for ensuring that the Order_Tracking container provides accurate and up-to-date information to the customers. Integration with such external services could significantly enhance the container's functionality and improve the customer's post-purchase experience.
+### MICROSERVICES:
+#### MICROSERVICE: order-tracking-backend
+- TYPE: backend
+- DESCRIPTION: The microservice handles all backend operations related to order tracking and shipment management. It retrieves and processes order details, coordinates tracking updates, and calculates estimated delivery dates. It connects to external shipping carrier APIs to fetch real-time tracking information and ensures that such data is updated in a timely manner, providing transparency to customers.
+- PORTS: 14010
+- TECHNOLOGICAL SPECIFICATION
+The order-tracking-backend microservice utilizes Java as its primary programming language, with the Spring Boot framework to build RESTful APIs. Java provides robustness and ease of integration, while Spring Boot simplifies the process of establishing a production-ready environment. The `RestTemplate` or `WebClient` libraries can be used for consuming external REST APIs, particularly for interfacing with shipping carrier APIs. For data management and handling, Object-Relational Mapping (ORM) is managed through Hibernate, which efficiently handles data persistence requirements.
+- SERVICE ARCHITECTURE
+The order-tracking-backend microservice adopts a layered architecture pattern, which promotes separation of concerns and enhances maintainability. This service incorporates a Controller layer to handle HTTP requests and responses, a Service layer to implement business logic such as processing tracking information and calculating delivery dates, and a Repository layer to interact with the tracking-storage microservice database. Additionally, an Adapter pattern can be utilized for fetching and integrating real-time data from externally connected shipping carrier APIs. This pattern facilitates the transformation of external data formats into the internal system format, ensuring smooth data flow and consistency.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/order-tracking/{orderId}	Retrieve detailed tracking information for a specific order, including shipping status and estimated delivery dates.	9
+GET	/order-tracking/{orderId}/status	Fetch the current shipping status of a specific order to give customers real-time updates.	9
+GET	/order-tracking/{orderId}/estimated-delivery	Provide the estimated delivery date for a given order, helping customers anticipate when their package will arrive.	9
+GET	/order-tracking/{orderId}/updates	Access recent updates or changes to a specific order's shipment status, ensuring customers have the latest information.	9
+#### MICROSERVICE: tracking-storage
+- TYPE: database
+- DESCRIPTION: This microservice is responsible for storing all order tracking data persistently, including order IDs, tracking numbers, shipping status, and estimated delivery dates and times. It maintains a reliable and accessible database to support queries and updates necessary for tracking purposes.
+- PORTS: 14020
+
+
+## CONTAINER NAME: Customer_Service
+
+### USER STORIES:
+10) As a Customer, I want to access the About Us page
+20) As a Merchant, I want to access the About Us page
+23) As a Customer, I want to contact the shop for any doubt
+### PORTS: 15000:15100
+### DESCRIPTION: 
+The Customer_Service container is designed to handle support and informational needs of both customers and merchants within the CDC shop system. Its primary responsibilities include managing customer inquiries and facilitating access to the "About Us" page. Specifically, this container supports user stories where customers and merchants seek to learn more about the shop via the "About Us" page, offering them company background, values, and contact information. Additionally, it enables customers to reach out to the shop with any questions or concerns, providing a communication channel for addressing customer service issues. This container ensures that users have easy access to support and crucial information about the business, thus maintaining customer satisfaction and engagement. The container operates on ports 15000:15100.
+### PERSISTANCE EVALUATION
+The Customer_Service container does not need to store persistent data for fulfilling the described purpose of accessing the "About Us" page or handling customer inquiries. The "About Us" page content can be static, possibly stored in configuration files or a content management store, but likely does not require database persistence unless dynamic updates are needed frequently. For customer inquiries, if there is a need to store logs or records of inquiries for future follow-up or analysis, then lightweight data storage would be required. However, this would generally not necessitate maintaining a complex database within the container itself.
+### EXTERNAL SERVICES CONNECTIONS
+To provide the communication channel for customer inquiries effectively, the Customer_Service container may connect to an external email service or customer relationship management (CRM) tool if the inquiries need to be directed towards external support teams or stored for processing. Such services might include options like SendGrid, Mailgun for email handling, or a CRM like Zendesk for tracking and managing customer service interactions. Integration with these external services would facilitate handling inquiries efficiently while also keeping this container focused on providing informational support without complicated processing logic.
+### MICROSERVICES:
+#### MICROSERVICE: about_us
+- TYPE: frontend
+- DESCRIPTION: This microservice serves the "About Us" page, providing static company background, values, and contact information for both customers and merchants. It ensures users can easily learn more about the shop.
+- PORTS: 15000
+- TECHNOLOGICAL SPECIFICATION
+For the frontend microservice "about_us," a lightweight HTML/CSS/JavaScript stack is sufficient for serving static content. For more dynamic or templated content, using a framework like React or Vue.js would provide flexibility and facilitate easy changes when necessary. If you opt for a static site generator, Gatsby or Next.js could be considered.
+For the backend microservice "customer_inquiry," Node.js with the Express framework is suitable for handling incoming HTTP requests related to customer inquiries. This setup facilitates easy HTTP request routing and integration with external services. Inclusion of libraries such as Nodemailer can facilitate email operations if connecting to an external email service like SendGrid or Mailgun. Additionally, Axios could be used for communications with any CRM APIs like Zendesk.
+- SERVICE ARCHITECTURE
+The "about_us" frontend service adopts a straightforward static content serving pattern. It operates as a single-page application or static site to display the "About Us" page with essential company information. This minimizes complexities and resources while ensuring a consistent presentation of company information.
+The "customer_inquiry" backend service uses the Model-View-Controller (MVC) pattern, wherein:
+- The Controller manages the routing of HTTP requests and orchestrates the forwarding of inquiries to external services.
+- The "View" component is minimal since this is a backend service, with JSON responses typically fulfilling this role.
+- The Model component handles data structures related to inquiries, which may be in-memory or utilize lightweight data storage solutions if persistence is needed for inquiry logs.
+Integration points with external services (e.g., email or CRM) are abstracted as service classes, implementing a Dependency Injection pattern to enhance modularity and facilitate testing. This architecture ensures that the "customer_inquiry" microservice remains cohesive and focused on the core functionality of managing user inquiries.
+- PAGES
+Page Name	Description	User Stories
+About Us	Provides static company background, values, and contact information for both customers and merchants.	10, 20
+Contact Support	Enables customers to contact the shop for any questions or concerns, providing a communication channel for inquiries.	23
+#### MICROSERVICE: customer_inquiry
+- TYPE: backend
+- DESCRIPTION: This microservice handles customer inquiries, providing a channel for customers to submit questions or concerns. It may integrate with external services like email systems or CRMs to forward inquiries or keep records.
+- PORTS: 15010
+- TECHNOLOGICAL SPECIFICATION
+The `customer_inquiry` microservice will use Python as its primary programming language, with the Flask framework for developing the backend application, due to its simplicity and ease of integration with external APIs and services. For integrating with external email services and CRMs, libraries like `Flask-Mail` for email functionalities (e.g., sending emails through services like SendGrid or Mailgun) and `requests` for REST API communication with CRMs (e.g., Zendesk) will be utilized.
+The `about_us` microservice, being a frontend service, will employ technologies like HTML, CSS, and JavaScript. To keep the stack lightweight, a framework like React can be considered to make the page dynamic if minimal interactivity is required, or it can be developed using vanilla HTML/CSS/JavaScript for strictly static content.
+- SERVICE ARCHITECTURE
+The `customer_inquiry` service adopts the RESTful API design pattern to handle customer inquiries, allowing it to interact seamlessly with various external services. The architecture will be divided into several layers:
+- The **Endpoint Layer**: Handles incoming requests and routes them to the appropriate handlers based on the endpoint hit.
+- The **Business Logic Layer**: Contains the core logic for creating new inquiries and managing the interaction with external services.
+- The **Integration Layer**: Manages the connectivity and data transfer to external email or CRM services.
+The `about_us` service, as a frontend microservice, primarily follows the Single Page Application (SPA) design pattern if using React. This allows the page to dynamically load and update sections without requiring complete page reloads. For simple static scenarios, it follows a standard client-server model where the server delivers static HTML content.
+Together, both microservices ensure a seamless user experience by efficiently serving the required information and assisting users via straightforward inquiry management.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+GET	/about-us	Serve the 'About Us' page which provides static company background, values, and contact information for customers and merchants.	10, 20
+POST	/customer-inquiry	Handle customer inquiries by allowing customers to submit questions or concerns. This endpoint may forward inquiries to external services like email systems or CRMs.	23
+
+
+## CONTAINER NAME: Session_Management
+
+### USER STORIES:
+8) As a Customer, I want to logout from the profile by clicking on a button
+13) As a Merchant, I want to logout from the profile by clicking on a button
+### PORTS: 16000:16100
+### DESCRIPTION: 
+The Session_Management container is responsible for handling the logout functionality for both customers and merchants. Its main purpose is to ensure secure and proper termination of user sessions when they choose to log out. By managing session termination, this container contributes to maintaining the security and integrity of user data and protecting against unauthorized access once a session has ended. This separation of session management allows for a streamlined and focused approach to handling the specific task of logging users out, ensuring smooth and efficient transitions between active and inactive user states within the CDC shop's distributed system.
+### PERSISTANCE EVALUATION
+The Session_Management container does not require persistent storage to fulfill its purpose and user stories. Its main functionality is to handle the logout process, which involves terminating user sessions. There is no requirement for long-term data storage as it deals primarily with managing active sessions and does not retain data once the session is terminated.
+### EXTERNAL SERVICES CONNECTIONS
+Based on the purpose and user stories of the Session_Management container, there is no need to connect to any external services. The container's responsibilities of logging out users do not necessitate interaction with external APIs or services. The logout process can be managed internally within the system by clearing session tokens or session data stored temporarily in memory.
+### MICROSERVICES:
+#### MICROSERVICE: session_logout
+- TYPE: backend
+- DESCRIPTION: This microservice handles the termination of user sessions for both customers and merchants. It ensures secure and proper termination of sessions, clearing session tokens or session data stored temporarily in memory when the user clicks the logout button. The service contributes to the security and integrity of the system by efficiently managing the transition from active to inactive user states without the need for persisting data.
+- PORTS: 16010
+- TECHNOLOGICAL SPECIFICATION
+For the `session_logout` microservice, the suggested technological stack includes Node.js as the primary programming language because of its event-driven nature and efficiency in handling non-blocking operations, which is ideal for session management tasks. The `Express.js` framework is recommended for its minimalistic structure and capability to efficiently handle server-side operations, including routing for the API endpoints. Given the security requirements associated with session termination, incorporating libraries like `jsonwebtoken` for managing token-based authentication can enhance the service's security features.
+- SERVICE ARCHITECTURE
+The `session_logout` microservice architecture adopts the Stateless Service pattern, ensuring that each logout operation is processed independently without reliance on persistent state storage. This service will manage sessions by accessing temporary in-memory storage, such as Redis, for session token validation and termination, which facilitates fast access and effective cleanup of session data. The architecture will include a Controller to handle HTTP requests for logout actions, a Service Layer responsible for business logic like token validation and session termination, and a Middleware Component to interact with the `session_middleware` for session validation before termination. This structured approach allows the service to be easily scalable and maintainable, adapting effortlessly to changes in demand or requirements.
+- ENDPOINTS
+HTTP Method	Endpoint URL	Description	User Stories
+POST	/api/logout/customer	Terminates the active session of the customer by clearing session tokens or session data stored temporarily in memory, ensuring secure logout.	8
+POST	/api/logout/merchant	Ends the active session of the merchant by removing session-related information from temporary storage, providing a secure logout.	13
+
+#### MICROSERVICE: session_middleware
+- TYPE: middleware
+- DESCRIPTION: This microservice facilitates the communication between the session management and other containers to validate if a session needs termination. It acts as an intermediary to ensure the smooth interaction of the logout service with the rest of the system, enabling session state checks if required.
+- PORTS: 16020
+
+## CONTAINER NAME: Frontend
+### PORTS: 17000:17100
+### DESCRIPTION: 
+The Frontend container is responsible for serving the user interface of the CDC shop. This container delivers web pages and interfaces for both customers and merchants to interact with the system. It enables users to access different functionalities of the shop, such as browsing product listings, managing shopping carts, conducting transactions, and viewing order statuses. The Frontend container acts as the bridge between end-users and the backend services by providing a user-friendly and responsive interface, ensuring a seamless shopping experience across different devices and platforms. It communicates with other containers like User_Authentication, Shopping_Cart, and Product_Management to provide a complete and integrated user experience.
+### PERSISTANCE EVALUATION
+The Frontend container itself does not need to store persistent data as it primarily serves the user interface and does not directly manage or own any business data. Any session or state-related data should be managed by other backend services or passed through via APIs to maintain a stateless architecture.
+### EXTERNAL SERVICES CONNECTIONS
+The Frontend container may integrate with external services to enhance the user experience, such as external libraries or content delivery networks (CDNs) for faster loading times and performance optimization. Additionally, it may use third-party analytics services to monitor user interactions and gather insights. However, it connects primarily to other internal containers like User_Authentication, Shopping_Cart, and Product_Management through APIs to fetch or send data required for rendering the UI.
+### MICROSERVICES:
+#### MICROSERVICE: frontend_ui
+- TYPE: frontend
+- DESCRIPTION: The microservice is responsible for delivering the user interface for CDC shop customers and merchants. It serves web pages and interfaces, allowing users to browse products, manage shopping carts, conduct transactions, and view order statuses. It ensures a seamless shopping experience and acts as a bridge between users and backend services by providing a responsive interface.
+- PORTS: 17001
+- TECHNOLOGICAL SPECIFICATION
+The frontend_ui microservice will be developed using ReactJS, a popular JavaScript library for building user interfaces. ReactJS is chosen due to its component-based architecture, which promotes reusability and efficiently manages UI rendering. For state management, Redux will be utilized, allowing for consistent handling of application states across different components. To ensure responsiveness across varied devices, the application will incorporate CSS frameworks like Bootstrap or Material-UI. For performance optimization, it will leverage Webpack for module bundling and optimization, and connect to Content Delivery Networks (CDNs) for serving static assets. Additionally, third-party libraries like Axios will be used for making HTTP requests to backend services.
+- SERVICE ARCHITECTURE
+The frontend_ui microservice will adopt a Single Page Application (SPA) architecture. This approach allows for a seamless user experience by dynamically updating the content without reloading the entire page. The architecture will feature clearly defined components, each handling a specific part of the UI, such as navigation, product listings, shopping cart, and order details. A Model-View-Controller (MVC) pattern within the UI will be implemented, where components (View) interact with backend services through the ui_communication_adapter middleware, and Redux will act as the Single Source of Truth (Model) for application states. The asynchronous data loading will be managed using Promises or async/await patterns to ensure smooth and non-blocking user interactions. The application will also include error boundary components to handle and display error messages gracefully.
+- PAGES
+Page Name	Description	User Stories
+Home	Displays the main page of the CDC shop with featured products and promotions.	N/A
+Product Listings	Shows a list of products available in the CDC shop, allowing users to browse and search.	N/A
+Product Details/<id>	Displays detailed information about a specific product, including specifications, price, and availability.	N/A
+Shopping Cart	Allows users to view and manage products they intend to purchase.	N/A
+Checkout	Facilitates the purchasing process, allowing users to enter payment and shipping information.	N/A
+Order Status	Enables users to view the status of their placed orders and track shipments.	N/A
+Account	Provides account management features including profile updates and viewing order history.	N/A
+
+#### MICROSERVICE: ui_communication_adapter
+- TYPE: middleware
+- DESCRIPTION: This microservice handles communication between the frontend interface and other internal containers like User_Authentication, Shopping_Cart, and Product_Management. It makes API calls to these services, fetches necessary data, and sends updated information back to the frontend for rendering. It ensures smooth interaction and data exchange across various services within the application.
+- PORTS: 17002
