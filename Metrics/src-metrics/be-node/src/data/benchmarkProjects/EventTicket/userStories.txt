@@ -3,6 +3,7 @@ SYSTEM DESCRIPTION:
 The purpose of our project is to build a web application providing a set of services aimed at the management and proposals of events and distribution of tickets. The goal is provide to the users a way to discover events and buy or preorder tickets directly online. At the same time the application allows also the events’ managers to publish their events in order to promote them and eventually to give the possibility to sell tickets of the event through the website.
 
 USER STORIES:
+
 1) As a client, I want to visit the web application, so that I can explore the functionalities.
 2) As a client, I want to register to the service, so that I can be able to use the user's features.
 3) As a client, I want to login to the service, so that I become an user, a manager or an admin.

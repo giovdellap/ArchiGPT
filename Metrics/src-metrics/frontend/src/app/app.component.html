@@ -16,9 +16,12 @@
         <input type="file" class="input-button" (change)="onJsonAdded($event)" #fileUpload />
       </div>
     </div>
-
-    <button mat-raised-button class="start-button" (click)="onStart()">Start benchmark</button>
+    <div class="input-container">
+      <button mat-raised-button class="start-button" (click)="onStart()">Start benchmark</button>
+      <button mat-raised-button class="start-button" (click)="onProjStart()">Start project benchmark</button>
+    </div>
   </div>
+
   <div class="waiting-container" *ngIf="((statusObs | async) === 'waiting')">
     <mat-spinner></mat-spinner>
   </div>

@@ -60,9 +60,26 @@ function calculateTotalResults(runResults) {
     return totalResults
 }
 
+function calculateProjectsTotalResults(runResults) {
+    let totalResults = new FinalResults()
+    for (const key of Object.keys(totalResults)) {
+        console.log('KEY', key)
+        let sum = 0
+        for (const run of runResults) {
+            sum = sum + run.projectFinalResults[key]
+        }
+        totalResults[key] = sum/runResults.length
+    }
+    return totalResults
+}
+
+const projectNames = ["OneSport", "NFFH", "CDC", "EFarmers", "EventTicket", "RecipeCove", "RentYourExpert", "Teamify"]
+
 module.exports = {
     calculateFinalResults,
     calculateIndex,
     calculateProjectsResults,
-    calculateTotalResults
+    calculateTotalResults,
+    projectNames,
+    calculateProjectsTotalResults
 }

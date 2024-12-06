@@ -9,6 +9,7 @@ RentYourExpert is a platform that connects individuals who require expert servic
 - Easy-to-Use Profile Management: Workers can efficiently manage their profiles, projects, and communication with clients through an intuitive interface.
 
 USER STORIES:
+
 1) As a customer, I want to be able to register, so that I can have an account 
 2) As a customer, I want to be able to login, so that I can start using the app
 3) As a customer, I want to be able to have access to my profile, so that I can look at my informations

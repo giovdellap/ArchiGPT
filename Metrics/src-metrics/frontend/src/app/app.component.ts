@@ -77,6 +77,21 @@ export class AppComponent {
     })
   }
 
+  onProjStart() {
+    this.currentRequest.modelName = this.nameFC.value
+    this.status = "waiting"
+    this.statusBS.next(this.status)
+    this.api.projBenchmark(this.currentRequest).subscribe((res: BenchmarkResult) => {
+      this.result = res
+      this.finalMetricsCards = getFinalMetricsCards(this.result.finalResults)
+      this.calculatefinalIndexColor(this.result.finalIndex)
+      this.runRows = getRunRows(this.result.runsResults)
+      this.status = "result"
+      this.statusBS.next(this.status)
+      console.log(this.result)
+    })
+  }
+
   calculatefinalIndexColor(index: number) {
     this.resultColor = rgbToHex(
       Number((Math.min(255, Math.max(0, 255 * ((100 - index) / 100)))).toFixed(0)),

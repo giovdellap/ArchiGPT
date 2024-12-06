@@ -3,6 +3,7 @@ SYSTEM DESCRIPTION:
 CDC shop is a distributed system that handles the management, the payment and the shipment of products: in particular for materials that you can usually find in an hardware store.
 
 USER STORIES:
+
 1) As a Customer, I want to be able to register in order to have an account 
 2) As a Customer, I want to be able to login
 3) As a Customer, I want to be able to have access to my profile

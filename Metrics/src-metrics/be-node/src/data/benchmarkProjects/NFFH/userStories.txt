@@ -2,6 +2,7 @@ SYSTEM DESCRIPTION:
 
 Not Far(m) From Home is a platform that allows a direct interaction between local farmers and consumers, with the main purpose of being “km 0”.
 The Farmers will be able to post their fresh produce in the site, and the consumers to reserve the produce and select a day for the pickup at the Agricoltural Company.
+
 USER STORIES:
 
 1) As a Client , I want to Register in the site so that I can use the site
