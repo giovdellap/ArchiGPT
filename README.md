@@ -46,7 +46,7 @@ OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
 
 
 ## Demo of ArchiGPT
-![](utils/archigpt.mp4)
+[![Demo](utils/archigpt.mp4)](utils/archigpt.mp4)
 
 
 ## Architecture
