@@ -1,6 +1,6 @@
 # ArchiGPT: an LLM-based solution for the generation of microservices architectures
 
-This repository contains code for replicating the experiments in *"ArchiGPT: an LLM-based solution for the generation of microservices architectures"* paper.
+This repository contains code for the paper *"ArchiGPT: an LLM-based solution for the generation of microservices architectures"*.
 
 ## Prerequisites
 - [Docker](https://www.docker.com)
