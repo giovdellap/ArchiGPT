@@ -1,0 +1,41 @@
+# SYSTEM DESCRIPTION:
+
+.............
+
+# USER STORIES:
+
+1) ....
+
+
+
+# CONTAINERS:
+
+## CONTAINER_NAME: ...
+
+### DESCRIPTION: 
+
+
+### USER STORIES:
+1) ...
+
+
+### PORTS: 
+
+
+### DESCRIPTION:
+
+
+### PERSISTANCE EVALUATION:
+
+
+### EXTERNAL SERVICES CONNECTIONS:
+
+
+### MICROSERVICES:
+
+#### MICROSERVICE: ....
+- TYPE: 
+- DESCRIPTION: 
+- PORTS: 
+
+

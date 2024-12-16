@@ -1,0 +1,36 @@
+DESCRIPTION:
+
+RentYourExpert is a platform that connects individuals who require expert services with skilled professionals across various fields. Its main features are :
+- User-friendly Interface: The app is designed to be easy to navigate, allowing users to quickly find the information they need.
+- Search Functionality: Users can search for workers based on their skills and location.
+- Secure User Authentication and Authorization: Robust measures ensure the security of user access.
+- Worker Reviews: The platform displays worker reviews, helping clients make informed decisions when hiring a worker.
+- Efficient Communication: A built-in Q&A system makes it easy for both parties to discuss project requirements and expectations.
+- Easy-to-Use Profile Management: Workers can efficiently manage their profiles, projects, and communication with clients through an intuitive interface.
+
+USER STORIES:
+
+As a Customer, I want to be able to register, so that i can have an account 
+As a Customer, I want to be able to login, so that i can start using the app
+As a Customer, I want to be able to have access to my profile, so that i can look at my informations
+As a Customer, I want to be able to have access to the catalogue, so that i can see all avaiable workers
+As a Customer, I want to be able to have access to the page of each single customer, so that i can have all informations related to him
+As a customer, I want to be able send a request to a worker, so that i can rent his expertise
+As a Customer, I want to be able to a list of requests in my profile page, so that i can see all the requests that i did
+As a customer i want to have a specific button attached to my request, so that i can delete it
+As a customer, I want to be able to see the questions made by other customers to a specific worker, so that i can have other informations related to him
+As a customer i want to be able to have a field of text in the worker's page, in order to be able to send questions to the expert
+As a customer, I want to be able to leave a review, in order to evaluate the performance that i received
+As a customer i want to have specific buttons attached to the review that i posted, in order to update or delete it.
+As a customer i want to have a specific button in the pages of the application, that allow me to logout
+As an admin, I want to be able to login, so that i can start the management of the e-commerce
+As an admin, I want to be able to access to the customers list, so that i can see all the customers
+As an admin, i want to have an add customer Button, so that i can generate new customers
+As an admin, I want to be able to access to the profile page of each single customer, so that I can have informations related to that specific customer
+As an admin, i want to have a delete customer button, so that i can delete that customer
+As an Admin, I want to be able to access to the workers list, so that i can see all the workers
+As an admin, I want to be able to access to the profile page of each single worker, so that I can have informations related to that specific worker
+As an admin, I want to be able to access to the requests page, so that I can see each request done so far
+As an Admin i want to be able to add or delete a request, in order to be able to handle them
+As a worker, I want to have a requests page, so that i can look at all my requests
+As a worker, i want to manage requests, in order to be able to accept or reject them

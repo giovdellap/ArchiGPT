@@ -1,0 +1,727 @@
+{
+    "containers": [
+        {
+            "name": "auth_management",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/user_authentication/register",
+                            "userStoryIndex": [
+                                1,
+                                17
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/user_authentication/login",
+                            "userStoryIndex": [
+                                2,
+                                18,
+                                22
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/user_authentication/logout",
+                            "userStoryIndex": [
+                                4,
+                                20,
+                                24
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/user_authentication/session/validate",
+                            "userStoryIndex": [
+                                3,
+                                19,
+                                23
+                            ]
+                        }
+                    ],
+                    "name": "user_authentication",
+                    "type": "backend"
+                },
+                {
+                    "name": "session_management",
+                    "type": "middleware"
+                },
+                {
+                    "name": "credentials_storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                1,
+                2,
+                3,
+                4,
+                17,
+                18,
+                19,
+                20,
+                22,
+                23,
+                24
+            ]
+        },
+        {
+            "name": "user_profile",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/user_profile/client",
+                            "userStoryIndex": [
+                                5
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/user_profile/agricultural_company",
+                            "userStoryIndex": [
+                                21
+                            ]
+                        }
+                    ],
+                    "name": "user_profile_view",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/admin/users/{userId}",
+                            "userStoryIndex": [
+                                28
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/admin/users/{userId}",
+                            "userStoryIndex": [
+                                29
+                            ]
+                        }
+                    ],
+                    "name": "user_profile_admin",
+                    "type": "backend"
+                },
+                {
+                    "name": "user_data_storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                5,
+                21,
+                28,
+                29
+            ]
+        },
+        {
+            "name": "company_explore",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/location_service/nearby_companies",
+                            "userStoryIndex": [
+                                7
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/location_service/trending_products",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/location_service/navigate",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        }
+                    ],
+                    "name": "location_service",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/trending_products/seasonal",
+                            "userStoryIndex": [
+                                6
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/trending_products/nearby_companies",
+                            "userStoryIndex": [
+                                7
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/trending_products/map_location",
+                            "userStoryIndex": [
+                                13
+                            ]
+                        }
+                    ],
+                    "name": "trending_products",
+                    "type": "backend"
+                }
+            ],
+            "userStories": [
+                6,
+                7,
+                13
+            ]
+        },
+        {
+            "name": "product_inventory",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/products/company/:companyId",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/products",
+                            "userStoryIndex": [
+                                14,
+                                36
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/products/:productId",
+                            "userStoryIndex": [
+                                15,
+                                38
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/products/:productId",
+                            "userStoryIndex": [
+                                16,
+                                37
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/products/seller/:sellerId",
+                            "userStoryIndex": [
+                                33
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/products/:productId",
+                            "userStoryIndex": [
+                                34
+                            ]
+                        }
+                    ],
+                    "name": "product_manager",
+                    "type": "backend"
+                },
+                {
+                    "name": "product_database",
+                    "type": "database"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/products",
+                            "userStoryIndex": [
+                                8
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/products",
+                            "userStoryIndex": [
+                                14,
+                                36
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/products/{productId}",
+                            "userStoryIndex": [
+                                15,
+                                38
+                            ]
+                        },
+                        {
+                            "method": "PUT",
+                            "url": "/products/{productId}",
+                            "userStoryIndex": [
+                                16,
+                                37
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/products/seller/{sellerId}",
+                            "userStoryIndex": [
+                                33
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/products/{productId}",
+                            "userStoryIndex": [
+                                34
+                            ]
+                        }
+                    ],
+                    "name": "admin_inventory_management",
+                    "type": "backend"
+                }
+            ],
+            "userStories": [
+                8,
+                14,
+                15,
+                16,
+                33,
+                34,
+                36,
+                37,
+                38
+            ]
+        },
+        {
+            "name": "shopping_cart",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/cart/add",
+                            "userStoryIndex": [
+                                9
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/cart/remove",
+                            "userStoryIndex": [
+                                10
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/cart/view",
+                            "userStoryIndex": [
+                                11
+                            ]
+                        }
+                    ],
+                    "name": "cart_backend",
+                    "type": "backend"
+                },
+                {
+                    "name": "cart_storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                9,
+                10,
+                11
+            ]
+        },
+        {
+            "name": "order_management",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/order_processing/create",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/order_view/client/orders",
+                            "userStoryIndex": [
+                                40
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/order_view/farmer/orders",
+                            "userStoryIndex": [
+                                41
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/order_view/admin/orders",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        }
+                    ],
+                    "name": "order_processing",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "POST",
+                            "url": "/order/complete",
+                            "userStoryIndex": [
+                                12
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/order/history/client",
+                            "userStoryIndex": [
+                                40
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/order/history/farmer",
+                            "userStoryIndex": [
+                                41
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/order/all",
+                            "userStoryIndex": [
+                                26
+                            ]
+                        }
+                    ],
+                    "name": "order_view",
+                    "type": "backend"
+                },
+                {
+                    "name": "order_database",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                12,
+                26,
+                40,
+                41
+            ]
+        },
+        {
+            "name": "admin_dashboard",
+            "services": [
+                {
+                    "endpoints": [
+                        {
+                            "method": "GET",
+                            "url": "/admin/users",
+                            "userStoryIndex": [
+                                27
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/admin/users/:userId",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/areas",
+                            "userStoryIndex": [
+                                30
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/areas/:areaId/companies",
+                            "userStoryIndex": [
+                                31
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/companies",
+                            "userStoryIndex": [
+                                32
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/admin/areas",
+                            "userStoryIndex": [
+                                35
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/admin/areas/:areaId",
+                            "userStoryIndex": [
+                                39
+                            ]
+                        }
+                    ],
+                    "name": "user_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "DELETE",
+                            "url": "/admin_dashboard/user_management/delete_user/{user_id}",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin_dashboard/user_management/all_users",
+                            "userStoryIndex": [
+                                27
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin_dashboard/area_management/all_areas",
+                            "userStoryIndex": [
+                                30
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin_dashboard/area_management/agricultural_companies_by_area",
+                            "userStoryIndex": [
+                                31
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin_dashboard/company_insights/all_company_details",
+                            "userStoryIndex": [
+                                32
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/admin_dashboard/area_management/add_area",
+                            "userStoryIndex": [
+                                35
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/admin_dashboard/area_management/delete_area/{area_id}",
+                            "userStoryIndex": [
+                                39
+                            ]
+                        }
+                    ],
+                    "name": "area_management",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "DELETE",
+                            "url": "/admin/users/{user_id}",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/users",
+                            "userStoryIndex": [
+                                27
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/areas",
+                            "userStoryIndex": [
+                                30
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/areas/{area_id}/companies",
+                            "userStoryIndex": [
+                                31
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/companies",
+                            "userStoryIndex": [
+                                32
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/admin/areas",
+                            "userStoryIndex": [
+                                35
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/admin/areas/{area_id}",
+                            "userStoryIndex": [
+                                39
+                            ]
+                        }
+                    ],
+                    "name": "company_insights",
+                    "type": "backend"
+                },
+                {
+                    "endpoints": [
+                        {
+                            "method": "DELETE",
+                            "url": "/admin/users/{userId}",
+                            "userStoryIndex": [
+                                25
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/users",
+                            "userStoryIndex": [
+                                27
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/areas",
+                            "userStoryIndex": [
+                                30
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/areas/agricultural-companies",
+                            "userStoryIndex": [
+                                31
+                            ]
+                        },
+                        {
+                            "method": "GET",
+                            "url": "/admin/agricultural-companies",
+                            "userStoryIndex": [
+                                32
+                            ]
+                        },
+                        {
+                            "method": "POST",
+                            "url": "/admin/areas",
+                            "userStoryIndex": [
+                                35
+                            ]
+                        },
+                        {
+                            "method": "DELETE",
+                            "url": "/admin/areas/{areaId}",
+                            "userStoryIndex": [
+                                39
+                            ]
+                        }
+                    ],
+                    "name": "data_analysis",
+                    "type": "backend"
+                },
+                {
+                    "name": "database_storage",
+                    "type": "database"
+                }
+            ],
+            "userStories": [
+                25,
+                27,
+                30,
+                31,
+                32,
+                35,
+                39
+            ]
+        },
+        {
+            "name": "frontend",
+            "services": [
+                {
+                    "name": "ui-renderer",
+                    "pages": [
+                        {
+                            "name": "Homepage",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Product Catalog",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Product Details/<id>",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Cart",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Checkout",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Order Confirmation",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "User Profile",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Login",
+                            "userStoryIndex": []
+                        },
+                        {
+                            "name": "Registration",
+                            "userStoryIndex": []
+                        }
+                    ],
+                    "type": "frontend"
+                },
+                {
+                    "name": "api-gateway",
+                    "type": "middleware"
+                }
+            ],
+            "userStories": []
+        }
+    ],
+    "name": "NFFH"
+}
